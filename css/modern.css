@@ -1777,6 +1777,7 @@ ul, ol {
   gap: 6px;
   padding: 5px 12px;
   border-radius: 20px;
+  font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-size: 0.8rem;
   font-weight: 600;
   text-decoration: none;
@@ -1785,6 +1786,13 @@ ul, ol {
   border: 1px solid rgba(255, 255, 255, 0.15);
   transition: all 0.2s ease;
   white-space: nowrap;
+  letter-spacing: 0.2px;
+}
+.demo-switcher-pill .pill-short {
+  display: none;
+}
+.demo-switcher-pill .pill-full {
+  display: inline;
 }
 .demo-switcher-pill:hover {
   background: rgba(255, 255, 255, 0.2);
@@ -1801,17 +1809,67 @@ ul, ol {
 
 @media (max-width: 768px) {
   :root {
-    --demo-top-height: 44px;
+    --demo-top-height: 40px;
   }
   .demo-top-switcher-bar {
-    padding: 0 12px !important;
+    height: 40px !important;
+    padding: 0 10px !important;
+    gap: 6px !important;
+  }
+  .demo-switcher-brand {
+    font-size: 0.78rem !important;
+    gap: 6px !important;
   }
   .demo-switcher-brand strong {
-    display: none;
+    display: none !important;
+  }
+  .demo-switcher-brand .badge-tag {
+    font-size: 0.62rem !important;
+    padding: 2px 6px !important;
+    border-radius: 10px !important;
+    letter-spacing: 0.2px !important;
+  }
+  .demo-switcher-nav {
+    gap: 6px !important;
   }
   .demo-switcher-pill {
-    padding: 4px 8px;
-    font-size: 0.74rem;
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    font-size: 0.70rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.2px !important;
+    padding: 4px 9px !important;
+    border-radius: 14px !important;
+    gap: 4px !important;
+    line-height: 1 !important;
+  }
+  .demo-switcher-pill .pill-full {
+    display: none !important;
+  }
+  .demo-switcher-pill .pill-short {
+    display: inline !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .demo-top-switcher-bar {
+    padding: 0 8px !important;
+    gap: 4px !important;
+  }
+  .demo-switcher-nav {
+    gap: 4px !important;
+  }
+  .demo-switcher-pill {
+    font-size: 0.66rem !important;
+    padding: 3.5px 7px !important;
+    border-radius: 12px !important;
+    gap: 3px !important;
+  }
+  .demo-switcher-brand {
+    font-size: 0.72rem !important;
+  }
+  .demo-switcher-brand .badge-tag {
+    font-size: 0.58rem !important;
+    padding: 1.5px 5px !important;
   }
 }
 
@@ -3612,4 +3670,61 @@ ul, ol {
   object-fit: cover;
   border-radius: 50%;
   display: block;
+}
+
+/* ==========================================================================
+   AJUSTES MOBILE: TIPOGRAFÍA DEL HERO (-px en H2 y H3 / Título y Descripción)
+   ========================================================================== */
+@media (max-width: 768px) {
+  .hero-content {
+    padding-bottom: 24px !important;
+  }
+  .hero-badge {
+    font-size: 0.72rem !important;
+    padding: 4px 10px !important;
+    margin-bottom: 12px !important;
+  }
+  .hero-title,
+  .hero h1,
+  .hero h2,
+  .hero-content h1,
+  .hero-content h2 {
+    font-size: 1.65rem !important; /* Reducción de ~38.4px a 26.4px en móvil */
+    line-height: 1.22 !important;
+    letter-spacing: -0.2px !important;
+    margin-bottom: 12px !important;
+  }
+  .hero-desc,
+  .hero h3,
+  .hero-content h3 {
+    font-size: 0.90rem !important; /* Reducción de 18.4px a 14.4px en móvil */
+    line-height: 1.48 !important;
+    max-width: 100% !important;
+    margin-bottom: 14px !important;
+    opacity: 0.92 !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-badge {
+    font-size: 0.68rem !important;
+    padding: 3px 8px !important;
+    margin-bottom: 10px !important;
+  }
+  .hero-title,
+  .hero h1,
+  .hero h2,
+  .hero-content h1,
+  .hero-content h2 {
+    font-size: 1.42rem !important; /* Reducción a ~22.7px en móviles angostos */
+    line-height: 1.2 !important;
+    margin-bottom: 10px !important;
+  }
+  .hero-desc,
+  .hero h3,
+  .hero-content h3 {
+    font-size: 0.84rem !important; /* Reducción a ~13.4px en móviles angostos */
+    line-height: 1.42 !important;
+    margin-bottom: 12px !important;
+  }
 }
