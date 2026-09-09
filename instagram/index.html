@@ -1786,7 +1786,7 @@
       text-transform: uppercase;
       line-height: 1.2;
       margin: 0 0 4px 0;
-      color: var(--card-h1-color);
+      color: var(--card-h1-color) !important;
       transition: color 0.2s ease;
     }
     .card-post h2, .card-post .card-h2, .card-post .text-serif-italic {
@@ -1797,7 +1797,7 @@
       font-weight: 500;
       margin: 0;
       max-width: 96%;
-      color: var(--card-h2-color);
+      color: var(--card-h2-color) !important;
       transition: color 0.2s ease;
     }
     .card-post h3, .card-post .card-h3, .card-post .text-serif-sub, .card-post .text-small-sub {
@@ -1809,12 +1809,30 @@
       margin: 0 0 4px 0;
       display: block;
       line-height: 1.15;
-      color: var(--card-h3-color);
+      color: var(--card-h3-color) !important;
       transition: color 0.2s ease;
     }
     .card-post .card-divider {
-      background: var(--card-divider-color) !important;
+      background: var(--card-divider-color, var(--color-acento)) !important;
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      margin: 5px auto;
+      border-radius: 1px;
+      flex-shrink: 0;
       transition: background-color 0.2s ease;
+    }
+    .card-azul h1, .card-azul .card-h1 {
+      color: var(--card-h1-dark, #FFFFFF) !important;
+    }
+    .card-azul h2, .card-azul .card-h2 {
+      color: var(--card-h2-dark, #FFFFFF) !important;
+    }
+    .card-azul h1, .card-azul .card-h1 {
+      color: var(--card-h1-dark, #FFFFFF) !important;
+    }
+    .card-azul h2, .card-azul .card-h2 {
+      color: var(--card-h2-dark, #FFFFFF) !important;
     }
 
     /* Estilos según Tipo de Tarjeta */
@@ -1873,7 +1891,28 @@
       }
     }
 
-  </style>
+  
+    @media (max-width: 480px) {
+      body {
+        padding: 12px 6px 40px !important;
+      }
+      .phone-mockup {
+        border-radius: 32px !important;
+        padding: 6px !important;
+      }
+      .phone-screen {
+        border-radius: 26px !important;
+      }
+      .side-info-panel {
+        padding: 18px 14px !important;
+        border-radius: 18px !important;
+      }
+      .ig-post-info-meta {
+        font-size: 0.68rem !important;
+      }
+    }
+  
+</style>
 </head>
 <body>
 
@@ -1948,8 +1987,8 @@
             </div>
 
             <div class="ig-stat-col">
-              <span class="ig-stat-num">142</span>
-              <span class="ig-stat-lbl">posts</span>
+              <span class="ig-stat-num">30</span>
+              <span class="ig-stat-lbl">publicaciones</span>
             </div>
             <div class="ig-stat-col">
               <span class="ig-stat-num">4.8K</span>
@@ -2301,7 +2340,22 @@
             <option value="12">Casillero 13 (Fila 5, Col 1)</option>
             <option value="13">Casillero 14 (Fila 5, Col 2)</option>
             <option value="14">Casillero 15 (Fila 5, Col 3)</option>
-          </select>
+            <option value="15">Casillero 16 (Fila 6, Col 1)</option>
+            <option value="16">Casillero 17 (Fila 6, Col 2)</option>
+            <option value="17">Casillero 18 (Fila 6, Col 3)</option>
+            <option value="18">Casillero 19 (Fila 7, Col 1)</option>
+            <option value="19">Casillero 20 (Fila 7, Col 2)</option>
+            <option value="20">Casillero 21 (Fila 7, Col 3)</option>
+            <option value="21">Casillero 22 (Fila 8, Col 1)</option>
+            <option value="22">Casillero 23 (Fila 8, Col 2)</option>
+            <option value="23">Casillero 24 (Fila 8, Col 3)</option>
+            <option value="24">Casillero 25 (Fila 9, Col 1)</option>
+            <option value="25">Casillero 26 (Fila 9, Col 2)</option>
+            <option value="26">Casillero 27 (Fila 9, Col 3)</option>
+            <option value="27">Casillero 28 (Fila 10, Col 1)</option>
+            <option value="28">Casillero 29 (Fila 10, Col 2)</option>
+            <option value="29">Casillero 30 (Fila 10, Col 3)</option>
+            </select>
         </div>
       </div>
 
@@ -2406,391 +2460,527 @@
        DATOS DE LAS 16 HISTORIAS DESTACADAS (CON PORTADAS CORTADAS DE FOTO ADJUNTA 3)
        ========================================================================== */
     const HIGHLIGHTS_STORIES = [
-      {
-        id: 'desayuno',
-        title: 'Desayuno',
-        cover: 'highlights/01_desayuno.jpg',
-        photo: '../nereidas_imagenes/Servicios/03.jpg',
-        desc: 'Bandeja artesanal con panificación fresca, infusiones calientes y dulces regionales servido directamente en tu apart.'
-      },
-      {
-        id: 'wifi',
-        title: 'WiFi',
-        cover: 'highlights/02_wifi.jpg',
-        photo: '../nereidas_imagenes/Apart_Premium_A/IMG_7663_1725927514_66df905a53fa1.jpeg',
-        desc: 'Conexión de fibra óptica de alta velocidad en todas las unidades y espacios comunes para desconectar o hacer home-office.'
-      },
-      {
-        id: 'limpieza',
-        title: 'Limpieza',
-        cover: 'highlights/03_limpieza.jpg',
-        photo: '../nereidas_imagenes/Apart_Miel/01_1725739803_66dcb31bccfa8.jpg',
-        desc: 'Servicio diario de mucama y provisión de ropa blanca impecable para que tus vacaciones sean de descanso absoluto.'
-      },
-      {
-        id: 'sombrillas',
-        title: 'Sombrillas',
-        cover: 'highlights/04_sombrillas.jpg',
-        photo: '../nereidas_imagenes/Atracciones/Playas amplias.jpeg',
-        desc: 'Servicio de playa en temporada de verano con reposeras y sombrillas listas para disfrutar a solo 50 metros del mar.'
-      },
-      {
-        id: 'mascotas',
-        title: 'Mascotas',
-        cover: 'highlights/05_mascotas.jpg',
-        photo: '../nereidas_imagenes/Portada/02.jpg',
-        desc: 'Pet-friendly: recibimos a tu mascota educada con previo aviso en unidades seleccionadas con acceso directo al parque.'
-      },
-      {
-        id: 'bicicletas',
-        title: 'Bicicletas',
-        cover: 'highlights/06_bicicletas.jpg',
-        photo: '../nereidas_imagenes/Atracciones/senderos del bosque.jpeg',
-        desc: 'Bicicletas de paseo a disposición de los huéspedes para recorrer las mágicas calles de arena sin asfalto de la aldea.'
-      },
-      {
-        id: 'ropadecama',
-        title: 'Ropa de cama',
-        cover: 'highlights/07_ropa_de_cama.jpg',
-        photo: '../nereidas_imagenes/Apart_Miel/02_1725894620_66df0fdce4584.jpg',
-        desc: 'Juego completo de sábanas de percal y toallas de alta densidad con recambio periódico programado.'
-      },
-      {
-        id: 'parrilla',
-        title: 'Parrilla',
-        cover: 'highlights/08_parrilla.jpg',
-        photo: '../nereidas_imagenes/Apart_Premium_A/01_1725739862_66dcb3569579c.jpg',
-        desc: 'Cada apartamento dispone de su propia parrilla individual en el balcón terraza o deck privado entre los pinos.'
-      },
-      {
-        id: 'piscina',
-        title: 'Piscina',
-        cover: 'highlights/09_piscina.jpg',
-        photo: '../nereidas_imagenes/Servicios/01.jpg',
-        desc: 'Piscina exterior climatizada con amplio solarium de madera y reposeras inmersas en el bosque nativo.'
-      },
-      {
-        id: 'habitaciones',
-        title: 'Habitaciones',
-        cover: 'highlights/10_habitaciones.jpg',
-        photo: '../nereidas_imagenes/Apart_Familiar_B/15_1725739978_66dcb3ca1b482.jpg',
-        desc: 'Unidades de 2 a 6 personas con sommier king/queen, hidromasaje, cocina completa y vista panorámica al verde.'
-      },
-      {
-        id: 'ubicacion',
-        title: 'Ubicación',
-        cover: 'highlights/11_ubicacion.jpg',
-        photo: '../nereidas_imagenes/Portada/01.jpg',
-        desc: 'Ubicación inmejorable: a 50 metros del mar, 300 metros del bosque y 150 metros del centro comercial. Mercedes Sosa y Recalada, Villa Gesell 7105.'
-      },
-      {
-        id: 'galeria',
-        title: 'Galería',
-        cover: 'highlights/12_galeria.jpg',
-        photo: '../nereidas_imagenes/Servicios/04.jpg',
-        desc: 'Postales reales de nuestro complejo en todas las estaciones del año: verano, otoño, invierno y primavera.'
-      },
-      {
-        id: 'contacto',
-        title: 'Contacto',
-        cover: 'highlights/13_contacto.jpg',
-        photo: '../nereidas_imagenes/Portada/04.jpg',
-        desc: 'Atendido directamente por sus propios dueños. Escribinos por WhatsApp para un trato cálido y personalizado.'
-      },
-      {
-        id: 'tarifas',
-        title: 'Tarifas',
-        cover: 'highlights/14_tarifas.jpg',
-        photo: '../nereidas_imagenes/Apart_Premium_B/IMG_7791_1725922793_66df7de9052a7.jpeg',
-        desc: 'Tarifas directas sin comisiones de intermediarios. Consultanos por promociones de fines de semana largos.'
-      },
-      {
-        id: 'actividades',
-        title: 'Actividades',
-        cover: 'highlights/15_actividades.jpg',
-        photo: '../nereidas_imagenes/Atracciones/centro aldea.jpg',
-        desc: 'Caminatas por el bosque, cabalgatas al atardecer, paseos al Faro Querandí y gastronomía de aldea.'
-      },
-      {
-        id: 'reservas',
-        title: 'Reservas',
-        cover: 'highlights/16_reservas.jpg',
-        photo: '../nereidas_imagenes/Servicios/02.jpg',
-        desc: 'Reservá tu estadía de manera rápida y segura directamente con nosotros vía WhatsApp o email.'
-      }
-    ];
+  {
+    "id": "desayuno",
+    "title": "Desayuno",
+    "file": "01_desayuno.jpg",
+    "cover": "highlights/01_desayuno.jpg",
+    "photo": "../nereidas_imagenes/Servicios/03.jpg",
+    "desc": "Bandeja artesanal con panificación fresca, infusiones calientes y dulces regionales servido directamente en tu apart."
+  },
+  {
+    "id": "wifi",
+    "title": "WiFi",
+    "file": "02_wifi.jpg",
+    "cover": "highlights/02_wifi.jpg",
+    "photo": "../nereidas_imagenes/Apart_Premium_A/IMG_7663_1725927514_66df905a53fa1.jpeg",
+    "desc": "Conexión de fibra óptica de alta velocidad en todas las unidades y espacios comunes para desconectar o hacer home-office."
+  },
+  {
+    "id": "limpieza",
+    "title": "Limpieza",
+    "file": "03_limpieza.jpg",
+    "cover": "highlights/03_limpieza.jpg",
+    "photo": "../nereidas_imagenes/Apart_Miel/01_1725739803_66dcb31bccfa8.jpg",
+    "desc": "Servicio diario de mucama y provisión de ropa blanca impecable para que tus vacaciones sean de descanso absoluto."
+  },
+  {
+    "id": "sombrillas",
+    "title": "Sombrillas",
+    "file": "04_sombrillas.jpg",
+    "cover": "highlights/04_sombrillas.jpg",
+    "photo": "../nereidas_imagenes/Atracciones/Playas amplias.jpeg",
+    "desc": "Servicio de playa en temporada de verano con reposeras y sombrillas listas para disfrutar a solo 50 metros del mar."
+  },
+  {
+    "id": "mascotas",
+    "title": "Mascotas",
+    "file": "05_mascotas.jpg",
+    "cover": "highlights/05_mascotas.jpg",
+    "photo": "../nereidas_imagenes/Portada/05.jpg",
+    "desc": "Pet Friendly consciente: tus mascotas son bienvenidas para compartir paseos únicos por los senderos del bosque y la arena."
+  },
+  {
+    "id": "bicicletas",
+    "title": "Bicicletas",
+    "file": "06_bicicletas.jpg",
+    "cover": "highlights/06_bicicletas.jpg",
+    "photo": "../nereidas_imagenes/Atracciones/senderos del bosque.jpeg",
+    "desc": "Disponibilidad de bicicletas para pasear sin prisa por las calles de arena y descubrir los secretos de Mar de las Pampas."
+  },
+  {
+    "id": "ropa_de_cama",
+    "title": "Ropa Cama",
+    "file": "07_ropa_de_cama.jpg",
+    "cover": "highlights/07_ropa_de_cama.jpg",
+    "photo": "../nereidas_imagenes/Apart_Miel/08_1725739803_66dcb31be0abd.jpg",
+    "desc": "Sábanas de percal puro y toallas de alta densidad para asegurar el confort y descanso renovador de toda la familia."
+  },
+  {
+    "id": "parrilla",
+    "title": "Parrillas",
+    "file": "08_parrilla.jpg",
+    "cover": "highlights/08_parrilla.jpg",
+    "photo": "../nereidas_imagenes/Apart_Familiar_A/07_1725894759_66df10678a510.jpg",
+    "desc": "Parrillas individuales y familiares en cada apart con deck privado para saborear los mejores asados bajo los pinos."
+  },
+  {
+    "id": "piscina",
+    "title": "Piscina",
+    "file": "09_piscina.jpg",
+    "cover": "highlights/09_piscina.jpg",
+    "photo": "../nereidas_imagenes/Servicios/01.jpg",
+    "desc": "Piscina exterior climatizada rodeada de solarium de madera con reposeras y cerco perimetral de seguridad."
+  },
+  {
+    "id": "habitaciones",
+    "title": "Suites",
+    "file": "10_habitaciones.jpg",
+    "cover": "highlights/10_habitaciones.jpg",
+    "photo": "../nereidas_imagenes/Apart_Premium_A/02_1725739862_66dcb356a174d.jpg",
+    "desc": "Apartamentos luminosos de 1, 2 y 3 ambientes totalmente equipados con sommiers de resortes y aire acondicionado."
+  },
+  {
+    "id": "ubicacion",
+    "title": "Ubicación",
+    "file": "11_ubicacion.jpg",
+    "cover": "highlights/11_ubicacion.jpg",
+    "photo": "../nereidas_imagenes/Portada/01.jpg",
+    "desc": "Ubicación privilegiada en Mercedes Sosa y Recalada: a solo 50 metros de la playa y 150 metros del centro comercial."
+  },
+  {
+    "id": "galeria",
+    "title": "Galería",
+    "file": "12_galeria.jpg",
+    "cover": "highlights/12_galeria.jpg",
+    "photo": "../nereidas_imagenes/Portada/03.jpg",
+    "desc": "Arquitectura en madera noble, ladrillo a la vista y ventanales integrados a la naturaleza viva del bosque autóctono."
+  },
+  {
+    "id": "contacto",
+    "title": "Contacto",
+    "file": "13_contacto.jpg",
+    "cover": "highlights/13_contacto.jpg",
+    "photo": "../nereidas_imagenes/Portada/02.jpg",
+    "desc": "Canales de atención directa por WhatsApp y teléfono atendidos por sus propios dueños para asesorarte con calidez."
+  },
+  {
+    "id": "tarifas",
+    "title": "Tarifas",
+    "file": "14_tarifas.jpg",
+    "cover": "highlights/14_tarifas.jpg",
+    "photo": "../nereidas_imagenes/Servicios/04.jpg",
+    "desc": "Promociones especiales en temporada baja, escapadas de fin de semana y tarifas congeladas para tus vacaciones de verano."
+  },
+  {
+    "id": "actividades",
+    "title": "Paseos",
+    "file": "15_actividades.jpg",
+    "cover": "highlights/15_actividades.jpg",
+    "photo": "../nereidas_imagenes/Atracciones/centro aldea.jpg",
+    "desc": "Caminatas botánicas, cabalgatas nocturnas por los médanos, travesías 4x4 y gastronomía de autor en la aldea."
+  },
+  {
+    "id": "reservas",
+    "title": "Reservas",
+    "file": "16_reservas.jpg",
+    "cover": "highlights/16_reservas.jpg",
+    "photo": "../nereidas_imagenes/Apart_Miel/03_1725739803_66dcb31bd2c57.jpg",
+    "desc": "Garantizá tu lugar en el paraíso con reserva directa y atención personalizada. ¡Te esperamos en Nereidas!"
+  }
+];
 
     /* ==========================================================================
        GRILLA MUESTRA A (15 CASILLEROS — FEED REVISTA)
        ========================================================================== */
     const POSTS_MUESTRA_A = [
-      // Fila 1
-      {
-        type: 'photo',
-        src: '../nereidas_imagenes/Portada/04.jpg',
-        likes: 248,
-        caption: 'Bienvenidos a Nereidas Apart 🌿 Nuestro rincón en Mar de las Pampas donde el tiempo camina despacio. Abierto todo el año para tu descanso familiar. #ApartNereidas #MardeLasPampas #BosqueyMar'
-      },
-      {
-        type: 'photo',
-        src: 'img/logo_gold.jpg',
-        likes: 350,
-        caption: 'Edición Oro & Noche de nuestro emblema oficial. Trazos dorados metalizados sobre fondo negro profundo que capturan la serenidad y nobleza de Mar de las Pampas. 🌊✨👑 #LogoOficial #NereidasApart #MarDeLasPampas'
-      },
-      {
-        type: 'photo',
-        src: '../nereidas_imagenes/Servicios/01.jpg',
-        likes: 312,
-        caption: 'Piscina exterior climatizada rodeada de pinos y naturaleza viva 🏊‍♂️☀️ Deck solarium para disfrutar el silencio y la paz. #PiscinaClimatizada #RelaxEnElBosque'
-      },
-      // Fila 2
-      {
-        type: 'card',
-        bg: 'card-turquesa',
-        html: `
-          <p class="text-serif-italic" style="color: var(--azul-noche);">
-            "Descansar en familia, cerca de todo lo que importa"
-          </p>
-        `,
-        likes: 215,
-        caption: 'El valor de compartir momentos genuinos sin apuros. Cerca de la playa, de los pinos y del centro de aldea. 🍃👨‍👩‍👧‍👦 #MomentosEnFamilia #DescansoGenuino'
-      },
-      {
-        type: 'photo',
-        src: '../nereidas_imagenes/Servicios/03.jpg',
-        likes: 284,
-        caption: 'Comenzar el día con desayuno artesanal servido en la tranquilidad de tu apart 🥐☕ Panificación fresca y café caliente para desconectar. #DesayunoEnElApart #BuenosDias'
-      },
-      {
-        type: 'card',
-        bg: 'card-blanco',
-        html: `
-          <span class="text-serif-sub" style="color: var(--turquesa-grisaceo);">EXPERIENCIA NEREIDAS</span>
-          <p class="text-serif-italic" style="color: var(--azul-noche);">
-            "El rumor del mar entre los pinos, cada mañana"
-          </p>
-          <span class="card-divider" style="background: var(--dorado-suave);"></span>
-          <span class="text-small-sub" style="color: var(--azul-noche);">MAR DE LAS PAMPAS</span>
-        `,
-        likes: 220,
-        caption: 'Despertar en Mar de las Pampas con el canto de las aves y la brisa del mar. Viví una estadía auténtica pensada para el descanso familiar. 🌲☕🌊 #ExperienciaNereidas #VivirSinPrisa #MarDeLasPampas'
-      },
-      // Fila 3
-      {
-        type: 'photo',
-        src: '../nereidas_imagenes/Portada/01.jpg',
-        likes: 420,
-        caption: 'La inmensidad del bosque abrazando nuestro predio 🌲🏊 Un refugio diseñado para el descanso y la reconexión. #MarDeLasPampas #BosqueYMar #AereasNereidas'
-      },
-      {
-        type: 'card',
-        bg: 'card-dorado',
-        html: `
-          <h3 class="text-bold-title" style="color: var(--azul-noche);">
-            VIVIR SIN PRISA
-          </h3>
-          <span class="text-small-sub" style="color: var(--azul-noche); opacity: 0.85;">
-            FILOSOFÍA NEREIDAS
-          </span>
-        `,
-        likes: 330,
-        caption: 'Aquí no hay relojes ni apuros: solo el rumor del viento en las copas de los árboles y las olas del mar a metros. 🌿🧘 #VivirSinPrisa #SlowLife'
-      },
-      {
-        type: 'photo',
-        src: '../nereidas_imagenes/Atracciones/senderos del bosque.jpeg',
-        likes: 219,
-        caption: 'Paseos sobre dos ruedas por calles de arena sin asfalto 🚲✨ El plan perfecto para descubrir los rincones ocultos de la aldea. #PaseosEnBici #Senderos'
-      },
-      // Fila 4
-      {
-        type: 'photo',
-        src: 'img/logo_color.jpg',
-        likes: 390,
-        caption: 'Nuestro logo oficial en su paleta completa (Opción B — Mar Profundo): corona dorada de escamas (#C9A66B), script en azul noche (#14213D) y olas turquesa (#6FA8AD). La esencia de Nereidas frente al mar. 🌊💙👑 #LogoOficial #ApartNereidas #MarDeLasPampas'
-      },
-      {
-        type: 'photo',
-        src: '../nereidas_imagenes/Servicios/04.jpg',
-        likes: 308,
-        caption: 'Sol, deck y reposeras listas para una tarde de lectura y mate 🧉☀️ En Nereidas cada rincón invita a la desconexión. #Solarium #TardesDeSol'
-      },
-      {
-        type: 'card',
-        bg: 'card-azul',
-        html: `
-          <p class="text-serif-italic" style="color: #FFFFFF;">
-            "Atendido por sus dueños, como en casa"
-          </p>
-        `,
-        likes: 290,
-        caption: 'Nos apasiona recibirte y asegurarnos de que cada detalle de tus vacaciones sea perfecto. 💛🏡 #Hospitalidad #AtendidoPorSusDueños'
-      },
-      // Fila 5
-      {
-        type: 'photo',
-        src: '../nereidas_imagenes/Servicios/05.jpg',
-        likes: 245,
-        caption: 'El verde de nuestro jardín y la frescura de los árboles autóctonos 🌲 Un entorno natural protegido para respirar aire puro. #ParqueNatural'
-      },
-      {
-        type: 'card',
-        bg: 'card-dorado',
-        html: `
-          <h3 class="text-bold-title" style="color: var(--azul-noche);">
-            RESERVÁ TU ESCAPADA
-          </h3>
-          <span class="text-small-sub" style="color: var(--azul-noche); opacity: 0.85;">
-            CONSULTANOS POR WHATSAPP
-          </span>
-        `,
-        likes: 340,
-        caption: '¿Planeando tus próximas vacaciones o una escapada de fin de semana? Escribinos por WhatsApp y coordinamos tu estadía. 📲✨ Link en bio. #Escapadas #Reservas'
-      },
-      {
-        type: 'photo',
-        src: '../nereidas_imagenes/Portada/03.jpg',
-        likes: 275,
-        caption: 'Maderas nobles, detalles rústicos y arquitectura pensada para convivir en equilibrio con el bosque. 🪵🏖️ #ArquitecturaCostera #Nereidas'
-      }
-    ];
+  {
+    "type": "photo",
+    "src": "../nereidas_imagenes/Portada/04.jpg",
+    "likes": 248,
+    "caption": "Bienvenidos a Nereidas Apart 🌿 Nuestro rincón en Mar de las Pampas donde el tiempo camina despacio. Abierto todo el año para tu descanso familiar. #ApartNereidas #MardeLasPampas #BosqueyMar"
+  },
+  {
+    "type": "photo",
+    "src": "img/logo_gold.jpg",
+    "likes": 350,
+    "caption": "Edición Oro & Noche de nuestro emblema oficial. Trazos dorados metalizados sobre fondo negro profundo que capturan la serenidad y nobleza de Mar de las Pampas. 🌊✨👑 #LogoOficial #NereidasApart #MarDeLasPampas"
+  },
+  {
+    "type": "photo",
+    "src": "../nereidas_imagenes/Servicios/01.jpg",
+    "likes": 312,
+    "caption": "Piscina exterior climatizada rodeada de pinos y naturaleza viva 🏊‍♂️☀️ Deck solarium para disfrutar el silencio y la paz. #PiscinaClimatizada #RelaxEnElBosque"
+  },
+  {
+    "type": "card",
+    "bg": "card-turquesa",
+    "html": "\n      <h1 class=\"card-h1\">EN FAMILIA</h1>\n      <h2 class=\"card-h2\">\"Descansar en familia, cerca de todo lo que importa\"</h2>\n      <h3 class=\"card-h3\">MOMENTOS AUTÉNTICOS</h3>\n    ",
+    "likes": 215,
+    "caption": "El valor de compartir momentos genuinos sin apuros. Cerca de la playa, de los pinos y del centro de aldea. 🍃👨‍👩‍👧‍👦 #MomentosEnFamilia #DescansoGenuino"
+  },
+  {
+    "type": "photo",
+    "src": "../nereidas_imagenes/Servicios/03.jpg",
+    "likes": 284,
+    "caption": "Comenzar el día con desayuno artesanal servido en la tranquilidad de tu apart 🥐☕ Panificación fresca y café caliente para desconectar. #DesayunoEnElApart #BuenosDias"
+  },
+  {
+    "type": "card",
+    "bg": "card-blanco",
+    "html": "\n      <h1 class=\"card-h1\">EXPERIENCIA NEREIDAS</h1>\n      <h2 class=\"card-h2\">\"El rumor del mar entre los pinos, cada mañana\"</h2>\n      <span class=\"card-divider\"></span>\n      <h3 class=\"card-h3\">MAR DE LAS PAMPAS</h3>\n    ",
+    "likes": 220,
+    "caption": "Despertar en Mar de las Pampas con el canto de las aves y la brisa del mar. Viví una estadía auténtica pensada para el descanso familiar. 🌲☕🌊 #ExperienciaNereidas #VivirSinPrisa #MarDeLasPampas"
+  },
+  {
+    "type": "photo",
+    "src": "../nereidas_imagenes/Portada/01.jpg",
+    "likes": 420,
+    "caption": "La inmensidad del bosque abrazando nuestro predio 🌲🏊 Un refugio diseñado para el descanso y la reconexión. #MarDeLasPampas #BosqueYMar #AereasNereidas"
+  },
+  {
+    "type": "card",
+    "bg": "card-dorado",
+    "html": "\n      <h1 class=\"card-h1\">VIVIR SIN PRISA</h1>\n      <h2 class=\"card-h2\">\"El arte de frenar el tiempo y conectar con lo esencial\"</h2>\n      <h3 class=\"card-h3\">FILOSOFÍA NEREIDAS</h3>\n    ",
+    "likes": 330,
+    "caption": "Aquí no hay relojes ni apuros: solo el rumor del viento en las copas de los árboles y las olas del mar a metros. 🌿🧘 #VivirSinPrisa #SlowLife"
+  },
+  {
+    "type": "photo",
+    "src": "../nereidas_imagenes/Atracciones/senderos del bosque.jpeg",
+    "likes": 219,
+    "caption": "Paseos sobre dos ruedas por calles de arena sin asfalto 🚲✨ El plan perfecto para descubrir los rincones ocultos de la aldea. #PaseosEnBici #Senderos"
+  },
+  {
+    "type": "photo",
+    "src": "img/logo_color.jpg",
+    "likes": 390,
+    "caption": "Nuestro logo oficial en su paleta completa: corona dorada de escamas (#C9A66B), script en azul noche (#14213D) y olas turquesa (#6FA8AD). 🌊💙👑 #LogoOficial #ApartNereidas"
+  },
+  {
+    "type": "photo",
+    "src": "../nereidas_imagenes/Servicios/04.jpg",
+    "likes": 308,
+    "caption": "Sol, deck y reposeras listas para una tarde de lectura y mate 🧉☀️ En Nereidas cada rincón invita a la desconexión. #Solarium #TardesDeSol"
+  },
+  {
+    "type": "card",
+    "bg": "card-azul",
+    "html": "\n      <h1 class=\"card-h1\">HOSPITALIDAD GENUINA</h1>\n      <h2 class=\"card-h2\">\"Atendido por sus dueños, como en casa\"</h2>\n      <h3 class=\"card-h3\">TODO EL AÑO</h3>\n    ",
+    "likes": 290,
+    "caption": "Nos apasiona recibirte y asegurarnos de que cada detalle de tus vacaciones sea perfecto. 💛🏡 #Hospitalidad #AtendidoPorSusDueños"
+  },
+  {
+    "type": "photo",
+    "src": "../nereidas_imagenes/Servicios/05.jpg",
+    "likes": 245,
+    "caption": "El verde de nuestro jardín y la frescura de los árboles autóctonos 🌲 Un entorno natural protegido para respirar aire puro. #ParqueNatural"
+  },
+  {
+    "type": "card",
+    "bg": "card-dorado",
+    "html": "\n      <h1 class=\"card-h1\">RESERVÁ TU ESCAPADA</h1>\n      <h2 class=\"card-h2\">\"Fin de semana o vacaciones en el bosque y el mar\"</h2>\n      <h3 class=\"card-h3\">CONSULTANOS POR WHATSAPP</h3>\n    ",
+    "likes": 340,
+    "caption": "¿Planeando tus próximas vacaciones o una escapada de fin de semana? Escribinos por WhatsApp y coordinamos tu estadía. 📲✨ Link en bio. #Escapadas #Reservas"
+  },
+  {
+    "type": "photo",
+    "src": "../nereidas_imagenes/Portada/03.jpg",
+    "likes": 275,
+    "caption": "Maderas nobles, detalles rústicos y arquitectura pensada para convivir en equilibrio con el bosque. 🪵🏖️ #ArquitecturaCostera #Nereidas"
+  },
+  {
+    "type": "photo",
+    "src": "../nereidas_imagenes/Apart_Miel/02_1725894620_66df0fdce4584.jpg",
+    "likes": 360,
+    "caption": "El hidromasaje doble en suite para desconectar de toda rutina 🛁🕯️ Espacios románticos pensados para compartir de a dos. #ApartMiel #Hidromasaje"
+  },
+  {
+    "type": "card",
+    "bg": "card-blanco",
+    "html": "\n      <h1 class=\"card-h1\">BIENESTAR &amp; CALMA</h1>\n      <h2 class=\"card-h2\">\"El descanso que merecés, en cualquier estación\"</h2>\n      <span class=\"card-divider\"></span>\n      <h3 class=\"card-h3\">MAR DE LAS PAMPAS</h3>\n    ",
+    "likes": 295,
+    "caption": "Mar de las Pampas tiene un encanto singular en cada época del año: pinos, silencio y mar abierto. 🍂❄️🌸☀️ #CuatroEstaciones #Nereidas"
+  },
+  {
+    "type": "photo",
+    "src": "../nereidas_imagenes/Atracciones/Playas amplias.jpeg",
+    "likes": 310,
+    "caption": "A solo 50 metros del mar: pisar la arena, sentir la brisa y caminar sin límites por playas vírgenes. 🌊👣 #PlayasDeMarDeLasPampas"
+  },
+  {
+    "type": "card",
+    "bg": "card-turquesa",
+    "html": "\n      <h1 class=\"card-h1\">DESAYUNO ARTESANAL</h1>\n      <h2 class=\"card-h2\">\"Servido directamente en tu apartamento\"</h2>\n      <h3 class=\"card-h3\">PANIFICACIÓN DEL DÍA</h3>\n    ",
+    "likes": 315,
+    "caption": "Medialunas recién salidas del horno, tostadas crujientes y dulces artesanales sin salir de tu unidad. 🥐☕ #DesayunoEnElApart"
+  },
+  {
+    "type": "photo",
+    "src": "../nereidas_imagenes/Servicios/02.jpg",
+    "likes": 340,
+    "caption": "El agua cristalina y la temperatura perfecta esperando tu chapuzón de la tarde. 🏊‍♂️🌿 #PiscinaClimatizada #Relax"
+  },
+  {
+    "type": "photo",
+    "src": "../nereidas_imagenes/Apart_Familiar_A/07_1725894759_66df10678a510.jpg",
+    "likes": 280,
+    "caption": "Asado familiar al mediodía con vista a las copas de los árboles. Todas las unidades cuentan con parrilla individual. 🥩🔥 #AsadoEnElBosque"
+  },
+  {
+    "type": "photo",
+    "src": "../nereidas_imagenes/Atracciones/centro aldea.jpg",
+    "likes": 260,
+    "caption": "Paseos por la aldea comercial de madera entre duendes, galerías y cafés con encanto europeo. 🌲☕ #AldeaComercial #Paseos"
+  },
+  {
+    "type": "card",
+    "bg": "card-dorado",
+    "html": "\n      <h1 class=\"card-h1\">ESCAPADAS DE FIN DE SEMANA</h1>\n      <h2 class=\"card-h2\">\"Consultá tarifas y promociones especiales\"</h2>\n      <h3 class=\"card-h3\">ABIERTO TODO EL AÑO</h3>\n    ",
+    "likes": 335,
+    "caption": "¿Una pausa en la rutina? El bosque y el mar te esperan a solo 3 horas y media de Buenos Aires. 🚗💨 #Escapadas #FinDeSemana"
+  },
+  {
+    "type": "photo",
+    "src": "../nereidas_imagenes/Apart_Premium_A/04_1725739862_66dcb356b71d5.jpg",
+    "likes": 295,
+    "caption": "Balcón terraza con parrilla propia en nuestras unidades Premium. Espacios creados para tu comodidad. 🌿🍷 #ApartPremium #VistasAlBosque"
+  },
+  {
+    "type": "photo",
+    "src": "../nereidas_imagenes/Portada/05.jpg",
+    "likes": 320,
+    "caption": "El aroma inconfundible de los pinos y el susurro del mar. Respirar aire puro en estado natural. 🌲💚 #NaturalezaViva #AirePuro"
+  },
+  {
+    "type": "card",
+    "bg": "card-azul",
+    "html": "\n      <h1 class=\"card-h1\">UBICACIÓN PRIVILEGIADA</h1>\n      <h2 class=\"card-h2\">\"A 100m del mar y 300m de la aldea comercial\"</h2>\n      <span class=\"card-divider\"></span>\n      <h3 class=\"card-h3\">MERCEDES SOSA Y RECALADA</h3>\n    ",
+    "likes": 350,
+    "caption": "Olvidate del auto durante todas tus vacaciones. Todo lo que necesitás a solo unos pasos de distancia. 📍🚶‍♀️ #UbicacionPerfecta"
+  },
+  {
+    "type": "photo",
+    "src": "../nereidas_imagenes/Apart_Premium_B/a94c220c-2d28-4539-901f-dc7fe5b85040_1726508996_66e86fc42aebf.jpeg",
+    "likes": 305,
+    "caption": "Detalles de confort: baños completos con hidromasaje, griferías de calidad y toallas de algodón premium. 🛁✨ #DetallesNereidas"
+  },
+  {
+    "type": "card",
+    "bg": "card-dorado",
+    "html": "\n      <h1 class=\"card-h1\">TU LUGAR EN EL MUNDO</h1>\n      <h2 class=\"card-h2\">\"Momentos inolvidables para toda la vida\"</h2>\n      <h3 class=\"card-h3\">APART NEREIDAS</h3>\n    ",
+    "likes": 380,
+    "caption": "Apart Nereidas — Donde el descanso se convierte en recuerdo imborrable. 🌊🏡 Reservá tu estadía. #ApartNereidas"
+  },
+  {
+    "type": "photo",
+    "src": "../nereidas_imagenes/Apart_Familiar_B/IMG_7856_1725926090_66df8acac0181.jpeg",
+    "likes": 310,
+    "caption": "Espacios luminosos y confortables pensados para familias que buscan descansar en serio. 🛋️🌿 #FamiliaNereidas"
+  },
+  {
+    "type": "photo",
+    "src": "../nereidas_imagenes/Portada/02.jpg",
+    "likes": 415,
+    "caption": "Atardeceres dorados filtrándose entre las ramas de los pinos. 🌲🌅 La magia de cada día en Nereidas. #AtardecerEnElBosque"
+  }
+];
 
     /* ==========================================================================
        GRILLA MUESTRA B (15 CASILLEROS — EDITORIAL, LOGO AL CENTRO)
        ========================================================================== */
     const POSTS_MUESTRA_B = [
-      // Fila 1
-      {
-        type: 'photo',
-        src: 'img/logo_navy.jpg',
-        likes: 310,
-        caption: 'Edición en Azul Noche (#14213D) sobre blanco roto: líneas puras y caligrafía de trazo sensible que refleja la calma del bosque. 🌊🌲 #IdentidadNereidas #MarDeLasPampas #LogoOficial'
-      },
-      {
-        type: 'photo',
-        src: '../nereidas_imagenes/Servicios/02.jpg',
-        likes: 310,
-        caption: 'Reposeras alineadas y el agua cristalina esperando por vos. Todo preparado para tu llegada. 🏊‍♂️☀️ #PiscinaClimatizada #Vacaciones'
-      },
-      {
-        type: 'photo',
-        src: '../nereidas_imagenes/Portada/02.jpg',
-        likes: 260,
-        caption: 'Nuestras cabañas y departamentos entre los pinos. El equilibrio perfecto entre confort moderno y naturaleza. 🏡🌲 #CabañasEnElBosque'
-      },
-      // Fila 2
-      {
-        type: 'photo',
-        src: '../nereidas_imagenes/Servicios/01.jpg',
-        likes: 295,
-        caption: 'Despertar con vista a la piscina y al deck de madera. Cada amanecer en Nereidas renueva la energía. ✨🌿 #BuenosDias #Piscina'
-      },
-      {
-        type: 'card',
-        bg: 'card-turquesa',
-        html: `
-          <p class="text-serif-italic" style="color: var(--azul-noche);">
-            "Atención personalizada, como en casa"
-          </p>
-        `,
-        likes: 230,
-        caption: 'Atendido con calidez por sus propios dueños los 12 meses del año. Te esperamos. 💛 #ComoEnCasa #HospitalidadNereidas'
-      },
-      {
-        type: 'card',
-        bg: 'card-blanco',
-        html: `
-          <span class="text-serif-sub" style="color: var(--dorado-suave);">REFUGIO NATURAL</span>
-          <p class="text-serif-italic" style="color: var(--azul-noche);">
-            "Desconectar del reloj, reconectar con lo esencial"
-          </p>
-          <span class="card-divider" style="background: var(--turquesa-grisaceo);"></span>
-          <span class="text-small-sub" style="color: var(--azul-noche);">BOSQUE &amp; PLAYA</span>
-        `,
-        likes: 240,
-        caption: 'Un refugio rodeado de bosque nativo a solo 50 metros de la playa. El tiempo a tu propio ritmo los 12 meses del año. 🍃🌊 #RefugioNatural #ApartNereidas #DescansoTotal'
-      },
-      // Fila 3
-      {
-        type: 'card',
-        bg: 'card-dorado',
-        html: `
-          <h3 class="text-bold-title" style="color: var(--azul-noche);">
-            ABIERTOS TODO EL AÑO
-          </h3>
-          <span class="text-small-sub" style="color: var(--azul-noche); opacity: 0.85;">
-            LAS 4 ESTACIONES
-          </span>
-        `,
-        likes: 310,
-        caption: 'Mar de las Pampas tiene una magia distinta en cada estación. Vivila los 12 meses en Nereidas. 🍂❄️🌸☀️ #AbiertoTodoElAño'
-      },
-      {
-        type: 'photo',
-        src: '../nereidas_imagenes/Servicios/03.jpg',
-        likes: 270,
-        caption: 'Desayuno artesanal servido en tu unidad. Sabores frescos de panadería de aldea. 🥐☕ #DesayunoNereidas #Gourmet'
-      },
-      {
-        type: 'photo',
-        src: '../nereidas_imagenes/Portada/03.jpg',
-        likes: 240,
-        caption: 'Deck solarium y detalles rústicos que se integran en total armonía con los pinos. 🌲☀️ #Deck #NaturalezaViva'
-      },
-      // Fila 4 (LOGO COMO ANCLA CENTRAL EN COLUMNA 2)
-      {
-        type: 'photo',
-        src: '../nereidas_imagenes/Atracciones/senderos del bosque.jpeg',
-        likes: 225,
-        caption: 'Calles de arena donde solo se escucha el cantar de las aves y el rodar de las bicicletas. 🚲🌿 #Caminatas #SenderosDelBosque'
-      },
-      {
-        type: 'photo',
-        src: 'img/logo_gold.jpg',
-        likes: 520,
-        caption: 'Nereidas Apart Hotel · Mar de las Pampas. El ancla visual de tus mejores recuerdos en familia en edición oro metalizado. Abierto todo el año a solo 50 metros del mar. 🌊⚓💛 #MarcaNereidas #ApartHotel #Identidad'
-      },
-      {
-        type: 'photo',
-        src: '../nereidas_imagenes/Apart_Miel/02_1725894620_66df0fdce4584.jpg',
-        likes: 315,
-        caption: 'Calidez en cada rincón. Nuestros dormitorios están pensados para el descanso profundo. 🛏️✨ #SuitesNereidas #Descanso'
-      },
-      // Fila 5
-      {
-        type: 'card',
-        bg: 'card-blanco',
-        html: `
-          <p class="text-serif-italic" style="color: var(--azul-noche);">
-            "El mar a tus pies, el bosque a tu alrededor"
-          </p>
-          <span class="card-divider" style="background: var(--turquesa-grisaceo);"></span>
-          <span class="text-small-sub" style="color: var(--turquesa-grisaceo);">A 50M DE LA PLAYA</span>
-        `,
-        likes: 260,
-        caption: 'Caminás unos pasos y ya estás tocando la arena. A solo 50 metros del mar y 300 del bosque. 🌊🚶‍♀️ #CercaDelMar #MarDeLasPampas'
-      },
-      {
-        type: 'card',
-        bg: 'card-dorado',
-        html: `
-          <h3 class="text-bold-title" style="color: var(--azul-noche);">
-            PLANIFICÁ TU VIAJE
-          </h3>
-          <span class="text-small-sub" style="color: var(--azul-noche); opacity: 0.85;">
-            WHATSAPP DIRECTO 24HS
-          </span>
-        `,
-        likes: 350,
-        caption: 'Consultanos tarifas y disponibilidad. Te responderemos en el acto para coordinar tu viaje soñado. 💬🏖️ #PlanificaTusVacaciones'
-      },
-      {
-        type: 'photo',
-        src: '../nereidas_imagenes/Portada/01.jpg',
-        likes: 380,
-        caption: 'Postal aérea del complejo: a 100 metros del mar y a 250 del centro de aldea. La mejor ubicación. 📍🌊 #UbicacionPrivilegiada'
-      }
-    ];
+  {
+    "type": "photo",
+    "src": "img/logo_gold.jpg",
+    "likes": 410,
+    "caption": "Emblema Nereidas Edición Gold. Nuestra identidad en trazos dorados finos sobre negro absoluto. 🌊👑 #NereidasGold #MarDeLasPampas"
+  },
+  {
+    "type": "photo",
+    "src": "../nereidas_imagenes/Portada/01.jpg",
+    "likes": 345,
+    "caption": "El predio de Nereidas inmerso en la serenidad del bosque. 🌲 Piscina climatizada, decks y naturaleza protegida. #Nereidas"
+  },
+  {
+    "type": "photo",
+    "src": "../nereidas_imagenes/Servicios/03.jpg",
+    "likes": 290,
+    "caption": "Desayuno artesanal todas las mañanas servido en tu apart. 🥐☕ Despertar sin horarios. #DesayunoArtesanal"
+  },
+  {
+    "type": "photo",
+    "src": "../nereidas_imagenes/Apart_Premium_A/01_1725739862_66dcb3569579c.jpg",
+    "likes": 320,
+    "caption": "Suites con ventanales que integran el bosque a tu living. 🌿🪵 Vivir en armonía con el entorno natural. #SuitesPremium"
+  },
+  {
+    "type": "card",
+    "bg": "card-turquesa",
+    "html": "\n      <h1 class=\"card-h1\">ATENCIÓN PERSONALIZADA</h1>\n      <h2 class=\"card-h2\">\"Atendido con calidez por sus propios dueños\"</h2>\n      <h3 class=\"card-h3\">LOS 12 MESES DEL AÑO</h3>\n    ",
+    "likes": 280,
+    "caption": "Cuidamos cada detalle de tu descanso con calidez y dedicación constante. 💛🏡 #HospitalidadNereidas"
+  },
+  {
+    "type": "card",
+    "bg": "card-blanco",
+    "html": "\n      <h1 class=\"card-h1\">REFUGIO NATURAL</h1>\n      <h2 class=\"card-h2\">\"Desconectar del reloj, reconectar con lo esencial\"</h2>\n      <span class=\"card-divider\"></span>\n      <h3 class=\"card-h3\">BOSQUE &amp; PLAYA</h3>\n    ",
+    "likes": 310,
+    "caption": "El bosque y la brisa marina como escenario de tus mejores vacaciones. 🌊🌲 #RefugioNatural"
+  },
+  {
+    "type": "card",
+    "bg": "card-dorado",
+    "html": "\n      <h1 class=\"card-h1\">ABIERTOS TODO EL AÑO</h1>\n      <h2 class=\"card-h2\">\"Una postal diferente en cada estación\"</h2>\n      <h3 class=\"card-h3\">LAS 4 ESTACIONES</h3>\n    ",
+    "likes": 365,
+    "caption": "El otoño dorado, el invierno junto al calor del hogar, la primavera florida y el verano de mar y pileta. 🍂❄️🌸☀️ #TodoElAño"
+  },
+  {
+    "type": "photo",
+    "src": "../nereidas_imagenes/Servicios/01.jpg",
+    "likes": 380,
+    "caption": "Piscina exterior climatizada con cerco perimetral de seguridad y solarium de madera. 🏊‍♂️☀️ #PiscinaClimatizada"
+  },
+  {
+    "type": "photo",
+    "src": "img/logo_color.jpg",
+    "likes": 355,
+    "caption": "Corona de escamas y trazo script en azul noche y turquesa. Nuestra marca oficial. 🌊👑💙 #IdentidadDeMarca"
+  },
+  {
+    "type": "photo",
+    "src": "../nereidas_imagenes/Apart_Miel/01_1725739803_66dcb31bccfa8.jpg",
+    "likes": 330,
+    "caption": "Suite de ensueño para parejas. Jacuzzi doble, sommier king y deck con vista a los pinos. 🛁🕯️ #ApartMiel #EscapadaRomantica"
+  },
+  {
+    "type": "photo",
+    "src": "../nereidas_imagenes/Atracciones/Playas amplias.jpeg",
+    "likes": 295,
+    "caption": "Caminar 50 metros y encontrarse con la inmensidad del océano Atlántico. 🌊🏖️ #PlayasDeMarDeLasPampas"
+  },
+  {
+    "type": "photo",
+    "src": "../nereidas_imagenes/Servicios/04.jpg",
+    "likes": 285,
+    "caption": "Tardes de sol en el solarium de Nereidas. La serenidad del bosque. 🌲🧘 #RelaxTotal"
+  },
+  {
+    "type": "card",
+    "bg": "card-blanco",
+    "html": "\n      <h1 class=\"card-h1\">DISTANCIAS PRIVILEGIADAS</h1>\n      <h2 class=\"card-h2\">\"El mar a tus pies, el bosque a tu alrededor\"</h2>\n      <span class=\"card-divider\"></span>\n      <h3 class=\"card-h3\">A 50M DE LA PLAYA</h3>\n    ",
+    "likes": 340,
+    "caption": "Ubicación privilegiada en Mercedes Sosa y Recalada. Todo cerca, sin usar el vehículo. 👣📍 #MarDeLasPampas"
+  },
+  {
+    "type": "card",
+    "bg": "card-dorado",
+    "html": "\n      <h1 class=\"card-h1\">PLANIFICÁ TU VIAJE</h1>\n      <h2 class=\"card-h2\">\"Coordiná tu estadía con nosotros hoy mismo\"</h2>\n      <h3 class=\"card-h3\">WHATSAPP DIRECTO 24HS</h3>\n    ",
+    "likes": 375,
+    "caption": "Atención personalizada y reservas sin comisiones intermedias. Consultanos por WhatsApp. 📲✨ Link en bio. #ReservasDirectas"
+  },
+  {
+    "type": "photo",
+    "src": "../nereidas_imagenes/Portada/05.jpg",
+    "likes": 310,
+    "caption": "Naturaleza viva, aire de mar y el canto de los pájaros al despertar. 🌲🕊️ #NaturalezaViva"
+  },
+  {
+    "type": "photo",
+    "src": "../nereidas_imagenes/Atracciones/senderos del bosque.jpeg",
+    "likes": 290,
+    "caption": "Senderos agrestes para recorrer en bicicleta o a pie entre eucaliptos y pinos añosos. 🚲🌲 #Senderos"
+  },
+  {
+    "type": "card",
+    "bg": "card-blanco",
+    "html": "\n      <h1 class=\"card-h1\">FILOSOFÍA SLOW</h1>\n      <h2 class=\"card-h2\">\"Tiempo sin prisas, instantes que se disfrutan despacio\"</h2>\n      <span class=\"card-divider\"></span>\n      <h3 class=\"card-h3\">MAR DE LAS PAMPAS</h3>\n    ",
+    "likes": 325,
+    "caption": "Vivir sin prisa no es una frase, es nuestra manera de recibirte. 🌿⏳ #VivirSinPrisa #SlowTourism"
+  },
+  {
+    "type": "photo",
+    "src": "../nereidas_imagenes/Apart_Familiar_A/05_1725894759_66df10678445c.jpg",
+    "likes": 300,
+    "caption": "Comodidad para toda la familia: living comedor amplio y cocina completa. 🍽️👨‍👩‍👧‍👦 #ApartFamiliar"
+  },
+  {
+    "type": "photo",
+    "src": "../nereidas_imagenes/Servicios/02.jpg",
+    "likes": 350,
+    "caption": "La piscina en horas de la tarde: descanso merecido luego de una jornada de playa. 🏊‍♂️☀️ #PiscinaClimatizada"
+  },
+  {
+    "type": "card",
+    "bg": "card-turquesa",
+    "html": "\n      <h1 class=\"card-h1\">SABORES ARTESANALES</h1>\n      <h2 class=\"card-h2\">\"Desayuno recién horneado cada mañana\"</h2>\n      <h3 class=\"card-h3\">CALIDAD NEREIDAS</h3>\n    ",
+    "likes": 310,
+    "caption": "Medialunas caseras, café de autor y frutas de estación servidas en tu unidad. 🥐☕ #Desayuno"
+  },
+  {
+    "type": "photo",
+    "src": "../nereidas_imagenes/Apart_Premium_A/06_1725739862_66dcb356ccee8.jpg",
+    "likes": 275,
+    "caption": "Dormitorios amplios con sommiers de resortes y aire acondicionado frío/calor. 🛏️💤 #ConfortTotal"
+  },
+  {
+    "type": "card",
+    "bg": "card-dorado",
+    "html": "\n      <h1 class=\"card-h1\">RESERVAS DIRECTAS</h1>\n      <h2 class=\"card-h2\">\"Atención directa de sus dueños sin intermediarios\"</h2>\n      <h3 class=\"card-h3\">MEJOR TARIFA GARANTIZADA</h3>\n    ",
+    "likes": 360,
+    "caption": "Contactate directamente con nosotros y asegurá el mejor precio para tu estadía. 📲✨ #MejorTarifa"
+  },
+  {
+    "type": "photo",
+    "src": "../nereidas_imagenes/Atracciones/centro aldea.jpg",
+    "likes": 320,
+    "caption": "Paseos nocturnos por la aldea iluminada con luces cálidas y ferias de diseño. 🏮✨ #CentroComercial"
+  },
+  {
+    "type": "photo",
+    "src": "../nereidas_imagenes/Apart_Familiar_A/07_1725894759_66df10678a510.jpg",
+    "likes": 290,
+    "caption": "Parrilla privada en tu balcón para compartir un rico almuerzo en familia. 🥩🔥 #ParrillaPrivada"
+  },
+  {
+    "type": "photo",
+    "src": "../nereidas_imagenes/Portada/04.jpg",
+    "likes": 330,
+    "caption": "El entorno verde de nuestro parque te invita a una pausa reparadora. 🌲💚 #AirePuro"
+  },
+  {
+    "type": "card",
+    "bg": "card-azul",
+    "html": "\n      <h1 class=\"card-h1\">CONEXIÓN TOTAL</h1>\n      <h2 class=\"card-h2\">\"Wi-Fi por fibra óptica y televisión Smart en cada apart\"</h2>\n      <span class=\"card-divider\"></span>\n      <h3 class=\"card-h3\">CONFORT MODERNO</h3>\n    ",
+    "likes": 345,
+    "caption": "La desconexión que buscás con toda la conectividad disponible cuando la necesitás. 📶💻 #FibraOptica"
+  },
+  {
+    "type": "photo",
+    "src": "../nereidas_imagenes/Apart_Miel/08_1725739803_66dcb31be0abd.jpg",
+    "likes": 285,
+    "caption": "Blanquería impecable de percal puro y toallas de alta densidad. 🛏️✨ #RopaDeCama"
+  },
+  {
+    "type": "card",
+    "bg": "card-dorado",
+    "html": "\n      <h1 class=\"card-h1\">TU ESCAPADA SOÑADA</h1>\n      <h2 class=\"card-h2\">\"Te esperamos todo el año en Mar de las Pampas\"</h2>\n      <h3 class=\"card-h3\">CONSULTANOS POR WHATSAPP</h3>\n    ",
+    "likes": 395,
+    "caption": "Escribinos hoy mismo y comenzá a planificar tus próximas vacaciones o fin de semana largo. 📲✨ #Vacaciones"
+  },
+  {
+    "type": "photo",
+    "src": "../nereidas_imagenes/Atracciones/centro aldea.jpg",
+    "likes": 310,
+    "caption": "La magia de Mar de las Pampas de noche: farolas de luz cálida entre los árboles. 🏮✨ #NocheEnLaAldea"
+  },
+  {
+    "type": "photo",
+    "src": "../nereidas_imagenes/Portada/05.jpg",
+    "likes": 375,
+    "caption": "Apart Nereidas — Tu refugio entre el mar y el bosque. 🌊🌲 #ApartNereidas #MarDeLasPampas"
+  }
+];
 
     let currentMode = 'muestra-a';
     // Copias de estado mutables para soportar reordenamiento Drag & Drop independiente en A y B
@@ -2924,6 +3114,16 @@
 
     // Aplicar los colores a las variables CSS y elementos del DOM
     function applyPaletteToDOM() {
+      // Calcular contrastes seguros para tarjetas oscuras (.card-azul)
+      let darkH1 = currentTypographyColors.h1;
+      let darkH2 = currentTypographyColors.h2;
+      if (darkH1.toLowerCase() === currentPaletteColors.primario.toLowerCase()) {
+        darkH1 = '#FFFFFF';
+      }
+      if (darkH2.toLowerCase() === currentPaletteColors.primario.toLowerCase()) {
+        darkH2 = '#FFFFFF';
+      }
+
       const vars = {
         '--color-primario': currentPaletteColors.primario,
         '--color-secundario': currentPaletteColors.secundario,
@@ -2936,6 +3136,8 @@
         '--card-h1-color': currentTypographyColors.h1,
         '--card-h2-color': currentTypographyColors.h2,
         '--card-h3-color': currentTypographyColors.h3,
+        '--card-h1-dark': darkH1,
+        '--card-h2-dark': darkH2,
         '--card-divider-color': currentPaletteColors.acento
       };
 
@@ -2994,7 +3196,7 @@
     }
 
     // Persistencia en LocalStorage (Guarda configuración en el navegador para sincronización)
-    const STORAGE_KEY = 'nereidas_simulator_state_v1';
+    const STORAGE_KEY = 'nereidas_simulator_state_v2';
 
     function saveSimulatorState(showToast = true) {
       try {
@@ -3034,11 +3236,15 @@
         if (state.currentTypographyColors) {
           currentTypographyColors = { ...state.currentTypographyColors };
         }
-        if (state.postsStateA && Array.isArray(state.postsStateA)) {
+        if (state.postsStateA && Array.isArray(state.postsStateA) && state.postsStateA.length >= 30) {
           postsStateA = state.postsStateA;
+        } else {
+          postsStateA = JSON.parse(JSON.stringify(POSTS_MUESTRA_A));
         }
-        if (state.postsStateB && Array.isArray(state.postsStateB)) {
+        if (state.postsStateB && Array.isArray(state.postsStateB) && state.postsStateB.length >= 30) {
           postsStateB = state.postsStateB;
+        } else {
+          postsStateB = JSON.parse(JSON.stringify(POSTS_MUESTRA_B));
         }
         if (state.currentMode) {
           currentMode = state.currentMode;
@@ -3404,19 +3610,32 @@
       if (!h) return;
 
       const modal = document.getElementById('story-modal');
-      document.getElementById('story-header-title').textContent = h.title;
-      document.getElementById('story-header-img').src = h.cover;
-      document.getElementById('story-media-img').src = h.photo;
-      document.getElementById('story-overlay-title').textContent = h.title;
-      document.getElementById('story-overlay-desc').textContent = h.desc;
+      const headerTitle = document.getElementById('story-header-title');
+      const headerImg = document.getElementById('story-header-img');
+      const mediaImg = document.getElementById('story-media-img');
+      const overlayTitle = document.getElementById('story-overlay-title');
+      const overlayDesc = document.getElementById('story-overlay-desc');
 
-      // Reiniciar animación de progreso
+      if (headerTitle) headerTitle.textContent = h.title;
+      if (headerImg) {
+        headerImg.src = h.cover;
+        headerImg.onerror = function() { this.src = '../img/highlights/' + h.file; };
+      }
+      if (mediaImg) {
+        mediaImg.src = h.photo;
+        mediaImg.onerror = function() { this.src = 'img/logo_gold.jpg'; };
+      }
+      if (overlayTitle) overlayTitle.textContent = h.title;
+      if (overlayDesc) overlayDesc.textContent = h.desc;
+
       const fill = document.getElementById('story-progress-fill');
-      fill.style.animation = 'none';
-      fill.offsetHeight; // trigger reflow
-      fill.style.animation = 'storyProgress 5s linear forwards';
+      if (fill) {
+        fill.style.animation = 'none';
+        fill.offsetHeight; /* trigger reflow */
+        fill.style.animation = 'storyProgress 5s linear forwards';
+      }
 
-      modal.classList.add('active');
+      if (modal) modal.classList.add('active');
 
       if (storyTimeout) clearTimeout(storyTimeout);
       storyTimeout = setTimeout(() => {
