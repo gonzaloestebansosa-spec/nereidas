@@ -98,9 +98,9 @@
     .gallery-picker-modal {
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.85);
+      background: rgba(0, 0, 0, 0.88);
       backdrop-filter: blur(10px);
-      z-index: 3000;
+      z-index: 9996 !important;
       display: none;
       align-items: center;
       justify-content: center;
@@ -2202,9 +2202,9 @@
     .profile-story-modal {
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.88);
+      background: rgba(0, 0, 0, 0.92);
       backdrop-filter: blur(14px);
-      z-index: 2500;
+      z-index: 9999 !important;
       display: none;
       align-items: center;
       justify-content: center;
@@ -2629,6 +2629,55 @@
     }
     body.simulator-fullscreen-active .btn-exit-fullscreen-floating {
       display: inline-flex;
+    }
+
+
+    /* ==========================================================================
+       CORRECCIÓN DE APILAMIENTO EN MODO FULLSCREEN: HISTORIAS Y MODALES AL FRENTE
+       ========================================================================== */
+    body.simulator-fullscreen-active .profile-story-modal {
+      z-index: 9999 !important;
+    }
+    body.simulator-fullscreen-active .story-viewer-modal {
+      z-index: 9998 !important;
+    }
+    body.simulator-fullscreen-active .gallery-picker-modal {
+      z-index: 9996 !important;
+    }
+    body.simulator-fullscreen-active .post-modal {
+      z-index: 9995 !important;
+    }
+
+    /* Ocultar barra flotante y botón salir de fullscreen cuando una historia o modal está activo */
+    body.simulator-fullscreen-active.modal-open .btn-exit-fullscreen-floating,
+    body.simulator-fullscreen-active.modal-open .phone-bottom-actions-bar,
+    body.simulator-fullscreen-active:has(.profile-story-modal.active) .btn-exit-fullscreen-floating,
+    body.simulator-fullscreen-active:has(.profile-story-modal.active) .phone-bottom-actions-bar,
+    body.simulator-fullscreen-active:has(.story-viewer-modal.active) .btn-exit-fullscreen-floating,
+    body.simulator-fullscreen-active:has(.story-viewer-modal.active) .phone-bottom-actions-bar,
+    body.simulator-fullscreen-active:has(.post-modal.active) .btn-exit-fullscreen-floating,
+    body.simulator-fullscreen-active:has(.post-modal.active) .phone-bottom-actions-bar {
+      opacity: 0 !important;
+      pointer-events: none !important;
+      visibility: hidden !important;
+      transition: opacity 0.2s ease, visibility 0.2s ease;
+    }
+
+    /* En modo Fullscreen móvil (< 600px), las historias ocupan el 100% de la pantalla nativa */
+    @media (max-width: 600px) {
+      body.simulator-fullscreen-active .profile-story-modal,
+      body.simulator-fullscreen-active .story-viewer-modal {
+        padding: 0 !important;
+      }
+      body.simulator-fullscreen-active .profile-story-box,
+      body.simulator-fullscreen-active .story-viewer-box {
+        width: 100vw !important;
+        max-width: 100vw !important;
+        height: 100vh !important;
+        max-height: 100vh !important;
+        border-radius: 0 !important;
+        border: none !important;
+      }
     }
 
 </style>
@@ -3990,24 +4039,9 @@
     // Persistencia en LocalStorage (Guarda configuración en el navegador para sincronización)
     const STORAGE_KEY = 'nereidas_simulator_state_v2';
 
+        // Sincronización Simultánea: guarda y emite a través de todas las capas
     function saveSimulatorState(showToast = true) {
-      try {
-        const state = {
-          activePaletteKey,
-          currentPaletteColors,
-          currentTypographyColors,
-          postsStateA,
-          postsStateB,
-          currentMode,
-          timestamp: new Date().toISOString()
-        };
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-        if (showToast) {
-          showSyncToast('¡Configuración guardada y sincronizada correctamente!');
-        }
-      } catch (err) {
-        console.warn('LocalStorage no disponible o bloqueado:', err);
-      }
+      return saveAllSimulatorData(showToast);
     }
 
     function loadSimulatorState() {
@@ -4096,6 +4130,7 @@
       currentList[fromIdx] = currentList[toIdx];
       currentList[toIdx] = temp;
       renderGrid(currentMode);
+      saveSimulatorState(false);
 
       requestAnimationFrame(() => {
         const posts = document.querySelectorAll('.ig-post');
@@ -4561,7 +4596,7 @@
 
     function closePostModal(e) {
       if (e.target.id === 'post-modal') {
-        document.getElementById('post-modal').classList.remove('active');
+        document.getElementById('post-modal').classList.remove('active'); document.body.classList.remove('modal-open');
       }
     }
     function closePostModalDirect() {
@@ -4630,7 +4665,7 @@
     }
     function closeStoryModalDirect() {
       if (storyTimeout) clearTimeout(storyTimeout);
-      document.getElementById('story-modal').classList.remove('active');
+      document.getElementById('story-modal').classList.remove('active'); document.body.classList.remove('modal-open');
     }
 
     // Alternar seguir
@@ -4948,8 +4983,43 @@
     /* ==========================================================================
        LÓGICA DE BOTÓN GUARDAR CAMBIOS & PANTALLA COMPLETA (FULLSCREEN MOBILE)
        ========================================================================== */
+    /* ==========================================================================
+       SISTEMA DE SINCRONIZACIÓN SIMULTÁNEA: MOBILE & DESKTOP (CROSS-DEVICE & TABS)
+       ========================================================================== */
+    const API_STATE_URL = '/api/simulator-state';
+    let lastLocalTimestamp = 0;
+    let isApplyingExternalSync = false;
+
+    // BroadcastChannel para sincronizar en tiempo real simultáneo entre pestañas y ventanas
+    let simulatorBroadcast = null;
+    try {
+      if (typeof window !== 'undefined' && 'BroadcastChannel' in window) {
+        simulatorBroadcast = new BroadcastChannel('nereidas_simulator_sync_channel');
+        simulatorBroadcast.onmessage = (event) => {
+          if (event && event.data && event.data.type === 'SYNC_STATE_UPDATE') {
+            applyReceivedState(event.data.state, false, 'Broadcast');
+          }
+        };
+      }
+    } catch (e) {
+      console.warn('BroadcastChannel no disponible:', e);
+    }
+
+    // Listener de Storage Event para ventanas/pestañas del mismo origen
+    window.addEventListener('storage', (e) => {
+      if (e.key === STORAGE_KEY && e.newValue) {
+        try {
+          const parsed = JSON.parse(e.newValue);
+          applyReceivedState(parsed, false, 'StorageEvent');
+        } catch (err) {}
+      }
+    });
+
     function saveAllSimulatorData(showToast = true) {
       try {
+        const nowTs = Date.now();
+        lastLocalTimestamp = nowTs;
+
         const state = {
           activePaletteKey,
           currentPaletteColors,
@@ -4957,44 +5027,165 @@
           postsStateA,
           postsStateB,
           currentMode,
-          timestamp: new Date().toISOString()
+          timestamp: new Date(nowTs).toISOString(),
+          numericTimestamp: nowTs
         };
 
+        // 1. Guardar en LocalStorage local
         localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
 
-        // Actualizar visualmente botón y etiqueta de estado
-        const btn = document.getElementById('btn-save-all-simulator');
-        const btnText = document.getElementById('btn-save-text');
-        const statusEl = document.getElementById('save-status-text');
-        const statusWrap = document.getElementById('save-status-info');
-
-        if (btn && btnText) {
-          btn.classList.add('saved');
-          btnText.textContent = '✓ ¡Guardado!';
-          setTimeout(() => {
-            btn.classList.remove('saved');
-            btnText.textContent = 'Guardar Cambios';
-          }, 2200);
+        // 2. Emitir a BroadcastChannel para impacto simultáneo instantáneo en otras vistas (mobile/desktop)
+        if (simulatorBroadcast) {
+          try {
+            simulatorBroadcast.postMessage({
+              type: 'SYNC_STATE_UPDATE',
+              state
+            });
+          } catch (e) {}
         }
 
-        const now = new Date();
-        const timeStr = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-        if (statusEl) {
-          statusEl.textContent = '✓ Guardado en base de datos: Hoy ' + timeStr + ' hs';
-        }
-        if (statusWrap) {
-          statusWrap.classList.add('highlight');
-          setTimeout(() => statusWrap.classList.remove('highlight'), 3000);
-        }
+        // 3. Enviar a la API del servidor para sincronización cross-device (PC <-> Celular)
+        syncStateToServer(state);
+
+        // 4. Actualizar visualmente botón y etiqueta de estado
+        updateSaveUI(new Date(nowTs));
 
         if (showToast) {
-          showSyncToast('✓ ¡Orden, colores, fotos e info guardados en la base de datos local!');
+          showSyncToast('✓ ¡Cambios guardados e impactados en simultáneo (Mobile & Desktop)!');
         }
       } catch (err) {
         console.error('Error al guardar datos del simulador:', err);
-        showSyncToast('Error al guardar datos');
+        if (showToast) showSyncToast('Error al guardar datos');
       }
     }
+
+    function updateSaveUI(dateObj) {
+      const btn = document.getElementById('btn-save-all-simulator');
+      const btnText = document.getElementById('btn-save-text');
+      const statusEl = document.getElementById('save-status-text');
+      const statusWrap = document.getElementById('save-status-info');
+
+      if (btn && btnText) {
+        btn.classList.add('saved');
+        btnText.textContent = '✓ ¡Sincronizado!';
+        setTimeout(() => {
+          btn.classList.remove('saved');
+          btnText.textContent = 'Guardar Cambios';
+        }, 2200);
+      }
+
+      const timeStr = dateObj.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      if (statusEl) {
+        statusEl.textContent = '✓ Sincronizado en simultáneo (Mobile & Desktop): Hoy ' + timeStr + ' hs';
+      }
+      if (statusWrap) {
+        statusWrap.classList.add('highlight');
+        setTimeout(() => statusWrap.classList.remove('highlight'), 3000);
+      }
+    }
+
+    // Aplicar estado recibido desde otra vista (mobile/desktop/servidor)
+    function applyReceivedState(state, showToast = true, source = 'remoto') {
+      if (!state || isApplyingExternalSync) return;
+      isApplyingExternalSync = true;
+
+      try {
+        if (state.activePaletteKey && PALETTES[state.activePaletteKey]) {
+          activePaletteKey = state.activePaletteKey;
+        }
+        if (state.currentPaletteColors) {
+          currentPaletteColors = { ...state.currentPaletteColors };
+        }
+        if (state.currentTypographyColors) {
+          currentTypographyColors = { ...state.currentTypographyColors };
+        }
+        if (state.postsStateA && Array.isArray(state.postsStateA) && state.postsStateA.length >= 30) {
+          postsStateA = state.postsStateA;
+        }
+        if (state.postsStateB && Array.isArray(state.postsStateB) && state.postsStateB.length >= 30) {
+          postsStateB = state.postsStateB;
+        }
+        if (state.currentMode) {
+          currentMode = state.currentMode;
+        }
+
+        if (state.numericTimestamp) {
+          lastLocalTimestamp = Math.max(lastLocalTimestamp, state.numericTimestamp);
+        }
+
+        // Refrescar DOM y componentes
+        document.querySelectorAll('.palette-preset-card').forEach(card => card.classList.remove('active'));
+        const activeCard = document.getElementById('preset-card-' + activePaletteKey);
+        if (activeCard) activeCard.classList.add('active');
+
+        const badge = document.getElementById('active-palette-badge');
+        if (badge && PALETTES[activePaletteKey]) badge.textContent = PALETTES[activePaletteKey].name + ' Activa';
+
+        applyPaletteToDOM();
+        renderGrid(currentMode);
+
+        if (state.timestamp) {
+          const d = new Date(state.timestamp);
+          const timeStr = d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+          const statusEl = document.getElementById('save-status-text');
+          if (statusEl) statusEl.textContent = '✓ Sincronizado simultáneamente: ' + timeStr + ' hs';
+        }
+
+        if (showToast) {
+          showSyncToast('⚡ Vista sincronizada en simultáneo (' + source + ')');
+        }
+      } catch (err) {
+        console.error('Error al aplicar estado recibido:', err);
+      } finally {
+        isApplyingExternalSync = false;
+      }
+    }
+
+    // Sincronización con el Servidor / Vercel API
+    async function syncStateToServer(state) {
+      try {
+        const res = await fetch(API_STATE_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(state)
+        });
+        if (res.ok) {
+          const json = await res.json();
+          if (json.timestamp) lastLocalTimestamp = Math.max(lastLocalTimestamp, json.timestamp);
+        }
+      } catch (e) {
+        // Silencioso si no hay conexión
+      }
+    }
+
+    async function fetchStateFromServer() {
+      try {
+        const res = await fetch(API_STATE_URL, { cache: 'no-cache' });
+        if (!res.ok) return;
+        const data = await res.json();
+        if (data.ok && data.hasData && data.state) {
+          const s = data.state;
+          const remoteTime = s.numericTimestamp || (s.timestamp ? new Date(s.timestamp).getTime() : 0);
+          if (remoteTime > lastLocalTimestamp) {
+            applyReceivedState(s, true, 'Servidor Cloud');
+          }
+        }
+      } catch (e) {}
+    }
+
+    // Comprobación periódica para actualización entre dispositivos (cada 4 seg y al cambiar visibilidad)
+    setInterval(() => {
+      fetchStateFromServer();
+    }, 4000);
+
+    window.addEventListener('focus', () => {
+      fetchStateFromServer();
+    });
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'visible') {
+        fetchStateFromServer();
+      }
+    });
 
     function toggleSimulatorFullscreen() {
       if (document.body.classList.contains('simulator-fullscreen-active')) {
