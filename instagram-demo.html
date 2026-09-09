@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apart Nereidas — Muestras de Instagram (@nereidasapart) | Muestra A & B</title>
+  
+  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400;1,600&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --azul-noche: #22374A;
+      --dorado: #C9A66B;
+      --dorado-suave: #C9A66B;
+      --turquesa: #6FA8AD;
+      --bg-ig: #FAFAFA;
+      --border-ig: #DBDBDB;
+      --text-main: #262626;
+      --text-muted: #8E8E8E;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg-ig);
+      color: var(--text-main);
+      line-height: 1.5;
+    }
+
+    /* Top Demo Switcher Bar */
+    .demo-top-switcher-bar {
+      position: sticky;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 2100;
+      background: #14213D;
+      color: #FFFFFF;
+      padding: 9px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      border-bottom: 2px solid #C9A66B;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
+      font-family: 'Montserrat', -apple-system, sans-serif;
+    }
+    .demo-switcher-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 0.88rem;
+      letter-spacing: 0.5px;
+      color: #FFFFFF;
+      text-decoration: none;
+    }
+    .demo-switcher-brand .badge-tag {
+      background: rgba(201, 166, 107, 0.2);
+      color: #C9A66B;
+      padding: 3px 8px;
+      border-radius: 12px;
+      font-size: 0.72rem;
+      border: 1px solid rgba(201, 166, 107, 0.4);
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+    .demo-switcher-nav {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .demo-switcher-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      text-decoration: none;
+      color: #CBD5E1;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+    .demo-switcher-pill:hover {
+      background: rgba(255, 255, 255, 0.2);
+      color: #FFFFFF;
+      transform: translateY(-1px);
+    }
+    .demo-switcher-pill.active {
+      background: #C9A66B;
+      color: #14213D;
+      border-color: #C9A66B;
+      font-weight: 700;
+      box-shadow: 0 2px 10px rgba(201, 166, 107, 0.35);
+    }
+
+    /* Container */
+    .ig-container {
+      max-width: 980px;
+      margin: 28px auto 60px;
+      padding: 0 20px;
+    }
+
+    /* Profile Header */
+    .profile-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 40px;
+      margin-bottom: 32px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border-ig);
+    }
+    .profile-avatar-wrap {
+      flex-shrink: 0;
+      position: relative;
+    }
+    .profile-avatar-ring {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+      padding: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .profile-avatar-img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      border: 3px solid #FFF;
+      background: #22374A;
+      object-fit: contain;
+      padding: 14px;
+    }
+
+    .profile-info {
+      flex-grow: 1;
+    }
+    .profile-title-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+    .profile-username {
+      font-size: 1.5rem;
+      font-weight: 400;
+    }
+    .ig-badge-verified {
+      display: inline-flex;
+      color: #0095F6;
+      width: 18px;
+      height: 18px;
+    }
+    .btn-ig {
+      padding: 7px 18px;
+      background: #EFEFEF;
+      color: #000;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.88rem;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .btn-ig.primary {
+      background: #0095F6;
+      color: #FFF;
+    }
+    .btn-ig.gold {
+      background: #22374A;
+      color: #FFF;
+    }
+    .btn-ig.gold:hover {
+      background: #14213D;
+    }
+
+    .profile-stats {
+      display: flex;
+      gap: 32px;
+      margin-bottom: 16px;
+      font-size: 1rem;
+    }
+    .profile-stats strong {
+      font-weight: 600;
+      color: #000;
+    }
+
+    .profile-bio h2 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .profile-bio .category {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+    }
+    .profile-bio p {
+      font-size: 0.95rem;
+      line-height: 1.45;
+      margin-bottom: 4px;
+    }
+    .profile-bio a {
+      color: #00376B;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    /* Stories Highlights */
+    .highlights-bar {
+      display: flex;
+      gap: 20px;
+      overflow-x: auto;
+      padding-bottom: 20px;
+      margin-bottom: 24px;
+      border-bottom: 1px solid var(--border-ig);
+      scrollbar-width: thin;
+    }
+    .highlight-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      color: var(--text-main);
+      flex-shrink: 0;
+    }
+    .highlight-ring {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      border: 2px solid var(--border-ig);
+      padding: 3px;
+      background: #FFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+    .highlight-item:hover .highlight-ring {
+      transform: scale(1.05);
+      border-color: var(--dorado);
+    }
+    .highlight-ring img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    .highlight-label {
+      font-size: 0.76rem;
+      font-weight: 600;
+      text-align: center;
+      max-width: 78px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* Tabs Selector */
+    .feed-tabs-header {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      border-top: 1px solid var(--border-ig);
+      margin-top: -1px;
+      margin-bottom: 28px;
+    }
+    .feed-tab-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 16px 8px;
+      border: none;
+      background: transparent;
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      cursor: pointer;
+      border-top: 3px solid transparent;
+      transition: all 0.2s ease;
+    }
+    .feed-tab-btn.active {
+      color: var(--azul-noche);
+      border-top-color: var(--azul-noche);
+    }
+    .feed-tab-btn:hover {
+      color: var(--azul-noche);
+    }
+
+    /* Tab Contents */
+    .feed-tab-pane {
+      display: none;
+      animation: fadeIn 0.3s ease forwards;
+    }
+    .feed-tab-pane.active {
+      display: block;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .feed-preview-card {
+      background: #FFF;
+      border: 1px solid var(--border-ig);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 6px 24px rgba(0,0,0,0.07);
+      margin-bottom: 36px;
+    }
+    .feed-preview-header {
+      padding: 20px 24px;
+      background: #FFF;
+      border-bottom: 1px solid var(--border-ig);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .feed-preview-header h3 {
+      font-size: 1.25rem;
+      color: var(--azul-noche);
+      font-weight: 700;
+      margin-top: 4px;
+    }
+    .feed-preview-header p {
+      color: #64748B;
+      font-size: 0.92rem;
+      margin-top: 4px;
+    }
+    .feed-preview-img-wrap {
+      width: 100%;
+      background: #0B132B;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .feed-preview-img {
+      width: 100%;
+      max-width: 940px;
+      height: auto;
+      display: block;
+      cursor: zoom-in;
+    }
+    .feed-preview-footer {
+      padding: 24px;
+      background: #FAF8F5;
+      border-top: 1px solid var(--border-ig);
+    }
+    .badge-pill {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 20px;
+      background: rgba(34, 55, 74, 0.1);
+      color: #22374A;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* Zoom Modal */
+    .zoom-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(11, 19, 43, 0.94);
+      z-index: 3000;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      cursor: zoom-out;
+    }
+    .zoom-modal.open {
+      display: flex;
+    }
+    .zoom-modal img {
+      max-width: 96vw;
+      max-height: 96vh;
+      object-fit: contain;
+      border-radius: 8px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+    }
+    .zoom-close-btn {
+      position: absolute;
+      top: 20px;
+      right: 24px;
+      color: #FFF;
+      font-size: 2.2rem;
+      background: rgba(0,0,0,0.4);
+      border: none;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .profile-header {
+        gap: 20px;
+      }
+      .profile-avatar-ring {
+        width: 86px;
+        height: 86px;
+      }
+      .profile-stats {
+        gap: 16px;
+        font-size: 0.9rem;
+      }
+      .feed-tabs-header {
+        gap: 16px;
+      }
+      .feed-tab-btn {
+        font-size: 0.8rem;
+        padding: 12px 4px;
+      }
+      .demo-top-switcher-bar {
+        padding: 8px 12px;
+      }
+      .demo-switcher-pill {
+        font-size: 0.76rem;
+        padding: 5px 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Barra Superior de Control y Switcher de Muestras -->
+  <aside class="demo-top-switcher-bar" aria-label="Selector de demos de Apart Nereidas">
+    <div class="demo-switcher-brand">
+      <span>🌊</span>
+      <strong>Apart Nereidas</strong>
+      <span class="badge-tag">Centro de Muestras</span>
+    </div>
+    <nav class="demo-switcher-nav" aria-label="Navegación de muestras">
+      <a href="index.html" class="demo-switcher-pill" title="Volver a la Web Demo">
+        <span>🌐</span> Volver a Web Demo
+      </a>
+      <button type="button" class="demo-switcher-pill active" id="pill-muestra-a" onclick="activateTab('tab-a')" title="Ver Muestra A">
+        <span>📸</span> Instagram: Muestra A
+      </button>
+      <button type="button" class="demo-switcher-pill" id="pill-muestra-b" onclick="activateTab('tab-b')" title="Ver Muestra B">
+        <span>📸</span> Instagram: Muestra B
+      </button>
+      <a href="instagram/index.html" class="demo-switcher-pill" title="Ver Simulador Móvil Interactivo">
+        <span>📱</span> Simulador Móvil
+      </a>
+    </nav>
+  </aside>
+
+  <main class="ig-container">
+
+    <!-- Encabezado de Perfil Instagram -->
+    <section class="profile-header">
+      <div class="profile-avatar-wrap">
+        <div class="profile-avatar-ring">
+          <img src="img/logo_drawer.png" alt="Apart Nereidas" class="profile-avatar-img">
+        </div>
+      </div>
+
+      <div class="profile-info">
+        <div class="profile-title-row">
+          <h2 class="profile-username">nereidasapart</h2>
+          <svg class="ig-badge-verified" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15-5-5 1.41-1.41L11 14.17l7.59-7.59L20 8l-9 9z"/></svg>
+          <a href="https://www.instagram.com/nereidasapart" target="_blank" rel="noopener" class="btn-ig primary">Seguir</a>
+          <a href="index.html" class="btn-ig gold">🌐 Ver Web Demo</a>
+        </div>
+
+        <div class="profile-stats">
+          <div><strong>12</strong> publicaciones</div>
+          <div><strong>4.8k</strong> seguidores</div>
+          <div><strong>218</strong> seguidos</div>
+        </div>
+
+        <div class="profile-bio">
+          <h2>Apart Nereidas</h2>
+          <div class="category">Hotel resort • Mar de las Pampas</div>
+          <p>🌲 Tu refugio entre el mar y el bosque de Mar de las Pampas.</p>
+          <p>🏊 Piscina climatizada • Desayuno artesanal servido en tu apart.</p>
+          <p>📍 Mercedes Sosa y Recalada, Mar de las Pampas, Buenos Aires.</p>
+          <a href="index.html">🔗 apartnereidas.com.ar</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Historias Destacadas (Highlights) -->
+    <section class="highlights-bar">
+      <div class="highlight-item">
+        <div class="highlight-ring"><img src="img/highlights/01_desayuno.jpg" alt="Desayuno"></div>
+        <span class="highlight-label">Desayuno</span>
+      </div>
+      <div class="highlight-item">
+        <div class="highlight-ring"><img src="img/highlights/02_wifi.jpg" alt="WiFi"></div>
+        <span class="highlight-label">WiFi</span>
+      </div>
+      <div class="highlight-item">
+        <div class="highlight-ring"><img src="img/highlights/03_limpieza.jpg" alt="Limpieza"></div>
+        <span class="highlight-label">Limpieza</span>
+      </div>
+      <div class="highlight-item">
+        <div class="highlight-ring"><img src="img/highlights/04_sombrillas.jpg" alt="Sombrillas"></div>
+        <span class="highlight-label">Sombrillas</span>
+      </div>
+      <div class="highlight-item">
+        <div class="highlight-ring"><img src="img/highlights/05_mascotas.jpg" alt="Mascotas"></div>
+        <span class="highlight-label">Mascotas</span>
+      </div>
+      <div class="highlight-item">
+        <div class="highlight-ring"><img src="img/highlights/06_bicicletas.jpg" alt="Bicicletas"></div>
+        <span class="highlight-label">Bicicletas</span>
+      </div>
+      <div class="highlight-item">
+        <div class="highlight-ring"><img src="img/highlights/07_ropa_de_cama.jpg" alt="Ropa Cama"></div>
+        <span class="highlight-label">Ropa Cama</span>
+      </div>
+      <div class="highlight-item">
+        <div class="highlight-ring"><img src="img/highlights/08_parrilla.jpg" alt="Parrilla"></div>
+        <span class="highlight-label">Parrilla</span>
+      </div>
+      <div class="highlight-item">
+        <div class="highlight-ring"><img src="img/highlights/09_piscina.jpg" alt="Piscina"></div>
+        <span class="highlight-label">Piscina</span>
+      </div>
+    </section>
+
+    <!-- Pestañas Selectoras de Propuestas de Feed -->
+    <div class="feed-tabs-header">
+      <button class="feed-tab-btn active" id="tab-btn-a" onclick="activateTab('tab-a')">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><rect width="6" height="6" x="3" y="3" rx="1"/><rect width="6" height="6" x="11" y="3" rx="1"/><rect width="6" height="6" x="19" y="3" rx="1"/><rect width="6" height="6" x="3" y="11" rx="1"/><rect width="6" height="6" x="11" y="11" rx="1"/><rect width="6" height="6" x="19" y="11" rx="1"/><rect width="6" height="6" x="3" y="19" rx="1"/><rect width="6" height="6" x="11" y="19" rx="1"/><rect width="6" height="6" x="19" y="19" rx="1"/></svg>
+        Propuesta A: Estilo Revista
+      </button>
+      <button class="feed-tab-btn" id="tab-btn-b" onclick="activateTab('tab-b')">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><rect width="6" height="6" x="3" y="3" rx="1"/><rect width="6" height="6" x="11" y="3" rx="1"/><rect width="6" height="6" x="19" y="3" rx="1"/><rect width="6" height="6" x="3" y="11" rx="1"/><rect width="6" height="6" x="11" y="11" rx="1"/><rect width="6" height="6" x="19" y="11" rx="1"/><rect width="6" height="6" x="3" y="19" rx="1"/><rect width="6" height="6" x="11" y="19" rx="1"/><rect width="6" height="6" x="19" y="19" rx="1"/></svg>
+        Propuesta B: Editorial (Logo Central)
+      </button>
+    </div>
+
+    <!-- Pestaña Propuesta A -->
+    <div class="feed-tab-pane active" id="tab-a">
+      <div class="feed-preview-card">
+        <div class="feed-preview-header">
+          <div>
+            <span class="badge-pill">Estructura Dinámica</span>
+            <h3>Muestra A — Formato Revista / Catálogo Boutique</h3>
+            <p>Patrón rítmico en ajedrez diagonal que alterna tarjetas gráficas institucionales y fotografías de arquitectura y naturaleza.</p>
+          </div>
+          <button class="btn-ig primary" onclick="zoomImage('feed_muestra_a.jpg')">🔍 Ver en Pantalla Completa</button>
+        </div>
+        <div class="feed-preview-img-wrap">
+          <img src="feed_muestra_a.jpg" alt="Muestra A Instagram Feed" class="feed-preview-img" onclick="zoomImage('feed_muestra_a.jpg')">
+        </div>
+        <div class="feed-preview-footer">
+          <p style="font-size: 0.92rem; color: #4A5568; line-height: 1.6;">
+            <strong>Aspectos Clave de la Propuesta A:</strong><br>
+            • Cartel de entrada y sombrilla roja en la primera fila para generar impacto cromático inmediato.<br>
+            • Tarjeta gráfica en cuadrícula de 4 servicios clave (desayuno, wifi, bicicleta, piscina climatizada).<br>
+            • Botón de llamado a la acción comercial final en Dorado Suave: <em>"RESERVÁ TU ESCAPADA — Consultanos por WhatsApp"</em>.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pestaña Propuesta B -->
+    <div class="feed-tab-pane" id="tab-b">
+      <div class="feed-preview-card">
+        <div class="feed-preview-header">
+          <div>
+            <span class="badge-pill">Estructura Sobria</span>
+            <h3>Muestra B — Enfoque Editorial &amp; Ancla Visual</h3>
+            <p>Disposición con el logo oficial sobre Azul Noche en el centro de gravedad (Fila 4, Columna 2), generando armonía y serenidad.</p>
+          </div>
+          <button class="btn-ig primary" onclick="zoomImage('feed_muestra_b.jpg')">🔍 Ver en Pantalla Completa</button>
+        </div>
+        <div class="feed-preview-img-wrap">
+          <img src="feed_muestra_b.jpg" alt="Muestra B Instagram Feed" class="feed-preview-img" onclick="zoomImage('feed_muestra_b.jpg')">
+        </div>
+        <div class="feed-preview-footer">
+          <p style="font-size: 0.92rem; color: #4A5568; line-height: 1.6;">
+            <strong>Aspectos Clave de la Propuesta B:</strong><br>
+            • Llamada de destino inicial: <em>"VISITÁ MAR DE LAS PAMPAS — VISITÁ NEREIDAS"</em>.<br>
+            • Logo institucional blanco sobre Azul Noche actuando como centro de gravedad de la cuadrícula.<br>
+            • Mayor énfasis en el bosque autóctono y el espíritu sereno de <em>"vivir sin prisa"</em>.
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Modal Zoom -->
+  <div class="zoom-modal" id="zoomModal" onclick="this.classList.remove('open')">
+    <button class="zoom-close-btn" aria-label="Cerrar zoom">&times;</button>
+    <img id="zoomModalImg" src="" alt="Zoom preview">
+  </div>
+
+  <script>
+    function activateTab(tabId) {
+      document.querySelectorAll('.feed-tab-pane').forEach(p => p.classList.remove('active'));
+      const targetPane = document.getElementById(tabId);
+      if (targetPane) targetPane.classList.add('active');
+
+      document.querySelectorAll('.feed-tab-btn').forEach(b => b.classList.remove('active'));
+      const tabBtn = document.getElementById(tabId === 'tab-a' ? 'tab-btn-a' : 'tab-btn-b');
+      if (tabBtn) tabBtn.classList.add('active');
+
+      const pillA = document.getElementById('pill-muestra-a');
+      const pillB = document.getElementById('pill-muestra-b');
+      if (pillA && pillB) {
+        pillA.classList.toggle('active', tabId === 'tab-a');
+        pillB.classList.toggle('active', tabId === 'tab-b');
+      }
+
+      if (history.pushState) {
+        history.pushState(null, null, '#' + tabId);
+      } else {
+        location.hash = '#' + tabId;
+      }
+    }
+
+    function checkHash() {
+      const hash = window.location.hash.toLowerCase();
+      if (hash.includes('tab-b') || hash.includes('muestra-b')) {
+        activateTab('tab-b');
+      } else {
+        activateTab('tab-a');
+      }
+    }
+
+    window.addEventListener('hashchange', checkHash);
+    window.addEventListener('DOMContentLoaded', checkHash);
+
+    function zoomImage(src) {
+      const modal = document.getElementById('zoomModal');
+      const img = document.getElementById('zoomModalImg');
+      img.src = src;
+      modal.classList.add('open');
+    }
+  </script>
+
+</body>
+</html>
