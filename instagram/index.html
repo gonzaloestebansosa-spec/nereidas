@@ -2159,6 +2159,286 @@
       color: #D97706;
     }
 
+
+    /* ==========================================================================
+       HISTORIAS DE PERFIL (SIMULADOR ESTILO INSTAGRAM STORIES CON VIDEOS REELS)
+       ========================================================================== */
+    .ig-avatar-ring.has-story {
+      background: var(--ig-gradient) !important;
+      padding: 2.5px;
+      cursor: pointer;
+      animation: storyRingPulse 2.8s ease-in-out infinite;
+      box-shadow: 0 0 16px rgba(217, 46, 127, 0.45);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .ig-avatar-wrap:hover .ig-avatar-ring.has-story {
+      transform: scale(1.04);
+      box-shadow: 0 0 22px rgba(217, 46, 127, 0.7);
+    }
+    @keyframes storyRingPulse {
+      0%, 100% { transform: scale(1); filter: brightness(1); }
+      50% { transform: scale(1.025); filter: brightness(1.1); }
+    }
+    .story-live-badge {
+      position: absolute;
+      bottom: -6px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(45deg, #D92E7F, #F58529);
+      color: #FFFFFF;
+      font-size: 0.58rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      padding: 2px 7px;
+      border-radius: 10px;
+      border: 1.5px solid #FFFFFF;
+      letter-spacing: 0.6px;
+      white-space: nowrap;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+      pointer-events: none;
+    }
+
+    /* Modal Visor de Historias de Perfil */
+    .profile-story-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.88);
+      backdrop-filter: blur(14px);
+      z-index: 2500;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+    .profile-story-modal.active {
+      display: flex;
+    }
+    .profile-story-box {
+      width: 100%;
+      max-width: 410px;
+      height: 94vh;
+      max-height: 740px;
+      background: #000000;
+      border-radius: 22px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.15);
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Barras de Progreso Segmentadas Superiores */
+    .profile-story-progress-row {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      right: 12px;
+      z-index: 30;
+      display: flex;
+      gap: 4px;
+    }
+    .story-seg {
+      flex: 1;
+      height: 3px;
+      background: rgba(255, 255, 255, 0.35);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .story-seg-fill {
+      height: 100%;
+      width: 0%;
+      background: #FFFFFF;
+      transition: width 0.1s linear;
+    }
+
+    /* Cabecera del Story Viewer */
+    .profile-story-header {
+      position: absolute;
+      top: 22px;
+      left: 14px;
+      right: 14px;
+      z-index: 30;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #FFFFFF;
+    }
+    .p-story-user {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
+    }
+    .p-story-avatar {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      border: 1.5px solid #FFFFFF;
+      overflow: hidden;
+      background: #FFFFFF;
+      flex-shrink: 0;
+    }
+    .p-story-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .p-story-name {
+      font-size: 0.86rem;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+      display: block;
+      line-height: 1.2;
+    }
+    .p-story-time {
+      font-size: 0.70rem;
+      color: rgba(255, 255, 255, 0.8);
+      display: block;
+    }
+    .p-story-controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .p-story-btn {
+      background: rgba(0, 0, 0, 0.45);
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: #FFFFFF;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+    }
+    .p-story-btn:hover {
+      background: rgba(255, 255, 255, 0.25);
+      transform: scale(1.08);
+    }
+    .p-story-close {
+      font-size: 1.35rem;
+      line-height: 1;
+    }
+
+    /* Contenedor de Video y Tap Zones */
+    .profile-story-media-wrap {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      background: #000000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .profile-story-media-wrap video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .p-story-nav-tap {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      z-index: 20;
+      cursor: pointer;
+    }
+    .p-tap-left {
+      left: 0;
+      width: 35%;
+    }
+    .p-tap-right {
+      right: 0;
+      width: 65%;
+    }
+
+    /* Overlay Inferior */
+    .profile-story-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 25;
+      padding: 30px 16px 18px;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.92) 0%, rgba(0, 0, 0, 0.5) 60%, transparent 100%);
+      color: #FFFFFF;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      pointer-events: none;
+    }
+    .p-story-badge {
+      display: inline-block;
+      align-self: flex-start;
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      padding: 3px 9px;
+      border-radius: 12px;
+      background: rgba(201, 166, 107, 0.9);
+      color: #14213D;
+    }
+    .p-story-title {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      font-weight: 600;
+      line-height: 1.25;
+      color: #FFFFFF;
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+      margin: 0;
+    }
+    .p-story-desc {
+      font-size: 0.80rem;
+      line-height: 1.4;
+      color: rgba(255, 255, 255, 0.9);
+      margin: 0 0 6px 0;
+    }
+    .p-story-actions-row {
+      pointer-events: auto;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      margin-top: 4px;
+    }
+    .p-story-reply-btn {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      background: rgba(255, 255, 255, 0.18);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      border-radius: 20px;
+      padding: 9px 14px;
+      color: #FFFFFF;
+      font-size: 0.80rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+    .p-story-reply-btn:hover {
+      background: var(--dorado-suave);
+      color: var(--azul-noche);
+      border-color: var(--dorado-suave);
+    }
+    @media (max-width: 480px) {
+      .profile-story-box {
+        max-width: 100vw !important;
+        height: 100vh !important;
+        max-height: 100vh !important;
+        border-radius: 0 !important;
+      }
+      .profile-story-modal {
+        padding: 0 !important;
+      }
+    }
 </style>
 </head>
 <body>
@@ -2225,12 +2505,13 @@
         <!-- Información del Perfil -->
         <div class="ig-profile-info">
           <div class="ig-stats-row">
-            <div class="ig-avatar-wrap">
-              <div class="ig-avatar-ring">
+            <div class="ig-avatar-wrap" onclick="openProfileStories()" title="Tocar para ver historias del perfil (Videos Reels)">
+              <div class="ig-avatar-ring has-story">
                 <div class="ig-avatar-img">
                   <img src="img/profile_avatar.jpg" alt="Apart Nereidas" id="ig-profile-avatar-img">
                 </div>
               </div>
+              <span class="story-live-badge">Historias</span>
             </div>
 
             <div class="ig-stat-col">
@@ -4254,7 +4535,193 @@
         closeStoryModalDirect();
       }
     });
-  </script>
+  
+    /* ==========================================================================
+       LÓGICA DE HISTORIAS DE PERFIL (VIDEOS REELS DE NEREIDAS)
+       ========================================================================== */
+    const PROFILE_STORIES_VIDEOS = [
+      {
+        id: 'pool',
+        title: 'Piscina Climatizada & Solárium',
+        tag: 'En vivo desde Nereidas 🏊‍♂️☀️',
+        desc: 'Agua cristalina a temperatura ideal y solárium de madera rodeado de pinos centenarios.',
+        file: 'Resort_pool_video_creation_20260909194442 (1).mp4',
+        time: 'Hace 2 h'
+      },
+      {
+        id: 'lounge',
+        title: 'Living Exterior & Parque',
+        tag: 'Espacios de Encuentro 🌲✨',
+        desc: 'Sillones de exterior bajo la arboleda para disfrutar de una lectura o unos ricos mates.',
+        file: 'Filming_outdoor_lounge_area_20260909194728.mp4',
+        time: 'Hace 4 h'
+      },
+      {
+        id: 'campfire',
+        title: 'Noches de Fogón & Estrellas',
+        tag: 'Magia Nocturna 🔥🌌',
+        desc: 'El encanto de Mar de las Pampas al caer la noche: calidez del fuego y rumor del mar.',
+        file: 'Campfire_burning_at_night_20260909194657.mp4',
+        time: 'Hace 6 h'
+      }
+    ];
+
+    let currentProfileStoryIdx = 0;
+    let isStoryMuted = true;
+
+    function openProfileStories() {
+      const modal = document.getElementById('profile-story-modal');
+      if (!modal) return;
+
+      currentProfileStoryIdx = 0;
+      modal.classList.add('active');
+      loadProfileStory(0);
+      showSyncToast('Reproduciendo historias de Apart Nereidas');
+    }
+
+    function loadProfileStory(idx) {
+      if (idx < 0 || idx >= PROFILE_STORIES_VIDEOS.length) {
+        closeProfileStoriesDirect();
+        return;
+      }
+
+      currentProfileStoryIdx = idx;
+      const story = PROFILE_STORIES_VIDEOS[idx];
+
+      // Actualizar información en pantalla
+      document.getElementById('p-story-badge').textContent = story.tag;
+      document.getElementById('p-story-title').textContent = story.title;
+      document.getElementById('p-story-desc').textContent = story.desc;
+      document.getElementById('p-story-time').textContent = story.time;
+
+      const waLink = document.getElementById('p-story-wa-link');
+      if (waLink) {
+        waLink.href = 'https://wa.me/5492255458000?text=' + encodeURIComponent('Hola Apart Nereidas, vi su historia de ' + story.title + ' y quisiera consultar por estadía');
+      }
+
+      // Actualizar barras de progreso segmentadas
+      for (let i = 0; i < PROFILE_STORIES_VIDEOS.length; i++) {
+        const fill = document.getElementById('p-story-fill-' + i);
+        if (fill) {
+          if (i < idx) {
+            fill.style.width = '100%';
+          } else if (i > idx) {
+            fill.style.width = '0%';
+          } else {
+            fill.style.width = '0%';
+          }
+        }
+      }
+
+      // Cargar y reproducir video con fuentes múltiples seguras
+      const videoEl = document.getElementById('profile-story-video');
+      if (videoEl) {
+        videoEl.muted = isStoryMuted;
+        updateSoundIcon();
+
+        const encodedFile = encodeURI(story.file);
+        videoEl.innerHTML = `
+          <source src="../Reels/${encodedFile}" type="video/mp4">
+          <source src="/Reels/${encodedFile}" type="video/mp4">
+          <source src="Reels/${encodedFile}" type="video/mp4">
+        `;
+        videoEl.load();
+
+        const activeFill = document.getElementById('p-story-fill-' + idx);
+
+        videoEl.ontimeupdate = function() {
+          if (videoEl.duration && activeFill) {
+            const pct = (videoEl.currentTime / videoEl.duration) * 100;
+            activeFill.style.width = pct + '%';
+          }
+        };
+
+        videoEl.onended = function() {
+          if (activeFill) activeFill.style.width = '100%';
+          nextProfileStory();
+        };
+
+        const playPromise = videoEl.play();
+        if (playPromise !== undefined) {
+          playPromise.catch(() => {
+            // Autoplay bloqueado: reproducir silenciado
+            videoEl.muted = true;
+            isStoryMuted = true;
+            updateSoundIcon();
+            videoEl.play();
+          });
+        }
+      }
+    }
+
+    function nextProfileStory() {
+      if (currentProfileStoryIdx < PROFILE_STORIES_VIDEOS.length - 1) {
+        loadProfileStory(currentProfileStoryIdx + 1);
+      } else {
+        closeProfileStoriesDirect();
+      }
+    }
+
+    function prevProfileStory() {
+      if (currentProfileStoryIdx > 0) {
+        loadProfileStory(currentProfileStoryIdx - 1);
+      } else {
+        loadProfileStory(0);
+      }
+    }
+
+    function toggleStoryMute() {
+      const videoEl = document.getElementById('profile-story-video');
+      if (!videoEl) return;
+
+      isStoryMuted = !isStoryMuted;
+      videoEl.muted = isStoryMuted;
+      updateSoundIcon();
+      showSyncToast(isStoryMuted ? 'Sonido silenciado' : 'Sonido activado');
+    }
+
+    function updateSoundIcon() {
+      const iconOff = document.getElementById('icon-sound-off');
+      const iconOn = document.getElementById('icon-sound-on');
+      if (iconOff && iconOn) {
+        iconOff.style.display = isStoryMuted ? 'block' : 'none';
+        iconOn.style.display = isStoryMuted ? 'none' : 'block';
+      }
+    }
+
+    function closeProfileStories(e) {
+      if (e.target.id === 'profile-story-modal') {
+        closeProfileStoriesDirect();
+      }
+    }
+
+    function closeProfileStoriesDirect() {
+      const modal = document.getElementById('profile-story-modal');
+      const videoEl = document.getElementById('profile-story-video');
+      if (videoEl) {
+        videoEl.pause();
+        videoEl.currentTime = 0;
+      }
+      if (modal) {
+        modal.classList.remove('active');
+      }
+    }
+
+    // Soporte para teclado en historias de perfil
+    window.addEventListener('keydown', (e) => {
+      const pModal = document.getElementById('profile-story-modal');
+      if (pModal && pModal.classList.contains('active')) {
+        if (e.key === 'Escape') {
+          closeProfileStoriesDirect();
+        } else if (e.key === 'ArrowRight') {
+          nextProfileStory();
+        } else if (e.key === 'ArrowLeft') {
+          prevProfileStory();
+        }
+      }
+    });
+
+</script>
 
   <!-- Modal Explorador de Galería Nereidas -->
   <div class="gallery-picker-modal" id="gallery-picker-modal" onclick="if(event.target.id==='gallery-picker-modal') closePhotoPickerModal();">
@@ -4274,6 +4741,67 @@
   <div class="sync-toast" id="sync-toast" role="alert">
     <span>✅</span>
     <span id="sync-toast-msg">¡Configuración guardada y sincronizada!</span>
+  </div>
+
+
+  <!-- ==========================================================================
+       MODAL DE HISTORIAS DE PERFIL (VIDEOS REELS DE NEREIDAS)
+       ========================================================================== -->
+  <div class="profile-story-modal" id="profile-story-modal" onclick="closeProfileStories(event)">
+    <div class="profile-story-box" onclick="event.stopPropagation()">
+      
+      <!-- Barras de Progreso Segmentadas (3 Historias / Videos) -->
+      <div class="profile-story-progress-row">
+        <div class="story-seg"><div class="story-seg-fill" id="p-story-fill-0"></div></div>
+        <div class="story-seg"><div class="story-seg-fill" id="p-story-fill-1"></div></div>
+        <div class="story-seg"><div class="story-seg-fill" id="p-story-fill-2"></div></div>
+      </div>
+
+      <!-- Cabecera de la Historia -->
+      <div class="profile-story-header">
+        <div class="p-story-user">
+          <div class="p-story-avatar">
+            <img src="img/profile_avatar.jpg" alt="Apart Nereidas">
+          </div>
+          <div>
+            <span class="p-story-name">nereidasapart</span>
+            <span class="p-story-time" id="p-story-time">Hace 2 h</span>
+          </div>
+        </div>
+
+        <div class="p-story-controls">
+          <button type="button" class="p-story-btn" id="btn-story-sound" onclick="toggleStoryMute()" title="Activar/Silenciar sonido">
+            <svg id="icon-sound-off" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+            <svg id="icon-sound-on" style="display:none;" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.08"/></svg>
+          </button>
+          <button type="button" class="p-story-btn p-story-close" onclick="closeProfileStoriesDirect()" title="Cerrar historias">&times;</button>
+        </div>
+      </div>
+
+      <!-- Contenedor de Video con Zonas de Clic para Navegar -->
+      <div class="profile-story-media-wrap">
+        <div class="p-story-nav-tap p-tap-left" onclick="prevProfileStory()" title="Historia anterior"></div>
+        <div class="p-story-nav-tap p-tap-right" onclick="nextProfileStory()" title="Siguiente historia"></div>
+
+        <video id="profile-story-video" playsinline webkit-playsinline autoplay muted></video>
+
+        <!-- Overlay Inferior con Información y Acción -->
+        <div class="profile-story-overlay">
+          <span class="p-story-badge" id="p-story-badge">En vivo desde Nereidas 🏊‍♂️</span>
+          <h3 class="p-story-title" id="p-story-title">Piscina Climatizada & Relax</h3>
+          <p class="p-story-desc" id="p-story-desc">
+            Agua templada y solárium rodeado de pinos en Mar de las Pampas.
+          </p>
+          <div class="p-story-actions-row">
+            <a id="p-story-wa-link" href="https://wa.me/5492255458000?text=Hola%20Apart%20Nereidas,%20vi%20su%20historia%20y%20quisiera%20consultar%20por%20estad%C3%ADa" target="_blank" rel="noopener" class="p-story-reply-btn">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+              <span>Consultar por WhatsApp</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
   </div>
 
 </body>
