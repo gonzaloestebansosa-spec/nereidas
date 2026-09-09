@@ -99,13 +99,29 @@ function initApartmentGalleries() {
     const track = gallery.querySelector('.gallery-track');
     const prevBtn = gallery.querySelector('.gallery-nav-prev');
     const nextBtn = gallery.querySelector('.gallery-nav-next');
+    const counter = gallery.querySelector('.gallery-counter');
+    const slides = gallery.querySelectorAll('.gallery-slide');
+    const total = slides.length;
 
     if (!track) return;
+
+    const updateCounter = () => {
+      if (!counter || !track.clientWidth) return;
+      const index = Math.min(total, Math.max(1, Math.round(track.scrollLeft / track.clientWidth) + 1));
+      counter.textContent = `${index} / ${total}`;
+    };
+
+    let scrollTimeout;
+    track.addEventListener('scroll', () => {
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(updateCounter, 60);
+    });
 
     if (prevBtn) {
       prevBtn.addEventListener('click', (e) => {
         e.preventDefault();
         track.scrollBy({ left: -track.clientWidth, behavior: 'smooth' });
+        setTimeout(updateCounter, 300);
       });
     }
 
@@ -113,6 +129,7 @@ function initApartmentGalleries() {
       nextBtn.addEventListener('click', (e) => {
         e.preventDefault();
         track.scrollBy({ left: track.clientWidth, behavior: 'smooth' });
+        setTimeout(updateCounter, 300);
       });
     }
   });

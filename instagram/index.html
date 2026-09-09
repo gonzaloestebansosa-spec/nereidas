@@ -1491,6 +1491,388 @@
       gap: 8px;
       box-shadow: 0 4px 15px rgba(201, 166, 107, 0.4);
     }
+  
+    /* --- Sistema Dinámico de Paletas y Tipografía de Fichas (H1, H2, H3) --- */
+    :root {
+      /* Paleta Activa (Por defecto: Paleta B — Mar Profundo) */
+      --color-primario: #14213D;
+      --color-secundario: #6FA8AD;
+      --color-claro: #F7F5F2;
+      --color-acento: #C9A66B;
+
+      /* Mapeo con nombres institucionales */
+      --azul-noche: var(--color-primario);
+      --turquesa-grisaceo: var(--color-secundario);
+      --blanco-roto: var(--color-claro);
+      --dorado-suave: var(--color-acento);
+
+      /* Tipografía de Fichas del Feed */
+      --card-h1-color: var(--color-primario);
+      --card-h2-color: var(--color-primario);
+      --card-h3-color: var(--color-acento);
+      --card-divider-color: var(--color-acento);
+    }
+
+    /* Selector de Paletas Preestablecidas (3 Opciones de Marca) */
+    .palette-presets-container {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .palette-preset-card {
+      background: rgba(0, 0, 0, 0.28);
+      border: 1.5px solid rgba(255, 255, 255, 0.12);
+      border-radius: 12px;
+      padding: 12px 14px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .palette-preset-card:hover {
+      border-color: rgba(201, 166, 107, 0.6);
+      background: rgba(0, 0, 0, 0.45);
+      transform: translateY(-1px);
+    }
+    .palette-preset-card.active {
+      border-color: var(--dorado-suave);
+      background: rgba(20, 33, 61, 0.85);
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.45), 0 0 0 2px var(--dorado-suave);
+    }
+    .preset-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+    }
+    .preset-card-title {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .preset-card-badge {
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 2px 7px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.12);
+      color: #CBD5E1;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+    }
+    .palette-preset-card.active .preset-card-badge {
+      background: var(--dorado-suave);
+      color: #14213D;
+      border-color: var(--dorado-suave);
+    }
+    .preset-card-desc {
+      font-size: 0.74rem;
+      color: #94A3B8;
+      line-height: 1.35;
+      margin: 0;
+    }
+    .preset-swatches-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      margin-top: 2px;
+    }
+    .preset-swatch-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+    }
+    .preset-swatch-color {
+      width: 100%;
+      height: 22px;
+      border-radius: 6px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+    .preset-swatch-name {
+      font-size: 0.60rem;
+      color: #CBD5E1;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 100%;
+    }
+    .preset-swatch-hex {
+      font-size: 0.55rem;
+      color: #94A3B8;
+      font-family: monospace;
+    }
+
+    /* Caja de Controles Tipográficos de Fichas (H1, H2, H3) */
+    .typography-controls-box {
+      background: rgba(0, 0, 0, 0.24);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 14px;
+      padding: 14px;
+      margin-bottom: 20px;
+    }
+    .typography-controls-box h4 {
+      font-size: 0.86rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--turquesa-grisaceo);
+      margin: 0 0 4px 0;
+    }
+    .typography-row {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .typography-row:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+    .typography-row-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .typography-label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .typography-preview-tag {
+      font-size: 0.65rem;
+      padding: 2px 7px;
+      border-radius: 6px;
+      font-family: monospace;
+      font-weight: 700;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .typography-pills-row {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .type-color-btn {
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 0.68rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: rgba(255, 255, 255, 0.08);
+      color: #E2E8F0;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .type-color-btn:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-1px);
+    }
+    .type-color-btn.active {
+      border-color: var(--dorado-suave);
+      background: rgba(201, 166, 107, 0.25);
+      color: #FFFFFF;
+    }
+    .type-color-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+    .type-color-picker-wrap {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      margin-left: auto;
+    }
+    .type-color-picker-wrap input[type="color"] {
+      width: 26px;
+      height: 26px;
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 6px;
+      cursor: pointer;
+      background: transparent;
+      padding: 0;
+    }
+
+    /* Acciones de Sincronización */
+    .sync-actions-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+    }
+    .btn-sync-action {
+      flex: 1;
+      min-width: 140px;
+      padding: 9px 12px;
+      border-radius: 8px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      border: 1px solid transparent;
+    }
+    .btn-sync-save {
+      background: #C9A66B;
+      color: #14213D;
+      box-shadow: 0 4px 12px rgba(201, 166, 107, 0.35);
+    }
+    .btn-sync-save:hover {
+      background: #d8b67d;
+      transform: translateY(-1px);
+    }
+    .btn-sync-reset {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.2);
+      color: #CBD5E1;
+    }
+    .btn-sync-reset:hover {
+      background: rgba(255, 255, 255, 0.16);
+      color: #FFFFFF;
+    }
+
+    /* Toast Notification */
+    .sync-toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #14213D;
+      color: #FFFFFF;
+      border: 1.5px solid #C9A66B;
+      padding: 12px 20px;
+      border-radius: 12px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+      z-index: 4000;
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      pointer-events: none;
+    }
+    .sync-toast.show {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* Jerarquía Tipográfica H1, H2, H3 en Fichas del Feed */
+    .card-post h1, .card-post .card-h1, .card-post .text-bold-title {
+      font-family: var(--font-sans);
+      font-weight: 800;
+      font-size: 0.82rem;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      line-height: 1.2;
+      margin: 0 0 4px 0;
+      color: var(--card-h1-color);
+      transition: color 0.2s ease;
+    }
+    .card-post h2, .card-post .card-h2, .card-post .text-serif-italic {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 0.78rem;
+      line-height: 1.25;
+      font-weight: 500;
+      margin: 0;
+      max-width: 96%;
+      color: var(--card-h2-color);
+      transition: color 0.2s ease;
+    }
+    .card-post h3, .card-post .card-h3, .card-post .text-serif-sub, .card-post .text-small-sub {
+      font-family: var(--font-sans);
+      font-size: 0.50rem;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin: 0 0 4px 0;
+      display: block;
+      line-height: 1.15;
+      color: var(--card-h3-color);
+      transition: color 0.2s ease;
+    }
+    .card-post .card-divider {
+      background: var(--card-divider-color) !important;
+      transition: background-color 0.2s ease;
+    }
+
+    /* Estilos según Tipo de Tarjeta */
+    .card-azul, .card-primario {
+      background-color: var(--color-primario) !important;
+      color: #FFFFFF !important;
+    }
+    .card-turquesa, .card-secundario {
+      background-color: var(--color-secundario) !important;
+      color: var(--color-primario) !important;
+    }
+    .card-blanco, .card-claro {
+      background-color: var(--color-claro) !important;
+      color: var(--color-primario) !important;
+      border: 1px solid rgba(20, 33, 61, 0.08) !important;
+    }
+    .card-dorado, .card-acento {
+      background-color: var(--color-acento) !important;
+      color: var(--color-primario) !important;
+    }
+
+    /* Responsive adjustments for mobile */
+    @media (max-width: 768px) {
+      body {
+        padding: 10px 8px 40px !important;
+      }
+      .top-control-bar {
+        padding: 10px 14px !important;
+        margin-bottom: 14px !important;
+      }
+      .brand-title-top {
+        font-size: 0.82rem !important;
+        letter-spacing: 1px !important;
+      }
+      .brand-sub-top {
+        font-size: 0.74rem !important;
+      }
+      .sample-btn {
+        padding: 7px 14px !important;
+        font-size: 0.78rem !important;
+      }
+      .phone-mockup {
+        max-width: 100% !important;
+        padding: 6px !important;
+        border-radius: 26px !important;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5) !important;
+      }
+      .phone-screen {
+        border-radius: 20px !important;
+      }
+      .side-info-panel {
+        max-width: 100% !important;
+        padding: 20px 14px !important;
+        border-radius: 20px !important;
+        margin-top: 16px !important;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -1637,56 +2019,252 @@
         Estructura alternada que equilibra fotografía real del complejo con publicaciones de logo oficial (versión Noche oscura en fila 1 y versión Color Oficial con corona dorada y ola turquesa en fila 4) junto a tarjetas de diseño editorial.
       </p>
 
+      
+      <!-- Selector de Variantes de Paletas de Colores de Marca -->
       <div class="palette-box">
-        <div class="palette-header">
-          <h4>Paleta Oficial (Opción B — Mar Profundo)</h4>
-          <span class="palette-subtitle">Hacé clic en cualquier muestra para cambiar su color en vivo</span>
+        <div class="palette-header" style="margin-bottom: 10px;">
+          <h4 style="display: flex; align-items: center; justify-content: space-between;">
+            <span>🎨 Variantes de Paleta de Marca</span>
+            <span id="active-palette-badge" class="badge-tag" style="font-size: 0.65rem; background: rgba(201,166,107,0.25); color: var(--dorado-suave); padding: 2px 8px; border-radius: 10px;">Opción B Activa</span>
+          </h4>
+          <span class="palette-subtitle">Tocá cualquier paleta para aplicarla simultáneamente al feed y al simulador:</span>
+        </div>
+
+        <div class="palette-presets-container">
+          
+          <!-- Paleta A: Costa Clásica -->
+          <div class="palette-preset-card" id="preset-card-costa-clasica" onclick="switchPalettePreset('costa-clasica')" title="Seleccionar Paleta A: Costa Clásica">
+            <div class="preset-card-header">
+              <span class="preset-card-title">🌊 A — Costa Clásica</span>
+              <span class="preset-card-badge">Fiel al Logo · Anual</span>
+            </div>
+            <p class="preset-card-desc">La más fiel al logo actual. Uso general, todo el año.</p>
+            <div class="preset-swatches-row">
+              <div class="preset-swatch-item">
+                <div class="preset-swatch-color" style="background: #1B2F7A;"></div>
+                <span class="preset-swatch-name">Azul Nereidas</span>
+                <span class="preset-swatch-hex">#1B2F7A</span>
+              </div>
+              <div class="preset-swatch-item">
+                <div class="preset-swatch-color" style="background: #2FB6C4;"></div>
+                <span class="preset-swatch-name">Turquesa Ola</span>
+                <span class="preset-swatch-hex">#2FB6C4</span>
+              </div>
+              <div class="preset-swatch-item">
+                <div class="preset-swatch-color" style="background: #F3ECDD;"></div>
+                <span class="preset-swatch-name">Arena Suave</span>
+                <span class="preset-swatch-hex">#F3ECDD</span>
+              </div>
+              <div class="preset-swatch-item">
+                <div class="preset-swatch-color" style="background: #E8834A;"></div>
+                <span class="preset-swatch-name">Coral Atardecer</span>
+                <span class="preset-swatch-hex">#E8834A</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Paleta B: Mar Profundo (Activa Oficial) -->
+          <div class="palette-preset-card active" id="preset-card-mar-profundo" onclick="switchPalettePreset('mar-profundo')" title="Seleccionar Paleta B: Mar Profundo">
+            <div class="preset-card-header">
+              <span class="preset-card-title">⚓ B — Mar Profundo</span>
+              <span class="preset-card-badge">Elegante · Premium</span>
+            </div>
+            <p class="preset-card-desc">Más elegante y sobria. Útil para promos de temporada baja o piezas "premium".</p>
+            <div class="preset-swatches-row">
+              <div class="preset-swatch-item">
+                <div class="preset-swatch-color" style="background: #14213D;"></div>
+                <span class="preset-swatch-name">Azul Noche</span>
+                <span class="preset-swatch-hex">#14213D</span>
+              </div>
+              <div class="preset-swatch-item">
+                <div class="preset-swatch-color" style="background: #6FA8AD;"></div>
+                <span class="preset-swatch-name">Turquesa Gris</span>
+                <span class="preset-swatch-hex">#6FA8AD</span>
+              </div>
+              <div class="preset-swatch-item">
+                <div class="preset-swatch-color" style="background: #F7F5F2;"></div>
+                <span class="preset-swatch-name">Blanco Roto</span>
+                <span class="preset-swatch-hex">#F7F5F2</span>
+              </div>
+              <div class="preset-swatch-item">
+                <div class="preset-swatch-color" style="background: #C9A66B;"></div>
+                <span class="preset-swatch-name">Dorado Suave</span>
+                <span class="preset-swatch-hex">#C9A66B</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Paleta C: Verano Pastel -->
+          <div class="palette-preset-card" id="preset-card-verano-pastel" onclick="switchPalettePreset('verano-pastel')" title="Seleccionar Paleta C: Verano Pastel">
+            <div class="preset-card-header">
+              <span class="preset-card-title">☀️ C — Verano Pastel</span>
+              <span class="preset-card-badge">Luminosa · Alta</span>
+            </div>
+            <p class="preset-card-desc">Más liviana y luminosa. Ideal para contenido de temporada alta y reels.</p>
+            <div class="preset-swatches-row">
+              <div class="preset-swatch-item">
+                <div class="preset-swatch-color" style="background: #6FA8DC;"></div>
+                <span class="preset-swatch-name">Azul Cielo</span>
+                <span class="preset-swatch-hex">#6FA8DC</span>
+              </div>
+              <div class="preset-swatch-item">
+                <div class="preset-swatch-color" style="background: #7ED6D1;"></div>
+                <span class="preset-swatch-name">Turquesa Menta</span>
+                <span class="preset-swatch-hex">#7ED6D1</span>
+              </div>
+              <div class="preset-swatch-item">
+                <div class="preset-swatch-color" style="background: #FDFBF7;"></div>
+                <span class="preset-swatch-name">Blanco Arena</span>
+                <span class="preset-swatch-hex">#FDFBF7</span>
+              </div>
+              <div class="preset-swatch-item">
+                <div class="preset-swatch-color" style="background: #F4A896;"></div>
+                <span class="preset-swatch-name">Coral Suave</span>
+                <span class="preset-swatch-hex">#F4A896</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Editor de Color Individual de la Paleta Activa -->
+        <div class="palette-header" style="margin-top: 16px;">
+          <h4 id="palette-editor-title">Ajuste Fino de Tonos Activos</h4>
+          <span class="palette-subtitle">Hacé clic en el lápiz de cualquier color para personalizar su tono en vivo</span>
         </div>
         <div class="swatches-row">
-          <div class="swatch" title="Hacé clic para cambiar Azul Noche">
-            <div class="swatch-color" id="swatch-box-azul" style="background: var(--azul-noche); border: 1px solid rgba(255,255,255,0.25);">
-              <input type="color" id="picker-azul-noche" class="palette-color-input" value="#14213D" aria-label="Elegir color Azul Noche" oninput="changePaletteColor('--azul-noche', this.value, 'swatch-box-azul', 'swatch-hex-azul')">
+          <div class="swatch" title="Personalizar Color Primario">
+            <div class="swatch-color" id="swatch-box-primario" style="background: var(--color-primario); border: 1px solid rgba(255,255,255,0.25);">
+              <input type="color" id="picker-primario" class="palette-color-input" value="#14213D" aria-label="Elegir Color Primario" oninput="changeActiveColor('primario', this.value)">
               <span class="swatch-edit-icon" title="Editar">✏️</span>
             </div>
-            <span class="swatch-name">Azul Noche</span>
-            <span class="swatch-hex" id="swatch-hex-azul">#14213D</span>
+            <span class="swatch-name" id="swatch-name-primario">Azul Noche</span>
+            <span class="swatch-hex" id="swatch-hex-primario">#14213D</span>
           </div>
 
-          <div class="swatch" title="Hacé clic para cambiar Turquesa">
-            <div class="swatch-color" id="swatch-box-turquesa" style="background: var(--turquesa-grisaceo);">
-              <input type="color" id="picker-turquesa" class="palette-color-input" value="#6FA8AD" aria-label="Elegir color Turquesa" oninput="changePaletteColor('--turquesa-grisaceo', this.value, 'swatch-box-turquesa', 'swatch-hex-turquesa')">
+          <div class="swatch" title="Personalizar Color Secundario">
+            <div class="swatch-color" id="swatch-box-secundario" style="background: var(--color-secundario);">
+              <input type="color" id="picker-secundario" class="palette-color-input" value="#6FA8AD" aria-label="Elegir Color Secundario" oninput="changeActiveColor('secundario', this.value)">
               <span class="swatch-edit-icon" title="Editar">✏️</span>
             </div>
-            <span class="swatch-name">Turquesa</span>
-            <span class="swatch-hex" id="swatch-hex-turquesa">#6FA8AD</span>
+            <span class="swatch-name" id="swatch-name-secundario">Turquesa Gris</span>
+            <span class="swatch-hex" id="swatch-hex-secundario">#6FA8AD</span>
           </div>
 
-          <div class="swatch" title="Hacé clic para cambiar Blanco Roto">
-            <div class="swatch-color" id="swatch-box-blanco" style="background: var(--blanco-roto); border: 1px solid rgba(20,33,61,0.2);">
-              <input type="color" id="picker-blanco-roto" class="palette-color-input" value="#F7F5F2" aria-label="Elegir color Blanco Roto" oninput="changePaletteColor('--blanco-roto', this.value, 'swatch-box-blanco', 'swatch-hex-blanco')">
+          <div class="swatch" title="Personalizar Color Claro">
+            <div class="swatch-color" id="swatch-box-claro" style="background: var(--color-claro); border: 1px solid rgba(20,33,61,0.2);">
+              <input type="color" id="picker-claro" class="palette-color-input" value="#F7F5F2" aria-label="Elegir Color Claro" oninput="changeActiveColor('claro', this.value)">
               <span class="swatch-edit-icon" title="Editar">✏️</span>
             </div>
-            <span class="swatch-name" id="swatch-name-blanco" style="color: #F7F5F2;">Blanco Roto</span>
-            <span class="swatch-hex" id="swatch-hex-blanco">#F7F5F2</span>
+            <span class="swatch-name" id="swatch-name-claro">Blanco Roto</span>
+            <span class="swatch-hex" id="swatch-hex-claro">#F7F5F2</span>
           </div>
 
-          <div class="swatch" title="Hacé clic para cambiar Dorado">
-            <div class="swatch-color" id="swatch-box-dorado" style="background: var(--dorado-suave);">
-              <input type="color" id="picker-dorado-suave" class="palette-color-input" value="#C9A66B" aria-label="Elegir color Dorado" oninput="changePaletteColor('--dorado-suave', this.value, 'swatch-box-dorado', 'swatch-hex-dorado')">
+          <div class="swatch" title="Personalizar Color Acento">
+            <div class="swatch-color" id="swatch-box-acento" style="background: var(--color-acento);">
+              <input type="color" id="picker-acento" class="palette-color-input" value="#C9A66B" aria-label="Elegir Color Acento" oninput="changeActiveColor('acento', this.value)">
               <span class="swatch-edit-icon" title="Editar">✏️</span>
             </div>
-            <span class="swatch-name">Dorado</span>
-            <span class="swatch-hex" id="swatch-hex-dorado">#C9A66B</span>
+            <span class="swatch-name" id="swatch-name-acento">Dorado Suave</span>
+            <span class="swatch-hex" id="swatch-hex-acento">#C9A66B</span>
           </div>
         </div>
-        <div class="palette-actions">
-          <button type="button" onclick="resetPalette()" class="btn-palette-reset" title="Volver a los tonos oficiales originales">
-            ↺ Restablecer Paleta Oficial
+
+      </div>
+
+      <!-- Control Específico de Tipografía para Fichas (H1, H2, H3) -->
+      <div class="typography-controls-box">
+        <h4>🔤 Tipografía de Fichas del Feed (H1, H2, H3)</h4>
+        <p style="font-size: 0.74rem; color: #94A3B8; margin-bottom: 12px; line-height: 1.4;">
+          Personalizá el color de los textos principales (H1), subtítulos cursivos (H2) y bajadas (H3) en las tarjetas del feed:
+        </p>
+
+        <!-- H1 Control -->
+        <div class="typography-row">
+          <div class="typography-row-header">
+            <span class="typography-label"><strong>H1</strong> — Título Principal</span>
+            <span class="typography-preview-tag" id="tag-h1-color" style="background: var(--color-primario); color: #FFF;">#14213D</span>
+          </div>
+          <div class="typography-pills-row">
+            <button type="button" class="type-color-btn active" id="btn-h1-primario" onclick="setTypographyColor('h1', 'primario')">
+              <span class="type-color-dot" id="dot-h1-primario" style="background: var(--color-primario);"></span> Primario
+            </button>
+            <button type="button" class="type-color-btn" id="btn-h1-acento" onclick="setTypographyColor('h1', 'acento')">
+              <span class="type-color-dot" id="dot-h1-acento" style="background: var(--color-acento);"></span> Acento
+            </button>
+            <button type="button" class="type-color-btn" id="btn-h1-blanco" onclick="setTypographyColor('h1', '#FFFFFF')">
+              <span class="type-color-dot" style="background: #FFFFFF;"></span> Blanco
+            </button>
+            <button type="button" class="type-color-btn" id="btn-h1-secundario" onclick="setTypographyColor('h1', 'secundario')">
+              <span class="type-color-dot" id="dot-h1-secundario" style="background: var(--color-secundario);"></span> Secundario
+            </button>
+            <div class="type-color-picker-wrap">
+              <input type="color" id="picker-h1" value="#14213D" title="Elegir color libre para H1" oninput="setTypographyColor('h1', this.value)">
+            </div>
+          </div>
+        </div>
+
+        <!-- H2 Control -->
+        <div class="typography-row">
+          <div class="typography-row-header">
+            <span class="typography-label"><strong>H2</strong> — Subtítulo / Frase</span>
+            <span class="typography-preview-tag" id="tag-h2-color" style="background: var(--color-primario); color: #FFF;">#14213D</span>
+          </div>
+          <div class="typography-pills-row">
+            <button type="button" class="type-color-btn active" id="btn-h2-primario" onclick="setTypographyColor('h2', 'primario')">
+              <span class="type-color-dot" id="dot-h2-primario" style="background: var(--color-primario);"></span> Primario
+            </button>
+            <button type="button" class="type-color-btn" id="btn-h2-acento" onclick="setTypographyColor('h2', 'acento')">
+              <span class="type-color-dot" id="dot-h2-acento" style="background: var(--color-acento);"></span> Acento
+            </button>
+            <button type="button" class="type-color-btn" id="btn-h2-blanco" onclick="setTypographyColor('h2', '#FFFFFF')">
+              <span class="type-color-dot" style="background: #FFFFFF;"></span> Blanco
+            </button>
+            <button type="button" class="type-color-btn" id="btn-h2-secundario" onclick="setTypographyColor('h2', 'secundario')">
+              <span class="type-color-dot" id="dot-h2-secundario" style="background: var(--color-secundario);"></span> Secundario
+            </button>
+            <div class="type-color-picker-wrap">
+              <input type="color" id="picker-h2" value="#14213D" title="Elegir color libre para H2" oninput="setTypographyColor('h2', this.value)">
+            </div>
+          </div>
+        </div>
+
+        <!-- H3 Control -->
+        <div class="typography-row">
+          <div class="typography-row-header">
+            <span class="typography-label"><strong>H3</strong> — Bajada / Categoría</span>
+            <span class="typography-preview-tag" id="tag-h3-color" style="background: var(--color-acento); color: #14213D;">#C9A66B</span>
+          </div>
+          <div class="typography-pills-row">
+            <button type="button" class="type-color-btn active" id="btn-h3-acento" onclick="setTypographyColor('h3', 'acento')">
+              <span class="type-color-dot" id="dot-h3-acento" style="background: var(--color-acento);"></span> Acento
+            </button>
+            <button type="button" class="type-color-btn" id="btn-h3-secundario" onclick="setTypographyColor('h3', 'secundario')">
+              <span class="type-color-dot" id="dot-h3-secundario" style="background: var(--color-secundario);"></span> Secundario
+            </button>
+            <button type="button" class="type-color-btn" id="btn-h3-primario" onclick="setTypographyColor('h3', 'primario')">
+              <span class="type-color-dot" id="dot-h3-primario" style="background: var(--color-primario);"></span> Primario
+            </button>
+            <button type="button" class="type-color-btn" id="btn-h3-blanco" onclick="setTypographyColor('h3', '#FFFFFF')">
+              <span class="type-color-dot" style="background: #FFFFFF;"></span> Blanco
+            </button>
+            <div class="type-color-picker-wrap">
+              <input type="color" id="picker-h3" value="#C9A66B" title="Elegir color libre para H3" oninput="setTypographyColor('h3', this.value)">
+            </div>
+          </div>
+        </div>
+
+        <!-- Acciones de Guardado y Sincronización -->
+        <div class="sync-actions-row">
+          <button type="button" class="btn-sync-action btn-sync-save" onclick="saveSimulatorState(true)" title="Guardar cambios de paleta, tipografía y orden en este navegador">
+            <span>💾</span> Guardar y Sincronizar
+          </button>
+          <button type="button" class="btn-sync-action btn-sync-reset" onclick="resetAllToDefault()" title="Volver a los valores oficiales predeterminados del script">
+            <span>↺</span> Restablecer Original
           </button>
         </div>
       </div>
 
-      <!-- Herramienta de Carga de Imágenes desde Carpeta Local o Galería -->
       <div class="photo-manager-box">
         <h4 style="color: var(--turquesa-grisaceo); font-size: 0.86rem; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px;">
           📷 Cargar / Cambiar Fotos del Feed
@@ -2222,61 +2800,288 @@
     let selectedPostIndex = null;
 
     // Paleta Oficial por defecto
-    const DEFAULT_PALETTE = {
-      '--azul-noche': '#14213D',
-      '--turquesa-grisaceo': '#6FA8AD',
-      '--blanco-roto': '#F7F5F2',
-      '--dorado-suave': '#C9A66B'
+    // Definición Oficial de las 3 Paletas de Marca Nereidas
+    const PALETTES = {
+      'costa-clasica': {
+        id: 'costa-clasica',
+        name: 'A — Costa Clásica',
+        badge: 'Fiel al Logo · Anual',
+        desc: 'La más fiel al logo actual. Uso general, todo el año.',
+        colors: {
+          primario: '#1B2F7A',    // Azul Nereidas
+          secundario: '#2FB6C4',  // Turquesa Ola
+          claro: '#F3ECDD',       // Arena Suave
+          acento: '#E8834A'       // Coral Atardecer
+        },
+        colorNames: {
+          primario: 'Azul Nereidas',
+          secundario: 'Turquesa Ola',
+          claro: 'Arena Suave',
+          acento: 'Coral Atardecer'
+        },
+        typography: {
+          h1: '#1B2F7A',
+          h2: '#1B2F7A',
+          h3: '#E8834A'
+        }
+      },
+      'mar-profundo': {
+        id: 'mar-profundo',
+        name: 'B — Mar Profundo',
+        badge: 'Elegante · Premium',
+        desc: 'Más elegante y sobria. Útil para promos de temporada baja o piezas "premium".',
+        colors: {
+          primario: '#14213D',    // Azul Noche
+          secundario: '#6FA8AD',  // Turquesa Grisáceo
+          claro: '#F7F5F2',       // Blanco Roto
+          acento: '#C9A66B'       // Dorado Suave
+        },
+        colorNames: {
+          primario: 'Azul Noche',
+          secundario: 'Turquesa Gris',
+          claro: 'Blanco Roto',
+          acento: 'Dorado Suave'
+        },
+        typography: {
+          h1: '#14213D',
+          h2: '#14213D',
+          h3: '#C9A66B'
+        }
+      },
+      'verano-pastel': {
+        id: 'verano-pastel',
+        name: 'C — Verano Pastel',
+        badge: 'Luminosa · Alta',
+        desc: 'Más liviana y luminosa. Ideal para contenido de temporada alta y reels.',
+        colors: {
+          primario: '#6FA8DC',    // Azul Cielo
+          secundario: '#7ED6D1',  // Turquesa Menta
+          claro: '#FDFBF7',       // Blanco Arena
+          acento: '#F4A896'       // Coral Suave
+        },
+        colorNames: {
+          primario: 'Azul Cielo',
+          secundario: 'Turquesa Menta',
+          claro: 'Blanco Arena',
+          acento: 'Coral Suave'
+        },
+        typography: {
+          h1: '#1E3A5F',
+          h2: '#1E3A5F',
+          h3: '#F4A896'
+        }
+      }
     };
 
-    // Cambiar color de la paleta en tiempo real simultáneamente
-    function changePaletteColor(varName, colorVal, boxId, hexId) {
-      if (!colorVal) return;
-      document.documentElement.style.setProperty(varName, colorVal);
-      const phone = document.getElementById('phone-container');
-      if (phone) phone.style.setProperty(varName, colorVal);
-      const sidePanel = document.getElementById('side-panel');
-      if (sidePanel) sidePanel.style.setProperty(varName, colorVal);
+    // Estado activo de paleta y tipografía
+    let activePaletteKey = 'mar-profundo';
+    let currentPaletteColors = { ...PALETTES['mar-profundo'].colors };
+    let currentTypographyColors = { ...PALETTES['mar-profundo'].typography };
 
-      const box = document.getElementById(boxId);
-      if (box) box.style.background = colorVal;
-      const hex = document.getElementById(hexId);
-      if (hex) hex.textContent = colorVal.toUpperCase();
+    // Cambiar a una de las 3 paletas preestablecidas
+    function switchPalettePreset(presetKey, isInitialLoad = false) {
+      if (!PALETTES[presetKey]) return;
+      activePaletteKey = presetKey;
+      const pal = PALETTES[presetKey];
+      currentPaletteColors = { ...pal.colors };
+      currentTypographyColors = { ...pal.typography };
 
-      if (varName === '--blanco-roto') {
-        const nameEl = document.getElementById('swatch-name-blanco');
-        if (nameEl) nameEl.style.color = colorVal;
+      // Actualizar tarjetas de presets
+      document.querySelectorAll('.palette-preset-card').forEach(card => card.classList.remove('active'));
+      const activeCard = document.getElementById('preset-card-' + presetKey);
+      if (activeCard) activeCard.classList.add('active');
+
+      const badge = document.getElementById('active-palette-badge');
+      if (badge) badge.textContent = pal.name + ' Activa';
+
+      applyPaletteToDOM();
+      if (!isInitialLoad) {
+        saveSimulatorState(false);
+        showSyncToast('Paleta cambiada a: ' + pal.name);
       }
     }
 
-    // Restablecer paleta oficial
-    function resetPalette() {
-      for (const [varName, hex] of Object.entries(DEFAULT_PALETTE)) {
-        document.documentElement.style.setProperty(varName, hex);
+    // Cambiar un color específico de la paleta activa
+    function changeActiveColor(role, hexVal) {
+      if (!hexVal) return;
+      currentPaletteColors[role] = hexVal;
+      applyPaletteToDOM();
+      saveSimulatorState(false);
+    }
+
+    // Cambiar color tipográfico de fichas (H1, H2, H3)
+    function setTypographyColor(level, colorVal) {
+      let finalHex = colorVal;
+      if (colorVal === 'primario') finalHex = currentPaletteColors.primario;
+      else if (colorVal === 'secundario') finalHex = currentPaletteColors.secundario;
+      else if (colorVal === 'claro') finalHex = currentPaletteColors.claro;
+      else if (colorVal === 'acento') finalHex = currentPaletteColors.acento;
+
+      currentTypographyColors[level] = finalHex;
+      applyPaletteToDOM();
+      saveSimulatorState(false);
+    }
+
+    // Aplicar los colores a las variables CSS y elementos del DOM
+    function applyPaletteToDOM() {
+      const vars = {
+        '--color-primario': currentPaletteColors.primario,
+        '--color-secundario': currentPaletteColors.secundario,
+        '--color-claro': currentPaletteColors.claro,
+        '--color-acento': currentPaletteColors.acento,
+        '--azul-noche': currentPaletteColors.primario,
+        '--turquesa-grisaceo': currentPaletteColors.secundario,
+        '--blanco-roto': currentPaletteColors.claro,
+        '--dorado-suave': currentPaletteColors.acento,
+        '--card-h1-color': currentTypographyColors.h1,
+        '--card-h2-color': currentTypographyColors.h2,
+        '--card-h3-color': currentTypographyColors.h3,
+        '--card-divider-color': currentPaletteColors.acento
+      };
+
+      for (const [v, val] of Object.entries(vars)) {
+        document.documentElement.style.setProperty(v, val);
         const phone = document.getElementById('phone-container');
-        if (phone) phone.style.setProperty(varName, hex);
+        if (phone) phone.style.setProperty(v, val);
         const sidePanel = document.getElementById('side-panel');
-        if (sidePanel) sidePanel.style.setProperty(varName, hex);
+        if (sidePanel) sidePanel.style.setProperty(v, val);
       }
 
-      const map = [
-        { inp: 'picker-azul-noche', box: 'swatch-box-azul', hex: 'swatch-hex-azul', val: '#14213D' },
-        { inp: 'picker-turquesa', box: 'swatch-box-turquesa', hex: 'swatch-hex-turquesa', val: '#6FA8AD' },
-        { inp: 'picker-blanco-roto', box: 'swatch-box-blanco', hex: 'swatch-hex-blanco', val: '#F7F5F2' },
-        { inp: 'picker-dorado-suave', box: 'swatch-box-dorado', hex: 'swatch-hex-dorado', val: '#C9A66B' }
-      ];
+      // Actualizar Swatches individuales del panel
+      const roles = ['primario', 'secundario', 'claro', 'acento'];
+      roles.forEach(role => {
+        const hex = currentPaletteColors[role];
+        const box = document.getElementById('swatch-box-' + role);
+        const hexLabel = document.getElementById('swatch-hex-' + role);
+        const picker = document.getElementById('picker-' + role);
+        const nameLabel = document.getElementById('swatch-name-' + role);
 
-      map.forEach(item => {
-        const input = document.getElementById(item.inp);
-        if (input) input.value = item.val;
-        const box = document.getElementById(item.box);
-        if (box) box.style.background = item.val;
-        const hex = document.getElementById(item.hex);
-        if (hex) hex.textContent = item.val;
+        if (box) box.style.background = hex;
+        if (hexLabel) hexLabel.textContent = hex.toUpperCase();
+        if (picker) picker.value = hex;
+        if (nameLabel && PALETTES[activePaletteKey]?.colorNames[role]) {
+          nameLabel.textContent = PALETTES[activePaletteKey].colorNames[role];
+        }
       });
 
-      const nameEl = document.getElementById('swatch-name-blanco');
-      if (nameEl) nameEl.style.color = '#F7F5F2';
+      // Actualizar Dots y Tags de tipografía H1, H2, H3
+      ['h1', 'h2', 'h3'].forEach(level => {
+        const hex = currentTypographyColors[level];
+        const tag = document.getElementById('tag-' + level + '-color');
+        const picker = document.getElementById('picker-' + level);
+        if (tag) {
+          tag.textContent = hex.toUpperCase();
+          tag.style.background = hex;
+          tag.style.color = (level === 'h3' && activePaletteKey === 'costa-clasica') ? '#FFFFFF' : 
+                            (hex.toLowerCase() === '#ffffff' ? '#14213D' : '#FFFFFF');
+        }
+        if (picker) picker.value = hex;
+
+        // Actualizar dots en los botones de selección rápida
+        const dotPrim = document.getElementById('dot-' + level + '-primario');
+        const dotSec = document.getElementById('dot-' + level + '-secundario');
+        const dotAcc = document.getElementById('dot-' + level + '-acento');
+        if (dotPrim) dotPrim.style.background = currentPaletteColors.primario;
+        if (dotSec) dotSec.style.background = currentPaletteColors.secundario;
+        if (dotAcc) dotAcc.style.background = currentPaletteColors.acento;
+      });
+
+      // Forzar actualización visual en los posts
+      if (typeof renderGrid === 'function' && currentMode) {
+        renderGrid(currentMode);
+      saveSimulatorState(false);
+      }
+    }
+
+    // Persistencia en LocalStorage (Guarda configuración en el navegador para sincronización)
+    const STORAGE_KEY = 'nereidas_simulator_state_v1';
+
+    function saveSimulatorState(showToast = true) {
+      try {
+        const state = {
+          activePaletteKey,
+          currentPaletteColors,
+          currentTypographyColors,
+          postsStateA,
+          postsStateB,
+          currentMode,
+          timestamp: new Date().toISOString()
+        };
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+        if (showToast) {
+          showSyncToast('¡Configuración guardada y sincronizada correctamente!');
+        }
+      } catch (err) {
+        console.warn('LocalStorage no disponible o bloqueado:', err);
+      }
+    }
+
+    function loadSimulatorState() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) {
+          // Si no hay guardado, aplicar la paleta por defecto B
+          switchPalettePreset('mar-profundo', true);
+          return;
+        }
+        const state = JSON.parse(raw);
+        if (state.activePaletteKey && PALETTES[state.activePaletteKey]) {
+          activePaletteKey = state.activePaletteKey;
+        }
+        if (state.currentPaletteColors) {
+          currentPaletteColors = { ...state.currentPaletteColors };
+        }
+        if (state.currentTypographyColors) {
+          currentTypographyColors = { ...state.currentTypographyColors };
+        }
+        if (state.postsStateA && Array.isArray(state.postsStateA)) {
+          postsStateA = state.postsStateA;
+        }
+        if (state.postsStateB && Array.isArray(state.postsStateB)) {
+          postsStateB = state.postsStateB;
+        }
+        if (state.currentMode) {
+          currentMode = state.currentMode;
+        }
+
+        // Marcar la tarjeta del preset activa
+        document.querySelectorAll('.palette-preset-card').forEach(card => card.classList.remove('active'));
+        const activeCard = document.getElementById('preset-card-' + activePaletteKey);
+        if (activeCard) activeCard.classList.add('active');
+
+        const badge = document.getElementById('active-palette-badge');
+        if (badge && PALETTES[activePaletteKey]) badge.textContent = PALETTES[activePaletteKey].name + ' Activa';
+
+        applyPaletteToDOM();
+      } catch (err) {
+        console.warn('Error al cargar estado del simulador:', err);
+        switchPalettePreset('mar-profundo', true);
+      }
+    }
+
+    // Restablecer todo a los valores predeterminados del script
+    function resetAllToDefault() {
+      try {
+        localStorage.removeItem(STORAGE_KEY);
+      } catch (e) {}
+      postsStateA = JSON.parse(JSON.stringify(POSTS_MUESTRA_A));
+      postsStateB = JSON.parse(JSON.stringify(POSTS_MUESTRA_B));
+      switchPalettePreset('mar-profundo', true);
+      renderGrid(currentMode);
+      showSyncToast('↺ Todo restablecido a los valores oficiales del script');
+    }
+
+    // Notificación Toast
+    function showSyncToast(msg) {
+      const toast = document.getElementById('sync-toast');
+      const toastMsg = document.getElementById('sync-toast-msg');
+      if (!toast) return;
+      if (toastMsg) toastMsg.textContent = msg;
+      toast.classList.add('show');
+      clearTimeout(window.__toastTimeout);
+      window.__toastTimeout = setTimeout(() => {
+        toast.classList.remove('show');
+      }, 3200);
     }
 
     // Intercambiar posiciones de publicaciones (Drag & Drop)
@@ -2431,7 +3236,8 @@
     // Inicializar página
     document.addEventListener('DOMContentLoaded', () => {
       renderHighlights();
-      renderGrid('muestra-a');
+      loadSimulatorState();
+      renderGrid(currentMode || 'muestra-a');
     });
 
     // Renderizar historias destacadas en el perfil
@@ -2766,6 +3572,13 @@
         <!-- Generado dinámicamente -->
       </div>
     </div>
+  </div>
+
+
+  <!-- Toast de Notificación de Sincronización -->
+  <div class="sync-toast" id="sync-toast" role="alert">
+    <span>✅</span>
+    <span id="sync-toast-msg">¡Configuración guardada y sincronizada!</span>
   </div>
 
 </body>

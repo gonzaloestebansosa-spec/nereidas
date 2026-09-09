@@ -749,44 +749,55 @@
       <!-- ======================================================================
            2. DEPARTAMENTOS (#apartamentos) CON FOTOS REALES
            ====================================================================== -->
+      
+      <!-- ======================================================================
+           2. DEPARTAMENTOS (#apartamentos) CON FOTOS REALES DE CADA UNIDAD
+           ====================================================================== -->
       <section class="section apartamentos-section" id="apartamentos" style="background-color: var(--arena-light);">
         <div class="container">
           
-          <div class="text-center">
+          <div class="section-header text-center">
             <span class="section-tag">Nuestras Unidades</span>
             <h2 class="section-title script-accent">
-              <span>Espacios</span> diseñados para tu máximo confort
+              <span>Espacios</span> diseñados para tu confort
             </h2>
             <p class="section-desc">
-              Equipados con cocina completa, sommiers de alta gama, parrilla individual, aire acondicionado y balcón o deck privado con vista al bosque.
+              Unidades independientes de 2 a 6 personas con vista al bosque o piscina, equipamiento premium, parrilla individual y servicio personalizado.
             </p>
           </div>
 
-          <!-- Filtros Rápidos -->
-          <div class="apartment-filters" role="tablist">
-            <button class="filter-btn active" data-filter="all" role="tab">Todos los Apartamentos</button>
-            <button class="filter-btn" data-filter="parejas" role="tab">Especial Parejas (2 pax)</button>
-            <button class="filter-btn" data-filter="familias" role="tab">Familias &amp; Grupos (3 a 6 pax)</button>
+          <!-- Filtros de Categoría -->
+          <div class="apartments-filters" role="tablist" aria-label="Filtrar por capacidad">
+            <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true">Todos los Apartamentos</button>
+            <button class="filter-btn" data-filter="parejas" role="tab" aria-selected="false">Para Parejas (2 Pax)</button>
+            <button class="filter-btn" data-filter="familias" role="tab" aria-selected="false">Familias (4 a 6 Pax)</button>
           </div>
 
           <!-- Grilla de Apartamentos -->
           <div class="apartments-grid">
             
-            <!-- Unidad 1: Apart Miel -->
+            <!-- Unidad 1: Apart Miel (9 Fotos Reales) -->
             <article class="apartment-card" data-category="parejas">
               <div class="apartment-gallery">
                 <div class="gallery-track">
-                  <div class="gallery-slide"><img src="nereidas_imagenes/Portada/01.jpg" alt="Apart Miel dormitorio principal y jacuzzi" loading="lazy" width="600" height="375"></div>
-                  <div class="gallery-slide"><img src="nereidas_imagenes/Portada/02.jpg" alt="Apart Miel living y estar luminoso" loading="lazy" width="600" height="375"></div>
-                  <div class="gallery-slide"><img src="nereidas_imagenes/Portada/03.jpg" alt="Apart Miel deck exterior" loading="lazy" width="600" height="375"></div>
+                  <div class="gallery-slide"><img src="nereidas_imagenes/Apart_Miel/01_1725739803_66dcb31bccfa8.jpg" alt="Apart Miel suite matrimonial con sommier king" loading="lazy" width="600" height="375"></div>
+                  <div class="gallery-slide"><img src="nereidas_imagenes/Apart_Miel/02_1725894620_66df0fdce4584.jpg" alt="Apart Miel hidromasaje doble relax" loading="lazy" width="600" height="375"></div>
+                  <div class="gallery-slide"><img src="nereidas_imagenes/Apart_Miel/03_1725739803_66dcb31bd2c57.jpg" alt="Apart Miel estar luminoso y comedor" loading="lazy" width="600" height="375"></div>
+                  <div class="gallery-slide"><img src="nereidas_imagenes/Apart_Miel/04_1725739803_66dcb31bd5af3.jpg" alt="Apart Miel cocina completa integrada" loading="lazy" width="600" height="375"></div>
+                  <div class="gallery-slide"><img src="nereidas_imagenes/Apart_Miel/05_1725739803_66dcb31bd880e.jpg" alt="Apart Miel ambiente cálido y moderno" loading="lazy" width="600" height="375"></div>
+                  <div class="gallery-slide"><img src="nereidas_imagenes/Apart_Miel/06_1725739803_66dcb31bdb2fb.jpg" alt="Apart Miel baño completo equipado" loading="lazy" width="600" height="375"></div>
+                  <div class="gallery-slide"><img src="nereidas_imagenes/Apart_Miel/07_1725739803_66dcb31bde042.jpg" alt="Apart Miel deck exterior privado" loading="lazy" width="600" height="375"></div>
+                  <div class="gallery-slide"><img src="nereidas_imagenes/Apart_Miel/08_1725739803_66dcb31be0abd.jpg" alt="Apart Miel vista al jardín y bosque" loading="lazy" width="600" height="375"></div>
+                  <div class="gallery-slide"><img src="nereidas_imagenes/Apart_Miel/09_1725739803_66dcb31be4c18.jpg" alt="Apart Miel detalles de categoría" loading="lazy" width="600" height="375"></div>
                 </div>
                 <button class="gallery-nav-btn gallery-nav-prev" aria-label="Foto anterior">❮</button>
                 <button class="gallery-nav-btn gallery-nav-next" aria-label="Siguiente foto">❯</button>
+                <span class="gallery-counter">1 / 9</span>
                 <span class="apartment-capacity-badge">Ideal 2 Personas</span>
               </div>
               <div class="apartment-info">
                 <h3 class="apartment-title">Apart Miel</h3>
-                <span class="apartment-subtitle">Suite Romántica con Hidromasaje</span>
+                <span class="apartment-subtitle">Suite Romántica con Hidromasaje Doble</span>
                 <div class="apartment-features">
                   <span class="feature-chip"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="m4.93 4.93 4.24 4.24"></path></svg> Hidromasaje Doble</span>
                   <span class="feature-chip"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M2 17h20v4H2z"></path><path d="M5 17v-5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v5"></path></svg> Sommier King</span>
@@ -802,16 +813,24 @@
               </div>
             </article>
 
-            <!-- Unidad 2: Apart Premium A -->
+            <!-- Unidad 2: Apart Premium A (10 Fotos Reales) -->
             <article class="apartment-card" data-category="parejas familias">
               <div class="apartment-gallery">
                 <div class="gallery-track">
-                  <div class="gallery-slide"><img src="nereidas_imagenes/Portada/02.jpg" alt="Apart Premium A estar y ventanales" loading="lazy" width="600" height="375"></div>
-                  <div class="gallery-slide"><img src="nereidas_imagenes/Portada/03.jpg" alt="Apart Premium A dormitorio matrimonial" loading="lazy" width="600" height="375"></div>
-                  <div class="gallery-slide"><img src="nereidas_imagenes/Servicios/04.jpg" alt="Apart Premium A terraza" loading="lazy" width="600" height="375"></div>
+                  <div class="gallery-slide"><img src="nereidas_imagenes/Apart_Premium_A/01_1725739862_66dcb3569579c.jpg" alt="Apart Premium A living con ventanales" loading="lazy" width="600" height="375"></div>
+                  <div class="gallery-slide"><img src="nereidas_imagenes/Apart_Premium_A/02_1725739862_66dcb356a174d.jpg" alt="Apart Premium A dormitorio principal sommier queen" loading="lazy" width="600" height="375"></div>
+                  <div class="gallery-slide"><img src="nereidas_imagenes/Apart_Premium_A/03_1725739862_66dcb356aaf9f.jpg" alt="Apart Premium A cocina y barra desayunadora" loading="lazy" width="600" height="375"></div>
+                  <div class="gallery-slide"><img src="nereidas_imagenes/Apart_Premium_A/04_1725739862_66dcb356b71d5.jpg" alt="Apart Premium A balcón terraza con parrilla propia" loading="lazy" width="600" height="375"></div>
+                  <div class="gallery-slide"><img src="nereidas_imagenes/Apart_Premium_A/05_1725739862_66dcb356c1323.jpg" alt="Apart Premium A estar y comedor integrado" loading="lazy" width="600" height="375"></div>
+                  <div class="gallery-slide"><img src="nereidas_imagenes/Apart_Premium_A/06_1725739862_66dcb356ccee8.jpg" alt="Apart Premium A baño completo con hidromasaje" loading="lazy" width="600" height="375"></div>
+                  <div class="gallery-slide"><img src="nereidas_imagenes/Apart_Premium_A/07_1725739862_66dcb356d8cf6.jpg" alt="Apart Premium A segundo ambiente / camas" loading="lazy" width="600" height="375"></div>
+                  <div class="gallery-slide"><img src="nereidas_imagenes/Apart_Premium_A/08_1725739862_66dcb356e39fb.jpg" alt="Apart Premium A vista al bosque nativo" loading="lazy" width="600" height="375"></div>
+                  <div class="gallery-slide"><img src="nereidas_imagenes/Apart_Premium_A/09_1725739863_66dcb35703596.jpg" alt="Apart Premium A confort y luminosidad" loading="lazy" width="600" height="375"></div>
+                  <div class="gallery-slide"><img src="nereidas_imagenes/Apart_Premium_A/IMG_7540_1725914765_66df5e8db0ed8.jpeg" alt="Apart Premium A detalles de arquitectura" loading="lazy" width="600" height="375"></div>
                 </div>
                 <button class="gallery-nav-btn gallery-nav-prev" aria-label="Foto anterior">❮</button>
                 <button class="gallery-nav-btn gallery-nav-next" aria-label="Siguiente foto">❯</button>
+                <span class="gallery-counter">1 / 10</span>
                 <span class="apartment-capacity-badge">2 a 4 Personas</span>
               </div>
               <div class="apartment-info">
@@ -832,16 +851,21 @@
               </div>
             </article>
 
-            <!-- Unidad 3: Apart Premium B -->
+            <!-- Unidad 3: Apart Premium B (7 Fotos Reales) -->
             <article class="apartment-card" data-category="parejas familias">
               <div class="apartment-gallery">
                 <div class="gallery-track">
-                  <div class="gallery-slide"><img src="nereidas_imagenes/Portada/03.jpg" alt="Apart Premium B ambiente principal" loading="lazy" width="600" height="375"></div>
-                  <div class="gallery-slide"><img src="nereidas_imagenes/Servicios/04.jpg" alt="Apart Premium B cocina y vajilla" loading="lazy" width="600" height="375"></div>
-                  <div class="gallery-slide"><img src="nereidas_imagenes/Portada/01.jpg" alt="Apart Premium B baño completo" loading="lazy" width="600" height="375"></div>
+                  <div class="gallery-slide"><img src="nereidas_imagenes/Apart_Premium_B/05_1725739929_66dcb39920877.jpg" alt="Apart Premium B ambiente principal integrado" loading="lazy" width="600" height="375"></div>
+                  <div class="gallery-slide"><img src="nereidas_imagenes/Apart_Premium_B/06_1725739929_66dcb399282f0.jpg" alt="Apart Premium B dormitorio principal" loading="lazy" width="600" height="375"></div>
+                  <div class="gallery-slide"><img src="nereidas_imagenes/Apart_Premium_B/6b65f674-6c0e-400c-84ca-f969d0b5e68e (1)_1726508996_66e86fc42823d.jpeg" alt="Apart Premium B cocina equipada y vajilla" loading="lazy" width="600" height="375"></div>
+                  <div class="gallery-slide"><img src="nereidas_imagenes/Apart_Premium_B/a94c220c-2d28-4539-901f-dc7fe5b85040_1726508996_66e86fc42aebf.jpeg" alt="Apart Premium B baño completo e hidromasaje" loading="lazy" width="600" height="375"></div>
+                  <div class="gallery-slide"><img src="nereidas_imagenes/Apart_Premium_B/b4adeece-a0d2-4ea7-8a0e-034e719cb86f_1726508996_66e86fc43031c.jpeg" alt="Apart Premium B deck y parrilla individual" loading="lazy" width="600" height="375"></div>
+                  <div class="gallery-slide"><img src="nereidas_imagenes/Apart_Premium_B/IMG_7791_1725922793_66df7de9052a7.jpeg" alt="Apart Premium B detalles de descanso" loading="lazy" width="600" height="375"></div>
+                  <div class="gallery-slide"><img src="nereidas_imagenes/Apart_Premium_B/IMG_3968_1725923560_66df80e8f17ce.jpeg" alt="Apart Premium B vista al exterior y parque" loading="lazy" width="600" height="375"></div>
                 </div>
                 <button class="gallery-nav-btn gallery-nav-prev" aria-label="Foto anterior">❮</button>
                 <button class="gallery-nav-btn gallery-nav-next" aria-label="Siguiente foto">❯</button>
+                <span class="gallery-counter">1 / 7</span>
                 <span class="apartment-capacity-badge">2 a 4 Personas</span>
               </div>
               <div class="apartment-info">
@@ -862,21 +886,29 @@
               </div>
             </article>
 
-            <!-- Unidad 4: Apart Familiar A -->
+            <!-- Unidad 4: Apart Familiar A (10 Fotos Reales) -->
             <article class="apartment-card" data-category="familias">
               <div class="apartment-gallery">
                 <div class="gallery-track">
-                  <div class="gallery-slide"><img src="nereidas_imagenes/Servicios/04.jpg" alt="Apart Familiar A amplio living" loading="lazy" width="600" height="375"></div>
-                  <div class="gallery-slide"><img src="nereidas_imagenes/Portada/01.jpg" alt="Apart Familiar A dormitorio chicos" loading="lazy" width="600" height="375"></div>
-                  <div class="gallery-slide"><img src="nereidas_imagenes/Portada/02.jpg" alt="Apart Familiar A deck" loading="lazy" width="600" height="375"></div>
+                  <div class="gallery-slide"><img src="nereidas_imagenes/Apart_Familiar_A/01_1725581702_66da49865ef2b.jpg" alt="Apart Familiar A amplio living comedor en planta baja" loading="lazy" width="600" height="375"></div>
+                  <div class="gallery-slide"><img src="nereidas_imagenes/Apart_Familiar_A/02_1725581702_66da4986912c6.jpg" alt="Apart Familiar A dormitorio principal con sommier" loading="lazy" width="600" height="375"></div>
+                  <div class="gallery-slide"><img src="nereidas_imagenes/Apart_Familiar_A/03_1725581703_66da49876bfb7.jpg" alt="Apart Familiar A segundo dormitorio camas individuales" loading="lazy" width="600" height="375"></div>
+                  <div class="gallery-slide"><img src="nereidas_imagenes/Apart_Familiar_A/04_1725581704_66da49884942b.jpg" alt="Apart Familiar A cocina completa con 4 hornallas" loading="lazy" width="600" height="375"></div>
+                  <div class="gallery-slide"><img src="nereidas_imagenes/Apart_Familiar_A/05_1725894759_66df10678445c.jpg" alt="Apart Familiar A baño principal completo" loading="lazy" width="600" height="375"></div>
+                  <div class="gallery-slide"><img src="nereidas_imagenes/Apart_Familiar_A/06_1725894759_66df106787b06.jpg" alt="Apart Familiar A segundo baño completo" loading="lazy" width="600" height="375"></div>
+                  <div class="gallery-slide"><img src="nereidas_imagenes/Apart_Familiar_A/07_1725894759_66df10678a510.jpg" alt="Apart Familiar A deck y parrilla grande" loading="lazy" width="600" height="375"></div>
+                  <div class="gallery-slide"><img src="nereidas_imagenes/Apart_Familiar_A/08_1725894759_66df10678d05d.jpg" alt="Apart Familiar A escalera a planta alta y detalles" loading="lazy" width="600" height="375"></div>
+                  <div class="gallery-slide"><img src="nereidas_imagenes/Apart_Familiar_A/09_1725894759_66df10678fca0.jpg" alt="Apart Familiar A luminosidad y parque" loading="lazy" width="600" height="375"></div>
+                  <div class="gallery-slide"><img src="nereidas_imagenes/Apart_Familiar_A/10_1725894759_66df106792728.jpg" alt="Apart Familiar A ventanales integrados al bosque" loading="lazy" width="600" height="375"></div>
                 </div>
                 <button class="gallery-nav-btn gallery-nav-prev" aria-label="Foto anterior">❮</button>
                 <button class="gallery-nav-btn gallery-nav-next" aria-label="Siguiente foto">❯</button>
+                <span class="gallery-counter">1 / 10</span>
                 <span class="apartment-capacity-badge">4 a 6 Personas</span>
               </div>
               <div class="apartment-info">
                 <h3 class="apartment-title">Apart Familiar A</h3>
-                <span class="apartment-subtitle">Dos Dormitorios &amp; 2 Baños</span>
+                <span class="apartment-subtitle">Dos Dormitorios &amp; 2 Baños en 2 Plantas</span>
                 <div class="apartment-features">
                   <span class="feature-chip"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M3 9h18v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"></path></svg> 2 Dormitorios</span>
                   <span class="feature-chip"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"></rect></svg> Parrilla Grande</span>
@@ -892,16 +924,24 @@
               </div>
             </article>
 
-            <!-- Unidad 5: Apart Familiar B -->
+            <!-- Unidad 5: Apart Familiar B (10 Fotos Reales) -->
             <article class="apartment-card" data-category="familias">
               <div class="apartment-gallery">
                 <div class="gallery-track">
-                  <div class="gallery-slide"><img src="nereidas_imagenes/Portada/02.jpg" alt="Apart Familiar B deck privado" loading="lazy" width="600" height="375"></div>
-                  <div class="gallery-slide"><img src="nereidas_imagenes/Portada/03.jpg" alt="Apart Familiar B habitación principal" loading="lazy" width="600" height="375"></div>
-                  <div class="gallery-slide"><img src="nereidas_imagenes/Servicios/04.jpg" alt="Apart Familiar B parque" loading="lazy" width="600" height="375"></div>
+                  <div class="gallery-slide"><img src="nereidas_imagenes/Apart_Familiar_B/11_1725739978_66dcb3ca0d2bd.jpg" alt="Apart Familiar B estar familiar integrado al parque" loading="lazy" width="600" height="375"></div>
+                  <div class="gallery-slide"><img src="nereidas_imagenes/Apart_Familiar_B/12_1725739978_66dcb3ca0ff69.jpg" alt="Apart Familiar B dormitorio matrimonial en suite" loading="lazy" width="600" height="375"></div>
+                  <div class="gallery-slide"><img src="nereidas_imagenes/Apart_Familiar_B/13_1725739978_66dcb3ca1432c.jpg" alt="Apart Familiar B dormitorio en planta alta" loading="lazy" width="600" height="375"></div>
+                  <div class="gallery-slide"><img src="nereidas_imagenes/Apart_Familiar_B/14_1725739978_66dcb3ca188d8.jpg" alt="Apart Familiar B cocina y vajilla familiar" loading="lazy" width="600" height="375"></div>
+                  <div class="gallery-slide"><img src="nereidas_imagenes/Apart_Familiar_B/15_1725739978_66dcb3ca1b482.jpg" alt="Apart Familiar B baño completo espacioso" loading="lazy" width="600" height="375"></div>
+                  <div class="gallery-slide"><img src="nereidas_imagenes/Apart_Familiar_B/859db912-7b53-4fc0-aa14-0b2ff7bcfeb2_1726512449_66e87d41767c8.jpeg" alt="Apart Familiar B deck privado con parrilla" loading="lazy" width="600" height="375"></div>
+                  <div class="gallery-slide"><img src="nereidas_imagenes/Apart_Familiar_B/90cfa53e-08ec-4657-b70f-7cd5ad09f9a3_1726512449_66e87d4172eba.jpeg" alt="Apart Familiar B entorno arbolado y parque" loading="lazy" width="600" height="375"></div>
+                  <div class="gallery-slide"><img src="nereidas_imagenes/Apart_Familiar_B/IMG_7808_1725926090_66df8aca706ec.jpeg" alt="Apart Familiar B living luminoso con grandes ventanales" loading="lazy" width="600" height="375"></div>
+                  <div class="gallery-slide"><img src="nereidas_imagenes/Apart_Familiar_B/IMG_7826_1725926090_66df8aca69952.jpeg" alt="Apart Familiar B calidez y confort para toda la familia" loading="lazy" width="600" height="375"></div>
+                  <div class="gallery-slide"><img src="nereidas_imagenes/Apart_Familiar_B/IMG_7836_1725926090_66df8aca97595.jpeg" alt="Apart Familiar B vista directa al predio de Nereidas" loading="lazy" width="600" height="375"></div>
                 </div>
                 <button class="gallery-nav-btn gallery-nav-prev" aria-label="Foto anterior">❮</button>
                 <button class="gallery-nav-btn gallery-nav-next" aria-label="Siguiente foto">❯</button>
+                <span class="gallery-counter">1 / 10</span>
                 <span class="apartment-capacity-badge">4 a 6 Personas</span>
               </div>
               <div class="apartment-info">
