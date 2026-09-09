@@ -1912,6 +1912,253 @@
       }
     }
   
+
+    /* Estilos para Modal de Post: Copywriting y Selector de Variantes de Paleta */
+    .post-modal-box {
+      max-width: 890px !important;
+      min-height: 530px !important;
+    }
+    .post-modal-info {
+      max-height: 530px;
+      overflow-y: auto;
+    }
+    .modal-type-badge {
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      padding: 3px 8px;
+      border-radius: 6px;
+      background: #E2E8F0;
+      color: #334155;
+      margin-left: auto;
+    }
+    .modal-type-badge.card {
+      background: #FEF3C7;
+      color: #92400E;
+      border: 1px solid #FCD34D;
+    }
+    .modal-type-badge.photo {
+      background: #E0F2FE;
+      color: #0369A1;
+      border: 1px solid #BAE6FD;
+    }
+    .post-modal-media .card-post .card-h1,
+    .post-modal-media .card-post h1 {
+      font-size: 1.30rem !important;
+      letter-spacing: 2px !important;
+      margin-bottom: 10px !important;
+    }
+    .post-modal-media .card-post .card-h2,
+    .post-modal-media .card-post h2 {
+      font-size: 1.35rem !important;
+      line-height: 1.35 !important;
+      max-width: 380px !important;
+      margin-bottom: 10px !important;
+    }
+    .post-modal-media .card-post .card-h3,
+    .post-modal-media .card-post h3 {
+      font-size: 0.76rem !important;
+      letter-spacing: 2.4px !important;
+      margin-bottom: 8px !important;
+    }
+    .post-modal-media .card-post .card-divider {
+      width: 44px !important;
+      height: 2px !important;
+      margin: 12px auto !important;
+    }
+
+    .modal-copywriting-wrap {
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: 10px;
+      padding: 12px 14px;
+      margin-bottom: 14px;
+    }
+    .modal-copywriting-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid #EDF2F7;
+    }
+    .modal-section-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: #475569;
+    }
+    .btn-copy-caption {
+      background: #FFFFFF;
+      border: 1px solid #CBD5E1;
+      border-radius: 6px;
+      padding: 3px 9px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: #334155;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.2s ease;
+    }
+    .btn-copy-caption:hover {
+      background: #F1F5F9;
+      color: #0F172A;
+      border-color: #94A3B8;
+    }
+
+    /* Caja de Variante de Paleta */
+    .modal-card-variant-box {
+      background: #F0FDF4;
+      border: 1.5px solid #86EFAC;
+      border-radius: 12px;
+      padding: 12px 14px;
+      margin-bottom: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      transition: all 0.25s ease;
+    }
+    .modal-card-variant-box.has-changes {
+      background: #FEFCE8;
+      border-color: #FACC15;
+    }
+    .variant-box-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+    }
+    .variant-box-title {
+      font-size: 0.80rem;
+      font-weight: 700;
+      color: #0F172A;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .variant-palette-tag {
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 2px 7px;
+      border-radius: 6px;
+      background: #E2E8F0;
+      color: #1E293B;
+    }
+    .variant-selector-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .btn-cycle-variant {
+      background: #0F172A;
+      color: #FFFFFF;
+      border: none;
+      border-radius: 8px;
+      padding: 7px 11px;
+      font-size: 0.76rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+    .btn-cycle-variant:hover {
+      background: #1E293B;
+      transform: translateY(-1px);
+    }
+    .variant-chips-group {
+      display: flex;
+      gap: 5px;
+      align-items: center;
+      flex-wrap: wrap;
+      flex: 1;
+    }
+    .variant-chip-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 5px 8px;
+      border-radius: 6px;
+      border: 1.5px solid #CBD5E1;
+      background: #FFFFFF;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: #334155;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .variant-chip-btn:hover {
+      border-color: #94A3B8;
+      background: #F8FAFC;
+    }
+    .variant-chip-btn.active {
+      border-color: #0F172A;
+      background: #0F172A;
+      color: #FFFFFF;
+      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.2);
+    }
+    .variant-chip-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      border: 1px solid rgba(0, 0, 0, 0.15);
+      flex-shrink: 0;
+    }
+    .variant-action-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      padding-top: 8px;
+      border-top: 1px dashed rgba(0, 0, 0, 0.12);
+      flex-wrap: wrap;
+    }
+    .btn-apply-variant-to-feed {
+      background: #059669;
+      color: #FFFFFF;
+      border: none;
+      border-radius: 8px;
+      padding: 7px 13px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+      box-shadow: 0 2px 6px rgba(5, 150, 105, 0.25);
+    }
+    .btn-apply-variant-to-feed:hover {
+      background: #047857;
+      transform: translateY(-1px);
+    }
+    .btn-apply-variant-to-feed.pulse {
+      animation: pulseApplyBtn 1.5s infinite;
+    }
+    @keyframes pulseApplyBtn {
+      0% { box-shadow: 0 0 0 0 rgba(5, 150, 105, 0.6); }
+      70% { box-shadow: 0 0 0 8px rgba(5, 150, 105, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(5, 150, 105, 0); }
+    }
+    .variant-feedback-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: #059669;
+    }
+    .variant-feedback-label.pending {
+      color: #D97706;
+    }
+
 </style>
 </head>
 <body>
@@ -2402,12 +2649,58 @@
       <div class="post-modal-info">
         <div class="post-modal-header">
           <div class="post-modal-avatar"><img src="img/profile_avatar.jpg" alt="Apart Nereidas"></div>
-          <div>
+          <div style="flex: 1;">
             <strong style="font-size: 0.95rem; display: block;">nereidasapart</strong>
             <span style="font-size: 0.78rem; color: var(--ig-text-secondary);">Mar de las Pampas, Buenos Aires</span>
           </div>
+          <span id="modal-post-type-badge" class="modal-type-badge card">Ficha Editorial</span>
         </div>
-        <div class="post-modal-caption" id="modal-post-caption"></div>
+
+        <!-- Sección de Copywriting -->
+        <div class="modal-copywriting-wrap">
+          <div class="modal-copywriting-header">
+            <span class="modal-section-badge">
+              <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+              Copywriting de la Publicación
+            </span>
+            <button type="button" class="btn-copy-caption" id="btn-copy-modal-caption" onclick="copyModalCaption()" title="Copiar texto del copywriting">
+              <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              <span id="copy-btn-text">Copiar</span>
+            </button>
+          </div>
+          <div class="post-modal-caption" id="modal-post-caption"></div>
+        </div>
+
+        <!-- Selector de Variantes de Color (Exclusivo Fichas de Diseño Editorial) -->
+        <div class="modal-card-variant-box" id="modal-card-variant-section" style="display: none;">
+          <div class="variant-box-header">
+            <div class="variant-box-title">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a10 10 0 0 1 10 10"/><path d="M12 12 2.1 12"/></svg>
+              <span>Combinación de Paleta de Colores</span>
+            </div>
+            <span class="variant-palette-tag" id="modal-active-palette-name">Mar Profundo</span>
+          </div>
+
+          <div class="variant-selector-row">
+            <button type="button" class="btn-cycle-variant" onclick="cycleModalCardVariant()" title="Generar siguiente variante cromática con la paleta activa">
+              <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+              Cambiar Combinación
+            </button>
+
+            <div class="variant-chips-group" id="modal-variant-chips">
+              <!-- Renderizado dinámico de chips de paleta activa -->
+            </div>
+          </div>
+
+          <div class="variant-action-footer">
+            <button type="button" class="btn-apply-variant-to-feed" id="btn-apply-card-variant" onclick="applyModalCardVariantToFeed()">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              Cambiar y Sincronizar en el Feed
+            </button>
+            <span class="variant-feedback-label" id="modal-variant-status">Diseño actual</span>
+          </div>
+        </div>
+
         <div class="post-modal-actions">
           <div class="action-icons-row">
             <button class="action-icon" id="btn-like-post" onclick="togglePostLike()">
@@ -3189,6 +3482,7 @@
       });
 
       // Forzar actualización visual en los posts
+      if (typeof renderModalVariantChips === 'function') renderModalVariantChips();
       if (typeof renderGrid === 'function' && currentMode) {
         renderGrid(currentMode);
       saveSimulatorState(false);
@@ -3550,6 +3844,152 @@
     }
 
     // Modal de Post
+    let modalSelectedCardBg = null;
+    let modalInitialCardBg = null;
+
+    function renderModalVariantChips() {
+      const container = document.getElementById('modal-variant-chips');
+      const palName = document.getElementById('modal-active-palette-name');
+      if (!container) return;
+
+      if (palName && PALETTES[activePaletteKey]) {
+        palName.textContent = PALETTES[activePaletteKey].name;
+      }
+
+      const chipDefs = [
+        { bg: 'card-dorado', role: 'acento', label: 'Acento', color: currentPaletteColors.acento },
+        { bg: 'card-turquesa', role: 'secundario', label: 'Secundario', color: currentPaletteColors.secundario },
+        { bg: 'card-blanco', role: 'claro', label: 'Claro', color: currentPaletteColors.claro },
+        { bg: 'card-azul', role: 'primario', label: 'Primario', color: currentPaletteColors.primario }
+      ];
+
+      container.innerHTML = chipDefs.map(c => `
+        <button type="button" 
+                class="variant-chip-btn ${modalSelectedCardBg === c.bg ? 'active' : ''}" 
+                onclick="setModalCardBg('${c.bg}')"
+                title="Combinación ${c.label} (${c.color})">
+          <span class="variant-chip-dot" style="background: ${c.color};"></span>
+          ${c.label}
+        </button>
+      `).join('');
+    }
+
+    function setModalCardBg(newBg) {
+      modalSelectedCardBg = newBg;
+      const mediaBox = document.getElementById('modal-post-media');
+      if (mediaBox) {
+        const cardEl = mediaBox.querySelector('.card-post');
+        if (cardEl) {
+          cardEl.className = 'card-post ' + newBg;
+        }
+      }
+      renderModalVariantChips();
+
+      const box = document.getElementById('modal-card-variant-section');
+      const statusEl = document.getElementById('modal-variant-status');
+      const applyBtn = document.getElementById('btn-apply-card-variant');
+
+      if (modalSelectedCardBg !== modalInitialCardBg) {
+        if (box) box.classList.add('has-changes');
+        if (statusEl) {
+          statusEl.textContent = 'Variante lista para aplicar';
+          statusEl.className = 'variant-feedback-label pending';
+        }
+        if (applyBtn) applyBtn.classList.add('pulse');
+      } else {
+        if (box) box.classList.remove('has-changes');
+        if (statusEl) {
+          statusEl.textContent = 'Diseño actual del feed';
+          statusEl.className = 'variant-feedback-label';
+        }
+        if (applyBtn) applyBtn.classList.remove('pulse');
+      }
+    }
+
+    function cycleModalCardVariant() {
+      const variants = ['card-dorado', 'card-turquesa', 'card-blanco', 'card-azul'];
+      let curIdx = variants.indexOf(modalSelectedCardBg);
+      if (curIdx === -1) curIdx = 0;
+      const nextIdx = (curIdx + 1) % variants.length;
+      setModalCardBg(variants[nextIdx]);
+    }
+
+    function applyModalCardVariantToFeed() {
+      if (selectedPostIndex === null) return;
+      const post = currentPosts[selectedPostIndex];
+      if (!post || post.type !== 'card') return;
+
+      post.bg = modalSelectedCardBg;
+
+      // Sincronizar también texto de copywriting si fue editado
+      const captionTextEl = document.getElementById('modal-caption-text-content');
+      if (captionTextEl) {
+        const textVal = captionTextEl.innerText.trim();
+        if (textVal && textVal.length > 5) {
+          post.caption = textVal;
+        }
+      }
+
+      if (currentMode === 'muestra-a') {
+        if (postsStateA[selectedPostIndex]) postsStateA[selectedPostIndex].bg = modalSelectedCardBg;
+      } else {
+        if (postsStateB[selectedPostIndex]) postsStateB[selectedPostIndex].bg = modalSelectedCardBg;
+      }
+
+      modalInitialCardBg = modalSelectedCardBg;
+
+      // Renderizar feed inmediatamente en el simulador
+      renderGrid(currentMode);
+
+      // Sincronizar y persistir en la base de datos local (localStorage)
+      saveSimulatorState(false);
+
+      // Actualizar estado en el modal
+      const box = document.getElementById('modal-card-variant-section');
+      const statusEl = document.getElementById('modal-variant-status');
+      const applyBtn = document.getElementById('btn-apply-card-variant');
+      if (box) box.classList.remove('has-changes');
+      if (applyBtn) applyBtn.classList.remove('pulse');
+      if (statusEl) {
+        statusEl.textContent = '✓ ¡Diseño activado y sincronizado!';
+        statusEl.className = 'variant-feedback-label';
+      }
+
+      showSyncToast('✓ Ficha ' + (selectedPostIndex + 1) + ' actualizada y sincronizada en el feed');
+      
+      // Resaltar visualmente el post actualizado en el feed
+      const targetPostEl = document.querySelector(`.ig-post[data-index="${selectedPostIndex}"]`);
+      if (targetPostEl) {
+        targetPostEl.style.outline = '3px solid #059669';
+        targetPostEl.style.transition = 'outline 0.3s ease';
+        setTimeout(() => {
+          targetPostEl.style.outline = 'none';
+        }, 2500);
+      }
+    }
+
+    function copyModalCaption() {
+      if (selectedPostIndex === null) return;
+      const post = currentPosts[selectedPostIndex];
+      if (!post || !post.caption) return;
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(post.caption).then(() => {
+          const btnText = document.getElementById('copy-btn-text');
+          if (btnText) {
+            btnText.textContent = '¡Copiado!';
+            setTimeout(() => { btnText.textContent = 'Copiar'; }, 2000);
+          }
+          showSyncToast('Texto de copywriting copiado');
+        }).catch(() => {
+          showSyncToast('Texto de copywriting disponible');
+        });
+      } else {
+        showSyncToast('Texto de copywriting disponible');
+      }
+    }
+
+    // Modal de Post
     function openPostModal(idx) {
       selectedPostIndex = idx;
       const post = currentPosts[idx];
@@ -3558,10 +3998,36 @@
       const captionBox = document.getElementById('modal-post-caption');
       const likeCount = document.getElementById('post-like-count');
       const likeBtn = document.getElementById('btn-like-post');
+      const variantSection = document.getElementById('modal-card-variant-section');
+      const typeBadge = document.getElementById('modal-post-type-badge');
 
       if (post.type === 'photo') {
-        mediaBox.innerHTML = `<img src="${post.src}" alt="Post de Nereidas">`;
+        if (variantSection) variantSection.style.display = 'none';
+        if (typeBadge) {
+          typeBadge.textContent = 'Fotografía Oficial';
+          typeBadge.className = 'modal-type-badge photo';
+        }
+        mediaBox.innerHTML = `<img src="${post.src}" alt="Post de Nereidas" style="width: 100%; height: 100%; object-fit: cover;">`;
       } else {
+        if (variantSection) variantSection.style.display = 'flex';
+        if (typeBadge) {
+          typeBadge.textContent = 'Ficha Editorial';
+          typeBadge.className = 'modal-type-badge card';
+        }
+        modalSelectedCardBg = post.bg;
+        modalInitialCardBg = post.bg;
+        renderModalVariantChips();
+
+        const statusEl = document.getElementById('modal-variant-status');
+        if (statusEl) {
+          statusEl.textContent = 'Diseño actual del feed';
+          statusEl.className = 'variant-feedback-label';
+        }
+        const box = document.getElementById('modal-card-variant-section');
+        if (box) box.classList.remove('has-changes');
+        const applyBtn = document.getElementById('btn-apply-card-variant');
+        if (applyBtn) applyBtn.classList.remove('pulse');
+
         mediaBox.innerHTML = `
           <div class="card-post ${post.bg}" style="width: 100%; height: 100%;">
             ${post.html}
@@ -3570,11 +4036,21 @@
       }
 
       captionBox.innerHTML = `
-        <p style="margin-bottom: 12px; font-weight: 500;">${post.caption}</p>
-        <span style="font-size: 0.78rem; color: #8E8E8E; text-transform: uppercase;">Hace 2 días · Mar de las Pampas</span>
+        <div id="modal-caption-text-content" 
+             contenteditable="true" 
+             title="Hacé clic para editar el texto si deseás ajustarlo antes de sincronizar"
+             style="margin-bottom: 10px; font-weight: 500; font-size: 0.88rem; line-height: 1.55; outline: none; padding: 4px; border-radius: 6px; background: rgba(255,255,255,0.7); border: 1px dashed transparent; transition: all 0.2s ease;"
+             onfocus="this.style.borderColor='#94A3B8'; this.style.background='#FFF';"
+             onblur="this.style.borderColor='transparent'; this.style.background='rgba(255,255,255,0.7)';">
+          ${post.caption}
+        </div>
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <span style="font-size: 0.74rem; color: #8E8E8E; text-transform: uppercase; font-weight: 600;">Publicación Planificada · Apart Nereidas</span>
+          <span style="font-size: 0.68rem; color: #94A3B8; font-style: italic;">✏️ Texto editable</span>
+        </div>
       `;
 
-      likeCount.textContent = `${post.likes} likes`;
+      likeCount.textContent = `${post.likes || 250} likes`;
       likeBtn.classList.remove('liked');
       modal.classList.add('active');
     }
