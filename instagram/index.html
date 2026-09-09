@@ -2439,6 +2439,198 @@
         padding: 0 !important;
       }
     }
+
+    /* ==========================================================================
+       BARRA DE ACCIONES DEL SIMULADOR: GUARDAR CAMBIOS & FULLSCREEN MOBILE
+       ========================================================================== */
+    .phone-column-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      max-width: 440px;
+      gap: 14px;
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .phone-bottom-actions-bar {
+      width: 100%;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .btn-simulator-action {
+      flex: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 13px 18px;
+      border-radius: 12px;
+      font-family: var(--font-sans);
+      font-size: 0.84rem;
+      font-weight: 700;
+      letter-spacing: 0.4px;
+      cursor: pointer;
+      border: none;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      text-decoration: none;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+    }
+    .btn-save-changes {
+      background: linear-gradient(135deg, #059669, #10B981);
+      color: #FFFFFF;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+    }
+    .btn-save-changes:hover {
+      background: linear-gradient(135deg, #047857, #059669);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+    }
+    .btn-save-changes.saved {
+      background: linear-gradient(135deg, #047857, #065F46);
+    }
+    .btn-fullscreen {
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(10px);
+      color: #FFFFFF;
+      border: 1.5px solid rgba(255, 255, 255, 0.25);
+    }
+    .btn-fullscreen:hover {
+      background: var(--dorado-suave);
+      color: var(--azul-noche);
+      border-color: var(--dorado-suave);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(201, 166, 107, 0.35);
+    }
+
+    .save-status-info {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.74rem;
+      color: #94A3B8;
+      font-weight: 500;
+      text-align: center;
+      transition: color 0.3s ease;
+    }
+    .save-status-info.highlight {
+      color: #34D399;
+      font-weight: 600;
+    }
+
+    /* Modo Fullscreen Pantalla Completa */
+    body.simulator-fullscreen-active {
+      overflow: hidden !important;
+      padding: 0 !important;
+      background: #000000 !important;
+    }
+    body.simulator-fullscreen-active .demo-top-switcher-bar,
+    body.simulator-fullscreen-active .side-info-panel,
+    body.simulator-fullscreen-active .header-summary,
+    body.simulator-fullscreen-active header {
+      display: none !important;
+    }
+    body.simulator-fullscreen-active .main-workspace {
+      max-width: 100vw !important;
+      width: 100vw !important;
+      height: 100vh !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      align-items: center !important;
+      justify-content: center !important;
+    }
+    body.simulator-fullscreen-active .phone-column-wrapper {
+      position: fixed !important;
+      inset: 0 !important;
+      z-index: 3000 !important;
+      max-width: none !important;
+      width: 100vw !important;
+      height: 100vh !important;
+      background: #000000 !important;
+      padding: 16px 0 0 0 !important;
+      gap: 10px !important;
+    }
+    body.simulator-fullscreen-active .phone-mockup {
+      max-width: 420px !important;
+      height: calc(100vh - 65px) !important;
+      border-radius: 46px !important;
+      box-shadow: 0 0 80px rgba(0, 0, 0, 0.9), 0 0 0 2px rgba(255, 255, 255, 0.15) !important;
+    }
+    body.simulator-fullscreen-active .phone-bottom-actions-bar {
+      max-width: 420px !important;
+      padding: 0 12px 10px 12px !important;
+    }
+
+    /* En pantallas móviles (< 600px), Fullscreen es 100% experiencia nativa */
+    @media (max-width: 600px) {
+      body.simulator-fullscreen-active .phone-column-wrapper {
+        padding: 0 !important;
+      }
+      body.simulator-fullscreen-active .phone-mockup {
+        max-width: 100vw !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        border-radius: 0 !important;
+        padding: 0 !important;
+        border: none !important;
+        box-shadow: none !important;
+      }
+      body.simulator-fullscreen-active .phone-screen {
+        border-radius: 0 !important;
+        border: none !important;
+      }
+      body.simulator-fullscreen-active .phone-bottom-actions-bar {
+        position: fixed !important;
+        bottom: 16px !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        width: 90% !important;
+        max-width: 360px !important;
+        background: rgba(20, 33, 61, 0.92) !important;
+        backdrop-filter: blur(14px) !important;
+        border: 1px solid rgba(255, 255, 255, 0.2) !important;
+        border-radius: 16px !important;
+        padding: 8px 12px !important;
+        z-index: 3100 !important;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8) !important;
+      }
+      body.simulator-fullscreen-active .save-status-info {
+        display: none !important;
+      }
+    }
+
+    /* Botón flotante para salir de Fullscreen en desktop */
+    .btn-exit-fullscreen-floating {
+      position: fixed;
+      top: 16px;
+      right: 20px;
+      z-index: 3200;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      color: #FFFFFF;
+      padding: 8px 15px;
+      border-radius: 20px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: none;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    }
+    .btn-exit-fullscreen-floating:hover {
+      background: #ED4956;
+      border-color: #ED4956;
+    }
+    body.simulator-fullscreen-active .btn-exit-fullscreen-floating {
+      display: inline-flex;
+    }
+
 </style>
 </head>
 <body>
@@ -2475,7 +2667,10 @@
   <!-- Espacio Principal de Trabajo -->
   <main class="main-workspace">
 
-    <!-- Simulador de Teléfono Celular (Vistas A y B) -->
+    <!-- Contenedor de la Columna del Móvil -->
+    <div class="phone-column-wrapper" id="phone-column-wrapper">
+      
+      <!-- Simulador de Teléfono Celular (Vistas A y B) -->
     <div class="phone-mockup" id="phone-container">
       <div class="phone-screen">
         
@@ -2577,6 +2772,28 @@
 
       </div>
     </div>
+
+    <!-- Barra Inferior de Acciones: Guardar Cambios & Fullscreen Mobile -->
+    <div class="phone-bottom-actions-bar" id="phone-bottom-bar">
+      <button type="button" class="btn-simulator-action btn-save-changes" id="btn-save-all-simulator" onclick="saveAllSimulatorData(true)" title="Guardar orden de tarjetas, colores, fotos e info en la base de datos local">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+        <span id="btn-save-text">Guardar Cambios</span>
+      </button>
+
+      <button type="button" class="btn-simulator-action btn-fullscreen" id="btn-toggle-fullscreen" onclick="toggleSimulatorFullscreen()" title="Visualizar a pantalla completa en versión móvil">
+        <svg id="fs-icon-enter" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+        <svg id="fs-icon-exit" style="display:none;" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3"/></svg>
+        <span id="btn-fullscreen-text">Fullscreen</span>
+      </button>
+    </div>
+
+    <!-- Notificación de Estado de Persistencia -->
+    <div class="save-status-info" id="save-status-info">
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      <span id="save-status-text">Datos sincronizados con la base de datos local</span>
+    </div>
+
+  </div> <!-- Fin phone-column-wrapper -->
 
     <!-- Panel Lateral de Información de Marca & Criterios -->
     <div class="side-info-panel" id="side-panel">
@@ -3824,6 +4041,12 @@
         if (state.currentMode) {
           currentMode = state.currentMode;
         }
+        if (state.timestamp) {
+          const savedDate = new Date(state.timestamp);
+          const timeStr = savedDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+          const statusEl = document.getElementById('save-status-text');
+          if (statusEl) statusEl.textContent = '✓ Guardado en base de datos: ' + timeStr + ' hs';
+        }
 
         // Marcar la tarjeta del preset activa
         document.querySelectorAll('.palette-preset-card').forEach(card => card.classList.remove('active'));
@@ -4721,6 +4944,122 @@
       }
     });
 
+
+    /* ==========================================================================
+       LÓGICA DE BOTÓN GUARDAR CAMBIOS & PANTALLA COMPLETA (FULLSCREEN MOBILE)
+       ========================================================================== */
+    function saveAllSimulatorData(showToast = true) {
+      try {
+        const state = {
+          activePaletteKey,
+          currentPaletteColors,
+          currentTypographyColors,
+          postsStateA,
+          postsStateB,
+          currentMode,
+          timestamp: new Date().toISOString()
+        };
+
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+
+        // Actualizar visualmente botón y etiqueta de estado
+        const btn = document.getElementById('btn-save-all-simulator');
+        const btnText = document.getElementById('btn-save-text');
+        const statusEl = document.getElementById('save-status-text');
+        const statusWrap = document.getElementById('save-status-info');
+
+        if (btn && btnText) {
+          btn.classList.add('saved');
+          btnText.textContent = '✓ ¡Guardado!';
+          setTimeout(() => {
+            btn.classList.remove('saved');
+            btnText.textContent = 'Guardar Cambios';
+          }, 2200);
+        }
+
+        const now = new Date();
+        const timeStr = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        if (statusEl) {
+          statusEl.textContent = '✓ Guardado en base de datos: Hoy ' + timeStr + ' hs';
+        }
+        if (statusWrap) {
+          statusWrap.classList.add('highlight');
+          setTimeout(() => statusWrap.classList.remove('highlight'), 3000);
+        }
+
+        if (showToast) {
+          showSyncToast('✓ ¡Orden, colores, fotos e info guardados en la base de datos local!');
+        }
+      } catch (err) {
+        console.error('Error al guardar datos del simulador:', err);
+        showSyncToast('Error al guardar datos');
+      }
+    }
+
+    function toggleSimulatorFullscreen() {
+      if (document.body.classList.contains('simulator-fullscreen-active')) {
+        exitSimulatorFullscreen();
+      } else {
+        enterSimulatorFullscreen();
+      }
+    }
+
+    function enterSimulatorFullscreen() {
+      document.body.classList.add('simulator-fullscreen-active');
+      
+      const iconEnter = document.getElementById('fs-icon-enter');
+      const iconExit = document.getElementById('fs-icon-exit');
+      const label = document.getElementById('btn-fullscreen-text');
+
+      if (iconEnter) iconEnter.style.display = 'none';
+      if (iconExit) iconExit.style.display = 'inline-block';
+      if (label) label.textContent = 'Salir Fullscreen';
+
+      // Solicitar Fullscreen nativo del navegador si está disponible
+      try {
+        if (document.documentElement.requestFullscreen && !document.fullscreenElement) {
+          document.documentElement.requestFullscreen().catch(() => {});
+        }
+      } catch (e) {}
+
+      showSyncToast('Modo Pantalla Completa activo (Presioná Escape o el botón para salir)');
+    }
+
+    function exitSimulatorFullscreen() {
+      document.body.classList.remove('simulator-fullscreen-active');
+
+      const iconEnter = document.getElementById('fs-icon-enter');
+      const iconExit = document.getElementById('fs-icon-exit');
+      const label = document.getElementById('btn-fullscreen-text');
+
+      if (iconEnter) iconEnter.style.display = 'inline-block';
+      if (iconExit) iconExit.style.display = 'none';
+      if (label) label.textContent = 'Fullscreen';
+
+      // Salir del fullscreen nativo si está activo
+      try {
+        if (document.fullscreenElement && document.exitFullscreen) {
+          document.exitFullscreen().catch(() => {});
+        }
+      } catch (e) {}
+
+      showSyncToast('Saliste de Pantalla Completa');
+    }
+
+    // Sincronizar evento nativo de fullscreen del navegador
+    document.addEventListener('fullscreenchange', () => {
+      if (!document.fullscreenElement && document.body.classList.contains('simulator-fullscreen-active')) {
+        exitSimulatorFullscreen();
+      }
+    });
+
+    // Tecla Escape para salir de Fullscreen
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && document.body.classList.contains('simulator-fullscreen-active')) {
+        exitSimulatorFullscreen();
+      }
+    });
+
 </script>
 
   <!-- Modal Explorador de Galería Nereidas -->
@@ -4804,5 +5143,10 @@
     </div>
   </div>
 
+  <!-- Botón Flotante para Salir de Pantalla Completa -->
+  <button type="button" class="btn-exit-fullscreen-floating" id="btn-exit-fullscreen-floating" onclick="exitSimulatorFullscreen()" title="Salir de pantalla completa">
+    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    <span>Salir de Fullscreen</span>
+  </button>
 </body>
 </html>
