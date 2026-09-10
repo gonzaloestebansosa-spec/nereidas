@@ -1,40 +1,39 @@
-# Estado del Proyecto - 2026-09-10 / Rediseño Pop up de Apartamentos (Desktop & Mobile Senior UI/UX) & v2.6
+# Estado del Proyecto - 2026-09-10 / Pop up al 80% del Área en Desktop, Eliminación de Filtros & Cache-Busting v2.7
 
 ## 1. Stack & Configuración Activa
 - **Framework/Entorno**: HTML5 semántico, CSS3 moderno (Variables CSS, Flexbox, CSS Grid bidimensional, Scroll-Snap nativo, Glassmorphism con `backdrop-filter`), JavaScript Vanilla ES6+ modular (cero dependencias externas, ultraliviano).
 - **Entorno de Ejecución & Herramientas**: Windows PowerShell, Node.js (scripts de automatización, validación y headless testing), Google Chrome Headless.
 - **Integraciones & APIs Clave**:
-  - **Modal Pop-up Flotante de Apartamentos** (`#apartment-modal`): Lógica adaptativa dual. En Desktop: 2 columnas lado a lado (slideshow a la izquierda, ficha descriptiva a la derecha) calculada para visualización 100% sin scrollbar. En Mobile: tarjeta flotante con efecto glow halo dorado, 2 filas exactas de pastillas de servicios y tipografía reducida (-2px).
+  - **Modal Pop-up Flotante de Apartamentos** (`#apartment-modal`):
+    - **Desktop**: Dimensionado al 80% del área del viewport (`width: 80vw; max-width: 1400px; height: 82vh;`), con distribución en 2 columnas lado a lado (slideshow a la izquierda ocupando toda la altura disponible y ficha técnica/distribución a la derecha) calculada para visualización 100% libre de scrollbar.
+    - **Mobile**: Tarjeta flotante centrada con halo glow dorado, pastillas de servicios en 2 filas exactas y tipografía compacta (-2px).
   - **Megamenús Desplegables PxNav**: Control interactivo dual (hover inteligente en desktop con debounce de 180ms + clic/tap en móvil y escritorio con cierre por tecla Escape y light-dismiss).
-  - **WhatsApp Click-to-Chat API**: Mensajes directos con mensaje contextual preconfigurado por unidad.
-  - **IntersectionObserver API & Page Visibility API**: Control inteligente de rotación y pausa de timers de slideshow según visibilidad en pantalla y pestaña.
+  - **Grilla de Apartamentos**: Acceso directo e inmediato a las 5 unidades sin filtros por capacidad ni botones "Todos los Apartamentos", garantizando una navegación fluida.
 
 ## 2. Archivos Modificados / Creados Recientemente
-- `PROJECT_STATE.md`: Actualizado con las especificaciones de diseño, métricas de viewport y protocolo de persistencia.
-- `css/modern.css`: 
-  - Desktop: Transformado `.apt-modal-body` a grilla de 2 columnas (`480px 1fr`) con eliminación total de scroll vertical (`overflow: hidden`). Ajustados espaciados, tamaños de fuente y pastillas de servicios para encajar armónicamente en el viewport.
-  - Mobile: Rediseñado el diálogo a pop-up flotante centrado con bordes redondeados (`border-radius: 18px`), nuevo estilo glow de lujo con halo dorado (`box-shadow: 0 0 0 1px rgba(197,160,89,0.5), 0 0 28px rgba(197,160,89,0.3), 0 20px 50px rgba(7,16,31,0.7)`), pastillas de servicios en 2 filas exactas (`grid-template-columns: repeat(3, minmax(0, 1fr))`) y textos reducidos en -2px.
-  - Eliminados los botones inferiores ("Cerrar Ficha" y "Consultar por WhatsApp") con `.apt-modal-footer { display: none !important; }`.
-- `nereidas-demo_files/modern.css`: Réplica espejo sincronizada al 100% con `css/modern.css`.
-- `index.html`: Eliminado el bloque de pie de modal `.apt-modal-footer` y actualizado cache-busting a `?v=2.6`.
+- `PROJECT_STATE.md`: Checkpoint actualizado con las dimensiones al 80% del área y eliminación de filtros.
+- `index.html`: 
+  - Eliminado el contenedor `.apartments-filters` con los botones "Todos los Apartamentos", "Para Parejas (2 Pax)" y "Familias (4 a 6 Pax)".
+  - Actualizado cache-busting de estilos y scripts a `?v=2.7`.
 - `nereidas-demo.html`: Réplica espejo sincronizada al 100% con `index.html`.
+- `css/modern.css`: 
+  - Modificado `.apt-modal-dialog` en Desktop para ocupar el 80% del área (`width: 80vw; max-width: 1400px; height: 82vh; max-height: 86vh;`).
+  - `.apt-modal-gallery` y `.apt-modal-viewport` configurados con `flex: 1; min-height: 0;` para expandir la fotografía a gran escala ocupando la altura del 80%.
+  - Reajustados márgenes y rellenos internos en `.apt-modal-content` (`padding: 14px 20px; gap: 9px;`) para certificar que el contenido de todas las unidades (incluyendo las de dos plantas) se muestre con cero scrollbar.
+- `nereidas-demo_files/modern.css`: Réplica espejo sincronizada al 100% con `css/modern.css`.
 
 ## 3. Decisiones de Arquitectura
-- **Ajuste Dimensional Sin Scroll en Desktop**: Se calculó la altura total del modal (cabecera ~48px + cuerpo ~390px = ~438px) asegurando que el contenido descriptivo (especificaciones, 6 amenidades y distribución completa) conviva lado a lado con el carrusel fotográfico sin provocar scrollbar interno ni desbordar la pantalla del usuario.
-- **Ajuste de 2 Filas en Pastillas Móviles**: Con 6 comodidades por unidad, la distribución en 3 columnas (`repeat(3, minmax(0, 1fr))`) garantiza matemáticamente una grilla balanceada de exactamente 2 filas horizontales sin saltos irregulares.
-- **Reducción Tipográfica Uniforme (-2px)**: Aplicada en todos los elementos textuales de la ficha móvil (insignias, títulos, superficies, especificaciones y viñetas de distribución) para maximizar el área visible y mantener una proporción estética delicada.
-- **Eliminación de Botones de Cierre y Consulta en el Modal**: Se suprimieron los botones inferiores para limpiar la vista. El cierre se realiza de forma limpia y accesible mediante el botón "X" superior derecho, clic en el fondo difuminado o tecla `Escape`.
+- **Ocupación del 80% del Área en Desktop**: La proporción `80vw` × `82vh` genera un marco perimetral simétrico de ~10% en los cuatro lados sobre el fondo oscuro difuminado (`backdrop-filter: blur(12px)`), magnificando la presencia visual de las fotografías del complejo sin invadir de borde a borde la pantalla.
+- **Eliminación Total de Filtros en Ambas Versiones**: Al contar con una oferta exclusiva y curada de 5 unidades, la supresión de los filtros reduce la fricción de navegación, permitiendo al usuario explorar todas las opciones en un scroll natural continuo.
+- **Cero Scroll Garantizado en 80% de Altura**: La calibración milimétrica de espaciados en la columna derecha asegura que incluso la ficha con mayor cantidad de datos (Apart Premium A con distribución de 2 plantas) mida ~418px de altura, quedando muy por debajo de los ~500-650px disponibles en el 82vh.
 
 ## 4. Tareas Pendientes (Backlog Inmediato)
-- [x] Eliminar botones de cerrar fichas y consultar por WhatsApp en Desktop y Mobile.
-- [x] Ubicar texto descriptivo a la derecha del slideshow de fotos en versión Desktop.
-- [x] Ajustar pastillas de servicios y textos en Desktop para evitar scroll vertical.
-- [x] Ajustar pastillas de servicios en exactamente 2 filas en versión Mobile.
-- [x] Reducir tamaño de textos en -2px en versión Mobile.
-- [x] Cambiar estilo del pop-up móvil a pop-up flotante con glow de halo dorado de lujo.
-- [x] Actualizar cache-busting a `v=2.6` en `index.html` y `nereidas-demo.html`.
-- [x] Validar con capturas visuales en resoluciones Desktop (1280x800) y Mobile (390x844 / 500x880) y tests automatizados (0 errores).
+- [x] Ajustar pop-up de unidad en Desktop al 80% del área (`width: 80vw; height: 82vh`).
+- [x] Eliminar filtros de unidades por cantidad de personas y "Todos los Apartamentos" en ambas versiones (Desktop y Mobile).
+- [x] Certificar visualización con cero scroll en resoluciones de escritorio (1280x800, 1440x900).
+- [x] Actualizar cache-busting a `v=2.7` en `index.html` y `nereidas-demo.html`.
+- [x] Validar mediante suite de pruebas headless (0 errores, 100% pass).
 - [ ] Commit y push a la rama `main` en Git.
 
 ## 5. Siguiente Acción Inmediata
-- Realizar commit y push a `origin/main` en Git para desplegar la versión v2.6 a Vercel con el nuevo diseño del pop up.
+- Realizar commit y push a `origin/main` en Git para desplegar la versión v2.7 a Vercel.
