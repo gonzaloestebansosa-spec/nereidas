@@ -360,7 +360,7 @@ ul, ol {
   width: 82%;
   max-width: 360px;
   height: 100vh;
-  background: var(--blanco);
+  background: #22374A;
   z-index: 1100;
   padding: 30px 24px;
   display: flex;
@@ -4073,7 +4073,7 @@ ul, ol {
     min-width: 175px !important;
     max-width: 280px !important;
     padding: 16px 14px 18px !important;
-    background: #1B2F7A !important; /* Mismo fondo Azul Mar institucional del footer */
+    background: #22374A !important; /* Fondo #22374A */
     box-shadow: -10px 0 32px rgba(0, 0, 0, 0.45) !important;
     border-left: 1px solid rgba(255, 255, 255, 0.14) !important;
     display: flex !important;
@@ -4133,7 +4133,7 @@ ul, ol {
   .drawer-close:hover,
   .drawer-close:active {
     background: var(--dorado-suave) !important;
-    color: #1B2F7A !important;
+    color: #22374A !important;
     transform: scale(1.05) !important;
   }
 
@@ -4216,7 +4216,7 @@ ul, ol {
   .drawer-social-btn:active {
     transform: translateY(-2px) scale(1.08) !important;
     background: var(--dorado-suave) !important;
-    color: #1B2F7A !important;
+    color: #22374A !important;
     box-shadow: 0 4px 12px rgba(201, 166, 107, 0.4) !important;
   }
   .drawer-social-btn.btn-wa {
@@ -4245,7 +4245,7 @@ ul, ol {
   .drawer-social-btn.btn-mail {
     background: var(--dorado-suave) !important;
     border-color: var(--dorado-suave) !important;
-    color: #1B2F7A !important;
+    color: #22374A !important;
   }
 
   .drawer-footer p,
@@ -4342,4 +4342,35 @@ ul, ol {
   max-height: 800px !important;
   opacity: 1 !important;
   margin-top: 10px !important;
+}
+/* Mobile header dropdown panel background #22374A */
+@media (max-width: 991px) {
+  .pxnav-drops .pxpanel,
+  .pxpanel {
+    background: #22374A !important;
+  }
+}
+
+/* ==========================================================================
+   ALINEACIÓN DE TARJETAS DE APARTAMENTOS (EVITAR ESPACIO EN BLANCO AL DESPLEGAR)
+   ========================================================================== */
+.apartments-grid {
+  align-items: start !important;
+}
+.apartment-card {
+  align-self: start !important;
+  height: auto !important;
+}
+
+/* ==========================================================================
+   FICHAS DE SERVICIOS SIN PASTILLAS (ICONO CIRCULAR ALINEADO A LA DERECHA)
+   ========================================================================== */
+.pxservice-card-head {
+  display: flex !important;
+  justify-content: flex-end !important;
+  align-items: center !important;
+  margin-bottom: 6px !important;
+}
+.pxservice-badge {
+  display: none !important;
 }
