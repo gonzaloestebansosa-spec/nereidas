@@ -295,18 +295,6 @@ const HIGHLIGHTS_DATA = [
     icon: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 24h24v8a8 8 0 0 1-8 8H18a8 8 0 0 1-8-8v-8z"/><path d="M34 26h4a4 4 0 0 1 0 8h-4"/><line x1="6" y1="44" x2="38" y2="44"/><path d="M17 17c-1-3 1-5 0-8M22 17c-1-3 1-5 0-8M27 17c-1-3 1-5 0-8"/></svg>`
   },
   {
-    id: 'wifi',
-    title: 'WiFi',
-    category: 'Conectividad Total',
-    badge: 'Fibra Óptica de Alta Velocidad',
-    image: 'nereidas_imagenes/Servicios/11.jpg',
-    shortDesc: 'Internet de fibra óptica de alta velocidad distribuida en todos los departamentos y parque.',
-    longDesc: 'Conectividad confiable por fibra óptica en todo el predio. Ideal para nómadas digitales, videollamadas de trabajo o streaming mientras disfrutás del entorno natural y la tranquilidad de los pinos.',
-    actionText: 'Consultar Conectividad',
-    actionUrl: 'https://wa.me/5492255458000?text=Hola%20Apart%20Nereidas,%20quisiera%20consultar%20por%20la%20conexion%20WiFi%20para%20trabajar%20y%20descansar',
-    icon: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="24" y1="21" x2="16" y2="43"/><line x1="24" y1="21" x2="32" y2="43"/><circle cx="24" cy="21" r="2.5" fill="currentColor"/><path d="M19 15a7 7 0 0 1 10 0"/><path d="M15 11a13 13 0 0 1 18 0"/><path d="M11 7a19 19 0 0 1 26 0"/></svg>`
-  },
-  {
     id: 'limpieza',
     title: 'Limpieza',
     category: 'Atención & Confort',
@@ -427,30 +415,6 @@ const HIGHLIGHTS_DATA = [
     icon: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="18" y="15" width="22" height="22" rx="2" transform="rotate(6 29 26)"/><rect x="8" y="15" width="22" height="22" rx="2" transform="rotate(-6 19 26)"/><rect x="13" y="13" width="22" height="22" rx="2"/><circle cx="18" cy="18" r="2"/><polyline points="15 31 22 23 27 28 30 25 33 31"/></svg>`
   },
   {
-    id: 'contacto',
-    title: 'Contacto',
-    category: 'Atención Directa',
-    badge: 'Atendido por sus Dueños',
-    image: 'nereidas_imagenes/Portada/fotoinicio.jpg',
-    shortDesc: 'Atención personalizada y directa por sus propios dueños para asesorarte en tu estadía.',
-    longDesc: 'Sin intermediarios: nos encargamos personalmente de recibirte, coordinar tus horarios y brindarte la mejor información local para que aproveches al máximo tus vacaciones.',
-    actionText: 'Escribir a los Dueños',
-    actionUrl: 'https://wa.me/5492255458000?text=Hola%20Apart%20Nereidas,%20quisiera%20hacerles%20una%20consulta%20directa',
-    icon: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="11" width="34" height="26" rx="3"/><polyline points="7 13 24 26 41 13"/><line x1="7" y1="35" x2="18" y2="23"/><line x1="41" y1="35" x2="30" y2="23"/></svg>`
-  },
-  {
-    id: 'tarifas',
-    title: 'Tarifas',
-    category: 'Precios & Promos',
-    badge: 'Cotizaciones Claras & Escapadas',
-    image: 'nereidas_imagenes/Portada/04.jpg',
-    shortDesc: 'Precios por noche transparentes, promociones para fines de semana largos y escapadas.',
-    longDesc: 'Cotizamos tu estadía a medida de la cantidad de pasajeros y fechas. Consultá por promociones de temporada baja, paquetes de feriados largos y beneficios por estadías prolongadas.',
-    actionText: 'Pedir Cotización de Tarifas',
-    actionUrl: 'https://wa.me/5492255458000?text=Hola%20Apart%20Nereidas,%20quisiera%20solicitar%20cotizacion%20de%20tarifas%20para%20mi%20grupo',
-    icon: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="16" cy="37" rx="8" ry="3"/><ellipse cx="16" cy="32" rx="8" ry="3"/><ellipse cx="16" cy="27" rx="8" ry="3"/><path d="M8 27v10c0 1.7 3.6 3 8 3s8-1.3 8-3V27"/><path d="M25 15l10-10 9 9-10 10-9-9z"/><circle cx="39" cy="9" r="2" fill="currentColor"/></svg>`
-  },
-  {
     id: 'actividades',
     title: 'Actividades',
     category: 'Aventura & Naturaleza',
@@ -461,20 +425,8 @@ const HIGHLIGHTS_DATA = [
     actionText: 'Consultar Paseos y Actividades',
     actionUrl: 'https://wa.me/5492255458000?text=Hola%20Apart%20Nereidas,%20quisiera%20saber%20mas%20sobre%20actividades%20y%20paseos%20en%20la%20zona',
     icon: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 6c-4 10-4 26 0 36 4-10 4-26 0-36z"/><line x1="14" y1="6" x2="14" y2="42"/><rect x="23" y="20" width="19" height="15" rx="3"/><path d="M29 20v-3h7v3"/><circle cx="32.5" cy="27.5" r="4"/></svg>`
-  },
-  {
-    id: 'reservas',
-    title: 'Reservas',
-    category: 'Check-in / Check-out',
-    badge: 'Reserva Simple por WhatsApp',
-    image: 'nereidas_imagenes/Portada/02.jpg',
-    shortDesc: 'Ingreso 15:00 hs, Egreso 10:00 hs. Congelá tu tarifa con seña bancaria de forma rápida y segura.',
-    longDesc: 'Coordinamos tu reserva en minutos a través de WhatsApp. Solicitá disponibilidad para tus fechas deseadas y asegurá tu lugar en el bosque con una seña del 30% al 50%.',
-    actionText: 'Reservar Mi Estadía Ahora',
-    actionUrl: 'https://wa.me/5492255458000?text=Hola%20Apart%20Nereidas,%20quisiera%20reservar%20mi%20estadia',
-    icon: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="10" width="34" height="30" rx="3"/><line x1="7" y1="18" x2="41" y2="18"/><line x1="14" y1="6" x2="14" y2="12"/><line x1="34" y1="6" x2="34" y2="12"/><rect x="13" y="24" width="4" height="4"/><rect x="21" y="24" width="4" height="4"/><rect x="29" y="24" width="4" height="4"/><rect x="13" y="32" width="4" height="4"/><circle cx="34" cy="34" r="7" fill="white"/><circle cx="34" cy="34" r="7"/><polyline points="31 34 33 36 37 32"/></svg>`
   }
-];
+  ];
 
 function initHighlightsStories() {
   const reelContainer = document.getElementById('stories-reel');

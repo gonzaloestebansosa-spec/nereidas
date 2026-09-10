@@ -4439,3 +4439,33 @@ ul, ol {
   margin-top: auto !important;
   flex-shrink: 0 !important;
 }
+/* ==========================================================================
+   GRILLA DE 12 SERVICIOS (6 POR FILA EN DESKTOP)
+   ========================================================================== */
+.pxservices-grid {
+  display: grid !important;
+  grid-template-columns: repeat(6, 1fr) !important;
+  gap: 12px !important;
+}
+@media (max-width: 1024px) {
+  .pxservices-grid {
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 10px !important;
+  }
+}
+@media (max-width: 768px) {
+  .pxservices-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 8px !important;
+  }
+}
+@media (max-width: 480px) {
+  .pxservices-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 6px !important;
+  }
+}
+.pxnav-drop[data-pxnav-panel="servicios"] .pxpanel {
+  width: 1120px !important;
+  max-width: 96vw !important;
+}
