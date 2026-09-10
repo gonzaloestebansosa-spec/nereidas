@@ -3886,34 +3886,54 @@ ul, ol {
   letter-spacing: 0.2px;
 }
 
-/* Barra de Especificaciones Clave (Pax, Dormitorio, Baño) */
+/* ==========================================================================
+   BARRA DE ESPECIFICACIONES CLAVE (PAX, DORMITORIO, BAÑO)
+   Diseño Symmetrical Micro-Grid Responsive (Se adapta al 100% del área asignada)
+   ========================================================================== */
 .apt-specs-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: #F8FAFC;
-  border: 1px solid #E2E8F0;
-  border-radius: 10px;
-  padding: 8px 12px;
-  margin-bottom: 14px;
-  gap: 6px;
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  align-items: center !important;
+  background: #F8FAFC !important;
+  border: 1px solid #E2E8F0 !important;
+  border-radius: 12px !important;
+  padding: 10px 4px !important;
+  margin-bottom: 14px !important;
+  gap: 2px !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
 }
-.apt-spec-item {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 0.79rem;
-  font-weight: 600;
-  color: #1E293B;
-  white-space: nowrap;
+
+.apt-specs-bar .apt-spec-divider {
+  display: none !important;
 }
-.apt-spec-item svg {
-  stroke: #6FA8AD;
-  flex-shrink: 0;
+
+.apt-specs-bar .apt-spec-item {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  gap: 4px !important;
+  font-size: 0.73rem !important;
+  font-weight: 600 !important;
+  color: #1E293B !important;
+  line-height: 1.25 !important;
+  padding: 0 4px !important;
+  white-space: normal !important;
+  min-width: 0 !important;
+  box-sizing: border-box !important;
 }
-.apt-spec-divider {
-  color: #CBD5E1;
-  font-weight: bold;
+
+.apt-specs-bar .apt-spec-item:not(:last-child) {
+  border-right: 1px solid #E2E8F0 !important;
+}
+
+.apt-specs-bar .apt-spec-item svg {
+  stroke: #6FA8AD !important;
+  width: 16px !important;
+  height: 16px !important;
+  flex-shrink: 0 !important;
 }
 
 /* Servicios Incluidos (Pills Minimalistas) */
@@ -4014,11 +4034,7 @@ ul, ol {
 }
 
 @media (max-width: 576px) {
-  .apt-specs-bar {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 4px;
-  }
+  
   .apt-spec-divider {
     display: none;
   }
