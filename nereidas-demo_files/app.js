@@ -1,121 +1,313 @@
 /**
- * APART NEREIDAS — MODERN VANILLA JS (ES6+)
- * Cero dependencias (sin jQuery), modular, accesible y ultraliviano (< 6KB)
- */
-
-document.addEventListener('DOMContentLoaded', () => {
-  initHeaderScroll();
-  initMobileDrawer();
-  initHighlightsStories();
-  initApartmentGalleries();
-  initApartmentFilters();
-  initFaqAccordion();
-  initBookingForm();
-  initFloatingBookingBar();
-  initNewsletterForm();
-});
-
-/**
- * 1. Efecto Scroll en Header (Glassmorphism sutil al bajar)
- */
-function initHeaderScroll() {
-  const header = document.querySelector('.header');
-  if (!header) return;
-
-  const onScroll = () => {
-    if (window.scrollY > 40) {
-      header.classList.add('scrolled');
-    } else {
-      header.classList.remove('scrolled');
-    }
-  };
-
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
-}
-
-/**
- * 2. Menú Lateral Móvil (Drawer / Offcanvas) Accesible
- */
-function initMobileDrawer() {
-  const toggleBtn = document.querySelector('.mobile-toggle');
-  const drawer = document.querySelector('.mobile-drawer');
-  const backdrop = document.querySelector('.mobile-backdrop');
-  const closeBtn = document.querySelector('.drawer-close');
-  const drawerLinks = document.querySelectorAll('.drawer-menu a');
-
-  if (!toggleBtn || !drawer || !backdrop) return;
-
-  function openDrawer() {
-    drawer.classList.add('open');
-    backdrop.classList.add('visible');
-    toggleBtn.classList.add('active');
-    toggleBtn.setAttribute('aria-expanded', 'true');
-    document.body.style.overflow = 'hidden'; // Evita el scroll de fondo
-  }
-
-  function closeDrawer() {
-    drawer.classList.remove('open');
-    backdrop.classList.remove('visible');
-    toggleBtn.classList.remove('active');
-    toggleBtn.setAttribute('aria-expanded', 'false');
-    document.body.style.overflow = '';
-  }
-
-  toggleBtn.addEventListener('click', () => {
-    const isOpen = drawer.classList.contains('open');
-    if (isOpen) {
-      closeDrawer();
-    } else {
-      openDrawer();
-    }
-  });
-
-  if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
-  backdrop.addEventListener('click', closeDrawer);
-
-  // Cerrar al hacer clic en cualquier enlace
-  drawerLinks.forEach(link => {
-    link.addEventListener('click', closeDrawer);
-  });
-
-  // Cerrar con tecla Escape
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && drawer.classList.contains('open')) {
-      closeDrawer();
-      toggleBtn.focus();
-    }
-  });
-}
-
-/**
  * 3. Carruseles Táctiles Nativos (Scroll-Snap) en Apartamentos
+ *    + Slideshow Automático (cada 7 segundos) con UX Senior
+ *    + Pop-up Modal con Ficha Descriptiva y Lightbox Completo
  */
+let currentModalSlides = [];
+let currentModalSlideIndex = 0;
+
 function initApartmentGalleries() {
   const galleries = document.querySelectorAll('.apartment-gallery');
+  if (!galleries.length) return;
 
   galleries.forEach(gallery => {
     const track = gallery.querySelector('.gallery-track');
     const prevBtn = gallery.querySelector('.gallery-nav-prev');
     const nextBtn = gallery.querySelector('.gallery-nav-next');
+    const counter = gallery.querySelector('.gallery-counter');
+    const slides = gallery.querySelectorAll('.gallery-slide');
+    const expandBadge = gallery.querySelector('.gallery-expand-badge');
+    const card = gallery.closest('.apartment-card');
+    const total = slides.length;
 
-    if (!track) return;
+    if (!track || total === 0) return;
+
+    let autoSlideTimer = null;
+    let isPaused = false;
+    let isVisible = false;
+
+    const getCurrentIndex = () => {
+      const width = track.clientWidth;
+      if (!width) return 0;
+      return Math.min(total - 1, Math.max(0, Math.round(track.scrollLeft / width)));
+    };
+
+    const updateCounter = () => {
+      if (!counter || !track.clientWidth) return;
+      const index = getCurrentIndex() + 1;
+      counter.textContent = `${index} / ${total}`;
+    };
+
+    const goToSlide = (index, smooth = true) => {
+      const slideWidth = track.clientWidth;
+      track.scrollTo({
+        left: index * slideWidth,
+        behavior: smooth ? 'smooth' : 'auto'
+      });
+      setTimeout(updateCounter, 320);
+    };
+
+    const nextSlide = () => {
+      const current = getCurrentIndex();
+      const next = (current + 1 >= total) ? 0 : current + 1;
+      goToSlide(next);
+    };
+
+    const prevSlide = () => {
+      const current = getCurrentIndex();
+      const prev = (current <= 0) ? total - 1 : current - 1;
+      goToSlide(prev);
+    };
+
+    // Temporizador Automático cada 7 segundos (7000ms)
+    const resetTimer = () => {
+      clearInterval(autoSlideTimer);
+      if (!isPaused && isVisible && !document.hidden) {
+        autoSlideTimer = setInterval(() => {
+          nextSlide();
+        }, 7000);
+      }
+    };
+
+    const pauseTimer = () => {
+      isPaused = true;
+      clearInterval(autoSlideTimer);
+    };
+
+    const resumeTimer = () => {
+      isPaused = false;
+      resetTimer();
+    };
+
+    let scrollTimeout;
+    track.addEventListener('scroll', () => {
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        updateCounter();
+        resetTimer();
+      }, 60);
+    }, { passive: true });
 
     if (prevBtn) {
       prevBtn.addEventListener('click', (e) => {
         e.preventDefault();
-        track.scrollBy({ left: -track.clientWidth, behavior: 'smooth' });
+        e.stopPropagation();
+        prevSlide();
+        resetTimer();
       });
     }
 
     if (nextBtn) {
       nextBtn.addEventListener('click', (e) => {
         e.preventDefault();
-        track.scrollBy({ left: track.clientWidth, behavior: 'smooth' });
+        e.stopPropagation();
+        nextSlide();
+        resetTimer();
+      });
+    }
+
+    // Senior UX: Pausa al posar el cursor o interactuar táctilmente
+    gallery.addEventListener('mouseenter', pauseTimer);
+    gallery.addEventListener('mouseleave', resumeTimer);
+    gallery.addEventListener('touchstart', pauseTimer, { passive: true });
+    gallery.addEventListener('touchend', resumeTimer, { passive: true });
+
+    // Senior UX: Pausa si la pestaña pasa a segundo plano
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        pauseTimer();
+      } else {
+        resumeTimer();
+      }
+    });
+
+    // Senior UX: IntersectionObserver para pausar cuando la tarjeta no esté visible
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            isVisible = true;
+            resetTimer();
+          } else {
+            isVisible = false;
+            clearInterval(autoSlideTimer);
+          }
+        });
+      }, { threshold: 0.25 });
+      observer.observe(card || gallery);
+    } else {
+      isVisible = true;
+      resetTimer();
+    }
+
+    // Clic sobre las fotos: Abrir pop up con ficha descriptiva del apartamento
+    slides.forEach((slide, slideIdx) => {
+      slide.addEventListener('click', (e) => {
+        if (e.target.closest('.gallery-nav-btn')) return;
+        openApartmentModal(card, slideIdx);
+      });
+
+      slide.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          openApartmentModal(card, slideIdx);
+        }
+      });
+    });
+
+    if (expandBadge) {
+      expandBadge.style.cursor = 'pointer';
+      expandBadge.style.pointerEvents = 'auto';
+      expandBadge.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        openApartmentModal(card, getCurrentIndex());
       });
     }
   });
+
+  // Inicializar listeners del teclado para el Modal de Apartamentos
+  initApartmentModalEvents();
 }
+
+/**
+ * Lógica del Modal Pop-up Ficha Descriptiva de Apartamento
+ */
+function initApartmentModalEvents() {
+  document.addEventListener('keydown', (e) => {
+    const modal = document.getElementById('apartment-modal');
+    if (!modal || !modal.classList.contains('open')) return;
+
+    if (e.key === 'Escape') {
+      closeApartmentModal();
+    } else if (e.key === 'ArrowLeft') {
+      navigateAptModalImage(-1);
+    } else if (e.key === 'ArrowRight') {
+      navigateAptModalImage(1);
+    }
+  });
+}
+
+function openApartmentModal(card, initialSlideIndex = 0) {
+  const modal = document.getElementById('apartment-modal');
+  if (!modal || !card) return;
+
+  const titleEl = modal.querySelector('#apt-modal-title');
+  const capacityEl = modal.querySelector('#apt-modal-capacity');
+  const surfaceEl = modal.querySelector('#apt-modal-surface');
+  const specsEl = modal.querySelector('#apt-modal-specs');
+  const amenitiesEl = modal.querySelector('#apt-modal-amenities');
+  const distribContentEl = modal.querySelector('#apt-modal-distrib-content');
+  const ctaBtn = modal.querySelector('#apt-modal-cta');
+  const thumbsEl = modal.querySelector('#apt-modal-thumbs');
+
+  const title = card.querySelector('.apartment-title')?.textContent?.trim() || 'Apartamento';
+  const capacity = card.querySelector('.apartment-capacity-badge')?.textContent?.trim() || '';
+  const surface = card.querySelector('.apt-surface-badge')?.textContent?.trim() || '';
+  const specsHtml = card.querySelector('.apt-specs-bar')?.innerHTML || '';
+  const amenitiesHtml = card.querySelector('.apt-amenities-row')?.innerHTML || '';
+
+  const plantsGrid = card.querySelector('.apt-plants-grid');
+  const detailsList = card.querySelector('.apt-details-list');
+  let distribHtml = '';
+  if (plantsGrid) {
+    distribHtml = plantsGrid.outerHTML;
+  } else if (detailsList) {
+    distribHtml = detailsList.outerHTML;
+  }
+
+  // Recopilar fotos de la unidad
+  const slideImgs = Array.from(card.querySelectorAll('.gallery-slide img')).map(img => ({
+    src: img.getAttribute('src') || img.src,
+    alt: img.getAttribute('alt') || title
+  }));
+
+  currentModalSlides = slideImgs;
+  currentModalSlideIndex = Math.max(0, Math.min(initialSlideIndex, slideImgs.length - 1));
+
+  if (titleEl) titleEl.textContent = title;
+  if (capacityEl) capacityEl.textContent = capacity;
+  if (surfaceEl) surfaceEl.textContent = surface;
+  if (specsEl) specsEl.innerHTML = specsHtml;
+  if (amenitiesEl) amenitiesEl.innerHTML = amenitiesHtml;
+  if (distribContentEl) distribContentEl.innerHTML = distribHtml;
+
+  // Botón directo a WhatsApp con texto personalizado por apartamento
+  if (ctaBtn) {
+    const waMsg = encodeURIComponent(`¡Hola Apart Nereidas! Me interesa consultar disponibilidad y tarifas para el ${title}. ¿Podrían brindarme información?`);
+    ctaBtn.href = `https://wa.me/5491158085444?text=${waMsg}`;
+  }
+
+  // Miniaturas del carrusel
+  if (thumbsEl) {
+    thumbsEl.innerHTML = currentModalSlides.map((s, idx) => `
+      <button type="button" class="apt-modal-thumb-btn ${idx === currentModalSlideIndex ? 'active' : ''}" onclick="setAptModalSlide(${idx})" aria-label="Ver foto ${idx + 1}">
+        <img src="${s.src}" alt="${s.alt}" loading="lazy">
+      </button>
+    `).join('');
+  }
+
+  setAptModalSlide(currentModalSlideIndex);
+
+  // Abrir modal y bloquear scroll de fondo
+  modal.classList.add('open');
+  modal.setAttribute('aria-hidden', 'false');
+  document.body.classList.add('apt-modal-open');
+
+  const closeBtn = modal.querySelector('.apt-modal-close');
+  if (closeBtn) closeBtn.focus();
+}
+
+function closeApartmentModal() {
+  const modal = document.getElementById('apartment-modal');
+  if (!modal) return;
+  modal.classList.remove('open');
+  modal.setAttribute('aria-hidden', 'true');
+  document.body.classList.remove('apt-modal-open');
+}
+
+function setAptModalSlide(index) {
+  if (!currentModalSlides.length) return;
+  currentModalSlideIndex = (index + currentModalSlides.length) % currentModalSlides.length;
+
+  const mainImg = document.getElementById('apt-modal-main-img');
+  const counter = document.getElementById('apt-modal-counter');
+  const thumbs = document.querySelectorAll('.apt-modal-thumb-btn');
+
+  const current = currentModalSlides[currentModalSlideIndex];
+  if (mainImg && current) {
+    mainImg.style.opacity = '0.4';
+    setTimeout(() => {
+      mainImg.src = current.src;
+      mainImg.alt = current.alt;
+      mainImg.style.opacity = '1';
+    }, 120);
+  }
+
+  if (counter) {
+    counter.textContent = `${currentModalSlideIndex + 1} / ${currentModalSlides.length}`;
+  }
+
+  thumbs.forEach((th, i) => {
+    if (i === currentModalSlideIndex) {
+      th.classList.add('active');
+      th.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    } else {
+      th.classList.remove('active');
+    }
+  });
+}
+
+function navigateAptModalImage(direction) {
+  setAptModalSlide(currentModalSlideIndex + direction);
+}
+
+// Exponer en el objeto global window para invocación desde eventos inline
+window.openApartmentModal = openApartmentModal;
+window.closeApartmentModal = closeApartmentModal;
+window.setAptModalSlide = setAptModalSlide;
+window.navigateAptModalImage = navigateAptModalImage;
+
 
 /**
  * 4. Filtro Interactivo de Categorías de Apartamentos
