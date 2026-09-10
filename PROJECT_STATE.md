@@ -1,40 +1,40 @@
-# Estado del Proyecto - 2026-09-10 / Resolución Megamenús Dropdown, Slideshow 7s & Cache-Busting v2.5
+# Estado del Proyecto - 2026-09-10 / Rediseño Pop up de Apartamentos (Desktop & Mobile Senior UI/UX) & v2.6
 
 ## 1. Stack & Configuración Activa
-- **Framework/Entorno**: HTML5 semántico, CSS3 moderno (Variables CSS, Flexbox, CSS Grid, Scroll-Snap nativo, Glassmorphism con `backdrop-filter`), JavaScript Vanilla ES6+ modular (cero dependencias externas, ultraliviano).
+- **Framework/Entorno**: HTML5 semántico, CSS3 moderno (Variables CSS, Flexbox, CSS Grid bidimensional, Scroll-Snap nativo, Glassmorphism con `backdrop-filter`), JavaScript Vanilla ES6+ modular (cero dependencias externas, ultraliviano).
 - **Entorno de Ejecución & Herramientas**: Windows PowerShell, Node.js (scripts de automatización, validación y headless testing), Google Chrome Headless.
 - **Integraciones & APIs Clave**:
+  - **Modal Pop-up Flotante de Apartamentos** (`#apartment-modal`): Lógica adaptativa dual. En Desktop: 2 columnas lado a lado (slideshow a la izquierda, ficha descriptiva a la derecha) calculada para visualización 100% sin scrollbar. En Mobile: tarjeta flotante con efecto glow halo dorado, 2 filas exactas de pastillas de servicios y tipografía reducida (-2px).
   - **Megamenús Desplegables PxNav**: Control interactivo dual (hover inteligente en desktop con debounce de 180ms + clic/tap en móvil y escritorio con cierre por tecla Escape y light-dismiss).
-  - **WhatsApp Click-to-Chat API** (`https://wa.me/5491158085444?text=...`): Canal de reservas directas con mensaje contextual preconfigurado por unidad.
-  - **IntersectionObserver API**: Para pausar y reanudar temporizadores de slideshow según la visibilidad real de cada tarjeta en el viewport.
-  - **Page Visibility API** (`visibilitychange` / `document.hidden`): Suspensión de timers cuando la pestaña pasa a segundo plano.
-  - **Modal Popup de Ficha Descriptiva** (`#apartment-modal`): Extracción dinámica del DOM, lightbox interactivo, tira de miniaturas activas y control de teclado.
+  - **WhatsApp Click-to-Chat API**: Mensajes directos con mensaje contextual preconfigurado por unidad.
+  - **IntersectionObserver API & Page Visibility API**: Control inteligente de rotación y pausa de timers de slideshow según visibilidad en pantalla y pestaña.
 
 ## 2. Archivos Modificados / Creados Recientemente
-- `PROJECT_STATE.md`: Archivo de verdad y protocolo de persistencia de estado actualizado con el diagnóstico y resolución de scripts.
-- `js/app.js`: Reconstruida la cadena de inicialización con `initAll()`, guard de `document.readyState`, ejecución segura `safeInit` individual por módulo para evitar bloqueos en cascada. Implementado `initPxNav()` con soporte dual hover/clic y debouncing de 180ms.
-- `nereidas-demo_files/app.js`: Réplica espejo sincronizada al 100% con `js/app.js`.
-- `index.html`: Agregado cache-busting `?v=2.5` a las etiquetas `<link rel="stylesheet" href="css/modern.css?v=2.5">` y `<script src="js/app.js?v=2.5"></script>` para evitar que Vercel o los navegadores sirvan archivos antiguos cacheados. Reordenamiento de fotos y modal de ficha descriptiva integrados.
+- `PROJECT_STATE.md`: Actualizado con las especificaciones de diseño, métricas de viewport y protocolo de persistencia.
+- `css/modern.css`: 
+  - Desktop: Transformado `.apt-modal-body` a grilla de 2 columnas (`480px 1fr`) con eliminación total de scroll vertical (`overflow: hidden`). Ajustados espaciados, tamaños de fuente y pastillas de servicios para encajar armónicamente en el viewport.
+  - Mobile: Rediseñado el diálogo a pop-up flotante centrado con bordes redondeados (`border-radius: 18px`), nuevo estilo glow de lujo con halo dorado (`box-shadow: 0 0 0 1px rgba(197,160,89,0.5), 0 0 28px rgba(197,160,89,0.3), 0 20px 50px rgba(7,16,31,0.7)`), pastillas de servicios en 2 filas exactas (`grid-template-columns: repeat(3, minmax(0, 1fr))`) y textos reducidos en -2px.
+  - Eliminados los botones inferiores ("Cerrar Ficha" y "Consultar por WhatsApp") con `.apt-modal-footer { display: none !important; }`.
+- `nereidas-demo_files/modern.css`: Réplica espejo sincronizada al 100% con `css/modern.css`.
+- `index.html`: Eliminado el bloque de pie de modal `.apt-modal-footer` y actualizado cache-busting a `?v=2.6`.
 - `nereidas-demo.html`: Réplica espejo sincronizada al 100% con `index.html`.
 
 ## 3. Decisiones de Arquitectura
-- **Inicialización Resiliente (`safeInit`)**: Todas las funciones de inicialización (`initHeaderScroll`, `initMobileDrawer`, `initApartmentGalleries`, `initApartmentFilters`, `initFaqAccordion`, `initBookingForm`, `initFloatingBookingBar`, `initNewsletterForm`, `initHighlightsStories`, `initPxNav`) se ejecutan a través de un wrapper `safeInit` con `try/catch` individual y verificación de `document.readyState`, impidiendo que cualquier excepción local en una sección interrumpa la inicialización de las demás.
-- **Interacción Dual en Megamenús Dropdown (Senior UI/UX)**:
-  - En dispositivos con ratón / puntero fino (`matchMedia('(pointer: fine)').matches`), los paneles de "Apartamentos" y "Servicios" se abren de forma inmediata al posar el cursor (`mouseenter`) y se cierran con un delay de 180ms (`mouseleave` con debounce) para permitir transiciones orgánicas entre el botón y el panel flotante.
-  - En pantallas táctiles o móviles, la apertura se gestiona mediante toque (`click` / `tap`), alternando el estado activo del panel.
-  - Se garantiza cierre por clic exterior fuera del header o paneles, clic en cualquier enlace interno y tecla `Escape`.
-- **Estrategia de Cache-Busting para Producción**: Inyección de parámetros de versión (`?v=2.5`) en assets estáticos críticos (`modern.css` y `app.js`) garantizando invalidación de caché inmediata en CDN / Vercel sin depender de borrado manual de caché de navegador.
+- **Ajuste Dimensional Sin Scroll en Desktop**: Se calculó la altura total del modal (cabecera ~48px + cuerpo ~390px = ~438px) asegurando que el contenido descriptivo (especificaciones, 6 amenidades y distribución completa) conviva lado a lado con el carrusel fotográfico sin provocar scrollbar interno ni desbordar la pantalla del usuario.
+- **Ajuste de 2 Filas en Pastillas Móviles**: Con 6 comodidades por unidad, la distribución en 3 columnas (`repeat(3, minmax(0, 1fr))`) garantiza matemáticamente una grilla balanceada de exactamente 2 filas horizontales sin saltos irregulares.
+- **Reducción Tipográfica Uniforme (-2px)**: Aplicada en todos los elementos textuales de la ficha móvil (insignias, títulos, superficies, especificaciones y viñetas de distribución) para maximizar el área visible y mantener una proporción estética delicada.
+- **Eliminación de Botones de Cierre y Consulta en el Modal**: Se suprimieron los botones inferiores para limpiar la vista. El cierre se realiza de forma limpia y accesible mediante el botón "X" superior derecho, clic en el fondo difuminado o tecla `Escape`.
 
 ## 4. Tareas Pendientes (Backlog Inmediato)
-- [x] Reordenar fotos en las 5 unidades de apartamentos (Miel 8/9, Premium A 6/10, Premium B 5/7, Familiar A 7/10, Familiar B 9/10).
-- [x] Sincronizar miniaturas del megamenú con las nuevas fotos principales.
-- [x] Inyectar contenedor accesible `#apartment-modal` y badges `.gallery-expand-badge` en `index.html` y `nereidas-demo.html`.
-- [x] Implementar slideshow automático de 7s con controles UX (pausa en hover/touch, IntersectionObserver y Page Visibility).
-- [x] Diagnosticar y resolver causa raíz de megamenús dropdown inactivos en producción (restitución de cabecera de scripts y DOMContentLoaded robusto).
-- [x] Agregar soporte dual de despliegue en megamenús (hover con debounce en desktop + clic en móvil).
-- [x] Aplicar cache-busting `?v=2.5` en `index.html` y `nereidas-demo.html`.
-- [x] Ejecutar pruebas headless exhaustivas en Chrome (0 errores JS en consola, apertura de dropdowns verificada, apertura y cierre de modal verificada).
+- [x] Eliminar botones de cerrar fichas y consultar por WhatsApp en Desktop y Mobile.
+- [x] Ubicar texto descriptivo a la derecha del slideshow de fotos en versión Desktop.
+- [x] Ajustar pastillas de servicios y textos en Desktop para evitar scroll vertical.
+- [x] Ajustar pastillas de servicios en exactamente 2 filas en versión Mobile.
+- [x] Reducir tamaño de textos en -2px en versión Mobile.
+- [x] Cambiar estilo del pop-up móvil a pop-up flotante con glow de halo dorado de lujo.
+- [x] Actualizar cache-busting a `v=2.6` en `index.html` y `nereidas-demo.html`.
+- [x] Validar con capturas visuales en resoluciones Desktop (1280x800) y Mobile (390x844 / 500x880) y tests automatizados (0 errores).
 - [ ] Commit y push a la rama `main` en Git.
 
 ## 5. Siguiente Acción Inmediata
-- Realizar commit y push a `origin/main` en Git para desplegar la versión v2.5 a Vercel con todos los cambios y fixes activos.
+- Realizar commit y push a `origin/main` en Git para desplegar la versión v2.6 a Vercel con el nuevo diseño del pop up.
