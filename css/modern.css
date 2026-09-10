@@ -3745,3 +3745,94 @@ ul, ol {
     margin-bottom: 12px !important;
   }
 }
+
+/* ==========================================================================
+   BOTONES DE REDES SOCIALES Y CONTACTO EN EL MENÚ DRAWER MÓVIL
+   ========================================================================== */
+.drawer-social-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  width: 100%;
+  padding: 4px 0;
+}
+.drawer-social-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF !important;
+  background: rgba(255, 255, 255, 0.09);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  flex-shrink: 0;
+}
+.drawer-social-btn:hover,
+.drawer-social-btn:active {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+}
+.drawer-social-btn.btn-wa {
+  background: #25D366;
+  border-color: #25D366;
+}
+.drawer-social-btn.btn-wa:hover {
+  background: #1EBE5D;
+}
+.drawer-social-btn.btn-fb {
+  background: #1877F2;
+  border-color: #1877F2;
+}
+.drawer-social-btn.btn-fb:hover {
+  background: #166FE5;
+}
+.drawer-social-btn.btn-ig {
+  background: linear-gradient(45deg, #F09433, #E6683C, #DC2743, #CC2366, #BC1888);
+  border-color: #E1306C;
+}
+.drawer-social-btn.btn-mail {
+  background: #C9A66B;
+  border-color: #C9A66B;
+  color: #14213D !important;
+}
+.drawer-social-btn.btn-mail:hover {
+  background: #D8B77E;
+}
+
+/* ==========================================================================
+   FILA UNIFICADA DE HUÉSPEDES (ADULTOS, MENORES, BEBÉS) EN BARRA DE BÚSQUEDA
+   ========================================================================== */
+.booking-guests-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 8px;
+  width: 100%;
+}
+@media (min-width: 992px) {
+  .booking-guests-row {
+    display: contents;
+  }
+}
+@media (max-width: 991px) {
+  .quick-booking-bar.is-mobile-expanded .booking-grid {
+    max-height: 400px;
+  }
+}
+@media (max-width: 480px) {
+  .booking-guests-row {
+    gap: 6px;
+  }
+  .booking-guests-row .booking-field label {
+    font-size: 0.62rem;
+    letter-spacing: 0.2px;
+  }
+  .booking-guests-row .booking-field select {
+    padding: 8px 4px;
+    font-size: 0.78rem;
+  }
+}
