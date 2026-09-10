@@ -4044,22 +4044,42 @@ ul, ol {
 }
 
 /* ==========================================================================
-   SENIOR UI/UX REDESIGN: MENU HAMBURGUESA COMPACTO AL 50% DE PANTALLA
+   FICHAS DE SERVICIOS EN SECCIÓN #SERVICIOS (COHERENCIA CON MEGAMENÚ HEADER)
    ========================================================================== */
+.services-section-grid {
+  margin-top: 10px;
+  width: 100%;
+}
+.services-section-grid .pxservice-card {
+  background: #FFFFFF !important;
+  border: 1px solid rgba(27, 47, 122, 0.12) !important;
+  box-shadow: 0 3px 12px rgba(27, 47, 122, 0.05) !important;
+  min-height: 120px !important;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.25s ease !important;
+}
+.services-section-grid .pxservice-card:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 10px 24px rgba(27, 47, 122, 0.14) !important;
+  border-color: var(--dorado-suave) !important;
+}
 
+/* ==========================================================================
+   SENIOR UI/UX REDESIGN: MENU HAMBURGUESA CON FONDO Y ESTILO DEL FOOTER
+   (Reacomodado armónico sin áreas de espaciado excesivo)
+   ========================================================================== */
 @media (max-width: 991px) {
-  /* Contenedor del Drawer: exactamente 50% de la pantalla */
   .mobile-drawer {
     width: 50vw !important;
     min-width: 175px !important;
     max-width: 280px !important;
-    padding: 16px 12px 18px !important;
-    background: #14213D !important; /* Azul Noche con profundidad */
+    padding: 16px 14px 18px !important;
+    background: #1B2F7A !important; /* Mismo fondo Azul Mar institucional del footer */
     box-shadow: -10px 0 32px rgba(0, 0, 0, 0.45) !important;
-    border-left: 1px solid rgba(255, 255, 255, 0.10) !important;
+    border-left: 1px solid rgba(255, 255, 255, 0.14) !important;
     display: flex !important;
     flex-direction: column !important;
-    justify-content: space-between !important;
+    justify-content: flex-start !important; /* Evita áreas de mucho espaciado en pantallas altas */
+    gap: 14px !important;
     box-sizing: border-box !important;
     overflow-y: auto !important;
     -webkit-overflow-scrolling: touch !important;
@@ -4070,22 +4090,21 @@ ul, ol {
     display: none !important;
   }
 
-  /* Fondo desenfocado de la otra mitad (50%) de la pantalla */
   .mobile-backdrop {
-    background: rgba(10, 18, 30, 0.65) !important;
+    background: rgba(10, 20, 50, 0.65) !important;
     backdrop-filter: blur(8px) !important;
     -webkit-backdrop-filter: blur(8px) !important;
     z-index: 1150 !important;
   }
 
-  /* Encabezado: Simetría visual y balance */
   .drawer-header {
     display: flex !important;
     align-items: center !important;
     justify-content: space-between !important;
     padding-bottom: 12px !important;
-    margin-bottom: 2px !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+    margin-bottom: 0 !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.14) !important;
+    flex-shrink: 0 !important;
   }
   .drawer-logo-img {
     max-height: 36px !important;
@@ -4099,8 +4118,8 @@ ul, ol {
     min-width: 30px !important;
     min-height: 30px !important;
     border-radius: 50% !important;
-    background: rgba(255, 255, 255, 0.08) !important;
-    border: 1px solid rgba(255, 255, 255, 0.16) !important;
+    background: rgba(255, 255, 255, 0.10) !important;
+    border: 1px solid rgba(255, 255, 255, 0.18) !important;
     color: #FFFFFF !important;
     font-size: 1.1rem !important;
     line-height: 1 !important;
@@ -4113,28 +4132,27 @@ ul, ol {
   }
   .drawer-close:hover,
   .drawer-close:active {
-    background: rgba(255, 255, 255, 0.2) !important;
-    color: #C9A66B !important;
+    background: var(--dorado-suave) !important;
+    color: #1B2F7A !important;
     transform: scale(1.05) !important;
   }
 
-  /* Navegación vertical: Simétrica, tipografía balanceada */
   .drawer-menu {
     display: flex !important;
     flex-direction: column !important;
     gap: 2px !important;
-    margin-top: 8px !important;
-    margin-bottom: auto !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
     padding: 0 !important;
   }
   .drawer-menu a {
-    color: #E2E8F0 !important;
-    font-size: 0.84rem !important;
+    color: rgba(255, 255, 255, 0.90) !important;
+    font-size: 0.85rem !important;
     font-weight: 500 !important;
     letter-spacing: 0.25px !important;
     padding: 7px 8px !important;
     border-radius: 6px !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.04) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
     display: flex !important;
     align-items: center !important;
     justify-content: flex-start !important;
@@ -4147,17 +4165,16 @@ ul, ol {
   .drawer-menu a:hover,
   .drawer-menu a:focus,
   .drawer-menu a:active {
-    color: #C9A66B !important;
-    background: rgba(201, 166, 107, 0.12) !important;
+    color: var(--turquesa) !important;
+    background: rgba(47, 182, 196, 0.14) !important;
     padding-left: 12px !important;
     border-bottom-color: transparent !important;
   }
 
-  /* Pie del Drawer: Fila simétrica y proporcional de redes sociales */
   .drawer-footer {
-    margin-top: 12px !important;
+    margin-top: 4px !important;
     padding-top: 12px !important;
-    border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.14) !important;
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
@@ -4183,11 +4200,11 @@ ul, ol {
     align-items: center !important;
     justify-content: center !important;
     color: #FFFFFF !important;
-    background: rgba(255, 255, 255, 0.09) !important;
-    border: 1px solid rgba(255, 255, 255, 0.16) !important;
+    background: rgba(255, 255, 255, 0.10) !important;
+    border: 1px solid rgba(255, 255, 255, 0.18) !important;
     transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
     text-decoration: none !important;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25) !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.20) !important;
     flex-shrink: 0 !important;
     padding: 0 !important;
   }
@@ -4198,30 +4215,43 @@ ul, ol {
   .drawer-social-btn:hover,
   .drawer-social-btn:active {
     transform: translateY(-2px) scale(1.08) !important;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4) !important;
+    background: var(--dorado-suave) !important;
+    color: #1B2F7A !important;
+    box-shadow: 0 4px 12px rgba(201, 166, 107, 0.4) !important;
   }
   .drawer-social-btn.btn-wa {
     background: #25D366 !important;
     border-color: #25D366 !important;
+    color: #FFFFFF !important;
+  }
+  .drawer-social-btn.btn-wa:hover {
+    background: #1EBE5D !important;
+    color: #FFFFFF !important;
   }
   .drawer-social-btn.btn-fb {
     background: #1877F2 !important;
     border-color: #1877F2 !important;
+    color: #FFFFFF !important;
+  }
+  .drawer-social-btn.btn-fb:hover {
+    background: #166FE5 !important;
+    color: #FFFFFF !important;
   }
   .drawer-social-btn.btn-ig {
     background: linear-gradient(45deg, #F09433, #E6683C, #DC2743, #CC2366, #BC1888) !important;
     border-color: #E1306C !important;
+    color: #FFFFFF !important;
   }
   .drawer-social-btn.btn-mail {
-    background: #C9A66B !important;
-    border-color: #C9A66B !important;
-    color: #14213D !important;
+    background: var(--dorado-suave) !important;
+    border-color: var(--dorado-suave) !important;
+    color: #1B2F7A !important;
   }
 
   .drawer-footer p,
   .drawer-location {
     font-size: 0.65rem !important;
-    color: #94A3B8 !important;
+    color: rgba(255, 255, 255, 0.70) !important;
     letter-spacing: 0.6px !important;
     text-transform: uppercase !important;
     text-align: center !important;
@@ -4231,11 +4261,11 @@ ul, ol {
   }
 }
 
-/* Pantallas extra pequeñas (< 340px) */
 @media (max-width: 340px) {
   .mobile-drawer {
     width: 56vw !important;
     padding: 14px 8px 16px !important;
+    gap: 10px !important;
   }
   .drawer-social-row {
     gap: 4px !important;
@@ -4250,4 +4280,66 @@ ul, ol {
     width: 14px !important;
     height: 14px !important;
   }
+}
+/* ==========================================================================
+   ÁREA DESPLEGABLE DE DISTRIBUCIÓN Y EQUIPAMIENTO EN FICHAS DE APARTAMENTOS
+   ========================================================================== */
+.apt-collapse-wrapper {
+  margin-top: 6px;
+  width: 100%;
+}
+.apt-collapse-toggle {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  width: 100% !important;
+  background: #F8FAFC !important;
+  border: 1px solid #E2E8F0 !important;
+  border-radius: 9px !important;
+  padding: 9px 13px !important;
+  font-family: inherit !important;
+  font-size: 0.78rem !important;
+  font-weight: 600 !important;
+  color: #334155 !important;
+  cursor: pointer !important;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  box-sizing: border-box !important;
+  outline: none !important;
+}
+.apt-collapse-toggle:hover {
+  background: rgba(201, 166, 107, 0.12) !important;
+  border-color: rgba(201, 166, 107, 0.4) !important;
+  color: #8C6D38 !important;
+  transform: translateY(-1px) !important;
+}
+.apt-collapse-toggle.active {
+  background: rgba(201, 166, 107, 0.15) !important;
+  border-color: rgba(201, 166, 107, 0.5) !important;
+  color: #8C6D38 !important;
+}
+.apt-toggle-arrow {
+  stroke: #6FA8AD !important;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), stroke 0.2s ease !important;
+  flex-shrink: 0 !important;
+}
+.apt-collapse-toggle:hover .apt-toggle-arrow,
+.apt-collapse-toggle.active .apt-toggle-arrow {
+  stroke: #8C6D38 !important;
+}
+.apt-collapse-toggle.active .apt-toggle-arrow {
+  transform: rotate(180deg) !important;
+}
+
+.apt-collapse-content {
+  max-height: 0 !important;
+  opacity: 0 !important;
+  overflow: hidden !important;
+  transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease, margin-top 0.3s ease !important;
+  margin-top: 0 !important;
+  box-sizing: border-box !important;
+}
+.apt-collapse-content.open {
+  max-height: 800px !important;
+  opacity: 1 !important;
+  margin-top: 10px !important;
 }

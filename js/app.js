@@ -929,3 +929,28 @@ function scrollToBookingBar() {
   }
 }
 window.scrollToBookingBar = scrollToBookingBar;
+
+// Manejo de Despliegue de Distribución y Equipamiento en Tarjetas de Apartamentos
+window.toggleAptCollapse = function(btn) {
+  if (!btn) return;
+  const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+  const wrapper = btn.closest('.apt-collapse-wrapper');
+  if (!wrapper) return;
+  const content = wrapper.querySelector('.apt-collapse-content');
+  if (!content) return;
+  const textSpan = btn.querySelector('.apt-toggle-text');
+
+  if (isExpanded) {
+    btn.setAttribute('aria-expanded', 'false');
+    btn.classList.remove('active');
+    content.classList.remove('open');
+    content.setAttribute('aria-hidden', 'true');
+    if (textSpan) textSpan.textContent = 'Ver distribución y equipamiento';
+  } else {
+    btn.setAttribute('aria-expanded', 'true');
+    btn.classList.add('active');
+    content.classList.add('open');
+    content.setAttribute('aria-hidden', 'false');
+    if (textSpan) textSpan.textContent = 'Ocultar distribución y equipamiento';
+  }
+};
