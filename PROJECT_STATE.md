@@ -1,42 +1,40 @@
-# Estado del Proyecto - 2026-09-10 / Optimización de Apartamentos & Experiencia Visual
+# Estado del Proyecto - 2026-09-10 / Resolución Megamenús Dropdown, Slideshow 7s & Cache-Busting v2.5
 
 ## 1. Stack & Configuración Activa
-- **Framework/Entorno**: HTML5 semántico, CSS3 moderno (Variables CSS, Flexbox, CSS Grid, Scroll-Snap nativo, Glassmorphism con `backdrop-filter`), JavaScript Vanilla ES6+ modular (sin dependencias pesadas ni frameworks externos).
-- **Entorno de Ejecución & Herramientas**: Windows PowerShell, Node.js (scripts de automatización, validación y testing en scratch), Chrome DevTools / Puppeteer.
+- **Framework/Entorno**: HTML5 semántico, CSS3 moderno (Variables CSS, Flexbox, CSS Grid, Scroll-Snap nativo, Glassmorphism con `backdrop-filter`), JavaScript Vanilla ES6+ modular (cero dependencias externas, ultraliviano).
+- **Entorno de Ejecución & Herramientas**: Windows PowerShell, Node.js (scripts de automatización, validación y headless testing), Google Chrome Headless.
 - **Integraciones & APIs Clave**:
-  - **WhatsApp Click-to-Chat API** (`https://wa.me/5491158085444?text=...`): Para canal de reservas directas con mensaje contextual preconfigurado por unidad.
+  - **Megamenús Desplegables PxNav**: Control interactivo dual (hover inteligente en desktop con debounce de 180ms + clic/tap en móvil y escritorio con cierre por tecla Escape y light-dismiss).
+  - **WhatsApp Click-to-Chat API** (`https://wa.me/5491158085444?text=...`): Canal de reservas directas con mensaje contextual preconfigurado por unidad.
   - **IntersectionObserver API**: Para pausar y reanudar temporizadores de slideshow según la visibilidad real de cada tarjeta en el viewport.
-  - **Page Visibility API** (`visibilitychange` / `document.hidden`): Para suspender timers cuando la pestaña no esté activa.
-  - **Web Story Viewer** (`#web-story-modal`) y nuevo **Modal Popup de Ficha Descriptiva** (`#apartment-modal`).
-  - **Google Fonts**: Tipografías corporativas "Playfair Display" (serif de lujo) y tipografía sans moderna de alta legibilidad.
+  - **Page Visibility API** (`visibilitychange` / `document.hidden`): Suspensión de timers cuando la pestaña pasa a segundo plano.
+  - **Modal Popup de Ficha Descriptiva** (`#apartment-modal`): Extracción dinámica del DOM, lightbox interactivo, tira de miniaturas activas y control de teclado.
 
 ## 2. Archivos Modificados / Creados Recientemente
-- `PROJECT_STATE.md`: Archivo de verdad y protocolo de persistencia de estado del proyecto para checkpoints y reinicios.
-- `index.html`: Reordenadas las fotografías de las 5 unidades en `.apartments-grid` (Apart Miel 8/9 pasa a 1ª; Apart Premium A 6/10 pasa a 1ª; Apart Premium B 5/7 pasa a 1ª; Apart Familiar A 7/10 pasa a 1ª; Apart Familiar B 9/10 pasa a 1ª), actualizadas las miniaturas del megamenú, incorporados badges `.gallery-expand-badge` y contenedor accesible `#apartment-modal`.
-- `nereidas-demo.html`: Réplica espejo sincronizada 100% con `index.html`.
-- `css/modern.css`: Estilos para hover zoom de fotos, badges `.gallery-expand-badge`, diálogo modal, lightbox con tira de miniaturas activas (`.apt-modal-thumbs`), especificaciones, amenidades, distribución y CTA de WhatsApp responsivo (móvil y escritorio).
-- `nereidas-demo_files/modern.css`: Réplica espejo sincronizada 100% con `css/modern.css`.
-- `js/app.js`: Slideshow automático cada 7 segundos (7000ms) con pausa en hover/touch, reseteo en clics manuales e `IntersectionObserver`. Funciones de modal `openApartmentModal`, `closeApartmentModal`, `navigateAptModalImage` y `setAptModalSlide` con extracción dinámica del DOM y navegación por teclado (Escape y flechas).
-- `nereidas-demo_files/app.js`: Réplica espejo sincronizada 100% con `js/app.js`.
+- `PROJECT_STATE.md`: Archivo de verdad y protocolo de persistencia de estado actualizado con el diagnóstico y resolución de scripts.
+- `js/app.js`: Reconstruida la cadena de inicialización con `initAll()`, guard de `document.readyState`, ejecución segura `safeInit` individual por módulo para evitar bloqueos en cascada. Implementado `initPxNav()` con soporte dual hover/clic y debouncing de 180ms.
+- `nereidas-demo_files/app.js`: Réplica espejo sincronizada al 100% con `js/app.js`.
+- `index.html`: Agregado cache-busting `?v=2.5` a las etiquetas `<link rel="stylesheet" href="css/modern.css?v=2.5">` y `<script src="js/app.js?v=2.5"></script>` para evitar que Vercel o los navegadores sirvan archivos antiguos cacheados. Reordenamiento de fotos y modal de ficha descriptiva integrados.
+- `nereidas-demo.html`: Réplica espejo sincronizada al 100% con `index.html`.
 
 ## 3. Decisiones de Arquitectura
-- **Sincronización Dual Estricta**: Mantenimiento en paralelo de los archivos principales (`index.html`, `js/app.js`, `css/modern.css`) y sus copias de distribución/demo (`nereidas-demo.html`, `nereidas-demo_files/app.js`, `nereidas-demo_files/modern.css`) para evitar divergencias entre entornos.
-- **Extracción Dinámica del DOM para el Modal Descriptivo**: El modal `#apartment-modal` extrae en caliente la información de la tarjeta que recibió el clic (título, capacidad, specs, amenidades, fotos y distribución), garantizando una única fuente de verdad en el HTML y eliminando duplicación de datos en JavaScript.
-- **Slideshow de 7 Segundos con Lógica Senior UI/UX**:
-  - Temporizador de `7000ms` por unidad con looping infinito suave al llegar al final del carrusel.
-  - Pausa automática en hover (`mouseenter`), toque (`touchstart`) o pestaña en segundo plano (`document.hidden`).
-  - Reseteo instantáneo del timer de 7 segundos ante cualquier interacción manual (clic en flechas prev/next o arrastre táctil).
-  - Suspensión mediante `IntersectionObserver` cuando la tarjeta queda fuera de pantalla para ahorro de recursos y batería.
-- **Accesibilidad y Patrón Light-Dismiss**: Cierre con tecla `Escape`, clic en backdrop con desenfoque, botón accesible "X", bloqueo de scroll de fondo (`body.apt-modal-open`) y navegación de fotos con flechas del teclado.
+- **Inicialización Resiliente (`safeInit`)**: Todas las funciones de inicialización (`initHeaderScroll`, `initMobileDrawer`, `initApartmentGalleries`, `initApartmentFilters`, `initFaqAccordion`, `initBookingForm`, `initFloatingBookingBar`, `initNewsletterForm`, `initHighlightsStories`, `initPxNav`) se ejecutan a través de un wrapper `safeInit` con `try/catch` individual y verificación de `document.readyState`, impidiendo que cualquier excepción local en una sección interrumpa la inicialización de las demás.
+- **Interacción Dual en Megamenús Dropdown (Senior UI/UX)**:
+  - En dispositivos con ratón / puntero fino (`matchMedia('(pointer: fine)').matches`), los paneles de "Apartamentos" y "Servicios" se abren de forma inmediata al posar el cursor (`mouseenter`) y se cierran con un delay de 180ms (`mouseleave` con debounce) para permitir transiciones orgánicas entre el botón y el panel flotante.
+  - En pantallas táctiles o móviles, la apertura se gestiona mediante toque (`click` / `tap`), alternando el estado activo del panel.
+  - Se garantiza cierre por clic exterior fuera del header o paneles, clic en cualquier enlace interno y tecla `Escape`.
+- **Estrategia de Cache-Busting para Producción**: Inyección de parámetros de versión (`?v=2.5`) en assets estáticos críticos (`modern.css` y `app.js`) garantizando invalidación de caché inmediata en CDN / Vercel sin depender de borrado manual de caché de navegador.
 
 ## 4. Tareas Pendientes (Backlog Inmediato)
 - [x] Reordenar fotos en las 5 unidades de apartamentos (Miel 8/9, Premium A 6/10, Premium B 5/7, Familiar A 7/10, Familiar B 9/10).
 - [x] Sincronizar miniaturas del megamenú con las nuevas fotos principales.
-- [x] Inyectar el contenedor `#apartment-modal` y badges `.gallery-expand-badge` en `index.html` y `nereidas-demo.html`.
-- [x] Incorporar estilos CSS en `css/modern.css` y `nereidas-demo_files/modern.css` para el modal de ficha descriptiva, lightbox, tira de miniaturas (`apt-modal-thumbs`), badges flotantes y transiciones fluidas.
-- [x] Implementar la lógica JavaScript en `js/app.js` y `nereidas-demo_files/app.js` (slideshow automático 7s con controles UX y funciones `openApartmentModal`, `closeApartmentModal`, `navigateAptModalImage`, `setAptModalSlide`).
-- [x] Validar visualmente y funcionalmente mediante pruebas y capturas de pantalla en escritorio y dispositivos móviles.
+- [x] Inyectar contenedor accesible `#apartment-modal` y badges `.gallery-expand-badge` en `index.html` y `nereidas-demo.html`.
+- [x] Implementar slideshow automático de 7s con controles UX (pausa en hover/touch, IntersectionObserver y Page Visibility).
+- [x] Diagnosticar y resolver causa raíz de megamenús dropdown inactivos en producción (restitución de cabecera de scripts y DOMContentLoaded robusto).
+- [x] Agregar soporte dual de despliegue en megamenús (hover con debounce en desktop + clic en móvil).
+- [x] Aplicar cache-busting `?v=2.5` en `index.html` y `nereidas-demo.html`.
+- [x] Ejecutar pruebas headless exhaustivas en Chrome (0 errores JS en consola, apertura de dropdowns verificada, apertura y cierre de modal verificada).
 - [ ] Commit y push a la rama `main` en Git.
 
 ## 5. Siguiente Acción Inmediata
-- Realizar el commit y push a la rama `main` de Git con el mensaje descriptivo de las mejoras visuales, ordenamiento de fotos, slideshow de 7s y modal interactivo.
+- Realizar commit y push a `origin/main` en Git para desplegar la versión v2.5 a Vercel con todos los cambios y fixes activos.

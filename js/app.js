@@ -1,4 +1,108 @@
 /**
+ * APART NEREIDAS — MODERN VANILLA JS (ES6+)
+ * Cero dependencias (sin jQuery), modular, accesible y ultraliviano (< 6KB)
+ */
+
+function initAll() {
+  const safeInit = (fnName, fn) => {
+    try {
+      if (typeof fn === 'function') {
+        fn();
+      }
+    } catch (err) {
+      console.warn('[Init Warning] Error en ' + fnName + ':', err);
+    }
+  };
+
+  safeInit('initHeaderScroll', initHeaderScroll);
+  safeInit('initMobileDrawer', initMobileDrawer);
+  safeInit('initApartmentGalleries', initApartmentGalleries);
+  safeInit('initApartmentFilters', initApartmentFilters);
+  safeInit('initFaqAccordion', initFaqAccordion);
+  safeInit('initBookingForm', initBookingForm);
+  safeInit('initFloatingBookingBar', initFloatingBookingBar);
+  safeInit('initNewsletterForm', initNewsletterForm);
+  safeInit('initHighlightsStories', initHighlightsStories);
+  safeInit('initPxNav', initPxNav);
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initAll);
+} else {
+  initAll();
+}
+
+/**
+ * 1. Efecto Scroll en Header (Glassmorphism sutil al bajar)
+ */
+function initHeaderScroll() {
+  const header = document.querySelector('.header');
+  if (!header) return;
+
+  const onScroll = () => {
+    if (window.scrollY > 40) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+  };
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+}
+
+/**
+ * 2. Menú Lateral Móvil (Drawer / Offcanvas) Accesible
+ */
+function initMobileDrawer() {
+  const toggleBtn = document.querySelector('.mobile-toggle');
+  const drawer = document.querySelector('.mobile-drawer');
+  const backdrop = document.querySelector('.mobile-backdrop');
+  const closeBtn = document.querySelector('.drawer-close');
+  const drawerLinks = document.querySelectorAll('.drawer-menu a');
+
+  if (!toggleBtn || !drawer || !backdrop) return;
+
+  function openDrawer() {
+    drawer.classList.add('open');
+    backdrop.classList.add('visible');
+    toggleBtn.classList.add('active');
+    toggleBtn.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden'; // Evita el scroll de fondo
+  }
+
+  function closeDrawer() {
+    drawer.classList.remove('open');
+    backdrop.classList.remove('visible');
+    toggleBtn.classList.remove('active');
+    toggleBtn.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+
+  toggleBtn.addEventListener('click', () => {
+    if (drawer.classList.contains('open')) {
+      closeDrawer();
+    } else {
+      openDrawer();
+    }
+  });
+
+  closeBtn?.addEventListener('click', closeDrawer);
+  backdrop.addEventListener('click', closeDrawer);
+
+  drawerLinks.forEach(link => {
+    link.addEventListener('click', closeDrawer);
+  });
+
+  // Cerrar con Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && drawer.classList.contains('open')) {
+      closeDrawer();
+    }
+  });
+}
+
+/**
  * 3. Carruseles Táctiles Nativos (Scroll-Snap) en Apartamentos
  *    + Slideshow Automático (cada 7 segundos) con UX Senior
  *    + Pop-up Modal con Ficha Descriptiva y Lightbox Completo
@@ -980,14 +1084,17 @@ function initFloatingBookingBar() {
 }
 
 /**
- * 10. Megamenús Desplegables PxNav en Header
+ * 10. Megamenús Desplegables PxNav en Header (Soporte Dual: Hover Inteligente + Clic)
  */
 function initPxNav() {
   const menuButtons = document.querySelectorAll('.pxnav__item--btn');
   const drops = document.querySelectorAll('.pxnav-drop');
   if (!menuButtons.length || !drops.length) return;
 
+  let closeTimer = null;
+
   function closeAllDrops() {
+    clearTimeout(closeTimer);
     drops.forEach(d => d.classList.remove('is-open'));
     menuButtons.forEach(b => {
       b.classList.remove('is-active');
@@ -995,21 +1102,74 @@ function initPxNav() {
     });
   }
 
-  menuButtons.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const menuId = btn.getAttribute('data-pxnav-menu');
-      const targetDrop = document.querySelector(`.pxnav-drop[data-pxnav-panel="${menuId}"]`);
-      const isAlreadyOpen = targetDrop && targetDrop.classList.contains('is-open');
+  function openDrop(menuId) {
+    clearTimeout(closeTimer);
+    const targetDrop = document.querySelector('.pxnav-drop[data-pxnav-panel="' + menuId + '"]');
+    const btn = document.querySelector('.pxnav__item--btn[data-pxnav-menu="' + menuId + '"]');
 
-      closeAllDrops();
-
-      if (!isAlreadyOpen && targetDrop) {
-        targetDrop.classList.add('is-open');
-        btn.classList.add('is-active');
-        btn.setAttribute('aria-expanded', 'true');
+    drops.forEach(d => {
+      if (d !== targetDrop) d.classList.remove('is-open');
+    });
+    menuButtons.forEach(b => {
+      if (b !== btn) {
+        b.classList.remove('is-active');
+        b.setAttribute('aria-expanded', 'false');
       }
     });
+
+    if (targetDrop && btn) {
+      targetDrop.classList.add('is-open');
+      btn.classList.add('is-active');
+      btn.setAttribute('aria-expanded', 'true');
+    }
+  }
+
+  function scheduleClose() {
+    clearTimeout(closeTimer);
+    closeTimer = setTimeout(() => {
+      closeAllDrops();
+    }, 180);
+  }
+
+  menuButtons.forEach(btn => {
+    const menuId = btn.getAttribute('data-pxnav-menu');
+    const targetDrop = document.querySelector('.pxnav-drop[data-pxnav-panel="' + menuId + '"]');
+
+    // 1. Interacción por Clic / Tap
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = targetDrop && targetDrop.classList.contains('is-open');
+      if (isOpen) {
+        closeAllDrops();
+      } else {
+        openDrop(menuId);
+      }
+    });
+
+    // 2. Interacción por Hover en dispositivos de puntero fino (Desktop)
+    btn.addEventListener('mouseenter', () => {
+      if (window.matchMedia('(pointer: fine)').matches) {
+        openDrop(menuId);
+      }
+    });
+    btn.addEventListener('mouseleave', () => {
+      if (window.matchMedia('(pointer: fine)').matches) {
+        scheduleClose();
+      }
+    });
+
+    if (targetDrop) {
+      targetDrop.addEventListener('mouseenter', () => {
+        if (window.matchMedia('(pointer: fine)').matches) {
+          clearTimeout(closeTimer);
+        }
+      });
+      targetDrop.addEventListener('mouseleave', () => {
+        if (window.matchMedia('(pointer: fine)').matches) {
+          scheduleClose();
+        }
+      });
+    }
   });
 
   // Cerrar al hacer clic en cualquier enlace dentro de un panel
@@ -1019,9 +1179,9 @@ function initPxNav() {
     });
   });
 
-  // Cerrar al hacer clic fuera del header
+  // Cerrar al hacer clic fuera del header o de los paneles
   document.addEventListener('click', (e) => {
-    if (!e.target.closest('.pxnav-nereidas')) {
+    if (!e.target.closest('.header') && !e.target.closest('.pxnav-drops')) {
       closeAllDrops();
     }
   });
