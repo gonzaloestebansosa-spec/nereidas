@@ -130,6 +130,16 @@ function initApartmentGalleries() {
     let isPaused = false;
     let isVisible = false;
 
+    const hydrateGallery = () => {
+      if (gallery.dataset.hydrated) return;
+      gallery.dataset.hydrated = 'true';
+      const lazyImgs = gallery.querySelectorAll('img[data-src]');
+      lazyImgs.forEach(img => {
+        img.src = img.dataset.src;
+        img.removeAttribute('data-src');
+      });
+    };
+
     const getCurrentIndex = () => {
       const width = track.clientWidth;
       if (!width) return 0;
@@ -143,6 +153,7 @@ function initApartmentGalleries() {
     };
 
     const goToSlide = (index, smooth = true) => {
+      hydrateGallery();
       const slideWidth = track.clientWidth;
       track.scrollTo({
         left: index * slideWidth,
@@ -209,6 +220,10 @@ function initApartmentGalleries() {
         resetTimer();
       });
     }
+
+    // Senior UX: Hidratación bajo demanda al interactuar
+    gallery.addEventListener('mouseenter', hydrateGallery, { once: true });
+    gallery.addEventListener('touchstart', hydrateGallery, { passive: true, once: true });
 
     // Senior UX: Pausa al posar el cursor o interactuar táctilmente
     gallery.addEventListener('mouseenter', pauseTimer);
@@ -320,9 +335,9 @@ function openApartmentModal(card, initialSlideIndex = 0) {
     distribHtml = detailsList.outerHTML;
   }
 
-  // Recopilar fotos de la unidad
+  // Recopilar fotos de la unidad (soporta data-src diferido)
   const slideImgs = Array.from(card.querySelectorAll('.gallery-slide img')).map(img => ({
-    src: img.getAttribute('src') || img.src,
+    src: img.getAttribute('data-src') || img.getAttribute('src') || img.src,
     alt: img.getAttribute('alt') || title
   }));
 
@@ -1008,8 +1023,23 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentSlide = 0;
     let slideInterval = null;
 
+    function hydrateSlide(slide) {
+      if (!slide || slide.dataset.hydrated) return;
+      slide.dataset.hydrated = 'true';
+      slide.querySelectorAll('source[data-srcset]').forEach(s => {
+        s.srcset = s.dataset.srcset;
+        s.removeAttribute('data-srcset');
+      });
+      const img = slide.querySelector('img[data-src]');
+      if (img) {
+        img.src = img.dataset.src;
+        img.removeAttribute('data-src');
+      }
+    }
+
     window.setHeroSlide = function(index) {
       if (index < 0 || index >= slides.length) return;
+      hydrateSlide(slides[index]);
       slides[currentSlide].classList.remove('active');
       if (indicators[currentSlide]) indicators[currentSlide].classList.remove('active');
       
@@ -1022,7 +1052,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function nextSlide() {
       const next = (currentSlide + 1) % slides.length;
+      hydrateSlide(slides[next]);
       window.setHeroSlide(next);
+    }
+
+    // Hidratar slides secundarios cuando la red esté libre tras el inicio
+    if (typeof window !== 'undefined') {
+      const scheduleHydration = window.requestIdleCallback || function(cb) { setTimeout(cb, 2500); };
+      window.addEventListener('load', function() {
+        scheduleHydration(function() {
+          slides.forEach(hydrateSlide);
+        });
+      });
     }
 
     function resetInterval() {

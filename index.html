@@ -34,13 +34,21 @@
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="apple-touch-icon" href="favicon.png">
 
-  <!-- Preconnect & Tipografías Oficiales Google Fonts -->
+  <!-- Preload LCP Image (Mobile & Desktop) con Fetch Priority High -->
+  <link rel="preload" as="image" href="nereidas_imagenes/Portada/01-mobile.webp" type="image/webp" fetchpriority="high" media="(max-width: 768px)">
+  <link rel="preload" as="image" href="nereidas_imagenes/Portada/01.webp" type="image/webp" fetchpriority="high" media="(min-width: 769px)">
+
+  <!-- Preconnect & Tipografías Oficiales Google Fonts (Carga Asíncrona No Bloqueante) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400;1,500;1,600&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400;1,500;1,600&family=Montserrat:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400;1,500;1,600&family=Montserrat:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'">
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400;1,500;1,600&family=Montserrat:wght@400;500;600;700;800&display=swap">
+  </noscript>
 
   <!-- Hoja de Estilos Moderna -->
-  <link rel="stylesheet" href="css/modern.css?v=2.7">
+  <link rel="stylesheet" href="css/modern.css?v=3.0">
 
   <!-- Schema.org Datos Estructurados para Hotelería (JSON-LD) -->
   <script type="application/ld+json">
@@ -114,7 +122,10 @@
         <div class="pxnav__logo-group">
           <a href="#inicio" class="pxnav__logo" aria-label="Apart Nereidas - Inicio">
             <div class="pxnav__logo--iso" title="Apart Nereidas">N</div>
-            <img src="logo.png" alt="Apart Nereidas" class="pxnav__logo--full" style="height: 64px; max-height: 64px; width: auto; object-fit: contain;">
+            <picture class="pxnav__logo--full">
+              <source srcset="logo.webp" type="image/webp">
+              <img src="logo-opt.png" alt="Apart Nereidas" width="105" height="64" style="height: 64px; max-height: 64px; width: auto; object-fit: contain;">
+            </picture>
           </a>
         </div>
 
@@ -489,7 +500,10 @@
     <aside class="mobile-drawer" id="mobile-drawer" aria-label="Menú móvil">
       <div>
         <div class="drawer-header">
-          <img src="img/logo_drawer.png" alt="Apart Nereidas" class="drawer-logo-img">
+          <picture>
+            <source srcset="img/logo_drawer.webp" type="image/webp">
+            <img src="img/logo_drawer-opt.png" alt="Apart Nereidas" class="drawer-logo-img" width="192" height="120" loading="lazy">
+          </picture>
           <button class="drawer-close" aria-label="Cerrar menú">&times;</button>
         </div>
 
@@ -531,20 +545,40 @@
         
         <!-- Slideshow con 5 Fotos del Complejo (Auto-slide cada 5s) -->
         <div class="hero-slideshow" id="hero-slideshow">
-          <div class="hero-slide active">
-            <img src="nereidas_imagenes/Portada/01.jpg" alt="Apart Nereidas Mar de las Pampas 1" fetchpriority="high" loading="eager" width="1600" height="900">
+          <div class="hero-slide active" data-slide-index="0">
+            <picture>
+              <source media="(max-width: 768px)" srcset="nereidas_imagenes/Portada/01-mobile.webp" type="image/webp">
+              <source srcset="nereidas_imagenes/Portada/01.webp" type="image/webp">
+              <img src="nereidas_imagenes/Portada/01.jpg" alt="Apart Nereidas Mar de las Pampas 1" fetchpriority="high" loading="eager" width="1600" height="900">
+            </picture>
           </div>
-          <div class="hero-slide">
-            <img src="nereidas_imagenes/Portada/02.jpg" alt="Apart Nereidas Mar de las Pampas 2" loading="lazy" width="1600" height="900">
+          <div class="hero-slide" data-slide-index="1">
+            <picture>
+              <source media="(max-width: 768px)" data-srcset="nereidas_imagenes/Portada/02-mobile.webp" type="image/webp">
+              <source data-srcset="nereidas_imagenes/Portada/02.webp" type="image/webp">
+              <img data-src="nereidas_imagenes/Portada/02.jpg" alt="Apart Nereidas Mar de las Pampas 2" width="1600" height="900">
+            </picture>
           </div>
-          <div class="hero-slide">
-            <img src="nereidas_imagenes/Portada/03.jpg" alt="Apart Nereidas Mar de las Pampas 3" loading="lazy" width="1600" height="900">
+          <div class="hero-slide" data-slide-index="2">
+            <picture>
+              <source media="(max-width: 768px)" data-srcset="nereidas_imagenes/Portada/03-mobile.webp" type="image/webp">
+              <source data-srcset="nereidas_imagenes/Portada/03.webp" type="image/webp">
+              <img data-src="nereidas_imagenes/Portada/03.jpg" alt="Apart Nereidas Mar de las Pampas 3" width="1600" height="900">
+            </picture>
           </div>
-          <div class="hero-slide">
-            <img src="nereidas_imagenes/Portada/04.jpg" alt="Apart Nereidas Mar de las Pampas 4" loading="lazy" width="1600" height="900">
+          <div class="hero-slide" data-slide-index="3">
+            <picture>
+              <source media="(max-width: 768px)" data-srcset="nereidas_imagenes/Portada/04-mobile.webp" type="image/webp">
+              <source data-srcset="nereidas_imagenes/Portada/04.webp" type="image/webp">
+              <img data-src="nereidas_imagenes/Portada/04.jpg" alt="Apart Nereidas Mar de las Pampas 4" width="1600" height="900">
+            </picture>
           </div>
-          <div class="hero-slide">
-            <img src="nereidas_imagenes/Portada/05.jpg" alt="Apart Nereidas Mar de las Pampas 5" loading="lazy" width="1600" height="900">
+          <div class="hero-slide" data-slide-index="4">
+            <picture>
+              <source media="(max-width: 768px)" data-srcset="nereidas_imagenes/Portada/05-mobile.webp" type="image/webp">
+              <source data-srcset="nereidas_imagenes/Portada/05.webp" type="image/webp">
+              <img data-src="nereidas_imagenes/Portada/05.jpg" alt="Apart Nereidas Mar de las Pampas 5" width="1600" height="900">
+            </picture>
           </div>
           <div class="hero-overlay-gradient"></div>
         </div>
@@ -644,13 +678,22 @@
             <!-- Mosaico Fotográfico -->
             <div class="concept-image-mosaic">
               <div class="mosaic-item tall">
-                <img src="nereidas_imagenes/Portada/02.jpg" alt="Deck y entorno verde en Apart Nereidas" loading="lazy" width="600" height="800">
+                <picture>
+                  <source srcset="nereidas_imagenes/Portada/02.webp" type="image/webp">
+                  <img src="nereidas_imagenes/Portada/02.jpg" alt="Deck y entorno verde en Apart Nereidas" loading="lazy" width="600" height="800">
+                </picture>
               </div>
               <div class="mosaic-item">
-                <img src="nereidas_imagenes/Portada/03.jpg" alt="Parque y solarium arbolado" loading="lazy" width="600" height="400">
+                <picture>
+                  <source srcset="nereidas_imagenes/Portada/03.webp" type="image/webp">
+                  <img src="nereidas_imagenes/Portada/03.jpg" alt="Parque y solarium arbolado" loading="lazy" width="600" height="400">
+                </picture>
               </div>
               <div class="mosaic-item">
-                <img src="nereidas_imagenes/Servicios/04.jpg" alt="Detalle de descanso y arquitectura" loading="lazy" width="600" height="400">
+                <picture>
+                  <source srcset="nereidas_imagenes/Servicios/04.webp" type="image/webp">
+                  <img src="nereidas_imagenes/Servicios/04.jpg" alt="Detalle de descanso y arquitectura" loading="lazy" width="600" height="400">
+                </picture>
               </div>
             </div>
 
@@ -685,15 +728,15 @@
             <article class="apartment-card" data-category="parejas">
               <div class="apartment-gallery">
                 <div class="gallery-track">
-                  <div class="gallery-slide"><img src="nereidas_imagenes/Apart_Miel/08_1725739803_66dcb31be0abd.jpg" alt="Apart Miel vista al jardín y bosque" loading="lazy" width="600" height="375"></div>
-                  <div class="gallery-slide"><img src="nereidas_imagenes/Apart_Miel/01_1725739803_66dcb31bccfa8.jpg" alt="Apart Miel suite matrimonial con sommier king" loading="lazy" width="600" height="375"></div>
-                  <div class="gallery-slide"><img src="nereidas_imagenes/Apart_Miel/02_1725894620_66df0fdce4584.jpg" alt="Apart Miel hidromasaje doble relax" loading="lazy" width="600" height="375"></div>
-                  <div class="gallery-slide"><img src="nereidas_imagenes/Apart_Miel/03_1725739803_66dcb31bd2c57.jpg" alt="Apart Miel estar luminoso y comedor" loading="lazy" width="600" height="375"></div>
-                  <div class="gallery-slide"><img src="nereidas_imagenes/Apart_Miel/04_1725739803_66dcb31bd5af3.jpg" alt="Apart Miel cocina completa integrada" loading="lazy" width="600" height="375"></div>
-                  <div class="gallery-slide"><img src="nereidas_imagenes/Apart_Miel/05_1725739803_66dcb31bd880e.jpg" alt="Apart Miel ambiente cálido y moderno" loading="lazy" width="600" height="375"></div>
-                  <div class="gallery-slide"><img src="nereidas_imagenes/Apart_Miel/06_1725739803_66dcb31bdb2fb.jpg" alt="Apart Miel baño completo equipado" loading="lazy" width="600" height="375"></div>
-                  <div class="gallery-slide"><img src="nereidas_imagenes/Apart_Miel/07_1725739803_66dcb31bde042.jpg" alt="Apart Miel deck exterior privado" loading="lazy" width="600" height="375"></div>
-                  <div class="gallery-slide"><img src="nereidas_imagenes/Apart_Miel/09_1725739803_66dcb31be4c18.jpg" alt="Apart Miel detalles de categoría" loading="lazy" width="600" height="375"></div>
+                  <div class="gallery-slide"><picture><source srcset="nereidas_imagenes/Apart_Miel/08_1725739803_66dcb31be0abd.webp" type="image/webp"><img src="nereidas_imagenes/Apart_Miel/08_1725739803_66dcb31be0abd.jpg" alt="Apart Miel vista al jardín y bosque" loading="lazy" width="600" height="375"></picture></div>
+                  <div class="gallery-slide"><img data-src="nereidas_imagenes/Apart_Miel/01_1725739803_66dcb31bccfa8.jpg" alt="Apart Miel suite matrimonial con sommier king" width="600" height="375"></div>
+                  <div class="gallery-slide"><img data-src="nereidas_imagenes/Apart_Miel/02_1725894620_66df0fdce4584.jpg" alt="Apart Miel hidromasaje doble relax" width="600" height="375"></div>
+                  <div class="gallery-slide"><img data-src="nereidas_imagenes/Apart_Miel/03_1725739803_66dcb31bd2c57.jpg" alt="Apart Miel estar luminoso y comedor" width="600" height="375"></div>
+                  <div class="gallery-slide"><img data-src="nereidas_imagenes/Apart_Miel/04_1725739803_66dcb31bd5af3.jpg" alt="Apart Miel cocina completa integrada" width="600" height="375"></div>
+                  <div class="gallery-slide"><img data-src="nereidas_imagenes/Apart_Miel/05_1725739803_66dcb31bd880e.jpg" alt="Apart Miel ambiente cálido y moderno" width="600" height="375"></div>
+                  <div class="gallery-slide"><img data-src="nereidas_imagenes/Apart_Miel/06_1725739803_66dcb31bdb2fb.jpg" alt="Apart Miel baño completo equipado" width="600" height="375"></div>
+                  <div class="gallery-slide"><img data-src="nereidas_imagenes/Apart_Miel/07_1725739803_66dcb31bde042.jpg" alt="Apart Miel deck exterior privado" width="600" height="375"></div>
+                  <div class="gallery-slide"><img data-src="nereidas_imagenes/Apart_Miel/09_1725739803_66dcb31be4c18.jpg" alt="Apart Miel detalles de categoría" width="600" height="375"></div>
                 </div>
                 <button class="gallery-nav-btn gallery-nav-prev" aria-label="Foto anterior">❮</button>
                 <button class="gallery-nav-btn gallery-nav-next" aria-label="Siguiente foto">❯</button>
@@ -760,16 +803,16 @@
             <article class="apartment-card" data-category="parejas familias">
               <div class="apartment-gallery">
                 <div class="gallery-track">
-                  <div class="gallery-slide"><img src="nereidas_imagenes/Apart_Premium_A/06_1725739862_66dcb356ccee8.jpg" alt="Apart Premium A baño completo con hidromasaje" loading="lazy" width="600" height="375"></div>
-                  <div class="gallery-slide"><img src="nereidas_imagenes/Apart_Premium_A/01_1725739862_66dcb3569579c.jpg" alt="Apart Premium A living con ventanales" loading="lazy" width="600" height="375"></div>
-                  <div class="gallery-slide"><img src="nereidas_imagenes/Apart_Premium_A/02_1725739862_66dcb356a174d.jpg" alt="Apart Premium A dormitorio principal sommier queen" loading="lazy" width="600" height="375"></div>
-                  <div class="gallery-slide"><img src="nereidas_imagenes/Apart_Premium_A/03_1725739862_66dcb356aaf9f.jpg" alt="Apart Premium A cocina y barra desayunadora" loading="lazy" width="600" height="375"></div>
-                  <div class="gallery-slide"><img src="nereidas_imagenes/Apart_Premium_A/04_1725739862_66dcb356b71d5.jpg" alt="Apart Premium A balcón terraza con parrilla propia" loading="lazy" width="600" height="375"></div>
-                  <div class="gallery-slide"><img src="nereidas_imagenes/Apart_Premium_A/05_1725739862_66dcb356c1323.jpg" alt="Apart Premium A estar y comedor integrado" loading="lazy" width="600" height="375"></div>
-                  <div class="gallery-slide"><img src="nereidas_imagenes/Apart_Premium_A/07_1725739862_66dcb356d8cf6.jpg" alt="Apart Premium A segundo ambiente / camas" loading="lazy" width="600" height="375"></div>
-                  <div class="gallery-slide"><img src="nereidas_imagenes/Apart_Premium_A/08_1725739862_66dcb356e39fb.jpg" alt="Apart Premium A vista al bosque nativo" loading="lazy" width="600" height="375"></div>
-                  <div class="gallery-slide"><img src="nereidas_imagenes/Apart_Premium_A/09_1725739863_66dcb35703596.jpg" alt="Apart Premium A confort y luminosidad" loading="lazy" width="600" height="375"></div>
-                  <div class="gallery-slide"><img src="nereidas_imagenes/Apart_Premium_A/IMG_7540_1725914765_66df5e8db0ed8.jpeg" alt="Apart Premium A detalles de arquitectura" loading="lazy" width="600" height="375"></div>
+                  <div class="gallery-slide"><picture><source srcset="nereidas_imagenes/Apart_Premium_A/06_1725739862_66dcb356ccee8.webp" type="image/webp"><img src="nereidas_imagenes/Apart_Premium_A/06_1725739862_66dcb356ccee8.jpg" alt="Apart Premium A baño completo con hidromasaje" loading="lazy" width="600" height="375"></picture></div>
+                  <div class="gallery-slide"><img data-src="nereidas_imagenes/Apart_Premium_A/01_1725739862_66dcb3569579c.jpg" alt="Apart Premium A living con ventanales" width="600" height="375"></div>
+                  <div class="gallery-slide"><img data-src="nereidas_imagenes/Apart_Premium_A/02_1725739862_66dcb356a174d.jpg" alt="Apart Premium A dormitorio principal sommier queen" width="600" height="375"></div>
+                  <div class="gallery-slide"><img data-src="nereidas_imagenes/Apart_Premium_A/03_1725739862_66dcb356aaf9f.jpg" alt="Apart Premium A cocina y barra desayunadora" width="600" height="375"></div>
+                  <div class="gallery-slide"><img data-src="nereidas_imagenes/Apart_Premium_A/04_1725739862_66dcb356b71d5.jpg" alt="Apart Premium A balcón terraza con parrilla propia" width="600" height="375"></div>
+                  <div class="gallery-slide"><img data-src="nereidas_imagenes/Apart_Premium_A/05_1725739862_66dcb356c1323.jpg" alt="Apart Premium A estar y comedor integrado" width="600" height="375"></div>
+                  <div class="gallery-slide"><img data-src="nereidas_imagenes/Apart_Premium_A/07_1725739862_66dcb356d8cf6.jpg" alt="Apart Premium A segundo ambiente / camas" width="600" height="375"></div>
+                  <div class="gallery-slide"><img data-src="nereidas_imagenes/Apart_Premium_A/08_1725739862_66dcb356e39fb.jpg" alt="Apart Premium A vista al bosque nativo" width="600" height="375"></div>
+                  <div class="gallery-slide"><img data-src="nereidas_imagenes/Apart_Premium_A/09_1725739863_66dcb35703596.jpg" alt="Apart Premium A confort y luminosidad" width="600" height="375"></div>
+                  <div class="gallery-slide"><img data-src="nereidas_imagenes/Apart_Premium_A/IMG_7540_1725914765_66df5e8db0ed8.jpeg" alt="Apart Premium A detalles de arquitectura" width="600" height="375"></div>
                 </div>
                 <button class="gallery-nav-btn gallery-nav-prev" aria-label="Foto anterior">❮</button>
                 <button class="gallery-nav-btn gallery-nav-next" aria-label="Siguiente foto">❯</button>
@@ -837,13 +880,13 @@
             <article class="apartment-card" data-category="parejas familias">
               <div class="apartment-gallery">
                 <div class="gallery-track">
-                  <div class="gallery-slide"><img src="nereidas_imagenes/Apart_Premium_B/b4adeece-a0d2-4ea7-8a0e-034e719cb86f_1726508996_66e86fc43031c.jpeg" alt="Apart Premium B deck y parrilla individual" loading="lazy" width="600" height="375"></div>
-                  <div class="gallery-slide"><img src="nereidas_imagenes/Apart_Premium_B/05_1725739929_66dcb39920877.jpg" alt="Apart Premium B ambiente principal integrado" loading="lazy" width="600" height="375"></div>
-                  <div class="gallery-slide"><img src="nereidas_imagenes/Apart_Premium_B/06_1725739929_66dcb399282f0.jpg" alt="Apart Premium B dormitorio principal" loading="lazy" width="600" height="375"></div>
-                  <div class="gallery-slide"><img src="nereidas_imagenes/Apart_Premium_B/6b65f674-6c0e-400c-84ca-f969d0b5e68e (1)_1726508996_66e86fc42823d.jpeg" alt="Apart Premium B cocina equipada y vajilla" loading="lazy" width="600" height="375"></div>
-                  <div class="gallery-slide"><img src="nereidas_imagenes/Apart_Premium_B/a94c220c-2d28-4539-901f-dc7fe5b85040_1726508996_66e86fc42aebf.jpeg" alt="Apart Premium B baño completo e hidromasaje" loading="lazy" width="600" height="375"></div>
-                  <div class="gallery-slide"><img src="nereidas_imagenes/Apart_Premium_B/IMG_7791_1725922793_66df7de9052a7.jpeg" alt="Apart Premium B detalles de descanso" loading="lazy" width="600" height="375"></div>
-                  <div class="gallery-slide"><img src="nereidas_imagenes/Apart_Premium_B/IMG_3968_1725923560_66df80e8f17ce.jpeg" alt="Apart Premium B vista al exterior y parque" loading="lazy" width="600" height="375"></div>
+                  <div class="gallery-slide"><picture><source srcset="nereidas_imagenes/Apart_Premium_B/b4adeece-a0d2-4ea7-8a0e-034e719cb86f_1726508996_66e86fc43031c.webp" type="image/webp"><img src="nereidas_imagenes/Apart_Premium_B/b4adeece-a0d2-4ea7-8a0e-034e719cb86f_1726508996_66e86fc43031c.jpeg" alt="Apart Premium B deck y parrilla individual" loading="lazy" width="600" height="375"></picture></div>
+                  <div class="gallery-slide"><img data-src="nereidas_imagenes/Apart_Premium_B/05_1725739929_66dcb39920877.jpg" alt="Apart Premium B ambiente principal integrado" width="600" height="375"></div>
+                  <div class="gallery-slide"><img data-src="nereidas_imagenes/Apart_Premium_B/06_1725739929_66dcb399282f0.jpg" alt="Apart Premium B dormitorio principal" width="600" height="375"></div>
+                  <div class="gallery-slide"><img data-src="nereidas_imagenes/Apart_Premium_B/6b65f674-6c0e-400c-84ca-f969d0b5e68e (1)_1726508996_66e86fc42823d.jpeg" alt="Apart Premium B cocina equipada y vajilla" width="600" height="375"></div>
+                  <div class="gallery-slide"><img data-src="nereidas_imagenes/Apart_Premium_B/a94c220c-2d28-4539-901f-dc7fe5b85040_1726508996_66e86fc42aebf.jpeg" alt="Apart Premium B baño completo e hidromasaje" width="600" height="375"></div>
+                  <div class="gallery-slide"><img data-src="nereidas_imagenes/Apart_Premium_B/IMG_7791_1725922793_66df7de9052a7.jpeg" alt="Apart Premium B detalles de descanso" width="600" height="375"></div>
+                  <div class="gallery-slide"><img data-src="nereidas_imagenes/Apart_Premium_B/IMG_3968_1725923560_66df80e8f17ce.jpeg" alt="Apart Premium B vista al exterior y parque" width="600" height="375"></div>
                 </div>
                 <button class="gallery-nav-btn gallery-nav-prev" aria-label="Foto anterior">❮</button>
                 <button class="gallery-nav-btn gallery-nav-next" aria-label="Siguiente foto">❯</button>
@@ -910,16 +953,16 @@
             <article class="apartment-card" data-category="familias">
               <div class="apartment-gallery">
                 <div class="gallery-track">
-                  <div class="gallery-slide"><img src="nereidas_imagenes/Apart_Familiar_A/07_1725894759_66df10678a510.jpg" alt="Apart Familiar A deck y parrilla grande" loading="lazy" width="600" height="375"></div>
-                  <div class="gallery-slide"><img src="nereidas_imagenes/Apart_Familiar_A/01_1725581702_66da49865ef2b.jpg" alt="Apart Familiar A amplio living comedor en planta baja" loading="lazy" width="600" height="375"></div>
-                  <div class="gallery-slide"><img src="nereidas_imagenes/Apart_Familiar_A/02_1725581702_66da4986912c6.jpg" alt="Apart Familiar A dormitorio principal con sommier" loading="lazy" width="600" height="375"></div>
-                  <div class="gallery-slide"><img src="nereidas_imagenes/Apart_Familiar_A/03_1725581703_66da49876bfb7.jpg" alt="Apart Familiar A segundo dormitorio camas individuales" loading="lazy" width="600" height="375"></div>
-                  <div class="gallery-slide"><img src="nereidas_imagenes/Apart_Familiar_A/04_1725581704_66da49884942b.jpg" alt="Apart Familiar A cocina completa con 4 hornallas" loading="lazy" width="600" height="375"></div>
-                  <div class="gallery-slide"><img src="nereidas_imagenes/Apart_Familiar_A/05_1725894759_66df10678445c.jpg" alt="Apart Familiar A baño principal completo" loading="lazy" width="600" height="375"></div>
-                  <div class="gallery-slide"><img src="nereidas_imagenes/Apart_Familiar_A/06_1725894759_66df106787b06.jpg" alt="Apart Familiar A segundo baño completo" loading="lazy" width="600" height="375"></div>
-                  <div class="gallery-slide"><img src="nereidas_imagenes/Apart_Familiar_A/08_1725894759_66df10678d05d.jpg" alt="Apart Familiar A escalera a planta alta y detalles" loading="lazy" width="600" height="375"></div>
-                  <div class="gallery-slide"><img src="nereidas_imagenes/Apart_Familiar_A/09_1725894759_66df10678fca0.jpg" alt="Apart Familiar A luminosidad y parque" loading="lazy" width="600" height="375"></div>
-                  <div class="gallery-slide"><img src="nereidas_imagenes/Apart_Familiar_A/10_1725894759_66df106792728.jpg" alt="Apart Familiar A ventanales integrados al bosque" loading="lazy" width="600" height="375"></div>
+                  <div class="gallery-slide"><picture><source srcset="nereidas_imagenes/Apart_Familiar_A/07_1725894759_66df10678a510.webp" type="image/webp"><img src="nereidas_imagenes/Apart_Familiar_A/07_1725894759_66df10678a510.jpg" alt="Apart Familiar A deck y parrilla grande" loading="lazy" width="600" height="375"></picture></div>
+                  <div class="gallery-slide"><img data-src="nereidas_imagenes/Apart_Familiar_A/01_1725581702_66da49865ef2b.jpg" alt="Apart Familiar A amplio living comedor en planta baja" width="600" height="375"></div>
+                  <div class="gallery-slide"><img data-src="nereidas_imagenes/Apart_Familiar_A/02_1725581702_66da4986912c6.jpg" alt="Apart Familiar A dormitorio principal con sommier" width="600" height="375"></div>
+                  <div class="gallery-slide"><img data-src="nereidas_imagenes/Apart_Familiar_A/03_1725581703_66da49876bfb7.jpg" alt="Apart Familiar A segundo dormitorio camas individuales" width="600" height="375"></div>
+                  <div class="gallery-slide"><img data-src="nereidas_imagenes/Apart_Familiar_A/04_1725581704_66da49884942b.jpg" alt="Apart Familiar A cocina completa con 4 hornallas" width="600" height="375"></div>
+                  <div class="gallery-slide"><img data-src="nereidas_imagenes/Apart_Familiar_A/05_1725894759_66df10678445c.jpg" alt="Apart Familiar A baño principal completo" width="600" height="375"></div>
+                  <div class="gallery-slide"><img data-src="nereidas_imagenes/Apart_Familiar_A/06_1725894759_66df106787b06.jpg" alt="Apart Familiar A segundo baño completo" width="600" height="375"></div>
+                  <div class="gallery-slide"><img data-src="nereidas_imagenes/Apart_Familiar_A/08_1725894759_66df10678d05d.jpg" alt="Apart Familiar A escalera a planta alta y detalles" width="600" height="375"></div>
+                  <div class="gallery-slide"><img data-src="nereidas_imagenes/Apart_Familiar_A/09_1725894759_66df10678fca0.jpg" alt="Apart Familiar A luminosidad y parque" width="600" height="375"></div>
+                  <div class="gallery-slide"><img data-src="nereidas_imagenes/Apart_Familiar_A/10_1725894759_66df106792728.jpg" alt="Apart Familiar A ventanales integrados al bosque" width="600" height="375"></div>
                 </div>
                 <button class="gallery-nav-btn gallery-nav-prev" aria-label="Foto anterior">❮</button>
                 <button class="gallery-nav-btn gallery-nav-next" aria-label="Siguiente foto">❯</button>
@@ -998,16 +1041,16 @@
             <article class="apartment-card" data-category="familias">
               <div class="apartment-gallery">
                 <div class="gallery-track">
-                  <div class="gallery-slide"><img src="nereidas_imagenes/Apart_Familiar_B/IMG_7826_1725926090_66df8aca69952.jpeg" alt="Apart Familiar B calidez y confort para toda la familia" loading="lazy" width="600" height="375"></div>
-                  <div class="gallery-slide"><img src="nereidas_imagenes/Apart_Familiar_B/11_1725739978_66dcb3ca0d2bd.jpg" alt="Apart Familiar B estar familiar integrado al parque" loading="lazy" width="600" height="375"></div>
-                  <div class="gallery-slide"><img src="nereidas_imagenes/Apart_Familiar_B/12_1725739978_66dcb3ca0ff69.jpg" alt="Apart Familiar B dormitorio matrimonial en suite" loading="lazy" width="600" height="375"></div>
-                  <div class="gallery-slide"><img src="nereidas_imagenes/Apart_Familiar_B/13_1725739978_66dcb3ca1432c.jpg" alt="Apart Familiar B dormitorio en planta alta" loading="lazy" width="600" height="375"></div>
-                  <div class="gallery-slide"><img src="nereidas_imagenes/Apart_Familiar_B/14_1725739978_66dcb3ca188d8.jpg" alt="Apart Familiar B cocina y vajilla familiar" loading="lazy" width="600" height="375"></div>
-                  <div class="gallery-slide"><img src="nereidas_imagenes/Apart_Familiar_B/15_1725739978_66dcb3ca1b482.jpg" alt="Apart Familiar B baño completo espacioso" loading="lazy" width="600" height="375"></div>
-                  <div class="gallery-slide"><img src="nereidas_imagenes/Apart_Familiar_B/859db912-7b53-4fc0-aa14-0b2ff7bcfeb2_1726512449_66e87d41767c8.jpeg" alt="Apart Familiar B deck privado con parrilla" loading="lazy" width="600" height="375"></div>
-                  <div class="gallery-slide"><img src="nereidas_imagenes/Apart_Familiar_B/90cfa53e-08ec-4657-b70f-7cd5ad09f9a3_1726512449_66e87d4172eba.jpeg" alt="Apart Familiar B entorno arbolado y parque" loading="lazy" width="600" height="375"></div>
-                  <div class="gallery-slide"><img src="nereidas_imagenes/Apart_Familiar_B/IMG_7808_1725926090_66df8aca706ec.jpeg" alt="Apart Familiar B living luminoso con grandes ventanales" loading="lazy" width="600" height="375"></div>
-                  <div class="gallery-slide"><img src="nereidas_imagenes/Apart_Familiar_B/IMG_7836_1725926090_66df8aca97595.jpeg" alt="Apart Familiar B vista directa al predio de Nereidas" loading="lazy" width="600" height="375"></div>
+                  <div class="gallery-slide"><picture><source srcset="nereidas_imagenes/Apart_Familiar_B/IMG_7826_1725926090_66df8aca69952.webp" type="image/webp"><img src="nereidas_imagenes/Apart_Familiar_B/IMG_7826_1725926090_66df8aca69952.jpeg" alt="Apart Familiar B calidez y confort para toda la familia" loading="lazy" width="600" height="375"></picture></div>
+                  <div class="gallery-slide"><img data-src="nereidas_imagenes/Apart_Familiar_B/11_1725739978_66dcb3ca0d2bd.jpg" alt="Apart Familiar B estar familiar integrado al parque" width="600" height="375"></div>
+                  <div class="gallery-slide"><img data-src="nereidas_imagenes/Apart_Familiar_B/12_1725739978_66dcb3ca0ff69.jpg" alt="Apart Familiar B dormitorio matrimonial en suite" width="600" height="375"></div>
+                  <div class="gallery-slide"><img data-src="nereidas_imagenes/Apart_Familiar_B/13_1725739978_66dcb3ca1432c.jpg" alt="Apart Familiar B dormitorio en planta alta" width="600" height="375"></div>
+                  <div class="gallery-slide"><img data-src="nereidas_imagenes/Apart_Familiar_B/14_1725739978_66dcb3ca188d8.jpg" alt="Apart Familiar B cocina y vajilla familiar" width="600" height="375"></div>
+                  <div class="gallery-slide"><img data-src="nereidas_imagenes/Apart_Familiar_B/15_1725739978_66dcb3ca1b482.jpg" alt="Apart Familiar B baño completo espacioso" width="600" height="375"></div>
+                  <div class="gallery-slide"><img data-src="nereidas_imagenes/Apart_Familiar_B/859db912-7b53-4fc0-aa14-0b2ff7bcfeb2_1726512449_66e87d41767c8.jpeg" alt="Apart Familiar B deck privado con parrilla" width="600" height="375"></div>
+                  <div class="gallery-slide"><img data-src="nereidas_imagenes/Apart_Familiar_B/90cfa53e-08ec-4657-b70f-7cd5ad09f9a3_1726512449_66e87d4172eba.jpeg" alt="Apart Familiar B entorno arbolado y parque" width="600" height="375"></div>
+                  <div class="gallery-slide"><img data-src="nereidas_imagenes/Apart_Familiar_B/IMG_7808_1725926090_66df8aca706ec.jpeg" alt="Apart Familiar B living luminoso con grandes ventanales" width="600" height="375"></div>
+                  <div class="gallery-slide"><img data-src="nereidas_imagenes/Apart_Familiar_B/IMG_7836_1725926090_66df8aca97595.jpeg" alt="Apart Familiar B vista directa al predio de Nereidas" width="600" height="375"></div>
                 </div>
                 <button class="gallery-nav-btn gallery-nav-prev" aria-label="Foto anterior">❮</button>
                 <button class="gallery-nav-btn gallery-nav-next" aria-label="Siguiente foto">❯</button>
@@ -1310,7 +1353,10 @@
           <div class="attractions-grid">
             
             <div class="attraction-card">
-              <img src="nereidas_imagenes/Atracciones/Playas amplias.jpeg" alt="Playas Amplias de Mar de las Pampas" loading="lazy" width="400" height="320">
+              <picture>
+                <source srcset="nereidas_imagenes/Atracciones/Playas%20amplias.webp" type="image/webp">
+                <img src="nereidas_imagenes/Atracciones/Playas%20amplias.jpeg" alt="Playas Amplias de Mar de las Pampas" loading="lazy" width="400" height="320">
+              </picture>
               <div class="attraction-overlay">
                 <h4>Playas Amplias</h4>
                 <p>Dunas naturales, mar sereno y espacio ideal para largas caminatas al atardecer.</p>
@@ -1318,7 +1364,11 @@
             </div>
 
             <div class="attraction-card">
-              <img src="nereidas_imagenes/Atracciones/senderos del bosque.jpeg" alt="Senderos del Bosque en Mar de las Pampas" loading="lazy" width="400" height="320">
+              <picture>
+                <source media="(max-width: 768px)" srcset="nereidas_imagenes/Atracciones/senderos%20del%20bosque-mobile.webp" type="image/webp">
+                <source srcset="nereidas_imagenes/Atracciones/senderos%20del%20bosque.webp" type="image/webp">
+                <img src="nereidas_imagenes/Atracciones/senderos%20del%20bosque.webp" alt="Senderos del Bosque en Mar de las Pampas" loading="lazy" width="400" height="320">
+              </picture>
               <div class="attraction-overlay">
                 <h4>Senderos del Bosque</h4>
                 <p>Calles de arena sin prisa, aire puro entre los pinos y avistaje de aves.</p>
@@ -1326,7 +1376,11 @@
             </div>
 
             <div class="attraction-card">
-              <img src="nereidas_imagenes/Atracciones/centro aldea.jpg" alt="Centro comercial de aldea en Mar de las Pampas" loading="lazy" width="400" height="320">
+              <picture>
+                <source media="(max-width: 768px)" srcset="nereidas_imagenes/Atracciones/centro%20aldea-mobile.webp" type="image/webp">
+                <source srcset="nereidas_imagenes/Atracciones/centro%20aldea.webp" type="image/webp">
+                <img src="nereidas_imagenes/Atracciones/centro%20aldea.jpg" alt="Centro comercial de aldea en Mar de las Pampas" loading="lazy" width="400" height="320">
+              </picture>
               <div class="attraction-overlay">
                 <h4>Centro de Aldea</h4>
                 <p>Construcciones de madera y piedra con gastronomía gourmet, chocolates y artesanías.</p>
@@ -1334,7 +1388,11 @@
             </div>
 
             <div class="attraction-card">
-              <img src="nereidas_imagenes/Atracciones/Querandi.jpeg" alt="Reserva Natural Faro Querandí" loading="lazy" width="400" height="320">
+              <picture>
+                <source media="(max-width: 768px)" srcset="nereidas_imagenes/Atracciones/Querandi-mobile.webp" type="image/webp">
+                <source srcset="nereidas_imagenes/Atracciones/Querandi.webp" type="image/webp">
+                <img src="nereidas_imagenes/Atracciones/Querandi.jpeg" alt="Reserva Natural Faro Querandí" loading="lazy" width="400" height="320">
+              </picture>
               <div class="attraction-overlay">
                 <h4>Faro Querandí</h4>
                 <p>Aventura en travesías 4x4 por la reserva dunícola protegida más importante de la región.</p>
@@ -1507,7 +1565,10 @@
           
           <div class="footer-col">
             <div class="footer-logo-wrap" style="margin-bottom: 20px;">
-              <img src="img/logo_footer_gold.png" alt="Apart Nereidas" class="footer-logo-img" style="height: 72px; max-height: 72px; width: auto; object-fit: contain;">
+              <picture>
+            <source srcset="img/logo_footer_gold.webp" type="image/webp">
+            <img src="img/logo_footer_gold-opt.png" alt="Apart Nereidas" class="footer-logo-img" width="118" height="72" loading="lazy" style="height: 72px; max-height: 72px; width: auto; object-fit: contain;">
+          </picture>
             </div>
             <p style="color: #CBD5E1; line-height: 1.6;">
               Tu lugar en el mundo para descansar junto al mar y rodeado de la magia de los pinos. Abierto todo el año, con la calidez y atención de sus dueños.
@@ -1760,7 +1821,7 @@
   </a>
 
   <!-- Script Moderno Modular -->
-  <script src="js/app.js?v=2.7"></script>
+  <script src="js/app.js?v=3.0"></script>
 
 
   <script>
