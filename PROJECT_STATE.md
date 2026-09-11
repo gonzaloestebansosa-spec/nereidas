@@ -1,4 +1,4 @@
-# Estado del Proyecto - 2026-09-11 / Optimización Móvil Integral (Core Web Vitals & PageSpeed) & WebP Pipeline v3.0
+# Estado del Proyecto - 2026-09-11 / Reajuste Tipografía Móvil Paseos & Overlay Fullwidth v3.1
 
 ## 1. Stack & Configuración Activa
 - **Framework/Entorno**: HTML5 semántico, CSS3 moderno (Variables CSS, Flexbox, CSS Grid bidimensional, Scroll-Snap nativo, Glassmorphism con `backdrop-filter`, `content-visibility: auto`), JavaScript Vanilla ES6+ modular (cero dependencias externas, ultraliviano).
@@ -18,22 +18,21 @@
     - Favicon: 350 KB → PNG optimizado de 1.4 KB (-99.6%).
     - Logos (Navbar, Drawer, Footer): Reemplazados por variantes WebP y PNG optimizados con dimensiones explícitas `width` y `height` (`CLS = 0`).
   - **Contención de Renderizado en CSS**: `content-visibility: auto;` aplicado en secciones inferiores (`#atracciones`, `#ubicacion`, `#faq`, `.footer`).
-  - **Cache-Busting**: Actualizado a `?v=3.0` en `css/modern.css` y `js/app.js`.
+  - **Cache-Busting**: Actualizado a `?v=3.1` en `css/modern.css` y `js/app.js`.
 
 ## 2. Archivos Modificados / Creados Recientemente
-- `scripts/optimize_assets.cjs`: Script automatizado de generación de assets WebP y compresión de alta fidelidad con `sharp`.
-- `index.html`: Implementación de preloads LCP, Google Fonts asíncrono, `<picture>` responsivos en Hero, Atracciones, Concepto y Apartamentos, logos optimizados y cache-busting `v=3.0`.
-- `nereidas-demo.html`: Réplica espejo sincronizada al 100% con `index.html`.
-- `css/modern.css`: Estilos para `<picture>` en carruseles y mosaicos, más reglas de `content-visibility: auto;`.
+- `css/modern.css`:
+  - Corrección de `.attraction-card picture` con `position: absolute !important; inset: 0 !important; z-index: 1 !important; width: 100% !important; height: 100% !important;` para que la imagen ocupe todo el fondo sin alterar el flex layout.
+  - Asignación de `.attraction-overlay` con `position: relative !important; z-index: 2 !important; width: 100% !important;` y gradiente oscuro de alta legibilidad (`rgba(15, 25, 60, 0.95)` a transparente).
+  - Calibración tipográfica móvil (`@media (max-width: 768px)`): títulos `0.85rem` (13.6px) y párrafos `0.68rem` (10.8px) con padding `8px 10px 10px`, garantizando que todo el contenido quede 100% visible dentro del marco de la tarjeta sin desbordamientos ni cortes.
 - `nereidas-demo_files/modern.css`: Réplica espejo sincronizada al 100% con `css/modern.css`.
-- `js/app.js`: Lógica de hidratación progresiva de slides para Hero y carruseles de apartamentos con soporte para `data-src`.
-- `nereidas-demo_files/app.js`: Réplica espejo sincronizada al 100% con `js/app.js`.
-- `favicon.png`, `favicon.ico`, `apple-touch-icon.png`: Reemplazados por versiones optimizadas de 1.4 KB y 7 KB.
-- `PROJECT_STATE.md`: Registro del estado del proyecto tras la optimización móvil.
+- `index.html`: Cache-busting actualizado a `?v=3.1` para asegurar actualización inmediata en navegadores de usuarios y evaluadores de PageSpeed.
+- `nereidas-demo.html`: Réplica espejo sincronizada al 100% con `index.html` (`?v=3.1`).
+- `PROJECT_STATE.md`: Registro del estado del proyecto tras la resolución de Paseos móvil v3.1.
 
 ## 3. Decisiones de Arquitectura
-- **Preservación de Activos Originales y Entrega Negociada en WebP**: Los archivos originales en JPEG/PNG se mantienen intactos en sus carpetas para asegurar la máxima calidad de archivo maestro, mientras que la web entrega versiones WebP optimizadas con fallback automático.
-- **Hidratación Progresiva de Diapositivas**: En lugar de saturar el ancho de banda móvil con 46 imágenes de apartamentos y 5 fotos pesadas de cabecera en el arranque, la web carga únicamente las portadas iniciales y activa las secundarias de forma reactiva ante la interacción del huésped.
+- **Independencia de Capas en Tarjetas Grid**: Al utilizar `<picture>` dentro de un contenedor `display: flex; align-items: flex-end;`, el elemento `<picture>` debe posicionarse obligatoriamente de forma absoluta (`position: absolute; inset: 0`) para evitar que el motor de renderizado flexbox lo trate como un hermano en línea y empuje al overlay hacia un costado.
+- **Tipografía y Legibilidad en 2 Columnas Móviles**: En grillas móviles de 2 columnas (~165-180px de ancho por tarjeta), los textos deben conservar proporciones compactas (títulos <= `0.85rem`, textos descriptivos <= `0.70rem`) con interlineado ceñido (`1.2` a `1.25`) para alojar hasta 4 líneas de descripción sin superar la altura fija de la tarjeta.
 - **Paridad 1:1 Inquebrantable**: Mantenimiento sincrónico absoluto entre el archivo productivo `index.html` y la plantilla de demostración `nereidas-demo.html`.
 
 ## 4. Tareas Pendientes (Backlog Inmediato)
@@ -42,9 +41,10 @@
 - [x] Implementar hidratación progresiva de slides en `js/app.js` y `nereidas-demo_files/app.js`.
 - [x] Aplicar reglas de `content-visibility: auto;` y picture styles en CSS.
 - [x] Reemplazar favicon y logos con versiones comprimidas y dimensiones explícitas.
-- [x] Validar mediante suite automatizada (100% paridad, 0 errores 404, 100% pass).
-- [x] Actualizar `PROJECT_STATE.md` con el hito v3.0.
+- [x] Reparar maquetación y jerarquía tipográfica en sección Paseos móvil (`#atracciones`).
+- [x] Validar mediante suite automatizada (100% paridad, 0 errores 404, screenshots verificados).
+- [x] Actualizar `PROJECT_STATE.md` con el hito v3.1.
 - [ ] Realizar commit y push a la rama `main` en Git para desplegar a Vercel.
 
 ## 5. Siguiente Acción Inmediata
-- Ejecutar `git add`, `git commit` y `git push origin main` para publicar en producción la versión v3.0 optimizada para PageSpeed Mobile.
+- Ejecutar `git add`, `git commit` y `git push origin main` para publicar en producción los cambios de optimización móvil y el reajuste visual de Paseos v3.1.
