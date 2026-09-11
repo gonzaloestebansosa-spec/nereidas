@@ -43,8 +43,7 @@
 - [x] Reemplazar favicon y logos con versiones comprimidas y dimensiones explícitas.
 - [x] Reparar maquetación y jerarquía tipográfica en sección Paseos móvil (`#atracciones`).
 - [x] Validar mediante suite automatizada (100% paridad, 0 errores 404, screenshots verificados).
-- [x] Actualizar `PROJECT_STATE.md` con el hito v3.1.
-- [ ] Realizar commit y push a la rama `main` en Git para desplegar a Vercel.
+- [x] Realizar commit y push a la rama `main` en Git para desplegar a Vercel (completado en commit `eb66125`).
 
 ## 5. Siguiente Acción Inmediata
-- Ejecutar `git add`, `git commit` y `git push origin main` para publicar en producción los cambios de optimización móvil y el reajuste visual de Paseos v3.1.
+- Esperar feedback del usuario sobre nuevas revisiones o continuar con la optimización de SEO/Schema o auditoría de Google Travel.
