@@ -931,22 +931,78 @@ function initHighlightsStories() {
  * 9. Visor Interactivo de Historias en la Sección Highlights de la Web
  */
 const WEB_HIGHLIGHTS_STORIES = [
-  { title: 'Desayuno', icon: 'img/highlights/01_desayuno.jpg', photo: 'nereidas_imagenes/Servicios/03.jpg', desc: 'Bandeja artesanal con panificación fresca, infusiones y delicias servida directamente en tu apart.' },
-  { title: 'WiFi Fibra', icon: 'img/highlights/02_wifi.jpg', photo: 'nereidas_imagenes/Apart_Premium_A/IMG_7663_1725927514_66df905a53fa1.jpeg', desc: 'Conexión de fibra óptica de alta velocidad distribuida en todos los departamentos y el parque.' },
-  { title: 'Limpieza', icon: 'img/highlights/03_limpieza.jpg', photo: 'nereidas_imagenes/Apart_Miel/01_1725739803_66dcb31bccfa8.jpg', desc: 'Servicio diario de mucama y provisión de sábanas y toallas con recambio periódico.' },
-  { title: 'Sombrillas', icon: 'img/highlights/04_sombrillas.jpg', photo: 'nereidas_imagenes/Atracciones/Playas amplias.jpeg', desc: 'Servicio de playa en temporada de verano con reposeras y sombrillas a solo 100m del mar.' },
-  { title: 'Mascotas', icon: 'img/highlights/05_mascotas.jpg', photo: 'nereidas_imagenes/Portada/02.jpg', desc: 'Pet-friendly: recibimos a tu mascota educada en unidades seleccionadas con previa coordinación.' },
-  { title: 'Bicicletas', icon: 'img/highlights/06_bicicletas.jpg', photo: 'nereidas_imagenes/Atracciones/senderos del bosque.jpeg', desc: 'Bicicletas a disposición de los huéspedes para pasear por las calles de arena del bosque.' },
-  { title: 'Ropa de cama', icon: 'img/highlights/07_ropa_de_cama.jpg', photo: 'nereidas_imagenes/Apart_Miel/02_1725894620_66df0fdce4584.jpg', desc: 'Sommiers hoteleros de alta densidad y juegos completos de sábanas y toallas de algodón.' },
-  { title: 'Parrilla', icon: 'img/highlights/08_parrilla.jpg', photo: 'nereidas_imagenes/Apart_Premium_A/01_1725739862_66dcb3569579c.jpg', desc: 'Cada departamento cuenta con su propio asador en balcón terraza o deck privado.' },
-  { title: 'Piscina', icon: 'img/highlights/09_piscina.jpg', photo: 'nereidas_imagenes/Servicios/01.jpg', desc: 'Piscina exterior climatizada con solarium de madera y reposeras rodeada de pinos.' },
-  { title: 'Habitaciones', icon: 'img/highlights/10_habitaciones.jpg', photo: 'nereidas_imagenes/Apart_Familiar_B/15_1725739978_66dcb3ca1b482.jpg', desc: 'Apartamentos para 2 a 6 personas con cocina equipada, hidromasaje y sommiers king/queen.' },
-  { title: 'Ubicación', icon: 'img/highlights/11_ubicacion.jpg', photo: 'nereidas_imagenes/Portada/01.jpg', desc: 'A solo 100 metros de la playa y 250 metros del centro comercial de aldea.' },
-  { title: 'Galería', icon: 'img/highlights/12_galeria.jpg', photo: 'nereidas_imagenes/Servicios/04.jpg', desc: 'Postales reales de nuestro complejo en todas las estaciones del año.' },
-  { title: 'Contacto', icon: 'img/highlights/13_contacto.jpg', photo: 'nereidas_imagenes/Portada/04.jpg', desc: 'Atendido directamente por sus propios dueños. Consultanos por WhatsApp.' },
-  { title: 'Tarifas', icon: 'img/highlights/14_tarifas.jpg', photo: 'nereidas_imagenes/Apart_Premium_B/IMG_7791_1725922793_66df7de9052a7.jpeg', desc: 'Tarifas directas sin intermediarios. Consultanos por fines de semana largos.' },
-  { title: 'Actividades', icon: 'img/highlights/15_actividades.jpg', photo: 'nereidas_imagenes/Atracciones/centro aldea.jpg', desc: 'Caminatas, playa, senderos en el bosque y gastronomía gourmet de aldea.' },
-  { title: 'Reservas', icon: 'img/highlights/16_reservas.jpg', photo: 'nereidas_imagenes/Servicios/02.jpg', desc: 'Reservá tu estadía de forma rápida y segura a través de nuestro WhatsApp oficial.' }
+  {
+    title: 'Desayuno Artesanal',
+    icon: 'img/highlights/01_desayuno.jpg',
+    photo: 'nereidas_imagenes/Servicios/Desayuno.jpg',
+    desc: 'Bandeja artesanal con panificación fresca, mermeladas e infusiones servida directamente en tu apart o junto a la piscina.'
+  },
+  {
+    title: 'Servicio de Mucama',
+    icon: 'img/highlights/03_limpieza.jpg',
+    photo: 'nereidas_imagenes/Apart_Miel/08_1725739803_66dcb31be0abd.jpg',
+    desc: 'Limpieza diaria y provisión de blancos con recambio periódico para una estadía impecable y relajante.'
+  },
+  {
+    title: 'Servicio de Playa',
+    icon: 'img/highlights/04_sombrillas.jpg',
+    photo: 'nereidas_imagenes/Atracciones/Playas amplias.jpeg',
+    desc: 'Sombrillas y reposeras listas para disfrutar de las amplias playas de Mar de las Pampas a solo 100 metros.'
+  },
+  {
+    title: 'Estadía Pet Friendly',
+    icon: 'img/highlights/05_mascotas.jpg',
+    photo: 'nereidas_imagenes/Servicios/01.jpg',
+    desc: 'Recibimos a tu mascota educada en nuestras instalaciones y parque cerrado con coordinación previa.'
+  },
+  {
+    title: 'Bicicletas de Paseo',
+    icon: 'img/highlights/06_bicicletas.jpg',
+    photo: 'nereidas_imagenes/Servicios/03.jpg',
+    desc: 'Bicicletas a disposición con canasto y sillita infantil para recorrer las calles de arena y senderos del bosque.'
+  },
+  {
+    title: 'Ropa Blanca & Sommier',
+    icon: 'img/highlights/07_ropa_de_cama.jpg',
+    photo: 'nereidas_imagenes/Apart_Premium_B/b4adeece-a0d2-4ea7-8a0e-034e719cb86f_1726508996_66e86fc43031c.jpeg',
+    desc: 'Sommiers hoteleros King Size y juegos completos de sábanas y toallones de puro algodón para un descanso superior.'
+  },
+  {
+    title: 'Parrilla Individual',
+    icon: 'img/highlights/08_parrilla.jpg',
+    photo: 'nereidas_imagenes/Apart_Miel/02_1725894620_66df0fdce4584.jpg',
+    desc: 'Cada departamento cuenta con su propio asador en balcón terraza o deck privado con mesa exterior.'
+  },
+  {
+    title: 'Piscina Climatizada',
+    icon: 'img/highlights/09_piscina.jpg',
+    photo: 'nereidas_imagenes/Servicios/04.jpg',
+    desc: 'Piscina exterior templada rodeada de solarium de madera, reposeras y la serenidad de los pinos.'
+  },
+  {
+    title: 'Equipamiento Total',
+    icon: 'img/highlights/10_habitaciones.jpg',
+    photo: 'nereidas_imagenes/Apart_Familiar_B/859db912-7b53-4fc0-aa14-0b2ff7bcfeb2_1726512449_66e87d41767c8.jpeg',
+    desc: 'Cocina completamente equipada con heladera con freezer, microondas, vajilla completa y baño con hidromasaje.'
+  },
+  {
+    title: 'Ubicación Estratégica',
+    icon: 'img/highlights/11_ubicacion.jpg',
+    photo: 'nereidas_imagenes/Servicios/05.jpg',
+    desc: 'Privilegiada ubicación en medio del bosque, a solo 100 metros del mar y a 250 metros del centro comercial de aldea.'
+  },
+  {
+    title: 'Galería & Parque',
+    icon: 'img/highlights/12_galeria.jpg',
+    photo: 'nereidas_imagenes/Servicios/06.jpg',
+    desc: 'Parque arbolado privado con camastros, senderos naturales y rincones de relax en plena naturaleza.'
+  },
+  {
+    title: 'Paseos por la Aldea',
+    icon: 'img/highlights/15_actividades.jpg',
+    photo: 'nereidas_imagenes/Atracciones/centro aldea.jpg',
+    desc: 'Construcciones rústicas de piedra y madera, gastronomía gourmet de autor, chocolaterías y artesanías.'
+  }
 ];
 
 window.currentWebStoryIdx = 0;
