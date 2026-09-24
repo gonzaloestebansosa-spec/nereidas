@@ -1,4 +1,4 @@
-/**
+﻿/**
  * APART NEREIDAS â€” MODERN VANILLA JS (ES6+)
  * Cero dependencias (sin jQuery), modular, accesible y ultraliviano (< 6KB)
  */
@@ -532,11 +532,11 @@ function initBookingForm() {
     const bebes = document.getElementById('booking-bebes')?.value || '0';
 
     let message = `¡Hola Apart Nereidas! Quisiera consultar disponibilidad y tarifas para mi estadía:\n`;
-    if (checkin) message += `ðŸ“… Check-In: ${checkin}\n`;
-    if (checkout) message += `ðŸ“… Check-Out: ${checkout}\n`;
-    message += `ðŸ‘¥ Adultos: ${adultos}\n`;
-    if (menores && menores !== '0') message += `ðŸ§’ Menores (2-12 años): ${menores}\n`;
-    if (bebes && bebes !== '0') message += `ðŸ‘¶ Bebés (0-2 años): ${bebes}\n`;
+    if (checkin) message += `📅 Check-In: ${checkin}\n`;
+    if (checkout) message += `📅 Check-Out: ${checkout}\n`;
+    message += `👥 Adultos: ${adultos}\n`;
+    if (menores && menores !== '0') message += `🧒 Menores (2-12 años): ${menores}\n`;
+    if (bebes && bebes !== '0') message += `👶 Bebés (0-2 años): ${bebes}\n`;
     message += `\n¿Podrían indicarme qué opciones tienen disponibles y las tarifas correspondientes? ¡Muchas gracias!`;
 
     const encodedMsg = encodeURIComponent(message);
