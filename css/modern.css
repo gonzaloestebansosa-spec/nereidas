@@ -486,7 +486,7 @@ ul, ol {
 
 .hero-title {
   font-family: var(--font-serif);
-  font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+  font-size: clamp(2.15rem, 5.2vw, 3.95rem);
   font-weight: 500;
   line-height: 1.12;
   margin-bottom: 20px;
@@ -501,7 +501,7 @@ ul, ol {
 }
 
 .hero-desc {
-  font-size: clamp(1rem, 2vw, 1.25rem);
+  font-size: clamp(0.75rem, 1.5vw, 0.90rem);
   color: rgba(255, 255, 255, 0.9);
   margin-bottom: 36px;
   max-width: 640px;
@@ -2097,6 +2097,63 @@ ul, ol {
   background: #C9A66B;
   width: 46px;
 }
+
+/* Flechas de Navegación del Hero Slideshow */
+.hero-arrow {
+  position: absolute;
+  top: 48%;
+  transform: translateY(-50%);
+  z-index: 8;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: rgba(15, 25, 60, 0.42);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  padding: 0;
+}
+.hero-arrow:hover {
+  background: rgba(15, 25, 60, 0.78);
+  border-color: rgba(255, 255, 255, 0.7);
+  transform: translateY(-50%) scale(1.08);
+  color: #C9A66B;
+}
+.hero-arrow:active {
+  transform: translateY(-50%) scale(0.95);
+}
+.hero-arrow-prev {
+  left: 24px;
+}
+.hero-arrow-next {
+  right: 24px;
+}
+@media (max-width: 768px) {
+  .hero-arrow {
+    width: 36px;
+    height: 36px;
+    top: 42%;
+    background: rgba(15, 25, 60, 0.55);
+  }
+  .hero-arrow-prev {
+    left: 10px;
+  }
+  .hero-arrow-next {
+    right: 10px;
+  }
+  .hero-arrow svg {
+    width: 18px;
+    height: 18px;
+  }
+}
+
 .hero-content {
   position: relative;
   z-index: 5;
@@ -2111,8 +2168,8 @@ ul, ol {
 .hero-desc {
   color: #E2E8F0;
   max-width: 720px;
-  font-size: 1.15rem;
-  line-height: 1.7;
+  font-size: 0.90rem;
+  line-height: 1.6;
   letter-spacing: 0.3px;
   font-weight: 400;
   margin-bottom: 0;
@@ -3745,16 +3802,18 @@ ul, ol {
   .hero h2,
   .hero-content h1,
   .hero-content h2 {
-    font-size: 1.65rem !important; /* Reducción de ~38.4px a 26.4px en móvil */
+    font-size: 1.40rem !important; /* Reducción de 4px: de 1.65rem (26.4px) a 1.40rem (22.4px) en móvil */
     line-height: 1.22 !important;
     letter-spacing: -0.2px !important;
     margin-bottom: 12px !important;
   }
   .hero-desc,
+  .hero h2,
   .hero h3,
+  .hero-content h2,
   .hero-content h3 {
-    font-size: 0.90rem !important; /* Reducción de 18.4px a 14.4px en móvil */
-    line-height: 1.48 !important;
+    font-size: 0.68rem !important; /* Reducción de ~3.5px: de 0.90rem (14.4px) a 0.68rem (10.9px) en móvil */
+    line-height: 1.45 !important;
     max-width: 100% !important;
     margin-bottom: 14px !important;
     opacity: 0.92 !important;
@@ -3772,15 +3831,17 @@ ul, ol {
   .hero h2,
   .hero-content h1,
   .hero-content h2 {
-    font-size: 1.42rem !important; /* Reducción a ~22.7px en móviles angostos */
+    font-size: 1.17rem !important; /* Reducción de 4px: de 1.42rem (22.7px) a 1.17rem (18.7px) en móviles angostos */
     line-height: 1.2 !important;
     margin-bottom: 10px !important;
   }
   .hero-desc,
+  .hero h2,
   .hero h3,
+  .hero-content h2,
   .hero-content h3 {
-    font-size: 0.84rem !important; /* Reducción a ~13.4px en móviles angostos */
-    line-height: 1.42 !important;
+    font-size: 0.62rem !important; /* Reducción de ~3.5px: de 0.84rem (13.4px) a 0.62rem (9.9px) en móviles angostos */
+    line-height: 1.4 !important;
     margin-bottom: 12px !important;
   }
 }

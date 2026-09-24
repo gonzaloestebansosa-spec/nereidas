@@ -1106,10 +1106,20 @@ document.addEventListener('DOMContentLoaded', () => {
       resetInterval();
     };
 
-    function nextSlide() {
+    window.nextHeroSlide = function() {
       const next = (currentSlide + 1) % slides.length;
       hydrateSlide(slides[next]);
       window.setHeroSlide(next);
+    };
+
+    window.prevHeroSlide = function() {
+      const prev = (currentSlide - 1 + slides.length) % slides.length;
+      hydrateSlide(slides[prev]);
+      window.setHeroSlide(prev);
+    };
+
+    function nextSlide() {
+      window.nextHeroSlide();
     }
 
     // Hidratar slides secundarios cuando la red esté libre tras el inicio

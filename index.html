@@ -48,7 +48,7 @@
   </noscript>
 
   <!-- Hoja de Estilos Moderna -->
-  <link rel="stylesheet" href="css/modern.css?v=3.1">
+  <link rel="stylesheet" href="css/modern.css?v=3.3">
 
   <!-- Schema.org Datos Estructurados para Hotelería (JSON-LD) -->
   <script type="application/ld+json">
@@ -583,6 +583,14 @@
           <div class="hero-overlay-gradient"></div>
         </div>
 
+        <!-- Flechas de Navegación del Hero Slideshow -->
+        <button type="button" class="hero-arrow hero-arrow-prev" onclick="prevHeroSlide()" aria-label="Foto anterior del complejo">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        </button>
+        <button type="button" class="hero-arrow hero-arrow-next" onclick="nextHeroSlide()" aria-label="Foto siguiente del complejo">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </button>
+
         <!-- Indicadores de Slideshow -->
         <div class="hero-slideshow-indicators" id="hero-indicators">
           <button class="hero-indicator active" onclick="setHeroSlide(0)" aria-label="Foto 1"></button>
@@ -603,9 +611,9 @@
             Tu refugio entre el mar y el bosque de Mar de las Pampas
           </h1>
 
-          <h3 class="hero-desc">
+          <h2 class="hero-desc">
             Disfrutá del silencio, la naturaleza viva y la calidez de un complejo diseñado para desconectar. Apartamentos con equipamiento de primer nivel, piscina climatizada y servicio personalizado.
-          </h3>
+          </h2>
         </div>
       </section>
 
