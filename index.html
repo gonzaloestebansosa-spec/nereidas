@@ -48,7 +48,7 @@
   </noscript>
 
   <!-- Hoja de Estilos Moderna -->
-  <link rel="stylesheet" href="css/modern.css?v=3.3">
+  <link rel="stylesheet" href="css/modern.css?v=4.0">
 
   <!-- Schema.org Datos Estructurados para Hotelería (JSON-LD) -->
   <script type="application/ld+json">
@@ -91,25 +91,7 @@
 </head>
 <body>
 
-  
-  <!-- Barra Superior de Control y Switcher de Muestras -->
-  <aside class="demo-top-switcher-bar" aria-label="Selector de demos de Apart Nereidas">
-    <div class="demo-switcher-brand">
-      <span>🌊</span>
-      <strong>Apart Nereidas</strong>
-      <span class="badge-tag">Centro de Muestras</span>
-    </div>
-    <nav class="demo-switcher-nav" aria-label="Navegación de muestras">
-      <a href="index.html" class="demo-switcher-pill active" title="Web Demo Oficial">
-        <span>🌐</span> <span class="pill-full">Web Demo (Activa)</span><span class="pill-short">Web Demo</span>
-      </a>
-      <a href="instagram/index.html" class="demo-switcher-pill" title="Ver Simulador Móvil Interactivo">
-        <span>📱</span> <span class="pill-full">Simulador Móvil</span><span class="pill-short">Simulador</span>
-      </a>
-    </nav>
-  </aside>
-
-  <!-- Marco General Centrado al 80% en Desktop -->
+  <!-- Marco General Desktop -->
   <div class="site-wrapper">
 
     <!-- ======================================================================
@@ -1615,7 +1597,7 @@
           <div class="footer-col">
             <h4>Newsletter</h4>
             <p style="color: #CBD5E1;">Dejanos tu email para recibir tarifas promocionales de escapadas y fines de semana largos.</p>
-            <form class="newsletter-form" onsubmit="event.preventDefault(); alert('¡Gracias por suscribirte al newsletter de Nereidas!'); this.reset();">
+            <form class="newsletter-form">
               <input type="email" placeholder="Tu correo electrónico" required aria-label="Ingresa tu correo para recibir novedades">
               <button type="submit" class="btn btn-accent" style="border-radius: var(--border-radius-sm); padding: 10px 20px;">Suscribirme</button>
             </form>
@@ -1829,33 +1811,6 @@
   </a>
 
   <!-- Script Moderno Modular -->
-  <script src="js/app.js?v=3.2"></script>
-
-
-  <script>
-    window.toggleAptCollapse = function(btn) {
-      if (!btn) return;
-      const isExpanded = btn.getAttribute('aria-expanded') === 'true';
-      const wrapper = btn.closest('.apt-collapse-wrapper');
-      if (!wrapper) return;
-      const content = wrapper.querySelector('.apt-collapse-content');
-      if (!content) return;
-      const textSpan = btn.querySelector('.apt-toggle-text');
-
-      if (isExpanded) {
-        btn.setAttribute('aria-expanded', 'false');
-        btn.classList.remove('active');
-        content.classList.remove('open');
-        content.setAttribute('aria-hidden', 'true');
-        if (textSpan) textSpan.textContent = 'Ver distribución y equipamiento';
-      } else {
-        btn.setAttribute('aria-expanded', 'true');
-        btn.classList.add('active');
-        content.classList.add('open');
-        content.setAttribute('aria-hidden', 'false');
-        if (textSpan) textSpan.textContent = 'Ocultar distribución y equipamiento';
-      }
-    };
-  </script>
+  <script src="js/app.js?v=4.0"></script>
 </body>
 </html>

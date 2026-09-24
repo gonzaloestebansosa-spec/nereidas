@@ -1,38 +1,44 @@
-# Estado del Proyecto - 2026-09-23 / Mapeo y Redirección de Servicios en Visor Interactivo (Web Story) v3.2
+# Estado del Proyecto - 2026-09-24 / Versión Final Productiva v4.0 & Rama Demo en GitHub
 
 ## 1. Stack & Configuración Activa
-- **Framework/Entorno**: HTML5 semántico, CSS3 moderno (Variables CSS, Flexbox, CSS Grid bidimensional, Scroll-Snap nativo, Glassmorphism con `backdrop-filter`, `content-visibility: auto`), JavaScript Vanilla ES6+ modular (cero dependencias externas, ultraliviano).
-- **Entorno de Ejecución & Herramientas**: Windows PowerShell, Node.js v22, `sharp` (procesamiento y compresión de última generación), Google Chrome Headless, Git / GitHub, Vercel (CI/CD con HTTPS forzado y HTTP/2).
-- **Visor Interactivo de Servicios (Web Story Modal)**:
-  - Reestructurado a un set limpio de 12 servicios sincronizados 1:1 con la grilla de la sección `#servicios` y el Megamenú del encabezado.
-  - Corrección de desfasaje de índices: cada tarjeta abre de forma unívoca su historia correspondiente (0 a 11).
-  - Asignación de fotografías reales verificadas de alta definición para cada categoría desde `nereidas_imagenes/`.
-  - Contador adaptativo ("1 de 12", "2 de 12", etc.) y textos descriptivos contextuales de alta conversión.
-  - Cache-busting actualizado a `?v=3.2` en `index.html` y `nereidas-demo.html`.
+- **Framework/Entorno**: HTML5 semántico, CSS3 moderno (Variables CSS, Flexbox, CSS Grid bidimensional, Scroll-Snap nativo, Glassmorphism con `backdrop-filter`, `content-visibility: auto`), JavaScript Vanilla ES6+ modular (cero dependencias externas, ultraliviano, reducido a < 34 KB).
+- **Entorno de Ejecución & Herramientas**: Windows PowerShell, Node.js v22, Google Chrome Headless, Git / GitHub, Vercel & Hosting DonWeb / Ferozo.
+- **Estructura de Ramas**:
+  - `main`: Versión final productiva limpia para el dominio comercial (sin barra de muestras superior, optimizada y libre de código muerto).
+  - `version-demo`: Versión de presentación completa (conserva la barra superior `.demo-top-switcher-bar`, el enlace al simulador móvil de Instagram y las herramientas de muestra).
 
-## 2. Archivos Modificados / Creados Recientemente
-- `js/app.js`: Reemplazo del arreglo `WEB_HIGHLIGHTS_STORIES` con los 12 servicios mapeados a sus fotos reales verificadas y textos descriptivos exactos.
-- `nereidas-demo_files/app.js`: Réplica espejo sincronizada al 100% con `js/app.js`.
-- `index.html`: Sincronización del modal por defecto, contador `1 de 12`, foto inicial `Desayuno.jpg` y actualización de script a `?v=3.2`.
-- `nereidas-demo.html`: Réplica espejo sincronizada al 100% con `index.html`.
-- `scratch/verify_stories.cjs`: Script de validación de paridad 1:1 y verificación de presencia de activos en disco (12/12 activos confirmados).
-- `scratch/capture_story_modal.cjs`: Test automatizado con Chrome Headless que valida la apertura y visualización correcta del modal.
-- `PROJECT_STATE.md`: Registro del hito v3.2.
+## 2. Optimizaciones Críticas Realizadas en v4.0
+1. **Transición a Versión Productiva**:
+   - Eliminación de la barra superior de muestras (`.demo-top-switcher-bar`) de `index.html`.
+   - Reajuste de la variable CSS `--demo-top-height: 0px` por defecto, permitiendo que el header, el menú lateral y el hero ocupen el 100% superior sin ningún salto o margen negro de 42px.
+   - Activación condicional (`body:has(.demo-top-switcher-bar)` y `body.has-demo-bar`) para cuando se acceda a la versión de demostración.
+2. **Slideshow de Portada (Hero)**:
+   - Incorporación de flechas de navegación lateral táctiles y accesibles (`.hero-arrow-prev`, `.hero-arrow-next`) con diseño glassmorphic y control por teclado.
+   - Reajuste tipográfico en Hero Title (H1) y Subtitle (H2): reducción armónica de 4px en desktop, tablet y mobile para maximizar la legibilidad y visibilidad del paisaje natural de fondo.
+3. **Depuración Integral de Scripts y Código Muerto**:
+   - Eliminación de más de 480 líneas de código obsoleto e inerte (`HIGHLIGHTS_DATA`, listeners huérfanos a `stories-track`).
+   - Eliminación del bloque inline `<script>` duplicado al final del documento que re-declaraba `toggleAptCollapse`.
+   - Consolidación de 8 event listeners redundantes de `visibilitychange` en 1 único listener pasivo optimizado para toda la galería.
+   - Eliminación de consultas innecesarias al DOM (`minimizeBtn`, `pill`) en la barra flotante de reservas.
+   - Reemplazo de alerta nativa bloqueante `alert()` en el newsletter por feedback visual dinámico no intrusivo en el botón.
+   - Cache-busting actualizado a `?v=4.0` en `modern.css` y `app.js`.
 
-## 3. Decisiones de Arquitectura
-- **Alineación 1:1 de Índices en Interacción UI**: Se eliminaron categorías desconectadas de la grilla principal (como WiFi Fibra, Tarifas sueltas, etc.) dentro del carrusel de historias, garantizando que el orden visual de las 12 tarjetas de la web se corresponda exactamente con la navegación secuencial del visor.
-- **Fidelidad Visual Directa**: Cada servicio utiliza su foto maestra más representativa (ej. mesa servida real junto a la piscina para Desayuno, bicicletas blancas en deck para Bicicletas de Paseo, sommier King size y ropa blanca de hotelería para Ropa Blanca & Sommier, etc.).
-- **Paridad 1:1 Inquebrantable**: Mantenimiento sincrónico absoluto entre el archivo productivo `index.html` y la plantilla de demostración `nereidas-demo.html`.
+## 3. Archivos Modificados
+- `index.html`: Versión final productiva sin barra de muestras, con flechas de hero, H2 semántico y scripts optimizados v4.0.
+- `nereidas-demo.html`: Versión demo con soporte de barra superior preservada y clase `.has-demo-bar`.
+- `css/modern.css`: Estilos de flechas de hero, reducción tipográfica -4px y `--demo-top-height: 0px` condicional.
+- `nereidas-demo_files/modern.css`: Réplica espejo sincronizada.
+- `js/app.js`: Código saneado, modularizado, reducido de 1354 a 857 líneas sin código muerto.
+- `nereidas-demo_files/app.js`: Réplica espejo sincronizada.
+- `PROJECT_STATE.md`: Documentación de release v4.0.
 
-## 4. Tareas Pendientes (Backlog Inmediato)
-- [x] Analizar carpetas en `nereidas_imagenes` e inventariar fotos reales por categoría.
-- [x] Rediseñar y alinear `WEB_HIGHLIGHTS_STORIES` con los 12 servicios de la grilla.
-- [x] Asignar fotos reales y textos descriptivos a cada servicio en `js/app.js` y `nereidas-demo_files/app.js`.
-- [x] Actualizar marcado modal y cache-busting `?v=3.2` en `index.html` y `nereidas-demo.html`.
-- [x] Validar paridad 1:1 y existencia de activos mediante script automatizado (100% pass).
-- [x] Verificar renderizado visual headless del modal interactivo (screenshots capturados).
-- [x] Actualizar `PROJECT_STATE.md` con el hito v3.2.
-- [ ] Realizar commit y push a la rama `main` en Git para desplegar a Vercel.
-
-## 5. Siguiente Acción Inmediata
-- Ejecutar `git add`, `git commit` y `git push origin main` para publicar en producción el nuevo mapeo del visor de servicios v3.2.
+## 4. Estrategia de Despliegue en DonWeb / Ferozo Hosting
+- **Opción Recomendada: Git Deployment (Panel Ferozo / Git)**
+  - Repositorio: `https://github.com/gonzaloestebansosa-spec/nereidas.git`
+  - Rama a desplegar: `main`
+  - Directorio destino: `public_html/`
+  - Beneficios: Despliegue en 1 clic, historial inmutable, sin riesgo de archivos corruptos o subidas incompletas.
+- **Opción Alternativa: FTP (FileZilla / WinSCP)**
+  - Host: Servidor FTP de DonWeb
+  - Directorio destino: `public_html/`
+  - Riesgo: Subida manual propensa a omisión de archivos multimedia grandes.

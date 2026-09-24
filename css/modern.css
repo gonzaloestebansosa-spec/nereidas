@@ -1714,6 +1714,11 @@ ul, ol {
   --turquesa-dark: #22374A;
   --turquesa-grisaceo: #6FA8AD;
   --dorado-suave: #C9A66B;
+  --demo-top-height: 0px;
+}
+
+body:has(.demo-top-switcher-bar),
+body.has-demo-bar {
   --demo-top-height: 42px;
 }
 
@@ -1825,7 +1830,8 @@ ul, ol {
 }
 
 @media (max-width: 768px) {
-  :root {
+  body:has(.demo-top-switcher-bar),
+  body.has-demo-bar {
     --demo-top-height: 40px;
   }
   .demo-top-switcher-bar {

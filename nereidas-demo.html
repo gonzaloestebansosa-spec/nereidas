@@ -89,7 +89,7 @@
   }
   </script>
 </head>
-<body>
+<body class="has-demo-bar">
 
   
   <!-- Barra Superior de Control y Switcher de Muestras -->
@@ -1829,33 +1829,6 @@
   </a>
 
   <!-- Script Moderno Modular -->
-  <script src="js/app.js?v=3.2"></script>
-
-
-  <script>
-    window.toggleAptCollapse = function(btn) {
-      if (!btn) return;
-      const isExpanded = btn.getAttribute('aria-expanded') === 'true';
-      const wrapper = btn.closest('.apt-collapse-wrapper');
-      if (!wrapper) return;
-      const content = wrapper.querySelector('.apt-collapse-content');
-      if (!content) return;
-      const textSpan = btn.querySelector('.apt-toggle-text');
-
-      if (isExpanded) {
-        btn.setAttribute('aria-expanded', 'false');
-        btn.classList.remove('active');
-        content.classList.remove('open');
-        content.setAttribute('aria-hidden', 'true');
-        if (textSpan) textSpan.textContent = 'Ver distribución y equipamiento';
-      } else {
-        btn.setAttribute('aria-expanded', 'true');
-        btn.classList.add('active');
-        content.classList.add('open');
-        content.setAttribute('aria-hidden', 'false');
-        if (textSpan) textSpan.textContent = 'Ocultar distribución y equipamiento';
-      }
-    };
-  </script>
+  <script src="js/app.js?v=4.0"></script>
 </body>
 </html>
