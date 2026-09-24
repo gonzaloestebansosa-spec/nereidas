@@ -1,0 +1,68 @@
+# =============================================================================
+# Apart Nereidas — .htaccess
+# Redirecciones 301, HTTPS forzado, dominio canónico y configuración de errores
+# =============================================================================
+
+Options -Indexes
+ServerSignature Off
+
+# --- Motor de Rewrite ---
+RewriteEngine On
+
+# =============================================================================
+# 1. FORZAR HTTPS (HTTP → HTTPS)
+# =============================================================================
+RewriteCond %{HTTPS} off
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+# =============================================================================
+# 2. REDIRIGIR nereidasapart.ar → apartnereidas.com.ar (dominio canónico)
+#    Consolida autoridad SEO en un único dominio
+# =============================================================================
+RewriteCond %{HTTP_HOST} ^(www\.)?nereidasapart\.ar$ [NC]
+RewriteRule ^ https://apartnereidas.com.ar%{REQUEST_URI} [R=301,L]
+
+# =============================================================================
+# 3. REDIRIGIR www.apartnereidas.com.ar → apartnereidas.com.ar (sin www)
+# =============================================================================
+RewriteCond %{HTTP_HOST} ^www\.apartnereidas\.com\.ar$ [NC]
+RewriteRule ^ https://apartnereidas.com.ar%{REQUEST_URI} [R=301,L]
+
+# =============================================================================
+# 4. PÁGINAS DE ERROR PERSONALIZADAS
+# =============================================================================
+ErrorDocument 403 /403.html
+ErrorDocument 404 /404.html
+ErrorDocument 500 /500.html
+
+# =============================================================================
+# 5. COMPRESIÓN GZIP (mejora rendimiento y Core Web Vitals)
+# =============================================================================
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/javascript application/javascript application/json image/svg+xml
+</IfModule>
+
+# =============================================================================
+# 6. CACHÉ DE NAVEGADOR (mejora rendimiento)
+# =============================================================================
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/png  "access plus 1 year"
+  ExpiresByType image/gif  "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType text/css   "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+  ExpiresByType application/json "access plus 1 day"
+  ExpiresByType text/html  "access plus 1 hour"
+</IfModule>
+
+# =============================================================================
+# 7. HEADERS DE SEGURIDAD
+# =============================================================================
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
