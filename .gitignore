@@ -1,32 +1,6 @@
-# Dependencias y entornos
-node_modules/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# Archivos comprimidos de respaldo
-*.zip
-*.rar
-*.tar.gz
-
-# Archivos del Sistema Operativo
-Thumbs.db
-ehthumbs.db
-Desktop.ini
-$RECYCLE.BIN/
-.DS_Store
-._*
-.Spotlight-V100
-.Trashes
-
-# Editores e IDEs
-.idea/
-.vscode/
-*.swp
-*.swo
-*~
-~$*
-
-# Scratch temporales
-scratch/
-
+AUDITORIA_GOOGLE_TRAVEL.md
+Archivos de analisis/
+download_images.py
+faivcon nuevo.jpeg
+highlights/
+image.png_202609082152.jpeg
