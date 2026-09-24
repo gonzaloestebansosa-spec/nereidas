@@ -1,5 +1,5 @@
-/**
- * APART NEREIDAS — MODERN VANILLA JS (ES6+)
+﻿/**
+ * APART NEREIDAS â€” MODERN VANILLA JS (ES6+)
  * Cero dependencias (sin jQuery), modular, accesible y ultraliviano (< 6KB)
  */
 
@@ -52,7 +52,7 @@ function initHeaderScroll() {
 }
 
 /**
- * 2. Menú Lateral Móvil (Drawer / Offcanvas) Accesible
+ * 2. MenÃº Lateral MÃ³vil (Drawer / Offcanvas) Accesible
  */
 function initMobileDrawer() {
   const toggleBtn = document.querySelector('.mobile-toggle');
@@ -103,8 +103,8 @@ function initMobileDrawer() {
 }
 
 /**
- * 3. Carruseles Táctiles Nativos (Scroll-Snap) en Apartamentos
- *    + Slideshow Automático (cada 7 segundos) con UX Senior
+ * 3. Carruseles TÃ¡ctiles Nativos (Scroll-Snap) en Apartamentos
+ *    + Slideshow AutomÃ¡tico (cada 7 segundos) con UX Senior
  *    + Pop-up Modal con Ficha Descriptiva y Lightbox Completo
  */
 let currentModalSlides = [];
@@ -174,7 +174,7 @@ function initApartmentGalleries() {
       goToSlide(prev);
     };
 
-    // Temporizador Automático cada 7 segundos (7000ms)
+    // Temporizador AutomÃ¡tico cada 7 segundos (7000ms)
     const resetTimer = () => {
       clearInterval(autoSlideTimer);
       if (!isPaused && isVisible && !document.hidden) {
@@ -221,11 +221,11 @@ function initApartmentGalleries() {
       });
     }
 
-    // Senior UX: Hidratación bajo demanda al interactuar
+    // Senior UX: HidrataciÃ³n bajo demanda al interactuar
     gallery.addEventListener('mouseenter', hydrateGallery, { once: true });
     gallery.addEventListener('touchstart', hydrateGallery, { passive: true, once: true });
 
-    // Senior UX: Pausa al posar el cursor o interactuar táctilmente
+    // Senior UX: Pausa al posar el cursor o interactuar tÃ¡ctilmente
     gallery.addEventListener('mouseenter', pauseTimer);
     gallery.addEventListener('mouseleave', resumeTimer);
     gallery.addEventListener('touchstart', pauseTimer, { passive: true });
@@ -234,7 +234,7 @@ function initApartmentGalleries() {
     gallery._pauseTimer = pauseTimer;
     gallery._resumeTimer = resumeTimer;
 
-    // Senior UX: IntersectionObserver para pausar cuando la tarjeta no esté visible
+    // Senior UX: IntersectionObserver para pausar cuando la tarjeta no estÃ© visible
     if ('IntersectionObserver' in window) {
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -279,7 +279,7 @@ function initApartmentGalleries() {
     }
   });
 
-  // Pausa/Reanudación eficiente en segundo plano (único listener global)
+  // Pausa/ReanudaciÃ³n eficiente en segundo plano (Ãºnico listener global)
   document.addEventListener('visibilitychange', () => {
     galleries.forEach(gallery => {
       if (document.hidden) {
@@ -295,7 +295,7 @@ function initApartmentGalleries() {
 }
 
 /**
- * Lógica del Modal Pop-up Ficha Descriptiva de Apartamento
+ * LÃ³gica del Modal Pop-up Ficha Descriptiva de Apartamento
  */
 function initApartmentModalEvents() {
   document.addEventListener('keydown', (e) => {
@@ -356,9 +356,9 @@ function openApartmentModal(card, initialSlideIndex = 0) {
   if (amenitiesEl) amenitiesEl.innerHTML = amenitiesHtml;
   if (distribContentEl) distribContentEl.innerHTML = distribHtml;
 
-  // Botón directo a WhatsApp con texto personalizado por apartamento
+  // BotÃ³n directo a WhatsApp con texto personalizado por apartamento
   if (ctaBtn) {
-    const waMsg = encodeURIComponent(`¡Hola Apart Nereidas! Me interesa consultar disponibilidad y tarifas para el ${title}. ¿Podrían brindarme información?`);
+    const waMsg = encodeURIComponent(`Â¡Hola Apart Nereidas! Me interesa consultar disponibilidad y tarifas para el ${title}. Â¿PodrÃ­an brindarme informaciÃ³n?`);
     ctaBtn.href = `https://wa.me/5491158085444?text=${waMsg}`;
   }
 
@@ -426,7 +426,7 @@ function navigateAptModalImage(direction) {
   setAptModalSlide(currentModalSlideIndex + direction);
 }
 
-// Exponer en el objeto global window para invocación desde eventos inline
+// Exponer en el objeto global window para invocaciÃ³n desde eventos inline
 window.openApartmentModal = openApartmentModal;
 window.closeApartmentModal = closeApartmentModal;
 window.setAptModalSlide = setAptModalSlide;
@@ -434,7 +434,7 @@ window.navigateAptModalImage = navigateAptModalImage;
 
 
 /**
- * 4. Filtro Interactivo de Categorías de Apartamentos
+ * 4. Filtro Interactivo de CategorÃ­as de Apartamentos
  */
 function initApartmentFilters() {
   const filterBtns = document.querySelectorAll('.filter-btn');
@@ -470,7 +470,7 @@ function initApartmentFilters() {
 }
 
 /**
- * 5. Acordeón Accesible de Preguntas Frecuentes
+ * 5. AcordeÃ³n Accesible de Preguntas Frecuentes
  */
 function initFaqAccordion() {
   const accordionItems = document.querySelectorAll('.accordion-item');
@@ -481,7 +481,7 @@ function initFaqAccordion() {
 
     if (!header || !body) return;
 
-    // Asegurar estado contraído inicial
+    // Asegurar estado contraÃ­do inicial
     item.classList.remove('active');
     body.style.maxHeight = null;
     header.setAttribute('aria-expanded', 'false');
@@ -515,8 +515,8 @@ function initFaqAccordion() {
 }
 
 /**
- * 6. Generador Inteligente de Consulta WhatsApp desde la Barra de Búsqueda
- * (Check-in, Check-out, Adultos, Menores, Bebés)
+ * 6. Generador Inteligente de Consulta WhatsApp desde la Barra de BÃºsqueda
+ * (Check-in, Check-out, Adultos, Menores, BebÃ©s)
  */
 function initBookingForm() {
   const bookingForm = document.getElementById('quick-booking-form');
@@ -531,16 +531,16 @@ function initBookingForm() {
     const menores = document.getElementById('booking-menores')?.value || '0';
     const bebes = document.getElementById('booking-bebes')?.value || '0';
 
-    let message = `¡Hola Apart Nereidas! Quisiera consultar disponibilidad y tarifas para mi estadía:\n`;
-    if (checkin) message += `📅 Check-In: ${checkin}\n`;
-    if (checkout) message += `📅 Check-Out: ${checkout}\n`;
-    message += `👥 Adultos: ${adultos}\n`;
-    if (menores && menores !== '0') message += `🧒 Menores (2-12 años): ${menores}\n`;
-    if (bebes && bebes !== '0') message += `👶 Bebés (0-2 años): ${bebes}\n`;
-    message += `\n¿Podrían indicarme qué opciones tienen disponibles y las tarifas correspondientes? ¡Muchas gracias!`;
+    let message = `Â¡Hola Apart Nereidas! Quisiera consultar disponibilidad y tarifas para mi estadÃ­a:\n`;
+    if (checkin) message += `ðŸ“… Check-In: ${checkin}\n`;
+    if (checkout) message += `ðŸ“… Check-Out: ${checkout}\n`;
+    message += `ðŸ‘¥ Adultos: ${adultos}\n`;
+    if (menores && menores !== '0') message += `ðŸ§’ Menores (2-12 aÃ±os): ${menores}\n`;
+    if (bebes && bebes !== '0') message += `ðŸ‘¶ BebÃ©s (0-2 aÃ±os): ${bebes}\n`;
+    message += `\nÂ¿PodrÃ­an indicarme quÃ© opciones tienen disponibles y las tarifas correspondientes? Â¡Muchas gracias!`;
 
     const encodedMsg = encodeURIComponent(message);
-    const whatsappUrl = `https://wa.me/5492255458000?text=${encodedMsg}`;
+    const whatsappUrl = `https://wa.me/5492255415282?text=${encodedMsg}`;
 
     window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
   });
@@ -561,7 +561,7 @@ function initNewsletterForm() {
     if (email) {
       const btn = form.querySelector('button');
       const originalText = btn.textContent;
-      btn.textContent = '✓ ¡Suscripción exitosa!';
+      btn.textContent = 'âœ“ Â¡SuscripciÃ³n exitosa!';
       btn.style.backgroundColor = 'var(--turquesa)';
       btn.style.color = '#fff';
       input.value = '';
@@ -576,20 +576,20 @@ function initNewsletterForm() {
 }
 
 /**
- * 8. Visor Interactivo de Historias en la Sección Servicios (Fotos de cada Categoría)
+ * 8. Visor Interactivo de Historias en la SecciÃ³n Servicios (Fotos de cada CategorÃ­a)
  */
 const WEB_HIGHLIGHTS_STORIES = [
   {
     title: 'Desayuno Artesanal',
     icon: 'img/highlights/01_desayuno.jpg',
     photo: 'nereidas_imagenes/Servicios/Desayuno.jpg',
-    desc: 'Bandeja artesanal con panificación fresca, mermeladas e infusiones servida directamente en tu apart o junto a la piscina.'
+    desc: 'Bandeja artesanal con panificaciÃ³n fresca, mermeladas e infusiones servida directamente en tu apart o junto a la piscina.'
   },
   {
     title: 'Servicio de Mucama',
     icon: 'img/highlights/03_limpieza.jpg',
     photo: 'nereidas_imagenes/Apart_Miel/08_1725739803_66dcb31be0abd.jpg',
-    desc: 'Limpieza diaria y provisión de blancos con recambio periódico para una estadía impecable y relajante.'
+    desc: 'Limpieza diaria y provisiÃ³n de blancos con recambio periÃ³dico para una estadÃ­a impecable y relajante.'
   },
   {
     title: 'Servicio de Playa',
@@ -598,28 +598,28 @@ const WEB_HIGHLIGHTS_STORIES = [
     desc: 'Sombrillas y reposeras listas para disfrutar de las amplias playas de Mar de las Pampas a solo 100 metros.'
   },
   {
-    title: 'Estadía Pet Friendly',
+    title: 'EstadÃ­a Pet Friendly',
     icon: 'img/highlights/05_mascotas.jpg',
     photo: 'nereidas_imagenes/Servicios/01.jpg',
-    desc: 'Recibimos a tu mascota educada en nuestras instalaciones y parque cerrado con coordinación previa.'
+    desc: 'Recibimos a tu mascota educada en nuestras instalaciones y parque cerrado con coordinaciÃ³n previa.'
   },
   {
     title: 'Bicicletas de Paseo',
     icon: 'img/highlights/06_bicicletas.jpg',
     photo: 'nereidas_imagenes/Servicios/03.jpg',
-    desc: 'Bicicletas a disposición con canasto y sillita infantil para recorrer las calles de arena y senderos del bosque.'
+    desc: 'Bicicletas a disposiciÃ³n con canasto y sillita infantil para recorrer las calles de arena y senderos del bosque.'
   },
   {
     title: 'Ropa Blanca & Sommier',
     icon: 'img/highlights/07_ropa_de_cama.jpg',
     photo: 'nereidas_imagenes/Apart_Premium_B/b4adeece-a0d2-4ea7-8a0e-034e719cb86f_1726508996_66e86fc43031c.jpeg',
-    desc: 'Sommiers hoteleros King Size y juegos completos de sábanas y toallones de puro algodón para un descanso superior.'
+    desc: 'Sommiers hoteleros King Size y juegos completos de sÃ¡banas y toallones de puro algodÃ³n para un descanso superior.'
   },
   {
     title: 'Parrilla Individual',
     icon: 'img/highlights/08_parrilla.jpg',
     photo: 'nereidas_imagenes/Apart_Miel/02_1725894620_66df0fdce4584.jpg',
-    desc: 'Cada departamento cuenta con su propio asador en balcón terraza o deck privado con mesa exterior.'
+    desc: 'Cada departamento cuenta con su propio asador en balcÃ³n terraza o deck privado con mesa exterior.'
   },
   {
     title: 'Piscina Climatizada',
@@ -631,16 +631,16 @@ const WEB_HIGHLIGHTS_STORIES = [
     title: 'Equipamiento Total',
     icon: 'img/highlights/10_habitaciones.jpg',
     photo: 'nereidas_imagenes/Apart_Familiar_B/859db912-7b53-4fc0-aa14-0b2ff7bcfeb2_1726512449_66e87d41767c8.jpeg',
-    desc: 'Cocina completamente equipada con heladera con freezer, microondas, vajilla completa y baño con hidromasaje.'
+    desc: 'Cocina completamente equipada con heladera con freezer, microondas, vajilla completa y baÃ±o con hidromasaje.'
   },
   {
-    title: 'Ubicación Estratégica',
+    title: 'UbicaciÃ³n EstratÃ©gica',
     icon: 'img/highlights/11_ubicacion.jpg',
     photo: 'nereidas_imagenes/Servicios/05.jpg',
-    desc: 'Privilegiada ubicación en medio del bosque, a solo 100 metros del mar y a 250 metros del centro comercial de aldea.'
+    desc: 'Privilegiada ubicaciÃ³n en medio del bosque, a solo 100 metros del mar y a 250 metros del centro comercial de aldea.'
   },
   {
-    title: 'Galería & Parque',
+    title: 'GalerÃ­a & Parque',
     icon: 'img/highlights/12_galeria.jpg',
     photo: 'nereidas_imagenes/Servicios/06.jpg',
     desc: 'Parque arbolado privado con camastros, senderos naturales y rincones de relax en plena naturaleza.'
@@ -649,7 +649,7 @@ const WEB_HIGHLIGHTS_STORIES = [
     title: 'Paseos por la Aldea',
     icon: 'img/highlights/15_actividades.jpg',
     photo: 'nereidas_imagenes/Atracciones/centro aldea.jpg',
-    desc: 'Construcciones rústicas de piedra y madera, gastronomía gourmet de autor, chocolaterías y artesanías.'
+    desc: 'Construcciones rÃºsticas de piedra y madera, gastronomÃ­a gourmet de autor, chocolaterÃ­as y artesanÃ­as.'
   }
 ];
 
@@ -707,7 +707,7 @@ function initWebStoryViewer() {
 }
 
 /* ==========================================================================
-   HERO SLIDESHOW (5 IMÁGENES, AUTO SLIDE CADA 5 SEGUNDOS)
+   HERO SLIDESHOW (5 IMÃGENES, AUTO SLIDE CADA 5 SEGUNDOS)
    ========================================================================== */
 (function initHeroSlideshow() {
   function setup() {
@@ -761,7 +761,7 @@ function initWebStoryViewer() {
       window.nextHeroSlide();
     }
 
-    // Hidratar slides secundarios cuando la red esté libre tras el inicio
+    // Hidratar slides secundarios cuando la red estÃ© libre tras el inicio
     if (typeof window !== 'undefined') {
       const scheduleHydration = window.requestIdleCallback || function(cb) { setTimeout(cb, 2500); };
       window.addEventListener('load', function() {
@@ -787,7 +787,7 @@ function initWebStoryViewer() {
 })();
 
 /**
- * 9. Barra de Búsqueda de Disponibilidad Fija en el Foot al hacer Scroll
+ * 9. Barra de BÃºsqueda de Disponibilidad Fija en el Foot al hacer Scroll
  */
 function initFloatingBookingBar() {
   const bar = document.getElementById('quick-booking-bar');
@@ -814,7 +814,7 @@ function initFloatingBookingBar() {
   // Fija y visible desde la carga inicial de la web
   bar.classList.add('is-visible');
 
-  // Expansión / Colapso interactivo en móviles
+  // ExpansiÃ³n / Colapso interactivo en mÃ³viles
   if (mobileToggle) {
     mobileToggle.addEventListener('click', (e) => {
       if (e.target.closest('#quick-booking-form')) return;
@@ -828,7 +828,7 @@ function initFloatingBookingBar() {
 }
 
 /**
- * 10. Megamenús Desplegables PxNav en Header (Soporte Dual: Hover Inteligente + Clic)
+ * 10. MegamenÃºs Desplegables PxNav en Header (Soporte Dual: Hover Inteligente + Clic)
  */
 function initPxNav() {
   const menuButtons = document.querySelectorAll('.pxnav__item--btn');
@@ -879,7 +879,7 @@ function initPxNav() {
     const menuId = btn.getAttribute('data-pxnav-menu');
     const targetDrop = document.querySelector('.pxnav-drop[data-pxnav-panel="' + menuId + '"]');
 
-    // 1. Interacción por Clic / Tap
+    // 1. InteracciÃ³n por Clic / Tap
     btn.addEventListener('click', (e) => {
       e.stopPropagation();
       const isOpen = targetDrop && targetDrop.classList.contains('is-open');
@@ -890,7 +890,7 @@ function initPxNav() {
       }
     });
 
-    // 2. Interacción por Hover en dispositivos de puntero fino (Desktop)
+    // 2. InteracciÃ³n por Hover en dispositivos de puntero fino (Desktop)
     btn.addEventListener('mouseenter', () => {
       if (window.matchMedia('(pointer: fine)').matches) {
         openDrop(menuId);
@@ -941,7 +941,7 @@ function initPxNav() {
 }
 
 /**
- * Redirección suave al área visible de búsqueda de fechas en el Hero
+ * RedirecciÃ³n suave al Ã¡rea visible de bÃºsqueda de fechas en el Hero
  */
 function scrollToBookingBar() {
   const bar = document.getElementById('quick-booking-bar');
@@ -960,7 +960,7 @@ function scrollToBookingBar() {
 }
 window.scrollToBookingBar = scrollToBookingBar;
 
-// Manejo de Despliegue de Distribución y Equipamiento en Tarjetas de Apartamentos
+// Manejo de Despliegue de DistribuciÃ³n y Equipamiento en Tarjetas de Apartamentos
 window.toggleAptCollapse = function(btn) {
   if (!btn) return;
   const isExpanded = btn.getAttribute('aria-expanded') === 'true';
@@ -975,12 +975,12 @@ window.toggleAptCollapse = function(btn) {
     btn.classList.remove('active');
     content.classList.remove('open');
     content.setAttribute('aria-hidden', 'true');
-    if (textSpan) textSpan.textContent = 'Ver distribución y equipamiento';
+    if (textSpan) textSpan.textContent = 'Ver distribuciÃ³n y equipamiento';
   } else {
     btn.setAttribute('aria-expanded', 'true');
     btn.classList.add('active');
     content.classList.add('open');
     content.setAttribute('aria-hidden', 'false');
-    if (textSpan) textSpan.textContent = 'Ocultar distribución y equipamiento';
+    if (textSpan) textSpan.textContent = 'Ocultar distribuciÃ³n y equipamiento';
   }
 };
