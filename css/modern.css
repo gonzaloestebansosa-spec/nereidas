@@ -2164,6 +2164,7 @@ body.has-demo-bar {
   position: relative;
   z-index: 5;
   margin-top: auto;
+  margin-bottom: 15px;
   color: #FFFFFF;
 }
 .hero-title {
