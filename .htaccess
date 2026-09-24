@@ -6,6 +6,12 @@
 Options -Indexes
 ServerSignature Off
 
+# --- Forzar codificación UTF-8 en todas las respuestas del servidor ---
+AddDefaultCharset UTF-8
+<IfModule mod_mime.c>
+  AddCharset UTF-8 .html .css .js .xml .json .svg
+</IfModule>
+
 # --- Motor de Rewrite ---
 RewriteEngine On
 

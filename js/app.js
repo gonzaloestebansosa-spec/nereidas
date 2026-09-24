@@ -1,5 +1,5 @@
-﻿/**
- * APART NEREIDAS â€” MODERN VANILLA JS (ES6+)
+/**
+ * APART NEREIDAS — MODERN VANILLA JS (ES6+)
  * Cero dependencias (sin jQuery), modular, accesible y ultraliviano (< 6KB)
  */
 
@@ -561,7 +561,7 @@ function initNewsletterForm() {
     if (email) {
       const btn = form.querySelector('button');
       const originalText = btn.textContent;
-      btn.textContent = 'âœ“ ¡Suscripción exitosa!';
+      btn.textContent = '✓ ¡Suscripción exitosa!';
       btn.style.backgroundColor = 'var(--turquesa)';
       btn.style.color = '#fff';
       input.value = '';

@@ -4828,8 +4828,13 @@ body.apt-modal-open {
   cursor: pointer;
   z-index: 10;
   transition: all 0.2s ease;
-  line-height: 1;
-  padding-bottom: 3px;
+  padding: 0;
+}
+
+.apt-modal-nav svg,
+.gallery-nav-btn svg {
+  display: block;
+  pointer-events: none;
 }
 
 .apt-modal-nav:hover {
