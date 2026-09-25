@@ -594,7 +594,7 @@ const WEB_HIGHLIGHTS_STORIES = [
   {
     title: 'Servicio de Playa',
     icon: 'img/highlights/04_sombrillas.jpg',
-    photo: 'nereidas_imagenes/Atracciones/Playas amplias.jpeg',
+    photo: 'nereidas_imagenes/Servicios/servicio_playa.jpg',
     desc: 'Sombrillas y reposeras listas para disfrutar de las amplias playas de Mar de las Pampas a solo 100 metros.'
   },
   {
