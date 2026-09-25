@@ -618,7 +618,7 @@ const WEB_HIGHLIGHTS_STORIES = [
   {
     title: 'Parrilla Individual',
     icon: 'img/highlights/08_parrilla.jpg',
-    photo: 'nereidas_imagenes/Apart_Miel/02_1725894620_66df0fdce4584.jpg',
+    photo: 'nereidas_imagenes/Servicios/parrilla_individual.jpg',
     desc: 'Cada departamento cuenta con su propio asador en balcón terraza o deck privado con mesa exterior.'
   },
   {
