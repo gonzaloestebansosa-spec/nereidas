@@ -2185,19 +2185,17 @@ body.has-demo-bar {
 /* --- 5. Barra de Búsqueda Fija en el Pie (Visible desde Carga Inicial) --- */
 .quick-booking-bar {
   position: fixed !important;
-  bottom: 0 !important;
+  bottom: 12px !important;
   left: 0 !important;
   right: 0 !important;
   z-index: 1010 !important;
-  background: rgba(255, 255, 255, 0.96) !important;
-  backdrop-filter: blur(14px) !important;
-  -webkit-backdrop-filter: blur(14px) !important;
-  border-top: 1px solid rgba(34, 55, 74, 0.12) !important;
-  box-shadow: 0 -4px 20px rgba(20, 33, 61, 0.12) !important;
-  padding: 6px 16px !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 16px !important;
   transform: translateY(0) !important;
   opacity: 1 !important;
-  pointer-events: auto !important;
+  pointer-events: none !important;
   overflow: visible !important;
 }
 
@@ -2347,6 +2345,7 @@ body.has-demo-bar {
   width: 100%;
   display: flex;
   justify-content: center;
+  pointer-events: auto !important;
 }
 #buscador-pxsol {
   width: 100%;
@@ -2358,10 +2357,27 @@ body.has-demo-bar {
   box-shadow: 0 -10px 40px rgba(15, 23, 42, 0.22) !important;
 }
 
+/* Ajuste móvil para mostrar la misma barra PXSOL directo sin botón de colapso */
+@media (max-width: 768px) {
+  .quick-booking-bar.pxsol-bar {
+    bottom: 8px !important;
+    padding: 0 8px !important;
+  }
+  .booking-floating-mobile-bar {
+    display: none !important;
+  }
+  .quick-booking-bar .pxsol-wrapper {
+    max-height: none !important;
+    opacity: 1 !important;
+    overflow: visible !important;
+    padding: 0 !important;
+  }
+}
+
 /* --- 6. Botón Flotante de WhatsApp (+10px Más Arriba, Encima de la Barra Fija) --- */
 .floating-whatsapp {
   position: fixed !important;
-  bottom: 115px !important;
+  bottom: 100px !important;
   right: 24px !important;
   z-index: 1020 !important;
   display: flex !important;
@@ -2388,13 +2404,10 @@ body.has-demo-bar {
 }
 @media (max-width: 768px) {
   .floating-whatsapp {
-    bottom: 95px !important;
+    bottom: 180px !important;
     right: 18px !important;
     width: 54px;
     height: 54px;
-  }
-  body.booking-mobile-open .floating-whatsapp {
-    bottom: 470px !important;
   }
 }
 
