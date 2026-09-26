@@ -817,11 +817,11 @@ function initFloatingBookingBar() {
   // Expansión / Colapso interactivo en móviles
   if (mobileToggle) {
     mobileToggle.addEventListener('click', (e) => {
-      if (e.target.closest('#quick-booking-form')) return;
+      if (e.target.closest('#buscador-pxsol')) return;
       const isExpanded = bar.classList.toggle('is-mobile-expanded');
       document.body.classList.toggle('booking-mobile-open', isExpanded);
       if (expandText) {
-        expandText.textContent = isExpanded ? 'Cerrar' : 'Seleccionar';
+        expandText.textContent = isExpanded ? 'Cerrar' : 'Buscar';
       }
     });
   }

@@ -1881,77 +1881,40 @@
   </div><!-- Fin .site-wrapper -->
 
   
-  <!-- Barra de Consulta Rápida de Disponibilidad Fija en el Foot al hacer Scroll -->
-  <aside class="quick-booking-bar" id="quick-booking-bar" aria-label="Consulta de disponibilidad y tarifas">
+  <!-- Buscador de Tarifas y Reserva Directa Online (PXSOL) -->
+  <aside class="quick-booking-bar pxsol-bar" id="quick-booking-bar" aria-label="Buscador de tarifas y reservas PXSOL">
     
     <!-- Cabecera compacta interactiva (para versión móvil) -->
     <div class="booking-floating-mobile-bar" id="booking-mobile-toggle">
       <div class="booking-mobile-info">
         <span class="booking-mobile-icon">📅</span>
         <div>
-          <strong class="booking-mobile-title">Consultar Tarifas</strong>
-          <span class="booking-mobile-sub" id="booking-mobile-summary">Elegir fechas y huéspedes</span>
+          <strong class="booking-mobile-title">Reservar Online / Tarifas</strong>
+          <span class="booking-mobile-sub" id="booking-mobile-summary">Consultá fechas y disponibilidad real (PXSOL)</span>
         </div>
       </div>
-      <button type="button" class="btn-booking-mobile-expand" aria-label="Ver u ocultar campos de reserva">
-        <span id="booking-expand-text">Seleccionar</span>
+      <button type="button" class="btn-booking-mobile-expand" aria-label="Ver u ocultar buscador de tarifas">
+        <span id="booking-expand-text">Buscar</span>
         <svg class="booking-expand-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"></polyline></svg>
       </button>
     </div>
 
-    <form id="quick-booking-form" class="booking-grid">
-      
-      <div class="booking-field">
-        <label for="booking-checkin">Fecha Check-in</label>
-        <input type="date" id="booking-checkin" required>
-      </div>
-
-      <div class="booking-field">
-        <label for="booking-checkout">Fecha Check-out</label>
-        <input type="date" id="booking-checkout" required>
-      </div>
-
-      <!-- Fila Unificada de Huéspedes (Adultos, Menores y Bebés en 1 sola fila con texto simplificado) -->
-      <div class="booking-guests-row">
-        <div class="booking-field">
-          <label for="booking-adultos">Adultos</label>
-          <select id="booking-adultos">
-            <option value="1">1 Adulto</option>
-            <option value="2" selected>2 Adultos</option>
-            <option value="3">3 Adultos</option>
-            <option value="4">4 Adultos</option>
-            <option value="5">5 Adultos</option>
-            <option value="6">6 Adultos</option>
-          </select>
-        </div>
-
-        <div class="booking-field">
-          <label for="booking-menores">Menores</label>
-          <select id="booking-menores">
-            <option value="0" selected>0 Menores</option>
-            <option value="1">1 Menor</option>
-            <option value="2">2 Menores</option>
-            <option value="3">3 Menores</option>
-            <option value="4">4 Menores</option>
-          </select>
-        </div>
-
-        <div class="booking-field">
-          <label for="booking-bebes">Bebés</label>
-          <select id="booking-bebes">
-            <option value="0" selected>0 Bebés</option>
-            <option value="1">1 Bebé</option>
-            <option value="2">2 Bebés</option>
-          </select>
-        </div>
-      </div>
-
-      <button type="submit" class="btn btn-primary booking-submit-btn" style="height: 40px;">
-        Consultar Tarifas
-      </button>
-    </form>
-
+    <!-- Contenedor del Widget PXSOL -->
+    <div class="pxsol-wrapper">
+      <div id="buscador-pxsol"></div>
+    </div>
   </aside>
+
+  <!-- Script oficial del Widget Buscador PXSOL -->
+  <script
+    src="https://pxsol-search-insert-widget.pages.dev/pxsol-search-widget.iife.js"
+    data-target="#buscador-pxsol"
+    data-pos="NereidasApartMardelasPampas"
+    data-product-id="27792"
+    data-lng="es"
+    data-currency="ARS"
+    data-redirect="true"
+  ></script>
 
     <!-- Modal Interactivo: Ficha Descriptiva del Apartamento (Luxury Lightbox & Specs) -->
   <div class="apt-modal" id="apartment-modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="apt-modal-title">

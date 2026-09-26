@@ -2310,7 +2310,8 @@ body.has-demo-bar {
   .booking-expand-icon {
     transition: transform 0.3s ease;
   }
-  .quick-booking-bar .booking-grid {
+  .quick-booking-bar .booking-grid,
+  .quick-booking-bar .pxsol-wrapper {
     max-height: 0;
     overflow: hidden;
     opacity: 0;
@@ -2320,15 +2321,28 @@ body.has-demo-bar {
     grid-template-columns: 1fr;
     transition: max-height 0.35s ease, opacity 0.3s ease, padding 0.35s ease;
   }
-  .quick-booking-bar.is-mobile-expanded .booking-grid {
-    max-height: 460px;
+  .quick-booking-bar.is-mobile-expanded .booking-grid,
+  .quick-booking-bar.is-mobile-expanded .pxsol-wrapper {
+    max-height: 480px;
     overflow-y: auto;
     opacity: 1;
-    padding: 16px 18px 20px;
+    padding: 12px 18px 16px;
   }
   .quick-booking-bar.is-mobile-expanded .booking-expand-icon {
     transform: rotate(180deg);
   }
+}
+
+/* Estilos de Contenedor PXSOL en la barra flotante */
+.pxsol-wrapper {
+  max-width: 1240px;
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+#buscador-pxsol {
+  width: 100%;
 }
 
 /* --- 6. Botón Flotante de WhatsApp (+px Más Arriba, Encima de la Barra Fija) --- */
