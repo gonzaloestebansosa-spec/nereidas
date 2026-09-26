@@ -2032,7 +2032,7 @@ body.has-demo-bar {
   justify-content: flex-end;
   overflow: hidden;
   padding-top: calc(80px + var(--demo-top-height) + 16px) !important;
-  padding-bottom: 24px !important;
+  padding-bottom: 90px !important;
 }
 @media (max-width: 991px) {
   .hero {
@@ -2043,7 +2043,7 @@ body.has-demo-bar {
     max-height: calc(100vh - 62px) !important;
     max-height: calc(100dvh - 62px) !important;
     padding-top: calc(72px + var(--demo-top-height) + 12px) !important;
-    padding-bottom: 20px !important;
+    padding-bottom: 80px !important;
   }
 }
 .hero-slideshow {
@@ -2185,7 +2185,7 @@ body.has-demo-bar {
 /* --- 5. Barra de Búsqueda Fija en el Pie (Visible desde Carga Inicial) --- */
 .quick-booking-bar {
   position: fixed !important;
-  bottom: 12px !important;
+  bottom: 15px !important;
   left: 0 !important;
   right: 0 !important;
   z-index: 1010 !important;
@@ -2404,7 +2404,7 @@ body.has-demo-bar {
 }
 @media (max-width: 768px) {
   .floating-whatsapp {
-    bottom: 180px !important;
+    bottom: 76px !important;
     right: 18px !important;
     width: 54px;
     height: 54px;
