@@ -2189,15 +2189,16 @@ body.has-demo-bar {
   left: 0 !important;
   right: 0 !important;
   z-index: 1010 !important;
-  background: rgba(255, 255, 255, 0.98) !important;
+  background: rgba(255, 255, 255, 0.96) !important;
   backdrop-filter: blur(14px) !important;
   -webkit-backdrop-filter: blur(14px) !important;
-  border-top: 2px solid #22374A !important;
-  box-shadow: 0 -6px 25px rgba(20, 33, 61, 0.18) !important;
-  padding: 12px 24px !important;
+  border-top: 1px solid rgba(34, 55, 74, 0.12) !important;
+  box-shadow: 0 -4px 20px rgba(20, 33, 61, 0.12) !important;
+  padding: 6px 16px !important;
   transform: translateY(0) !important;
   opacity: 1 !important;
   pointer-events: auto !important;
+  overflow: visible !important;
 }
 
 /* Eliminar elemento pill y botón de minimizar para que no aparezcan nunca */
@@ -2334,6 +2335,12 @@ body.has-demo-bar {
 }
 
 /* Estilos de Contenedor PXSOL en la barra flotante */
+.pxsol-wrapper,
+#buscador-pxsol,
+.pxsol-search-widget,
+.pxsol-search-form {
+  overflow: visible !important;
+}
 .pxsol-wrapper {
   max-width: 1240px;
   margin: 0 auto;
@@ -2344,11 +2351,17 @@ body.has-demo-bar {
 #buscador-pxsol {
   width: 100%;
 }
+/* Hacer que el panel de fechas (datepicker) y huéspedes abra HACIA ARRIBA */
+.pxsol-search-panel {
+  top: auto !important;
+  bottom: calc(100% + 10px) !important;
+  box-shadow: 0 -10px 40px rgba(15, 23, 42, 0.22) !important;
+}
 
-/* --- 6. Botón Flotante de WhatsApp (+px Más Arriba, Encima de la Barra Fija) --- */
+/* --- 6. Botón Flotante de WhatsApp (+10px Más Arriba, Encima de la Barra Fija) --- */
 .floating-whatsapp {
   position: fixed !important;
-  bottom: 105px !important;
+  bottom: 115px !important;
   right: 24px !important;
   z-index: 1020 !important;
   display: flex !important;
@@ -2375,7 +2388,7 @@ body.has-demo-bar {
 }
 @media (max-width: 768px) {
   .floating-whatsapp {
-    bottom: 85px !important;
+    bottom: 95px !important;
     right: 18px !important;
     width: 54px;
     height: 54px;
