@@ -1010,3 +1010,56 @@ function initLazyMap() {
   }
 }
 document.addEventListener('DOMContentLoaded', initLazyMap);
+
+/**
+ * 15. Backdrop y Gestión UX de Paneles de Búsqueda PXSOL (Anti-Colapso en Pantalla)
+ */
+function initPxsolModalBackdrop() {
+  const buscador = document.getElementById('buscador-pxsol');
+  if (!buscador) return;
+
+  let backdrop = document.getElementById('pxsol-modal-backdrop');
+  if (!backdrop) {
+    backdrop = document.createElement('div');
+    backdrop.id = 'pxsol-modal-backdrop';
+    backdrop.className = 'pxsol-backdrop-overlay';
+    document.body.appendChild(backdrop);
+  }
+
+  const updateBackdrop = () => {
+    const activePanel = document.querySelector('.pxsol-search-panel, .pxsol-search-panel--guests');
+    if (activePanel && activePanel.offsetParent !== null) {
+      backdrop.classList.add('is-active');
+    } else {
+      backdrop.classList.remove('is-active');
+    }
+  };
+
+  // Escuchar clics en el backdrop para cerrar el panel suavemente
+  backdrop.addEventListener('click', () => {
+    const closeBtn = document.querySelector('.pxsol-search-close, .pxsol-search-done');
+    if (closeBtn) {
+      closeBtn.click();
+    } else {
+      document.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true }));
+    }
+    backdrop.classList.remove('is-active');
+  });
+
+  // Cerrar con tecla Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && backdrop.classList.contains('is-active')) {
+      const closeBtn = document.querySelector('.pxsol-search-close, .pxsol-search-done');
+      if (closeBtn) closeBtn.click();
+      backdrop.classList.remove('is-active');
+    }
+  });
+
+  // Observador de mutaciones para detectar cuándo PXSOL inyecta o quita el panel
+  const observer = new MutationObserver(() => {
+    updateBackdrop();
+  });
+
+  observer.observe(buscador, { childList: true, subtree: true, attributes: true });
+}
+document.addEventListener('DOMContentLoaded', initPxsolModalBackdrop);

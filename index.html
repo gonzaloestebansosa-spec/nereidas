@@ -92,7 +92,7 @@
   <!-- ═══════════════════════════════════════════════
        CSS PRINCIPAL
        ═══════════════════════════════════════════════ -->
-  <link rel="stylesheet" href="css/modern.css?v=4.2">
+  <link rel="stylesheet" href="css/modern.css?v=4.3">
 
   <!-- ═══════════════════════════════════════════════
        SCHEMA.ORG JSON-LD #1 — LodgingBusiness (Completo)
@@ -1899,8 +1899,222 @@
   ></script>
 
 
-  <!-- Overrides mobile PXSOL: desplegables en una sola línea, botón Buscar debajo, panel centrado y WhatsApp elevado -->
+  <!-- Overrides PXSOL: Mensajes por encima de la barra, modal de calendario centrado anti-colapso en Desktop y Mobile -->
   <style id="pxsol-mobile-override">
+    /* --- Reubicación de Mensajes y Errores de Validación de PXSOL (POR ENCIMA de la barra) --- */
+    #buscador-pxsol .pxsol-search-form {
+      position: relative !important;
+      overflow: visible !important;
+    }
+
+    #buscador-pxsol .pxsol-search-message,
+    #buscador-pxsol .pxsol-search-error {
+      position: absolute !important;
+      bottom: calc(100% + 14px) !important;
+      top: auto !important;
+      left: 50% !important;
+      transform: translateX(-50%) !important;
+      width: auto !important;
+      max-width: min(90vw, 540px) !important;
+      min-height: unset !important;
+      margin: 0 !important;
+      padding: 8px 18px !important;
+      border-radius: 9999px !important;
+      font-size: 13px !important;
+      font-weight: 600 !important;
+      text-align: center !important;
+      white-space: nowrap !important;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.25) !important;
+      z-index: 1050 !important;
+      pointer-events: auto !important;
+      backdrop-filter: blur(8px) !important;
+      -webkit-backdrop-filter: blur(8px) !important;
+      animation: pxsolAlertPop 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    }
+
+    #buscador-pxsol .pxsol-search-message:empty,
+    #buscador-pxsol .pxsol-search-error:empty {
+      display: none !important;
+    }
+
+    #buscador-pxsol .pxsol-search-error {
+      background: #E11D48 !important;
+      color: #FFFFFF !important;
+      border: 1px solid rgba(255, 255, 255, 0.35) !important;
+    }
+
+    #buscador-pxsol .pxsol-search-message {
+      background: #1B2F7A !important;
+      color: #FFFFFF !important;
+      border: 1px solid rgba(255, 255, 255, 0.35) !important;
+    }
+
+    @keyframes pxsolAlertPop {
+      from {
+        opacity: 0;
+        transform: translate(-50%, 6px);
+      }
+      to {
+        opacity: 1;
+        transform: translate(-50%, 0);
+      }
+    }
+
+    /* --- Panel de Fechas y Huéspedes PXSOL: Modal Centrado en Viewport (Anti-Colapso en Desktop) --- */
+    body .pxsol-search-panel,
+    #buscador-pxsol .pxsol-search-panel,
+    .pxsol-wrapper .pxsol-search-panel,
+    body .pxsol-search-panel--guests,
+    #buscador-pxsol .pxsol-search-panel--guests {
+      position: fixed !important;
+      top: 50% !important;
+      left: 50% !important;
+      bottom: auto !important;
+      right: auto !important;
+      transform: translate(-50%, -50%) !important;
+      width: auto !important;
+      max-width: min(760px, calc(100vw - 32px)) !important;
+      max-height: min(560px, calc(100vh - 50px), calc(100dvh - 50px)) !important;
+      overflow-y: auto !important;
+      -webkit-overflow-scrolling: touch !important;
+      border-radius: 20px !important;
+      box-shadow: 0 25px 80px rgba(15, 23, 42, 0.42), 0 0 0 1px rgba(15, 23, 42, 0.08) !important;
+      background: #FFFFFF !important;
+      z-index: 2500 !important;
+    }
+
+    /* Refinamiento Estético del Calendario */
+    .pxsol-search-panel-header {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      padding: 14px 22px !important;
+      border-bottom: 1px solid #E2E8F0 !important;
+      background: #FFFFFF !important;
+    }
+
+    .pxsol-search-panel-title {
+      font-family: var(--font-serif, "Cormorant Garamond", Georgia, serif) !important;
+      font-size: 1.25rem !important;
+      font-weight: 700 !important;
+      color: #1B2F7A !important;
+      margin: 0 !important;
+    }
+
+    .pxsol-search-round-button {
+      width: 32px !important;
+      height: 32px !important;
+      border-radius: 50% !important;
+      border: 1px solid #CBD5E1 !important;
+      background: #FFFFFF !important;
+      color: #1B2F7A !important;
+      cursor: pointer !important;
+      transition: all 0.2s ease !important;
+    }
+    .pxsol-search-round-button:hover {
+      background: #EEF2F6 !important;
+      border-color: #1B2F7A !important;
+    }
+
+    .pxsol-search-close {
+      width: 32px !important;
+      height: 32px !important;
+      border-radius: 50% !important;
+      border: 1px solid #CBD5E1 !important;
+      background: #F8FAFC !important;
+      color: #475569 !important;
+      font-size: 18px !important;
+      cursor: pointer !important;
+      transition: all 0.2s ease !important;
+    }
+    .pxsol-search-close:hover {
+      background: #E2E8F0 !important;
+      color: #0F172A !important;
+    }
+
+    .pxsol-search-calendars {
+      padding: 16px 22px !important;
+    }
+
+    .pxsol-search-month-title {
+      font-size: 15px !important;
+      font-weight: 700 !important;
+      color: #1B2F7A !important;
+      margin: 0 0 12px 0 !important;
+      text-align: center !important;
+    }
+
+    .pxsol-search-day {
+      font-size: 13px !important;
+      font-weight: 500 !important;
+      color: #1E293B !important;
+      border-radius: 8px !important;
+      transition: all 0.15s ease !important;
+    }
+
+    .pxsol-search-day:hover:not([disabled]) {
+      background: #EEF2F6 !important;
+    }
+
+    .pxsol-search-day--selected {
+      background: #1B2F7A !important;
+      color: #FFFFFF !important;
+      font-weight: 700 !important;
+      border-radius: 8px !important;
+    }
+
+    .pxsol-search-day--range {
+      background: rgba(47, 182, 196, 0.16) !important;
+      color: #1B2F7A !important;
+      border-radius: 0 !important;
+    }
+
+    .pxsol-search-calendar-footer {
+      padding: 14px 22px 18px !important;
+      border-top: 1px solid #E2E8F0 !important;
+      background: #F8FAFC !important;
+      border-radius: 0 0 20px 20px !important;
+    }
+
+    .pxsol-search-done {
+      background: #1B2F7A !important;
+      color: #FFFFFF !important;
+      border: none !important;
+      border-radius: 10px !important;
+      padding: 10px 24px !important;
+      font-weight: 700 !important;
+      font-size: 14px !important;
+      cursor: pointer !important;
+      transition: background 0.2s ease !important;
+    }
+    .pxsol-search-done:hover {
+      background: #228b96 !important;
+    }
+
+    .pxsol-search-nights {
+      background: #FFFFFF !important;
+      border: 1px solid #E2E8F0 !important;
+      border-radius: 12px !important;
+      padding: 8px 16px !important;
+    }
+
+    /* Telón / Backdrop Oscurecido de Enfoque */
+    .pxsol-backdrop-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.52);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      z-index: 2490;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+    .pxsol-backdrop-overlay.is-active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
     @media (max-width: 768px) {
       /* Barra fija anclada al pie con padding mínimo de resguardo */
       .quick-booking-bar.pxsol-bar {
@@ -2001,7 +2215,17 @@
         box-sizing: border-box !important;
       }
 
-      /* Panel de Fechas y Huéspedes (Popup/Modal) en Mobile: Centrado Modal en Viewport con Scroll Fluido */
+      /* Mensajes y errores en Mobile */
+      #buscador-pxsol .pxsol-search-message,
+      #buscador-pxsol .pxsol-search-error {
+        white-space: normal !important;
+        border-radius: 12px !important;
+        padding: 7px 14px !important;
+        font-size: 12px !important;
+        bottom: calc(100% + 8px) !important;
+      }
+
+      /* Panel de Fechas y Huéspedes en Mobile */
       body .pxsol-search-panel,
       #buscador-pxsol .pxsol-search-panel,
       .pxsol-wrapper .pxsol-search-panel,
@@ -2021,10 +2245,9 @@
         -webkit-overflow-scrolling: touch !important;
         border-radius: 18px !important;
         box-shadow: 0 12px 48px rgba(0, 0, 0, 0.45) !important;
-        z-index: 2200 !important;
+        z-index: 2500 !important;
       }
 
-      /* Compactación estética del calendario de fechas para evitar desbordes */
       .pxsol-search-calendars {
         grid-template-columns: 1fr !important;
         padding: 12px 14px !important;
@@ -2184,6 +2407,6 @@
   </a>
 
   <!-- Script Moderno Modular -->
-  <script src="js/app.js?v=4.2"></script>
+  <script src="js/app.js?v=4.3"></script>
 </body>
 </html>
