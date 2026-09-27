@@ -93,7 +93,7 @@
   <!-- ═══════════════════════════════════════════════
        CSS PRINCIPAL
        ═══════════════════════════════════════════════ -->
-  <link rel="stylesheet" href="css/modern.css?v=4.6">
+  <link rel="stylesheet" href="css/modern.css?v=4.7">
 
   <!-- ═══════════════════════════════════════════════
        SCHEMA.ORG JSON-LD #1 — LodgingBusiness (Completo)
@@ -1961,6 +1961,29 @@
       }
     }
 
+    /* Botón Buscar en Barra de Búsqueda (Desktop & General) */
+    body .pxsol-search-submit,
+    #buscador-pxsol .pxsol-search-submit,
+    .pxsol-wrapper .pxsol-search-submit,
+    body .pxsol-search-bar button[type="submit"],
+    #buscador-pxsol .pxsol-search-bar button[type="submit"],
+    .quick-booking-bar .booking-submit-btn {
+      background: #6e9db4 !important;
+      background-color: #6e9db4 !important;
+      color: #FFFFFF !important;
+      border: none !important;
+      transition: background 0.2s ease !important;
+    }
+    body .pxsol-search-submit:hover,
+    #buscador-pxsol .pxsol-search-submit:hover,
+    .pxsol-wrapper .pxsol-search-submit:hover,
+    body .pxsol-search-bar button[type="submit"]:hover,
+    #buscador-pxsol .pxsol-search-bar button[type="submit"]:hover,
+    .quick-booking-bar .booking-submit-btn:hover {
+      background: #5b879c !important;
+      background-color: #5b879c !important;
+    }
+
     /* --- Panel de Fechas y Huéspedes PXSOL: Modal Centrado en Viewport (Anti-Colapso en Desktop) --- */
     body .pxsol-search-panel,
     #buscador-pxsol .pxsol-search-panel,
@@ -2225,6 +2248,19 @@
         gap: 6px !important;
         width: 100% !important;
         box-sizing: border-box !important;
+        background: #6e9db4 !important;
+        background-color: #6e9db4 !important;
+        color: #FFFFFF !important;
+        border: none !important;
+        transition: background 0.2s ease !important;
+      }
+      body .pxsol-search-submit:hover,
+      #buscador-pxsol .pxsol-search-submit:hover,
+      .pxsol-wrapper .pxsol-search-submit:hover,
+      body .pxsol-search-bar button[type="submit"]:hover,
+      #buscador-pxsol .pxsol-search-bar button[type="submit"]:hover {
+        background: #5b879c !important;
+        background-color: #5b879c !important;
       }
 
       /* Mensajes y errores en Mobile */
@@ -2260,9 +2296,16 @@
         z-index: 2500 !important;
       }
 
+      /* Vista de 30 días en mobile: ocultar el 2do mes para optimizar espacio vertical */
       .pxsol-search-calendars {
         grid-template-columns: 1fr !important;
         padding: 8px 12px !important;
+      }
+      .pxsol-search-calendars .pxsol-search-month:first-child {
+        padding-right: 0 !important;
+      }
+      .pxsol-search-calendars .pxsol-search-month + .pxsol-search-month {
+        display: none !important;
       }
       .pxsol-search-month-title {
         margin: 2px 0 6px !important;
@@ -2420,6 +2463,6 @@
   </a>
 
   <!-- Script Moderno Modular -->
-  <script src="js/app.js?v=4.6"></script>
+  <script src="js/app.js?v=4.7"></script>
 </body>
 </html>

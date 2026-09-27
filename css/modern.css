@@ -2411,6 +2411,29 @@ body.has-demo-bar {
   }
 }
 
+/* Botón Buscar en Barra de Búsqueda (Desktop & General) */
+body .pxsol-search-submit,
+#buscador-pxsol .pxsol-search-submit,
+.pxsol-wrapper .pxsol-search-submit,
+body .pxsol-search-bar button[type="submit"],
+#buscador-pxsol .pxsol-search-bar button[type="submit"],
+.quick-booking-bar .booking-submit-btn {
+  background: #6e9db4 !important;
+  background-color: #6e9db4 !important;
+  color: #FFFFFF !important;
+  border: none !important;
+  transition: background 0.2s ease !important;
+}
+body .pxsol-search-submit:hover,
+#buscador-pxsol .pxsol-search-submit:hover,
+.pxsol-wrapper .pxsol-search-submit:hover,
+body .pxsol-search-bar button[type="submit"]:hover,
+#buscador-pxsol .pxsol-search-bar button[type="submit"]:hover,
+.quick-booking-bar .booking-submit-btn:hover {
+  background: #5b879c !important;
+  background-color: #5b879c !important;
+}
+
 /* --- Panel de Fechas y Huéspedes PXSOL: Modal Centrado en Viewport (Anti-Colapso) --- */
 body .pxsol-search-panel,
 #buscador-pxsol .pxsol-search-panel,
@@ -2679,6 +2702,19 @@ body .pxsol-search-panel--guests,
     gap: 6px !important;
     width: 100% !important;
     box-sizing: border-box !important;
+    background: #6e9db4 !important;
+    background-color: #6e9db4 !important;
+    color: #FFFFFF !important;
+    border: none !important;
+    transition: background 0.2s ease !important;
+  }
+  body .pxsol-search-submit:hover,
+  #buscador-pxsol .pxsol-search-submit:hover,
+  .pxsol-wrapper .pxsol-search-submit:hover,
+  body .pxsol-search-bar button[type="submit"]:hover,
+  #buscador-pxsol .pxsol-search-bar button[type="submit"]:hover {
+    background: #5b879c !important;
+    background-color: #5b879c !important;
   }
 
   /* Modal de fechas y huéspedes posicionado sobre la barra móvil sin desborde */
@@ -2704,9 +2740,16 @@ body .pxsol-search-panel--guests,
     z-index: 2500 !important;
   }
 
+  /* Vista de 30 días en mobile: ocultar el 2do mes para optimizar espacio vertical */
   .pxsol-search-calendars {
     grid-template-columns: 1fr !important;
     padding: 8px 12px !important;
+  }
+  .pxsol-search-calendars .pxsol-search-month:first-child {
+    padding-right: 0 !important;
+  }
+  .pxsol-search-calendars .pxsol-search-month + .pxsol-search-month {
+    display: none !important;
   }
   .pxsol-search-month-title {
     margin: 2px 0 6px !important;
@@ -4213,24 +4256,22 @@ body .pxsol-search-panel--guests,
 }
 
 /* ==========================================================================
-   AJUSTES MOBILE: TIPOGRAFÍA DEL HERO (-px en H2 y H3 / Título y Descripción)
+   AJUSTES MOBILE: TIPOGRAFÍA DEL HERO (Título H1 y Descripción H2/H3)
    ========================================================================== */
 @media (max-width: 768px) {
   .hero-content {
     padding-bottom: 24px !important;
   }
   .hero-badge {
-    font-size: 0.72rem !important;
-    padding: 4px 10px !important;
+    font-size: 0.76rem !important;
+    padding: 5px 12px !important;
     margin-bottom: 12px !important;
   }
   .hero-title,
   .hero h1,
-  .hero h2,
-  .hero-content h1,
-  .hero-content h2 {
-    font-size: 1.40rem !important; /* Reducción de 4px: de 1.65rem (26.4px) a 1.40rem (22.4px) en móvil */
-    line-height: 1.22 !important;
+  .hero-content h1 {
+    font-size: 1.72rem !important; /* Presencia elegante y destacada */
+    line-height: 1.20 !important;
     letter-spacing: -0.2px !important;
     margin-bottom: 12px !important;
   }
@@ -4239,27 +4280,25 @@ body .pxsol-search-panel--guests,
   .hero h3,
   .hero-content h2,
   .hero-content h3 {
-    font-size: 0.68rem !important; /* Reducción de ~3.5px: de 0.90rem (14.4px) a 0.68rem (10.9px) en móvil */
-    line-height: 1.45 !important;
+    font-size: 0.90rem !important; /* Altamente legible (14.4px) con excelente jerarquía visual */
+    line-height: 1.55 !important;
     max-width: 100% !important;
-    margin-bottom: 14px !important;
-    opacity: 0.92 !important;
+    margin-bottom: 16px !important;
+    opacity: 0.94 !important;
   }
 }
 
 @media (max-width: 480px) {
   .hero-badge {
-    font-size: 0.68rem !important;
-    padding: 3px 8px !important;
+    font-size: 0.70rem !important;
+    padding: 4px 10px !important;
     margin-bottom: 10px !important;
   }
   .hero-title,
   .hero h1,
-  .hero h2,
-  .hero-content h1,
-  .hero-content h2 {
-    font-size: 1.17rem !important; /* Reducción de 4px: de 1.42rem (22.7px) a 1.17rem (18.7px) en móviles angostos */
-    line-height: 1.2 !important;
+  .hero-content h1 {
+    font-size: 1.48rem !important; /* Tamaño armónico para pantallas angostas */
+    line-height: 1.22 !important;
     margin-bottom: 10px !important;
   }
   .hero-desc,
@@ -4267,9 +4306,9 @@ body .pxsol-search-panel--guests,
   .hero h3,
   .hero-content h2,
   .hero-content h3 {
-    font-size: 0.62rem !important; /* Reducción de ~3.5px: de 0.84rem (13.4px) a 0.62rem (9.9px) en móviles angostos */
-    line-height: 1.4 !important;
-    margin-bottom: 12px !important;
+    font-size: 0.84rem !important; /* ~13.5px nítido y descansado a la vista */
+    line-height: 1.50 !important;
+    margin-bottom: 14px !important;
   }
 }
 
