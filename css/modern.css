@@ -2417,7 +2417,8 @@ body .pxsol-search-submit,
 .pxsol-wrapper .pxsol-search-submit,
 body .pxsol-search-bar button[type="submit"],
 #buscador-pxsol .pxsol-search-bar button[type="submit"],
-.quick-booking-bar .booking-submit-btn {
+.quick-booking-bar .booking-submit-btn,
+#web-story-btn {
   background: #6e9db4 !important;
   background-color: #6e9db4 !important;
   color: #FFFFFF !important;
@@ -2429,7 +2430,8 @@ body .pxsol-search-submit:hover,
 .pxsol-wrapper .pxsol-search-submit:hover,
 body .pxsol-search-bar button[type="submit"]:hover,
 #buscador-pxsol .pxsol-search-bar button[type="submit"]:hover,
-.quick-booking-bar .booking-submit-btn:hover {
+.quick-booking-bar .booking-submit-btn:hover,
+#web-story-btn:hover {
   background: #5b879c !important;
   background-color: #5b879c !important;
 }
