@@ -1026,7 +1026,7 @@ ul, ol {
   z-index: 2;
   width: 100%;
   padding: 24px;
-  background: linear-gradient(0deg, rgba(15, 25, 60, 0.92) 0%, rgba(15, 25, 60, 0) 100%);
+  background: linear-gradient(0deg, rgba(110, 157, 180, 0.95) 0%, rgba(110, 157, 180, 0) 100%);
   color: var(--blanco);
 }
 .attraction-overlay h4 {
@@ -1129,11 +1129,12 @@ ul, ol {
   gap: 10px;
 }
 .footer-links a {
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.9);
   font-size: 0.92rem;
+  transition: all 0.2s ease;
 }
 .footer-links a:hover {
-  color: var(--turquesa);
+  color: #C9A66B !important;
   transform: translateX(4px);
 }
 .newsletter-form {
@@ -3219,7 +3220,7 @@ body .pxsol-search-panel--guests,
   z-index: 2 !important;
   width: 100% !important;
   padding: 14px 16px !important;
-  background: linear-gradient(0deg, rgba(15, 25, 60, 0.94) 0%, rgba(15, 25, 60, 0.70) 65%, transparent 100%) !important;
+  background: linear-gradient(0deg, rgba(110, 157, 180, 0.95) 0%, rgba(110, 157, 180, 0.70) 65%, transparent 100%) !important;
 }
 .attraction-overlay h4 {
   font-size: 1.15rem !important;
@@ -3243,7 +3244,7 @@ body .pxsol-search-panel--guests,
   }
   .attraction-overlay {
     padding: 8px 10px 10px !important;
-    background: linear-gradient(0deg, rgba(15, 25, 60, 0.95) 0%, rgba(15, 25, 60, 0.75) 60%, transparent 100%) !important;
+    background: linear-gradient(0deg, rgba(110, 157, 180, 0.96) 0%, rgba(110, 157, 180, 0.75) 60%, transparent 100%) !important;
   }
   .attraction-overlay h4 {
     font-size: 0.85rem !important;
@@ -5173,7 +5174,7 @@ body.apt-modal-open {
 /* Header del Modal */
 .apt-modal-header {
   padding: 12px 24px;
-  background: #22374A;
+  background: #6e9db4;
   color: #FFFFFF;
   display: flex;
   align-items: center;
@@ -5199,7 +5200,7 @@ body.apt-modal-open {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
-  color: #C5A059;
+  color: #ffffff;
 }
 
 .apt-modal-title {
@@ -5259,7 +5260,7 @@ body.apt-modal-open {
 
 /* Lightbox / Galería Izquierda (se adapta dinámicamente al 80% de altura) */
 .apt-modal-gallery {
-  background: #0B132B;
+  background: #ffffff;
   padding: 14px 18px 12px;
   display: flex;
   flex-direction: column;
