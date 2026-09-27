@@ -41,7 +41,7 @@
   <meta property="og:image:width" content="1920">
   <meta property="og:image:height" content="780">
   <meta property="og:image:alt" content="Apart Nereidas — Complejo con jardín, piscina climatizada y bosque atlántico en Mar de las Pampas">
-  <meta property="og:phone_number" content="+54922554152820">
+  <meta property="og:phone_number" content="+5492255415282">
   <meta property="og:street_address" content="El Chajá y Querandíes">
   <meta property="og:locality" content="Mar de las Pampas">
   <meta property="og:region" content="Buenos Aires">
@@ -146,7 +146,7 @@
     "hasMap": "https://maps.app.goo.gl/agkrR1yuJtyzSXsP6",
     "sameAs": [
       "https://maps.app.goo.gl/agkrR1yuJtyzSXsP6",
-      "https://www.instagram.com/apartnereidas/",
+      "https://www.instagram.com/nereidasapart",
       "https://wa.me/5492255415282"
     ],
     "tourBookingPage": "https://wa.me/5492255415282",
@@ -1900,21 +1900,21 @@
   ></script>
 
 
-  <!-- Overrides mobile PXSOL: widget en layout 2x2 compacto -->
+  <!-- Overrides mobile PXSOL: desplegables en una sola línea y botón Buscar debajo -->
   <style id="pxsol-mobile-override">
     @media (max-width: 768px) {
-      /* Contenedor: 2 columnas iguales, 2 filas */
+      /* Contenedor: fila 1 para desplegables (Check-in, Check-out, Viajeros) y fila 2 para Buscar */
       body .pxsol-search-bar,
       #buscador-pxsol .pxsol-search-bar,
       .pxsol-wrapper .pxsol-search-bar {
         display: grid !important;
-        grid-template-columns: 1fr 1fr !important;
+        grid-template-columns: repeat(3, 1fr) !important;
         grid-template-rows: auto auto !important;
         min-height: unset !important;
         max-height: unset !important;
         height: auto !important;
-        padding: 6px !important;
-        gap: 5px !important;
+        padding: 5px !important;
+        gap: 4px !important;
         border-radius: 16px !important;
         align-items: stretch !important;
         box-sizing: border-box !important;
@@ -1926,18 +1926,19 @@
       .pxsol-wrapper .pxsol-search-code-wrap {
         display: none !important;
       }
-      /* Triggers de fechas y viajeros compactos */
+      /* Triggers de fechas y viajeros compactos en una sola línea */
       body .pxsol-search-trigger,
       #buscador-pxsol .pxsol-search-trigger,
       .pxsol-wrapper .pxsol-search-trigger {
-        min-height: 48px !important;
-        height: 48px !important;
-        padding: 6px 10px !important;
+        min-height: 44px !important;
+        height: 44px !important;
+        padding: 4px 6px !important;
         border-radius: 10px !important;
         display: flex !important;
         flex-direction: column !important;
         justify-content: center !important;
-        align-items: flex-start !important;
+        align-items: center !important;
+        text-align: center !important;
         overflow: hidden !important;
         box-sizing: border-box !important;
       }
@@ -1945,37 +1946,37 @@
       body .pxsol-search-trigger-label,
       #buscador-pxsol .pxsol-search-trigger-label,
       .pxsol-wrapper .pxsol-search-trigger-label {
-        font-size: 9px !important;
-        line-height: 1.2 !important;
+        font-size: 8.5px !important;
+        line-height: 1.1 !important;
         white-space: nowrap !important;
         margin: 0 !important;
         padding: 0 !important;
         font-weight: 700 !important;
         text-transform: uppercase !important;
-        letter-spacing: 0.3px !important;
+        letter-spacing: 0.2px !important;
       }
       /* Valor de fecha/viajeros */
       body .pxsol-search-trigger-value,
       #buscador-pxsol .pxsol-search-trigger-value,
       .pxsol-wrapper .pxsol-search-trigger-value {
-        font-size: 12px !important;
+        font-size: 11px !important;
         font-weight: 600 !important;
         white-space: nowrap !important;
         overflow: hidden !important;
         text-overflow: ellipsis !important;
         max-width: 100% !important;
-        line-height: 1.3 !important;
+        line-height: 1.2 !important;
         margin: 0 !important;
       }
-      /* Botón Buscar: ocupa las 2 columnas de la segunda fila */
+      /* Botón Buscar: debajo, abarcando todo el ancho */
       body .pxsol-search-submit,
       #buscador-pxsol .pxsol-search-submit,
       .pxsol-wrapper .pxsol-search-submit,
       body .pxsol-search-bar button[type="submit"],
       #buscador-pxsol .pxsol-search-bar button[type="submit"] {
         grid-column: 1 / -1 !important;
-        min-height: 44px !important;
-        height: 44px !important;
+        min-height: 40px !important;
+        height: 40px !important;
         padding: 0 14px !important;
         font-size: 13px !important;
         border-radius: 10px !important;
