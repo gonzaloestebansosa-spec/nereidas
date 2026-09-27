@@ -7,7 +7,7 @@
 ---
 
 ### 2. ARQUITECTURA DE ARCHIVOS Y RUTAS
-- `index.html` -> Página principal (Single Page Application arquitectada en HTML5). Controlada por `js/app.js?v=4.4` y estilizada por `css/modern.css?v=4.4`.
+- `index.html` -> Página principal (Single Page Application arquitectada en HTML5). Controlada por `js/app.js?v=4.5` y estilizada por `css/modern.css?v=4.5`.
 - `403.html` -> Página de error de acceso prohibido con diseño corporativo y navegación de retorno.
 - `404.html` -> Página de error de recurso no encontrado con enlaces directos al inicio y WhatsApp.
 - `500.html` -> Página de error interno del servidor con opciones de contacto directo.
@@ -36,7 +36,7 @@
   - Landing completa y responsiva: Hero con slideshow de 5 diapositivas y controles táctiles, sección Concepto, Paseos y Atracciones con `<picture>` responsivo, Grilla de 12 Servicios oficiales con pop-up de historias, Acordeón FAQ y formularios.
   - Módulo de 5 Apartamentos boutique con carruseles nativos táctiles (`scroll-snap`), contador dinámico y Modal Lightbox con ficha técnica y distribución de plantas.
   - Barra flotante de disponibilidad fija al pie (`bottom: 5px !important`), adaptada en mobile a dos filas (triggers compactos en una sola línea y botón Buscar inferior al 100%).
-  - Panel desplegable de fechas/pasajeros de PXSOL adaptado como modal fijo centrado anti-colapso tanto en Desktop como en Mobile (`position: fixed; max-height: calc(100dvh - 40px); overflow-y: auto`) con telón glassmorphic backdrop oscurecido, eliminando el colapso con el navbar superior y resguardando los mensajes/errores flotantes (`.pxsol-search-message`, `.pxsol-search-error`) por encima de la barra de búsqueda.
+  - Panel desplegable de fechas/pasajeros de PXSOL anclado por encima de la barra flotante (`bottom: 82px !important; top: auto !important; left: 50%; transform: translateX(-50%)` en Desktop, `bottom: 106px !important` en Mobile) con altura compacta (~360px) y `max-height: calc(100dvh - 165px); overflow-y: auto`. Esto garantiza que los controles del calendario (CHECK-IN / CHECK-OUT, botón "Listo", selector "Ajustar noches") queden 100% visibles y nunca sean tapados por el pie ni colisionen con la barra de navegación superior. Mensajes y alertas de validación (`.pxsol-search-message`, `.pxsol-search-error`) flotan por encima de la barra.
   - Botón flotante de WhatsApp elevado a `bottom: 110px` en mobile para evitar cualquier superposición con la barra de búsqueda.
   - Suite de rendimiento WebP: 100% de imágenes de la web migradas a WebP con ahorro global superior al 55% y versiones responsivas `-thumb.webp` de 500px para miniaturas.
   - Carga optimizada de Google Fonts: reducida a 5 pesos estrictamente utilizados con carga asíncrona no bloqueante.
