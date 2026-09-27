@@ -6,8 +6,8 @@
 
 /* --- CSS Variables & Paleta Institucional --- */
 :root {
-  --azul-mar: #1B2F7A;
-  --azul-mar-rgb: 27, 47, 122;
+  --azul-mar: #91ADC8;
+  --azul-mar-rgb: 145, 173, 200;
   --turquesa: #2FB6C4;
   --turquesa-dark: #228b96;
   --arena: #F3ECDD;
@@ -435,7 +435,7 @@ ul, ol {
   align-items: center;
   padding-top: calc(var(--header-height) + 30px);
   padding-bottom: 70px;
-  background: linear-gradient(135deg, #1B2F7A 0%, #152563 60%, #0d1840 100%);
+  background: linear-gradient(135deg, #91ADC8 0%, #152563 60%, #0d1840 100%);
   color: var(--blanco);
   overflow: hidden;
 }
@@ -1284,7 +1284,7 @@ ul, ol {
   width: 74px;
   height: 74px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #1B2F7A 0%, #2FB6C4 50%, #C9A66B 100%);
+  background: linear-gradient(135deg, #91ADC8 0%, #2FB6C4 50%, #C9A66B 100%);
   padding: 2.5px;
   display: flex;
   align-items: center;
@@ -2395,7 +2395,7 @@ body.has-demo-bar {
 }
 
 #buscador-pxsol .pxsol-search-message {
-  background: #1B2F7A !important;
+  background: #91ADC8 !important;
   color: #FFFFFF !important;
   border: 1px solid rgba(255, 255, 255, 0.35) !important;
 }
@@ -2451,7 +2451,7 @@ body .pxsol-search-panel--guests,
   font-family: var(--font-serif, "Cormorant Garamond", Georgia, serif) !important;
   font-size: 1.05rem !important;
   font-weight: 700 !important;
-  color: #1B2F7A !important;
+  color: #91ADC8 !important;
   margin: 0 !important;
   line-height: 1.2 !important;
 }
@@ -2462,7 +2462,7 @@ body .pxsol-search-panel--guests,
   border-radius: 50% !important;
   border: 1px solid #CBD5E1 !important;
   background: #FFFFFF !important;
-  color: #1B2F7A !important;
+  color: #91ADC8 !important;
   cursor: pointer !important;
   display: inline-flex !important;
   align-items: center !important;
@@ -2471,7 +2471,7 @@ body .pxsol-search-panel--guests,
 }
 .pxsol-search-round-button:hover {
   background: #EEF2F6 !important;
-  border-color: #1B2F7A !important;
+  border-color: #91ADC8 !important;
 }
 
 .pxsol-search-close {
@@ -2501,7 +2501,7 @@ body .pxsol-search-panel--guests,
 .pxsol-search-month-title {
   font-size: 13px !important;
   font-weight: 700 !important;
-  color: #1B2F7A !important;
+  color: #91ADC8 !important;
   margin: 0 0 6px 0 !important;
   text-align: center !important;
 }
@@ -2532,7 +2532,7 @@ body .pxsol-search-panel--guests,
 }
 
 .pxsol-search-day--selected {
-  background: #1B2F7A !important;
+  background: #91ADC8 !important;
   color: #FFFFFF !important;
   font-weight: 700 !important;
   border-radius: 6px !important;
@@ -2540,7 +2540,7 @@ body .pxsol-search-panel--guests,
 
 .pxsol-search-day--range {
   background: rgba(47, 182, 196, 0.16) !important;
-  color: #1B2F7A !important;
+  color: #91ADC8 !important;
   border-radius: 0 !important;
 }
 
@@ -2553,7 +2553,7 @@ body .pxsol-search-panel--guests,
 }
 
 .pxsol-search-done {
-  background: #1B2F7A !important;
+  background: #91ADC8 !important;
   color: #FFFFFF !important;
   border: none !important;
   border-radius: 8px !important;
@@ -3741,13 +3741,13 @@ body .pxsol-search-panel--guests,
   box-shadow: 0 6px 18px rgba(20, 33, 61, 0.08);
 }
 .pxsec__card--alta {
-  background: linear-gradient(135deg, var(--azul-noche) 0%, #1B2F7A 100%);
+  background: linear-gradient(135deg, var(--azul-noche) 0%, #91ADC8 100%);
   color: #FFFFFF;
   border: none;
 }
 .pxsec__card--alta:hover {
   transform: none;
-  background: linear-gradient(135deg, var(--azul-noche) 0%, #1B2F7A 100%);
+  background: linear-gradient(135deg, var(--azul-noche) 0%, #91ADC8 100%);
   box-shadow: 0 10px 24px rgba(20, 33, 61, 0.25);
 }
 .pxsec__card--alta .pxsec__ttl {
