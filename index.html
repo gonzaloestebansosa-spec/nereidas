@@ -92,7 +92,7 @@
   <!-- ═══════════════════════════════════════════════
        CSS PRINCIPAL
        ═══════════════════════════════════════════════ -->
-  <link rel="stylesheet" href="css/modern.css?v=4.3">
+  <link rel="stylesheet" href="css/modern.css?v=4.4">
 
   <!-- ═══════════════════════════════════════════════
        SCHEMA.ORG JSON-LD #1 — LodgingBusiness (Completo)
@@ -1980,6 +1980,7 @@
       border-radius: 20px !important;
       box-shadow: 0 25px 80px rgba(15, 23, 42, 0.42), 0 0 0 1px rgba(15, 23, 42, 0.08) !important;
       background: #FFFFFF !important;
+      pointer-events: auto !important;
       z-index: 2500 !important;
     }
 
@@ -2096,23 +2097,6 @@
       border: 1px solid #E2E8F0 !important;
       border-radius: 12px !important;
       padding: 8px 16px !important;
-    }
-
-    /* Telón / Backdrop Oscurecido de Enfoque */
-    .pxsol-backdrop-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(15, 23, 42, 0.52);
-      backdrop-filter: blur(4px);
-      -webkit-backdrop-filter: blur(4px);
-      z-index: 2490;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.25s ease;
-    }
-    .pxsol-backdrop-overlay.is-active {
-      opacity: 1;
-      pointer-events: auto;
     }
 
     @media (max-width: 768px) {
@@ -2407,6 +2391,6 @@
   </a>
 
   <!-- Script Moderno Modular -->
-  <script src="js/app.js?v=4.3"></script>
+  <script src="js/app.js?v=4.4"></script>
 </body>
 </html>
