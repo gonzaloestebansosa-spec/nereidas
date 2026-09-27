@@ -7,7 +7,7 @@
 ---
 
 ### 2. ARQUITECTURA DE ARCHIVOS Y RUTAS
-- `index.html` -> Página principal (Single Page Application arquitectada en HTML5). Controlada por `js/app.js?v=4.7` y estilizada por `css/modern.css?v=4.7`.
+- `index.html` -> Página principal (Single Page Application arquitectada en HTML5). Controlada por `js/app.js?v=4.8` y estilizada por `css/modern.css?v=4.8`.
 - `403.html` -> Página de error de acceso prohibido con diseño corporativo y navegación de retorno.
 - `404.html` -> Página de error de recurso no encontrado con enlaces directos al inicio y WhatsApp.
 - `500.html` -> Página de error interno del servidor con opciones de contacto directo.
@@ -46,7 +46,7 @@
   - Desvinculación de Vercel y depuración de código muerto, simulador de Instagram y borradores preliminares.
   - Identidad & Favicon: Nuevo isotipo circular oficial integrado en todas las resoluciones (`favicon.png`, `favicon.ico` multi-resolución, `apple-touch-icon.png`) con versionado cache-buster `?v=2`.
   - Tarjeta de Previsualización Web (Open Graph & Twitter Cards): Nueva imagen oficial frente a la piscina (1200x675) en `img/og_preview.jpg` y texto comercial actualizado.
-  - Barra de Búsqueda & Experiencia Móvil: Botón "Buscar" actualizado a color corporativo `#6e9db4`, calendario en mobile ajustado a vista compacta de 30 días (1 mes visible con navegación limpia) y tipografía del Hero (H1 título a 1.72rem/1.48rem y H2/H3 descripción a 0.90rem/0.84rem) re-equilibrada para legibilidad premium.
+  - Barra de Búsqueda & Experiencia Móvil: Botón "Buscar" actualizado a color corporativo `#6e9db4`, calendario en mobile ajustado a vista compacta de 30 días (1 mes visible con navegación limpia), tipografía del Hero (H1 título a 1.72rem/1.48rem y H2/H3 descripción a 0.90rem/0.84rem) re-equilibrada para legibilidad premium y remoción limpia de las barras indicadoras de slides (`#hero-indicators`) dejando la transición de fondo despejada.
   - Despliegue continuo activo: `git push origin main` -> sincronización inmediata con DonWeb / Ferozo (`public_html/`).
 - **[EN PROGRESO]**:
   - Auditoría de métricas Core Web Vitals en campo (LCP, INP, CLS) bajo la nueva entrega de assets WebP.
