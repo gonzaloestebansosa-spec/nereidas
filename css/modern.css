@@ -360,7 +360,7 @@ ul, ol {
   width: 82%;
   max-width: 360px;
   height: 100vh;
-  background: #22374A;
+  background: #6FA8AD;
   z-index: 1100;
   padding: 30px 24px;
   display: flex;
@@ -1154,14 +1154,14 @@ ul, ol {
   color: rgba(110, 157, 180, 0.75) !important;
 }
 .newsletter-form button[type="submit"] {
-  background-color: #8C6D38 !important;
-  border-color: #8C6D38 !important;
+  background-color: #d6b281 !important;
+  border-color: #d6b281 !important;
   color: #FFFFFF !important;
   transition: all 0.25s ease !important;
 }
 .newsletter-form button[type="submit"]:hover {
-  background-color: #745829 !important;
-  border-color: #745829 !important;
+  background-color: #c49e6b !important;
+  border-color: #c49e6b !important;
   color: #FFFFFF !important;
 }
 .footer-bottom {
@@ -1943,7 +1943,7 @@ body.has-demo-bar {
 .mobile-drawer {
   top: var(--demo-top-height) !important;
   height: calc(100vh - var(--demo-top-height)) !important;
-  background-color: #22374A !important;
+  background-color: #6FA8AD !important;
   color: #FFFFFF !important;
 }
 .drawer-header {
@@ -2615,6 +2615,14 @@ body .pxsol-search-panel--guests,
 
 /* Ajuste móvil para mostrar la misma barra PXSOL directo sin botón de colapso */
 @media (max-width: 768px) {
+  /* En versión mobile, ordenar enlaces de navegación del footer en 2 columnas alineadas */
+  .footer-links {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    column-gap: 24px !important;
+    row-gap: 10px !important;
+  }
+
   .quick-booking-bar.pxsol-bar {
     bottom: 15px !important;
     padding: 0 8px !important;
@@ -4652,7 +4660,7 @@ body .pxsol-search-panel--guests,
     min-width: 175px !important;
     max-width: 280px !important;
     padding: 16px 14px 18px !important;
-    background: #22374A !important; /* Fondo #22374A */
+    background: #6FA8AD !important; /* Fondo #6FA8AD */
     box-shadow: -10px 0 32px rgba(0, 0, 0, 0.45) !important;
     border-left: 1px solid rgba(255, 255, 255, 0.14) !important;
     display: flex !important;
@@ -5125,7 +5133,9 @@ body.apt-modal-open {
 .apt-modal-backdrop {
   position: absolute;
   inset: 0;
-  background: rgba(10, 25, 47, 0.82);
+  background: #6FA8AD;
+  background-color: #6FA8AD;
+  opacity: 0.90;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   cursor: pointer;
