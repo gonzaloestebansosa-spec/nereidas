@@ -1,44 +1,48 @@
-# Estado del Proyecto - 2026-09-24 / Versión Final Productiva v4.0 & Rama Demo en GitHub
+# Estado del Proyecto - 2026-09-27 / Versión Final Productiva v4.2 (High-Performance Release)
 
-## 1. Stack & Configuración Activa
-- **Framework/Entorno**: HTML5 semántico, CSS3 moderno (Variables CSS, Flexbox, CSS Grid bidimensional, Scroll-Snap nativo, Glassmorphism con `backdrop-filter`, `content-visibility: auto`), JavaScript Vanilla ES6+ modular (cero dependencias externas, ultraliviano, reducido a < 34 KB).
-- **Entorno de Ejecución & Herramientas**: Windows PowerShell, Node.js v22, Google Chrome Headless, Git / GitHub, Vercel & Hosting DonWeb / Ferozo.
+## 1. Stack & Arquitectura Activa
+- **Entorno Productivo**: Hosting DonWeb / Ferozo (Apache Server en `apartnereidas.com.ar`), Git Deployment automático desde GitHub (`main` -> `public_html/`). Desacoplado 100% de Vercel.
+- **Frontend Core**: HTML5 semántico, CSS3 moderno modular (Variables CSS, Flexbox, Grid bidimensional, `content-visibility: auto`, `@media (max-width: 768px)` unificado), JavaScript Vanilla ES6+ ultraliviano (< 35 KB). Cero dependencias externas en tiempo de ejecución.
 - **Estructura de Ramas**:
-  - `main`: Versión final productiva limpia para el dominio comercial (sin barra de muestras superior, optimizada y libre de código muerto).
-  - `version-demo`: Versión de presentación completa (conserva la barra superior `.demo-top-switcher-bar`, el enlace al simulador móvil de Instagram y las herramientas de muestra).
+  - `main`: Versión final productiva limpia para el dominio comercial, optimizada en WebP, sin remanentes de simuladores, demos ni dependencias de Vercel.
 
-## 2. Optimizaciones Críticas Realizadas en v4.0
-1. **Transición a Versión Productiva**:
-   - Eliminación de la barra superior de muestras (`.demo-top-switcher-bar`) de `index.html`.
-   - Reajuste de la variable CSS `--demo-top-height: 0px` por defecto, permitiendo que el header, el menú lateral y el hero ocupen el 100% superior sin ningún salto o margen negro de 42px.
-   - Activación condicional (`body:has(.demo-top-switcher-bar)` y `body.has-demo-bar`) para cuando se acceda a la versión de demostración.
-2. **Slideshow de Portada (Hero)**:
-   - Incorporación de flechas de navegación lateral táctiles y accesibles (`.hero-arrow-prev`, `.hero-arrow-next`) con diseño glassmorphic y control por teclado.
-   - Reajuste tipográfico en Hero Title (H1) y Subtitle (H2): reducción armónica de 4px en desktop, tablet y mobile para maximizar la legibilidad y visibilidad del paisaje natural de fondo.
-3. **Depuración Integral de Scripts y Código Muerto**:
-   - Eliminación de más de 480 líneas de código obsoleto e inerte (`HIGHLIGHTS_DATA`, listeners huérfanos a `stories-track`).
-   - Eliminación del bloque inline `<script>` duplicado al final del documento que re-declaraba `toggleAptCollapse`.
-   - Consolidación de 8 event listeners redundantes de `visibilitychange` en 1 único listener pasivo optimizado para toda la galería.
-   - Eliminación de consultas innecesarias al DOM (`minimizeBtn`, `pill`) en la barra flotante de reservas.
-   - Reemplazo de alerta nativa bloqueante `alert()` en el newsletter por feedback visual dinámico no intrusivo en el botón.
-   - Cache-busting actualizado a `?v=4.0` en `modern.css` y `app.js`.
+## 2. Los 6 Cambios de Mayor Impacto Implementados (v4.2)
 
-## 3. Archivos Modificados
-- `index.html`: Versión final productiva sin barra de muestras, con flechas de hero, H2 semántico y scripts optimizados v4.0.
-- `nereidas-demo.html`: Versión demo con soporte de barra superior preservada y clase `.has-demo-bar`.
-- `css/modern.css`: Estilos de flechas de hero, reducción tipográfica -4px y `--demo-top-height: 0px` condicional.
-- `nereidas-demo_files/modern.css`: Réplica espejo sincronizada.
-- `js/app.js`: Código saneado, modularizado, reducido de 1354 a 857 líneas sin código muerto.
-- `nereidas-demo_files/app.js`: Réplica espejo sincronizada.
-- `PROJECT_STATE.md`: Documentación de release v4.0.
+1. **Optimización Masiva de Imágenes (100% WebP)**:
+   - 108 imágenes convertidas y recomprimidas a formato WebP moderno con Sharp.
+   - Reducción de más de 20 MB originales a ~9 MB en disco, con reducciones de hasta -95% en imágenes críticas:
+     - `senderos del bosque`: 4.54 MB -> 259 KB (Desktop) y 62 KB (Mobile).
+     - `Querandi`: 739 KB -> 37 KB (Desktop) y 13 KB (Mobile).
+     - Portadas Hero 01–05: ~650 KB c/u -> ~200 KB c/u (-68%).
+   - Se eliminaron todos los enlaces a `.jpg`/`.jpeg` en la carga del sitio; únicamente se preservaron en metadatos OpenGraph para compatibilidad con rastreadores de WhatsApp/redes sociales.
 
-## 4. Estrategia de Despliegue en DonWeb / Ferozo Hosting
-- **Opción Recomendada: Git Deployment (Panel Ferozo / Git)**
-  - Repositorio: `https://github.com/gonzaloestebansosa-spec/nereidas.git`
-  - Rama a desplegar: `main`
-  - Directorio destino: `public_html/`
-  - Beneficios: Despliegue en 1 clic, historial inmutable, sin riesgo de archivos corruptos o subidas incompletas.
-- **Opción Alternativa: FTP (FileZilla / WinSCP)**
-  - Host: Servidor FTP de DonWeb
-  - Directorio destino: `public_html/`
-  - Riesgo: Subida manual propensa a omisión de archivos multimedia grandes.
+2. **Servir Tamaños según Pantalla (Responsive `srcset` y Miniaturas)**:
+   - 68 miniaturas responsivas generadas (`*-thumb.webp` a 500px de ancho) para todas las unidades de apartamentos.
+   - Atributos `data-srcset` y `sizes="(max-width: 768px) 360px, 600px"` aplicados en todas las galerías de apartamentos: los celulares ahora descargan imágenes de 15–25 KB en lugar de fotos de 1200px.
+   - Tira de miniaturas del modal interactivo (`.apt-modal-thumbs`) adaptada para consumir directamente `-thumb.webp`, ahorrando más de 500 KB al abrir la ficha de una unidad.
+   - Hero y Atracciones con `<picture>` responsivo sirviendo versiones `-mobile.webp` en pantallas `<= 768px`.
+
+3. **Google Fonts Ultraliviano y No Bloqueante**:
+   - Reducción de 11 pesos/estilos innecesarios a solo los 5 pesos esenciales que realmente se consumen:
+     - Montserrat: 400, 600, 700.
+     - Cormorant Garamond: 600, 700.
+     - Alex Brush: 400.
+   - Eliminación de preload duplicado y links bloqueantes; carga asíncrona mediante `media="print" onload="this.media='all'"` con `font-display: swap`.
+
+4. **Widget de Reservas PXSOL No Bloqueante**:
+   - Se agregó el atributo `defer` al script del widget oficial de PXSOL (`pxsol-search-widget.iife.js`), liberando el parseo inicial del DOM y evitando el bloqueo del hilo principal.
+
+5. **Mapa de Google Embebido en Modo Facade Lazy**:
+   - El `<iframe>` de Google Maps se convirtió en un componente `lazy-map` con `data-src` hidratado dinámicamente mediante `IntersectionObserver` con margen de anticipación de 300px.
+   - Se ahorran ~500 KB de scripts de terceros de Google Maps para todos los visitantes que no hagan scroll hasta el pie de la web.
+
+6. **Estrategia de Caché Avanzada en `.htaccess`**:
+   - Archivos estáticos inmutables con versión (CSS, JS, WebP, fuentes, logos): `max-age=31536000, public, immutable` (1 año de caché de máximo rendimiento).
+   - Documento HTML (`index.html`): `no-cache, no-store, must-revalidate` con `Expires: 0` para asegurar despliegues instantáneos sin retención de caché en navegadores.
+   - Versión de activos actualizada a `modern.css?v=4.2` y `app.js?v=4.2`.
+
+## 3. Depuración y Saneamiento del Repositorio
+- Eliminación de `vercel.json` y del directorio `api/` (función serverless del simulador viejo).
+- Eliminación de la carpeta `Logo/` con 2.5 MB de borradores preliminares huérfanos.
+- Eliminación de la carpeta raíz obsoleta `highlights/` y scripts/archivos de desarrollo no productivos (`faivcon nuevo.jpeg`, `image.png_...`, `download_images.py`, `AUDITORIA_GOOGLE_TRAVEL.md`).
+- Repositorio limpio y sincronizado en la rama `main`.

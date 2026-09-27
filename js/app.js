@@ -581,74 +581,74 @@ function initNewsletterForm() {
 const WEB_HIGHLIGHTS_STORIES = [
   {
     title: 'Desayuno Artesanal',
-    icon: 'img/highlights/01_desayuno.jpg',
-    photo: 'nereidas_imagenes/Servicios/Desayuno.jpg',
+    icon: 'img/highlights/01_desayuno.webp',
+    photo: 'nereidas_imagenes/Servicios/Desayuno.webp',
     desc: 'Bandeja artesanal con panificación fresca, mermeladas e infusiones servida directamente en tu apart o junto a la piscina.'
   },
   {
     title: 'Servicio de Mucama',
-    icon: 'img/highlights/03_limpieza.jpg',
-    photo: 'nereidas_imagenes/Apart_Miel/08_1725739803_66dcb31be0abd.jpg',
+    icon: 'img/highlights/03_limpieza.webp',
+    photo: 'nereidas_imagenes/Apart_Miel/08_1725739803_66dcb31be0abd.webp',
     desc: 'Limpieza diaria y provisión de blancos con recambio periódico para una estadía impecable y relajante.'
   },
   {
     title: 'Servicio de Playa',
-    icon: 'img/highlights/04_sombrillas.jpg',
-    photo: 'nereidas_imagenes/Servicios/servicio_playa.jpg',
+    icon: 'img/highlights/04_sombrillas.webp',
+    photo: 'nereidas_imagenes/Servicios/servicio_playa.webp',
     desc: 'Sombrillas y reposeras listas para disfrutar de las amplias playas de Mar de las Pampas a solo 100 metros.'
   },
   {
     title: 'Estadía Pet Friendly',
-    icon: 'img/highlights/05_mascotas.jpg',
-    photo: 'nereidas_imagenes/Servicios/01.jpg',
+    icon: 'img/highlights/05_mascotas.webp',
+    photo: 'nereidas_imagenes/Servicios/01.webp',
     desc: 'Recibimos a tu mascota educada en nuestras instalaciones y parque cerrado con coordinación previa.'
   },
   {
     title: 'Bicicletas de Paseo',
-    icon: 'img/highlights/06_bicicletas.jpg',
-    photo: 'nereidas_imagenes/Servicios/03.jpg',
+    icon: 'img/highlights/06_bicicletas.webp',
+    photo: 'nereidas_imagenes/Servicios/03.webp',
     desc: 'Bicicletas a disposición con canasto y sillita infantil para recorrer las calles de arena y senderos del bosque.'
   },
   {
     title: 'Ropa Blanca & Sommier',
-    icon: 'img/highlights/07_ropa_de_cama.jpg',
-    photo: 'nereidas_imagenes/Apart_Premium_B/b4adeece-a0d2-4ea7-8a0e-034e719cb86f_1726508996_66e86fc43031c.jpeg',
+    icon: 'img/highlights/07_ropa_de_cama.webp',
+    photo: 'nereidas_imagenes/Apart_Premium_B/b4adeece-a0d2-4ea7-8a0e-034e719cb86f_1726508996_66e86fc43031c.webp',
     desc: 'Sommiers hoteleros King Size y juegos completos de sábanas y toallones de puro algodón para un descanso superior.'
   },
   {
     title: 'Parrilla Individual',
-    icon: 'img/highlights/08_parrilla.jpg',
-    photo: 'nereidas_imagenes/Servicios/parrilla_individual.jpg',
+    icon: 'img/highlights/08_parrilla.webp',
+    photo: 'nereidas_imagenes/Servicios/parrilla_individual.webp',
     desc: 'Cada departamento cuenta con su propio asador en balcón terraza o deck privado con mesa exterior.'
   },
   {
     title: 'Piscina Climatizada',
-    icon: 'img/highlights/09_piscina.jpg',
-    photo: 'nereidas_imagenes/Servicios/04.jpg',
+    icon: 'img/highlights/09_piscina.webp',
+    photo: 'nereidas_imagenes/Servicios/04.webp',
     desc: 'Piscina exterior templada rodeada de solarium de madera, reposeras y la serenidad de los pinos.'
   },
   {
     title: 'Equipamiento Total',
-    icon: 'img/highlights/10_habitaciones.jpg',
-    photo: 'nereidas_imagenes/Apart_Familiar_B/859db912-7b53-4fc0-aa14-0b2ff7bcfeb2_1726512449_66e87d41767c8.jpeg',
+    icon: 'img/highlights/10_habitaciones.webp',
+    photo: 'nereidas_imagenes/Apart_Familiar_B/859db912-7b53-4fc0-aa14-0b2ff7bcfeb2_1726512449_66e87d41767c8.webp',
     desc: 'Cocina completamente equipada con heladera con freezer, microondas, vajilla completa y baño con hidromasaje.'
   },
   {
     title: 'Ubicación Estratégica',
-    icon: 'img/highlights/11_ubicacion.jpg',
-    photo: 'nereidas_imagenes/Servicios/05.jpg',
+    icon: 'img/highlights/11_ubicacion.webp',
+    photo: 'nereidas_imagenes/Servicios/05.webp',
     desc: 'Privilegiada ubicación en medio del bosque, a solo 100 metros del mar y a 250 metros del centro comercial de aldea.'
   },
   {
     title: 'Galería & Parque',
-    icon: 'img/highlights/12_galeria.jpg',
-    photo: 'nereidas_imagenes/Servicios/06.jpg',
+    icon: 'img/highlights/12_galeria.webp',
+    photo: 'nereidas_imagenes/Servicios/06.webp',
     desc: 'Parque arbolado privado con camastros, senderos naturales y rincones de relax en plena naturaleza.'
   },
   {
     title: 'Paseos por la Aldea',
-    icon: 'img/highlights/15_actividades.jpg',
-    photo: 'nereidas_imagenes/Atracciones/centro aldea.jpg',
+    icon: 'img/highlights/15_actividades.webp',
+    photo: 'nereidas_imagenes/Atracciones/centro aldea.webp',
     desc: 'Construcciones rústicas de piedra y madera, gastronomía gourmet de autor, chocolaterías y artesanías.'
   }
 ];
@@ -984,3 +984,29 @@ window.toggleAptCollapse = function(btn) {
     if (textSpan) textSpan.textContent = 'Ocultar distribución y equipamiento';
   }
 };
+
+/**
+ * 14. Carga bajo demanda del Mapa de Google (Ahorra ~500 KB iniciales)
+ */
+function initLazyMap() {
+  const mapIframe = document.querySelector('iframe.lazy-map');
+  if (!mapIframe) return;
+
+  if ('IntersectionObserver' in window) {
+    const mapObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          if (mapIframe.dataset.src) {
+            mapIframe.src = mapIframe.dataset.src;
+            mapIframe.removeAttribute('data-src');
+          }
+          observer.unobserve(mapIframe);
+        }
+      });
+    }, { rootMargin: '300px' });
+    mapObserver.observe(mapIframe);
+  } else {
+    mapIframe.src = mapIframe.dataset.src;
+  }
+}
+document.addEventListener('DOMContentLoaded', initLazyMap);

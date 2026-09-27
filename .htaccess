@@ -58,18 +58,23 @@ ErrorDocument 500 /500.html
   ExpiresByType image/png  "access plus 1 year"
   ExpiresByType image/gif  "access plus 1 year"
   ExpiresByType image/svg+xml "access plus 1 year"
-  ExpiresByType text/css   "access plus 1 month"
-  ExpiresByType application/javascript "access plus 1 month"
+  ExpiresByType text/css   "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
   ExpiresByType application/json "access plus 1 day"
   ExpiresByType text/html  "access plus 0 seconds"
 </IfModule>
 
-# Forzar revalidación inmediata de HTML para evitar que el navegador guarde versiones viejas
 <IfModule mod_headers.c>
+  # HTML: Revalidación instantánea para deploy continuo
   <FilesMatch "\.(html|htm)$">
     Header set Cache-Control "no-cache, no-store, must-revalidate"
     Header set Pragma "no-cache"
     Header set Expires "0"
+  </FilesMatch>
+
+  # CSS, JS, Fuentes y Multimedia con versión: 1 año inmutable
+  <FilesMatch "\.(css|js|webp|jpg|jpeg|png|gif|svg|ico|woff2|woff|ttf|eot)$">
+    Header set Cache-Control "max-age=31536000, public, immutable"
   </FilesMatch>
 </IfModule>
 
