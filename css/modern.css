@@ -5135,9 +5135,9 @@ body.apt-modal-open {
 .apt-modal-backdrop {
   position: absolute;
   inset: 0;
-  background: #6FA8AD;
-  background-color: #6FA8AD;
-  opacity: 0.90;
+  background: #ffffff;
+  background-color: #ffffff;
+  opacity: 0.88;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   cursor: pointer;
@@ -5335,7 +5335,8 @@ body.apt-modal-open {
   position: absolute;
   bottom: 12px;
   right: 14px;
-  background: rgba(15, 23, 42, 0.85);
+  background: #6e9db4;
+  background-color: #6e9db4;
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   color: #FFFFFF;
