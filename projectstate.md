@@ -45,6 +45,7 @@
   - Política de caché configurada en `.htaccess` (HTML siempre fresco; imágenes, CSS, JS y fuentes inmutables por 1 año).
   - Desvinculación de Vercel y depuración de código muerto, simulador de Instagram y borradores preliminares.
   - Identidad & Favicon: Nuevo isotipo circular oficial integrado en todas las resoluciones (`favicon.png`, `favicon.ico` multi-resolución, `apple-touch-icon.png`) con versionado cache-buster `?v=2`.
+  - Tarjeta de Previsualización Web (Open Graph & Twitter Cards): Nueva imagen oficial frente a la piscina (1200x675) en `img/og_preview.jpg` y texto comercial actualizado.
   - Despliegue continuo activo: `git push origin main` -> sincronización inmediata con DonWeb / Ferozo (`public_html/`).
 - **[EN PROGRESO]**:
   - Auditoría de métricas Core Web Vitals en campo (LCP, INP, CLS) bajo la nueva entrega de assets WebP.
