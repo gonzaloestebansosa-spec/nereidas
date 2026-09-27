@@ -44,6 +44,7 @@
   - Carga diferida (`defer`) del widget externo de PXSOL y facade lazy con `IntersectionObserver` para el mapa de Google.
   - Política de caché configurada en `.htaccess` (HTML siempre fresco; imágenes, CSS, JS y fuentes inmutables por 1 año).
   - Desvinculación de Vercel y depuración de código muerto, simulador de Instagram y borradores preliminares.
+  - Identidad & Favicon: Nuevo isotipo circular oficial integrado en todas las resoluciones (`favicon.png`, `favicon.ico` multi-resolución, `apple-touch-icon.png`) con versionado cache-buster `?v=2`.
   - Despliegue continuo activo: `git push origin main` -> sincronización inmediata con DonWeb / Ferozo (`public_html/`).
 - **[EN PROGRESO]**:
   - Auditoría de métricas Core Web Vitals en campo (LCP, INP, CLS) bajo la nueva entrega de assets WebP.
