@@ -39,6 +39,7 @@
   - Panel desplegable de fechas/pasajeros de PXSOL anclado por encima de la barra flotante (`bottom: 82px !important; top: auto !important; left: 50%; transform: translateX(-50%)` en Desktop, `bottom: 106px !important` en Mobile) con altura compacta (~360px) y `max-height: calc(100dvh - 165px); overflow-y: auto`. Esto garantiza que los controles del calendario (CHECK-IN / CHECK-OUT, botón "Listo", selector "Ajustar noches") queden 100% visibles y nunca sean tapados por el pie ni colisionen con la barra de navegación superior. Mensajes y alertas de validación (`.pxsol-search-message`, `.pxsol-search-error`) flotan por encima de la barra.
   - Botón flotante de WhatsApp elevado a `bottom: 110px` en mobile para evitar cualquier superposición con la barra de búsqueda.
   - Suite de rendimiento WebP: 100% de imágenes de la web migradas a WebP con ahorro global superior al 55% y versiones responsivas `-thumb.webp` de 500px para miniaturas.
+  - Iconografía de Servicios: 12 iconos WebP en `img/highlights/` sincronizados y trackeados en Git (corregida regla de `.gitignore` que omitía la carpeta).
   - Carga optimizada de Google Fonts: reducida a 5 pesos estrictamente utilizados con carga asíncrona no bloqueante.
   - Carga diferida (`defer`) del widget externo de PXSOL y facade lazy con `IntersectionObserver` para el mapa de Google.
   - Política de caché configurada en `.htaccess` (HTML siempre fresco; imágenes, CSS, JS y fuentes inmutables por 1 año).

@@ -27,11 +27,11 @@ scratch/
 AUDITORIA_GOOGLE_TRAVEL.md
 Archivos de analisis/
 download_images.py
-faivcon nuevo.jpeg
-highlights/
+/highlights/
 image.png_202609082152.jpeg
-instagram/
-Reels/
+/instagram/
+/Reels/
+!img/highlights/*.webp
 img/highlights/02_wifi.jpg
 img/highlights/13_contacto.jpg
 img/highlights/14_tarifas.jpg
