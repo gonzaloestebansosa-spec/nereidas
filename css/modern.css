@@ -1095,7 +1095,7 @@ ul, ol {
    FOOTER (#contacto)
    ========================================================================== */
 .footer {
-  background-color: var(--azul-mar);
+  background-color: #6e9db4;
   color: var(--blanco);
   padding-top: 70px;
   padding-bottom: 30px;
@@ -2970,9 +2970,9 @@ body .pxsol-search-panel--guests,
   }
 }
 
-/* --- 9. Footer Oficial (#22374A, Logo de Misma Dimensión que en Header: 72px) --- */
+/* --- 9. Footer Oficial (#6e9db4, Logo de Misma Dimensión que en Header: 72px) --- */
 .footer {
-  background-color: #22374A !important;
+  background-color: #6e9db4 !important;
   color: #FFFFFF !important;
   padding-bottom: 95px !important;
 }
