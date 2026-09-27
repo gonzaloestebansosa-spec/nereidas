@@ -806,7 +806,7 @@ ul, ol {
   position: absolute;
   top: 12px;
   right: 12px;
-  background: rgba(20, 33, 61, 0.82);
+  background: #91ADC8;
   backdrop-filter: blur(6px);
   color: #FFFFFF;
   font-size: 0.72rem;
@@ -5067,7 +5067,7 @@ body .pxsol-search-panel--guests,
   position: absolute;
   top: 12px;
   left: 12px;
-  background: rgba(15, 23, 42, 0.78);
+  background: #6FA8AD;
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   color: #FFFFFF;
@@ -5086,7 +5086,7 @@ body .pxsol-search-panel--guests,
   pointer-events: none;
 }
 .gallery-expand-badge svg {
-  color: #C5A059;
+  color: #FFFFFF;
 }
 .apartment-gallery:hover .gallery-expand-badge {
   opacity: 1;
