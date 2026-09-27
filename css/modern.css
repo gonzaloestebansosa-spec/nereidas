@@ -806,9 +806,10 @@ ul, ol {
   position: absolute;
   top: 12px;
   right: 12px;
-  background: #91ADC8;
+  background: #97c0c4;
   backdrop-filter: blur(6px);
-  color: #FFFFFF;
+  -webkit-backdrop-filter: blur(6px);
+  color: #000000;
   font-size: 0.72rem;
   font-weight: 700;
   padding: 3px 9px;
@@ -3996,7 +3997,7 @@ body .pxsol-search-panel--guests,
   position: absolute;
   top: 6px;
   left: 6px;
-  background: rgba(20, 33, 61, 0.85);
+  background: #6e9db4;
   backdrop-filter: blur(4px);
   color: #FFFFFF;
   font-size: 0.64rem;
@@ -5075,10 +5076,10 @@ body .pxsol-search-panel--guests,
   position: absolute;
   top: 12px;
   left: 12px;
-  background: #6FA8AD;
+  background: #97c0c4;
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  color: #FFFFFF;
+  color: #000000;
   font-size: 0.72rem;
   font-weight: 600;
   padding: 4px 10px;
@@ -5094,7 +5095,7 @@ body .pxsol-search-panel--guests,
   pointer-events: none;
 }
 .gallery-expand-badge svg {
-  color: #FFFFFF;
+  color: #000000;
 }
 .apartment-gallery:hover .gallery-expand-badge {
   opacity: 1;
