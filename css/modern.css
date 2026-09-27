@@ -792,7 +792,7 @@ ul, ol {
   position: absolute;
   bottom: 12px;
   left: 12px;
-  background: rgba(27, 47, 122, 0.85);
+  background: #6e9db4;
   backdrop-filter: blur(6px);
   color: var(--blanco);
   font-size: 0.78rem;
