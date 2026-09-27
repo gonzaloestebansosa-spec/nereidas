@@ -7,7 +7,7 @@
 ---
 
 ### 2. ARQUITECTURA DE ARCHIVOS Y RUTAS
-- `index.html` -> Página principal (Single Page Application arquitectada en HTML5). Controlada por `js/app.js?v=5.2` y estilizada por `css/modern.css?v=5.2`.
+- `index.html` -> Página principal (Single Page Application arquitectada en HTML5). Controlada por `js/app.js?v=5.3` y estilizada por `css/modern.css?v=5.3`.
 - `403.html` -> Página de error de acceso prohibido con diseño corporativo y navegación de retorno.
 - `404.html` -> Página de error de recurso no encontrado con enlaces directos al inicio y WhatsApp.
 - `500.html` -> Página de error interno del servidor con opciones de contacto directo.
