@@ -2186,7 +2186,7 @@ body.has-demo-bar {
 /* --- 5. Barra de Búsqueda Fija en el Pie (Visible desde Carga Inicial) --- */
 .quick-booking-bar {
   position: fixed !important;
-  bottom: 5px !important;
+  bottom: 15px !important;
   left: 0 !important;
   right: 0 !important;
   z-index: 1010 !important;
@@ -2441,7 +2441,7 @@ body .pxsol-search-panel,
 body .pxsol-search-panel--guests,
 #buscador-pxsol .pxsol-search-panel--guests {
   position: fixed !important;
-  bottom: 82px !important;
+  bottom: 92px !important;
   top: auto !important;
   left: 50% !important;
   right: auto !important;
@@ -2603,7 +2603,7 @@ body .pxsol-search-panel--guests,
 /* Ajuste móvil para mostrar la misma barra PXSOL directo sin botón de colapso */
 @media (max-width: 768px) {
   .quick-booking-bar.pxsol-bar {
-    bottom: 5px !important;
+    bottom: 15px !important;
     padding: 0 8px !important;
   }
   .booking-floating-mobile-bar {
@@ -2724,7 +2724,7 @@ body .pxsol-search-panel--guests,
   body .pxsol-search-panel--guests,
   #buscador-pxsol .pxsol-search-panel--guests {
     position: fixed !important;
-    bottom: 106px !important;
+    bottom: 116px !important;
     top: auto !important;
     left: 8px !important;
     right: 8px !important;
@@ -2792,10 +2792,10 @@ body .pxsol-search-panel--guests,
   }
 }
 
-/* --- 6. Botón Flotante de WhatsApp (+10px Más Arriba, Encima de la Barra Fija) --- */
+/* --- 6. Botón Flotante de WhatsApp (Alineado con Barra de Búsqueda a 15px del Margen Inferior) --- */
 .floating-whatsapp {
   position: fixed !important;
-  bottom: 85px !important;
+  bottom: 15px !important;
   right: 28px !important;
   z-index: 1020 !important;
   display: flex !important;
@@ -2822,7 +2822,7 @@ body .pxsol-search-panel--guests,
 }
 @media (max-width: 768px) {
   .floating-whatsapp {
-    bottom: 110px !important;
+    bottom: 120px !important;
     right: 16px !important;
     width: 52px !important;
     height: 52px !important;
