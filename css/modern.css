@@ -1099,7 +1099,7 @@ ul, ol {
   background-color: #6e9db4;
   color: var(--blanco);
   padding-top: 70px;
-  padding-bottom: 30px;
+  padding-bottom: 36px;
 }
 .footer-grid {
   display: grid;
@@ -1168,6 +1168,7 @@ ul, ol {
 }
 .footer-bottom {
   padding-top: 24px;
+  padding-bottom: 36px;
   border-top: 1px solid rgba(255, 255, 255, 0.12);
   display: flex;
   flex-wrap: wrap;
