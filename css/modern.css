@@ -1168,7 +1168,7 @@ ul, ol {
 }
 .footer-bottom {
   padding-top: 24px;
-  padding-bottom: 36px;
+  padding-bottom: 20px;
   border-top: 1px solid rgba(255, 255, 255, 0.12);
   display: flex;
   flex-wrap: wrap;
@@ -1177,6 +1177,96 @@ ul, ol {
   font-size: 0.85rem;
   color: rgba(255, 255, 255, 0.6);
   gap: 12px;
+}
+
+/* Créditos de Agencia (Taweno Media) */
+.footer-credits-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 6px;
+  padding-bottom: 8px;
+}
+.footer-credits-pill {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 11px;
+  color: #CBD5E1;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 6px 14px;
+  border-radius: 9999px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.footer-credits-author {
+  color: #FFFFFF;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+}
+.footer-credits-author strong {
+  color: #F8FAFC;
+  font-weight: 700;
+}
+.footer-credits-divider {
+  color: rgba(255, 255, 255, 0.35);
+  font-weight: 300;
+  user-select: none;
+}
+.footer-credits-links {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+.footer-credits-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: #CBD5E1;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 11px;
+  transition: all 0.2s ease;
+}
+.footer-credits-link svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+.footer-credits-link:hover svg {
+  transform: scale(1.15);
+}
+.footer-credits-fb svg {
+  color: #60A5FA;
+}
+.footer-credits-fb:hover {
+  color: #93C5FD !important;
+}
+.footer-credits-ig svg {
+  color: #F472B6;
+}
+.footer-credits-ig:hover {
+  color: #F9A8D4 !important;
+}
+.footer-credits-mail svg {
+  color: #FBBF24;
+}
+.footer-credits-mail:hover {
+  color: #FDE68A !important;
+}
+@media (max-width: 640px) {
+  .footer-credits-text-desktop {
+    display: none;
+  }
+  .footer-credits-pill {
+    padding: 6px 12px;
+    gap: 8px;
+  }
 }
 
 /* ==========================================================================
