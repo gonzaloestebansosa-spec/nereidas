@@ -1259,7 +1259,16 @@ ul, ol {
 .footer-credits-mail:hover {
   color: #FDE68A !important;
 }
-@media (max-width: 640px) {
+@media (max-width: 768px) {
+  .footer {
+    padding-bottom: 110px !important;
+  }
+  .footer-credits-wrap {
+    border-top: none !important;
+    padding-top: 14px !important;
+    padding-bottom: 10px !important;
+    margin-bottom: 10px !important;
+  }
   .footer-credits-text-desktop {
     display: none;
   }
@@ -3135,7 +3144,9 @@ body .pxsol-search-panel--guests,
   }
   .footer-social-mobile {
     display: flex;
-    margin-top: 16px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
   }
 }
 
