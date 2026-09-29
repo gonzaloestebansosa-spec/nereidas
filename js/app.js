@@ -594,7 +594,7 @@ const WEB_HIGHLIGHTS_STORIES = [
   {
     title: 'Servicio de Playa',
     icon: 'img/highlights/04_sombrillas.webp',
-    photo: 'nereidas_imagenes/Servicios/servicio_playa.webp',
+    photo: 'nereidas_imagenes/Servicios/servicio_playa.webp?v=7.3',
     desc: 'Sombrillas y reposeras listas para disfrutar de las amplias playas de Mar de las Pampas a solo 50 metros.'
   },
   {
@@ -624,7 +624,7 @@ const WEB_HIGHLIGHTS_STORIES = [
   {
     title: 'Piscina Climatizada',
     icon: 'img/highlights/09_piscina.webp',
-    photo: 'nereidas_imagenes/Servicios/04.webp',
+    photo: 'nereidas_imagenes/Servicios/piscina_climatizada.webp?v=7.3',
     desc: 'Piscina exterior templada rodeada de solarium de madera, reposeras y la serenidad de los pinos.'
   },
   {
@@ -648,7 +648,7 @@ const WEB_HIGHLIGHTS_STORIES = [
   {
     title: 'Paseos por la Aldea',
     icon: 'img/highlights/15_actividades.webp',
-    photo: 'nereidas_imagenes/Atracciones/centro aldea.webp',
+    photo: 'nereidas_imagenes/Atracciones/paseos_aldea.webp?v=7.3',
     desc: 'Construcciones rústicas de piedra y madera, gastronomía gourmet de autor, chocolaterías y artesanías.'
   }
 ];
