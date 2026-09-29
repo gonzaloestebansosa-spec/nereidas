@@ -595,7 +595,7 @@ const WEB_HIGHLIGHTS_STORIES = [
     title: 'Servicio de Playa',
     icon: 'img/highlights/04_sombrillas.webp',
     photo: 'nereidas_imagenes/Servicios/servicio_playa.webp',
-    desc: 'Sombrillas y reposeras listas para disfrutar de las amplias playas de Mar de las Pampas a solo 100 metros.'
+    desc: 'Sombrillas y reposeras listas para disfrutar de las amplias playas de Mar de las Pampas a solo 50 metros.'
   },
   {
     title: 'Estadía Pet Friendly',
@@ -637,7 +637,7 @@ const WEB_HIGHLIGHTS_STORIES = [
     title: 'Ubicación Estratégica',
     icon: 'img/highlights/11_ubicacion.webp',
     photo: 'nereidas_imagenes/Servicios/05.webp',
-    desc: 'Privilegiada ubicación en medio del bosque, a solo 100 metros del mar y a 250 metros del centro comercial de aldea.'
+    desc: 'Privilegiada ubicación en medio del bosque, a solo 50 metros del mar y a 150 metros del centro comercial de aldea.'
   },
   {
     title: 'Galería & Parque',
