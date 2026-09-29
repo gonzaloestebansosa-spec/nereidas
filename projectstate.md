@@ -13,7 +13,6 @@
 - `500.html` -> Página de error interno del servidor con opciones de contacto directo.
 - `.htaccess` -> Configuración Apache de producción: redirección canónica HTTPS, compresión GZIP y directivas de caché (HTML revalidado al instante, estáticos 1 año inmutable).
 - `scripts/` -> Herramientas CLI Node.js para procesamiento de imágenes con Sharp (`convert_all_to_webp.cjs`, `generate_thumbs.cjs`, `optimize_assets.cjs`).
-- `panel/` -> Portal administrativo seguro para **Runa Moraira Apart & Spa** con autenticación multifactor (2FA por correo electrónico), protección contra fuerza bruta, Zero-Knowledge en frontend (sin claves en scripts JS) y sesiones encriptadas (`config.php`, `index.php`, `dashboard.php`, `logout.php`, `api/auth.php`).
 
 ---
 
