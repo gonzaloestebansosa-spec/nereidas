@@ -601,7 +601,7 @@ const WEB_HIGHLIGHTS_STORIES = [
     title: 'Estadía Pet Friendly',
     icon: 'img/highlights/05_mascotas.webp',
     photo: 'nereidas_imagenes/Servicios/01.webp',
-    desc: 'Recibimos a tu mascota educada en nuestras instalaciones y parque cerrado con coordinación previa.'
+    desc: 'Recibimos a tu mascota educada en nuestras instalaciones, con coordinación previa.'
   },
   {
     title: 'Bicicletas de Paseo',
@@ -625,13 +625,13 @@ const WEB_HIGHLIGHTS_STORIES = [
     title: 'Piscina Climatizada',
     icon: 'img/highlights/09_piscina.webp',
     photo: 'nereidas_imagenes/Servicios/piscina_climatizada.webp?v=7.3',
-    desc: 'Piscina exterior templada rodeada de solarium de madera, reposeras y la serenidad de los pinos.'
+    desc: 'Piscina exterior templada con solarium, reposeras y la serenidad de los pinos.'
   },
   {
     title: 'Equipamiento Total',
     icon: 'img/highlights/10_habitaciones.webp',
     photo: 'nereidas_imagenes/Apart_Familiar_B/859db912-7b53-4fc0-aa14-0b2ff7bcfeb2_1726512449_66e87d41767c8.webp',
-    desc: 'Cocina completamente equipada con heladera con freezer, microondas, vajilla completa y baño con hidromasaje.'
+    desc: 'Cocina completamente equipada con heladera con freezer, microondas y vajilla completa.'
   },
   {
     title: 'Ubicación Estratégica',
